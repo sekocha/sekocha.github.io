@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>2.1. Ground state search and phase diagram calculation &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="2. Tutorials" href="tutorial-e.html" />
+    <link rel="next" title="2.2. SQS exploration" href="tutorial-e2.html" />
+    <link rel="prev" title="2. Tutorials" href="tutorial-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">2.1. Ground state search and phase diagram calculation</a><ul>
+<li><a class="reference internal" href="#binary-systems">2.1.1. Binary systems</a><ul>
+<li><a class="reference internal" href="#example-1">2.1.1.1. Example 1</a></li>
+<li><a class="reference internal" href="#example-2">2.1.1.2. Example 2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ternary-systems">2.1.2. Ternary systems</a></li>
+<li><a class="reference internal" href="#multilattice-systems">2.1.3. Multilattice systems</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="tutorial-e.html" title="2. Tutorials" accesskey="P">previous </a></li>
+              <li><a href="tutorial-e2.html" title="2.2. SQS exploration" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" >clupan (version 1.0) in English</a></li>
+              <li><a href="tutorial-e.html" accesskey="U"><span class="section-number">2. </span>Tutorials</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="ground-state-search-and-phase-diagram-calculation">
+<h1><span class="section-number">2.1. </span>Ground state search and phase diagram calculation<a class="headerlink" href="#ground-state-search-and-phase-diagram-calculation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="binary-systems">
+<h2><span class="section-number">2.1.1. </span>Binary systems<a class="headerlink" href="#binary-systems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1">
+<h3><span class="section-number">2.1.1.1. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>CaO-SrO pseudobinary system</p></li>
+<li><p>Without performing cluster analysis of structure population (CASP)</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Preparing primitive lattice of rocksalt</p>
+<blockquote>
+<div><p>Information of primitive lattice is described in <strong>primitive_lattice</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cat</span> <span class="n">primitive_lattice</span>
+<span class="n">axis1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">](</span><span class="mf">0.000000000</span><span class="p">,</span><span class="mf">2.000000000</span><span class="p">,</span><span class="mf">2.000000000</span><span class="p">)</span>
+<span class="n">axis2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">](</span><span class="mf">2.000000000</span><span class="p">,</span><span class="mf">0.000000000</span><span class="p">,</span><span class="mf">2.000000000</span><span class="p">)</span>
+<span class="n">axis3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">](</span><span class="mf">2.000000000</span><span class="p">,</span><span class="mf">2.000000000</span><span class="p">,</span><span class="mf">0.000000000</span><span class="p">)</span>
+<span class="n">n_atoms</span> <span class="o">=</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="n">position1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">](</span><span class="mf">0.000000000</span><span class="p">,</span><span class="mf">0.000000000</span><span class="p">,</span><span class="mf">0.000000000</span><span class="p">)</span>
+<span class="n">position2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">](</span><span class="mf">0.500000000</span><span class="p">,</span><span class="mf">0.500000000</span><span class="p">,</span><span class="mf">0.500000000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Non-primitive lattice can be automatically converted to primitive lattice using <strong>find_primitive</strong>. Non-primitive lattice should be written in clupan structure format.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tools/find_primitive -f $(structure_name) &gt; primitive_lattice
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Preparing structure population (searching for derivative structures)</p>
+<blockquote>
+<div><p>Structure population is needed for DFT structure selection and CV-CASP estimation. Derivative structures can be regarded as the structure population. In this tutorial, derivative structures with up to 8 cations are regarded as the structure population.</p>
+<p>Searching for derivative structures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd derivative_structure
+&gt; ls 5/
+derivative.in  primitive_lattice
+&gt; cat 5/derivative.in
+n_lattice = 5
+n_type = 2
+symprec = 1e-5
+
+&gt; j=`pwd`;for i in {2..8};do cd $j/$i; derivative;done
+</pre></div>
+</div>
+<p>Converting derivative.out to structure files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd ../
+&gt; j=`pwd`;for i in {2..8};do cd $j/$i; derivative_to_structure;done
+2 structures are generated.
+3 structures are generated.
+12 structures are generated.
+14 structures are generated.
+50 structures are generated.
+52 structures are generated.
+229 structures are generated.
+</pre></div>
+</div>
+<p>362 structures with up to 8 cations are obtained.</p>
+</div></blockquote>
+</li>
+<li><p>Searching for independent clusters</p>
+<blockquote>
+<div><p>Independent clusters are required for calculating correlation functions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">cluster_search</span>
+<span class="o">&gt;</span> <span class="n">ls</span>
+<span class="n">cluster</span><span class="o">.</span><span class="ow">in</span> <span class="n">primitive_lattice</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">cluster</span><span class="o">.</span><span class="ow">in</span>
+<span class="n">n_sublattice</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">max_cluster</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">trunc_distance</span> <span class="o">=</span> <span class="mf">6.0</span> <span class="mf">6.0</span> <span class="mf">6.0</span> <span class="mf">0.0</span>
+<span class="n">symprec</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="o">&gt;</span> <span class="n">cluster_search</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">symmetry</span> <span class="n">operations</span> <span class="o">=</span> <span class="mi">48</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">empty</span> <span class="n">cluster</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">number</span> <span class="n">of</span> <span class="mi">1</span><span class="o">-</span><span class="n">body</span> <span class="n">clusters</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">number</span> <span class="n">of</span> <span class="mi">2</span><span class="o">-</span><span class="n">body</span> <span class="n">clusters</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">number</span> <span class="n">of</span> <span class="mi">3</span><span class="o">-</span><span class="n">body</span> <span class="n">clusters</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">number</span> <span class="n">of</span> <span class="mi">4</span><span class="o">-</span><span class="n">body</span> <span class="n">clusters</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">number</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">clusters</span> <span class="o">=</span> <span class="mi">53</span>
+</pre></div>
+</div>
+<p>53 clusters up to 4-body cluster are obtained.</p>
+</div></blockquote>
+</li>
+<li><p>Calculating correlation functions of all structures in the structure population</p>
+<blockquote>
+<div><p>Preparing files for calculating correlation functions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd derivative_structure
+&gt; cat setup_correlation.sh
+#!/bin/zsh
+mkdir ../correlation
+count=0
+for i in {2..8};do
+    for j in `ls $i/structure*`;do
+        n1=`grep n_atoms $j | cut -d&quot; &quot; -f4`
+        n2=`grep n_atoms $j | cut -d&quot; &quot; -f5`
+        count=`expr $count + 1`
+        mkdir -p ../correlation/$count
+        cp -r $j ../correlation/$count/structure$count
+        echo &quot; spin = 1 -1&quot; &gt; ../correlation/$count/correlation.in
+        if [ $n1 -ne $n2 ]; then
+            count=`expr $count + 1`
+            mkdir -p ../correlation/$count
+            cp -r $j ../correlation/$count/structure$count
+            echo &quot; spin = -1 1&quot; &gt; ../correlation/$count/correlation.in
+        fi
+    done
+done
+
+&gt; ./setup_correlation.sh
+</pre></div>
+</div>
+<p>616 structures including spin-flip structures are prepared.</p>
+<p>Calculating correlation functions of 616 structures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd ../correlation
+&gt; for i in `ls -F`;do cp ../cluster_search/cluster.out $i;done
+
+&gt; dir=`pwd`; for i in `ls -F`;do name=${i%/}; cd $dir/$name; correlation -f structure$name;done
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>DFT structure selection</p>
+<blockquote>
+<div><p>In this tutorials, 55 structures with up to 5 cations and end menbers of CaO and SrO are used for DFT calculation.</p>
+</div></blockquote>
+</li>
+<li><p>DFT calculations</p>
+<blockquote>
+<div><p>Calculate energies of 57 structures. Then prepare dft_energy file.
+In order to perform DFT calculations, It may be as well to refine the structures using <strong>tools/refine_cell</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd ../
+&gt; mkdir energy
+&gt; for i in {1..55};do cp -r correlation/$i energy;done
+&gt; for i in {1..55};do tools/refine_cell -f $i/structure$i &gt; $i/structure_refine$i;done
+</pre></div>
+</div>
+<p>When using VASP for DFT calculations, POSCAR files can be automatically prepared.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; tools/structure_to_poscar -f $i/structure_refine$i &gt; $i/POSCAR
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ECI estimation</p>
+<blockquote>
+<div><p>Calculated DFT energies are listed in dft_energy file. <strong>Energy in dft_energy file has a unit of eV/primitive cell.</strong> correlation file is needed for ECI estimation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">../</span><span class="n">lsf</span>
+<span class="o">&gt;</span> <span class="n">ls</span>
+<span class="n">dft_energy</span> <span class="n">lsf</span><span class="o">.</span><span class="ow">in</span> <span class="n">ga</span><span class="o">.</span><span class="ow">in</span> <span class="n">setup_correlation</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">&gt;</span> <span class="o">./</span><span class="n">setup_correlation</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Genetic algorithm (GA) is performed for optimizing the set of clusters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cat</span> <span class="n">ga</span><span class="o">.</span><span class="ow">in</span>
+<span class="n">n_loop</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">temp_init</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">temp_final</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">temp_mul</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">base_cluster</span> <span class="o">=</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">n_pop</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">n_elite</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">min_index</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">max_index</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="n">n_cluster</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">max_iteration</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">p_mating</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">p_mutation</span> <span class="o">=</span> <span class="mf">0.03</span>
+
+<span class="o">&gt;</span> <span class="n">ga</span>
+<span class="n">default</span> <span class="n">parameter</span> <span class="p">:</span> <span class="n">iweight</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">default</span> <span class="n">parameter</span> <span class="p">:</span> <span class="n">ex_cluster</span> <span class="o">=</span>
+<span class="n">generating</span> <span class="n">population</span>
+<span class="n">generating</span> <span class="n">population</span> <span class="n">using</span> <span class="n">simulated</span> <span class="n">annealing</span>
+<span class="n">iteration</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">min_cv_score</span> <span class="o">=</span> <span class="mf">0.00484818</span>
+<span class="n">iteration</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">min_cv_score</span> <span class="o">=</span> <span class="mf">0.004608</span>
+<span class="n">iteration</span> <span class="mi">2</span> <span class="p">:</span> <span class="n">min_cv_score</span> <span class="o">=</span> <span class="mf">0.004608</span>
+<span class="n">iteration</span> <span class="mi">3</span> <span class="p">:</span> <span class="n">min_cv_score</span> <span class="o">=</span> <span class="mf">0.004608</span>
+
+<span class="o">&gt;</span> <span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">25</span> <span class="n">ga</span><span class="o">.</span><span class="n">out</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span>
+<span class="n">cv_score</span> <span class="o">=</span> <span class="mf">0.00436178</span><span class="p">;</span> <span class="n">cluster_index</span> <span class="o">=</span> <span class="mi">34</span> <span class="mi">46</span> <span class="mi">11</span>
+</pre></div>
+</div>
+<p>By using the result of GA, eci file is prepared.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cat</span> <span class="n">lsf</span><span class="o">.</span><span class="ow">in</span>
+<span class="n">cluster_index</span> <span class="o">=</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">34</span> <span class="mi">46</span> <span class="mi">11</span>
+
+<span class="o">&gt;</span> <span class="n">lsf</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">eci</span>
+<span class="n">cluster_index</span> <span class="o">=</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">34</span> <span class="mi">46</span> <span class="mi">11</span>
+<span class="n">eci</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">](</span><span class="o">-</span><span class="mf">12.48423400</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3918767803</span><span class="p">,</span><span class="o">-</span><span class="mf">0.03169960820</span><span class="p">,</span><span class="mf">0.01169224996</span><span class="p">,</span><span class="o">-</span><span class="mf">0.03735726419</span><span class="p">,</span><span class="mf">0.002203187340</span><span class="p">,</span><span class="o">-</span><span class="mf">0.01230658445</span><span class="p">,</span><span class="mf">0.009218152246</span><span class="p">,</span><span class="o">-</span><span class="mf">0.005353977333</span><span class="p">)</span>
+<span class="n">squared</span> <span class="n">error</span> <span class="o">=</span> <span class="mf">0.0007125008537</span>
+<span class="n">cv</span> <span class="n">score</span> <span class="o">=</span> <span class="mf">0.004378791536</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Ground state search</p>
+<blockquote>
+<div><p>By calculating energies of 616 derivative structures, the ground state structure are found. Composition is defined as x=0 at CaO and x=1 at SrO. Practically, a larger number of structures should be prepared for the ground state search.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd ../gss
+&gt; cp ../lsf/eci .
+&gt; touch correlation
+&gt; for i in {1..616};do cat ../correlation/$i/correlation.out &gt;&gt; correlation;done
+&gt; cat gss.in
+comp_cluster = 1
+comp_def = 0.5 -0.5
+
+&gt; gss
+</pre></div>
+</div>
+<p>Energies of all 616 structures are positive.</p>
+<a class="reference internal image-reference" href="../_images/CaO-SrO-gss.svg"><img alt="../_images/CaO-SrO-gss.svg" src="../_images/CaO-SrO-gss.svg" width="400" /></a>
+</div></blockquote>
+</li>
+<li><p>Semi-grand canonical Monte Carlo simulation</p>
+<blockquote>
+<div><p>Semi-grand canonical MC simulations are performed starting from both CaO and SrO at several temperatures and chemical potentials. Chemical potential is defined as mu = mu_Sr(spin=-1) - mu_Ca(spin=+1). cluster.out file is obtained by <strong>cluster</strong>. cluster_function.out file is obtained by <strong>correlation</strong>. eci file is botained by <strong>lsf</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">../</span><span class="n">mc</span>
+<span class="o">&gt;</span> <span class="n">cd</span> <span class="n">start_CaO</span><span class="o">/</span><span class="mi">100</span><span class="o">/</span><span class="mf">0.00</span>
+<span class="o">&gt;</span> <span class="n">ls</span>
+<span class="n">cluster</span><span class="o">.</span><span class="n">out</span>    <span class="n">eci</span>    <span class="n">structure_CaO</span>
+<span class="n">cluster_function</span><span class="o">.</span><span class="n">out</span>   <span class="n">mc</span><span class="o">.</span><span class="ow">in</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">mc</span><span class="o">.</span><span class="ow">in</span>
+<span class="n">cell_expansion</span> <span class="o">=</span> <span class="mi">10</span> <span class="mi">10</span> <span class="mi">10</span>
+<span class="n">i_temp</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_step_ann</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">n_step_eqv</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">init_structure</span> <span class="o">=</span> <span class="n">structure_CaO</span>
+<span class="n">spin</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">simulation_type</span> <span class="o">=</span> <span class="n">gcmc</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.00</span>
+
+<span class="o">&gt;</span> <span class="n">mc</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/CaO-SrO-mc-comp.svg"><img alt="../_images/CaO-SrO-mc-comp.svg" src="../_images/CaO-SrO-mc-comp.svg" width="600" /></a>
+</div></blockquote>
+</li>
+<li><p>Free energy calculation</p>
+<blockquote>
+<div><p>In order to obtain the phase diagram, the grand potential is estimated using the thermodynamic integration after performing MC simulation. First, information for thermodynamic integration is prepared in a file. Chemical potential is defined as mu = mu_Sr(spin=-1) - mu_Ca(spin=+1). Composition should be written as composition of Sr.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">../</span><span class="n">ti</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">ti_path_startc_1000</span>
+<span class="mi">41</span> <span class="c1"># number of points</span>
+<span class="mf">0.00</span>  <span class="mi">1000</span>  <span class="o">.</span><span class="mi">00000454</span>  <span class="o">-</span><span class="mf">12.93970981</span> <span class="c1"># chem. pot., temp., comp., energy</span>
+<span class="mf">0.04</span>  <span class="mi">1000</span>  <span class="o">.</span><span class="mi">00000686</span>  <span class="o">-</span><span class="mf">12.93970735</span>
+<span class="mf">0.08</span>  <span class="mi">1000</span>  <span class="o">.</span><span class="mi">00001061</span>  <span class="o">-</span><span class="mf">12.93970337</span>
+<span class="mf">0.12</span>  <span class="mi">1000</span>  <span class="o">.</span><span class="mi">00002089</span>  <span class="o">-</span><span class="mf">12.93969246</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">ti</span><span class="o">.</span><span class="ow">in</span>
+<span class="n">initial_potential</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.93971</span>
+
+<span class="o">&gt;</span> <span class="n">ti</span> <span class="o">-</span><span class="n">f</span> <span class="n">ti_path_startc_1000</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/CaO-SrO-grandpot.svg"><img alt="../_images/CaO-SrO-grandpot.svg" src="../_images/CaO-SrO-grandpot.svg" width="600" /></a>
+<p>Solubility limit can be found from the difference of the grand potentials of CaO and SrO.</p>
+<a class="reference internal image-reference" href="../_images/CaO-SrO-grandpot-500K.svg"><img alt="../_images/CaO-SrO-grandpot-500K.svg" src="../_images/CaO-SrO-grandpot-500K.svg" width="600" /></a>
+<p>Then, a phase diagram can be obtained.</p>
+<a class="reference internal image-reference" href="../_images/CaO-SrO-phase-diagram.svg"><img alt="../_images/CaO-SrO-phase-diagram.svg" src="../_images/CaO-SrO-phase-diagram.svg" width="400" /></a>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="example-2">
+<h3><span class="section-number">2.1.1.2. </span>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>CaO-SrO pseudobinary system</p></li>
+<li><p>With performing CASP</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Performing CASP</p>
+<blockquote>
+<div><p>Structure population is divided into 6 groups.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd ../casp
+&gt; touch correlation
+&gt; for i in {1..616};do cat ../correlation/$i/correlation.out &gt;&gt; correlation;done
+&gt; tools/correlation_for_casp -f correlation &gt; correlation_casp
+&gt; R -f casp.r
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>DFT structure selection</p>
+<blockquote>
+<div><p>In this tutorial, 10 structures are selected from each group. Total number of DFT structures is 60.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">tools</span><span class="o">/</span><span class="n">structure_selection</span> <span class="o">-</span><span class="n">g</span> <span class="n">group</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span>
+
+<span class="n">number</span> <span class="n">of</span> <span class="n">structures</span> <span class="ow">in</span> <span class="n">group</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">structures</span> <span class="ow">in</span> <span class="n">group</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">54</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">structures</span> <span class="ow">in</span> <span class="n">group</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">136</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">structures</span> <span class="ow">in</span> <span class="n">group</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">244</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">structures</span> <span class="ow">in</span> <span class="n">group</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">structures</span> <span class="ow">in</span> <span class="n">group</span> <span class="mi">6</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">randomly</span> <span class="n">selected</span> <span class="n">structures</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">181</span><span class="p">,</span><span class="mi">225</span><span class="p">,</span><span class="mi">234</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">259</span><span class="p">,</span><span class="mi">275</span><span class="p">,</span><span class="mi">505</span><span class="p">,</span><span class="mi">597</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">187</span><span class="p">,</span><span class="mi">221</span><span class="p">,</span><span class="mi">327</span><span class="p">,</span><span class="mi">375</span><span class="p">,</span><span class="mi">388</span><span class="p">,</span><span class="mi">463</span><span class="p">,</span><span class="mi">480</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">106</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">143</span><span class="p">,</span><span class="mi">309</span><span class="p">,</span><span class="mi">352</span><span class="p">,</span><span class="mi">390</span><span class="p">,</span><span class="mi">438</span><span class="p">,</span><span class="mi">459</span><span class="p">,</span><span class="mi">539</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">146</span><span class="p">,</span><span class="mi">217</span><span class="p">,</span><span class="mi">280</span><span class="p">,</span><span class="mi">310</span><span class="p">,</span><span class="mi">363</span><span class="p">,</span><span class="mi">384</span><span class="p">,</span><span class="mi">460</span><span class="p">,</span><span class="mi">478</span><span class="p">,</span><span class="mi">504</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">248</span><span class="p">,</span><span class="mi">317</span><span class="p">,</span><span class="mi">355</span><span class="p">,</span><span class="mi">484</span><span class="p">,</span><span class="mi">530</span><span class="p">,</span><span class="mi">608</span><span class="p">,</span><span class="mi">610</span><span class="p">,</span><span class="mi">615</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">171</span><span class="p">,</span><span class="mi">193</span><span class="p">,</span><span class="mi">199</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">356</span><span class="p">,</span><span class="mi">469</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">574</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="ternary-systems">
+<h2><span class="section-number">2.1.2. </span>Ternary systems<a class="headerlink" href="#ternary-systems" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon…</p>
+</div>
+<div class="section" id="multilattice-systems">
+<h2><span class="section-number">2.1.3. </span>Multilattice systems<a class="headerlink" href="#multilattice-systems" title="Permalink to this headline">¶</a></h2>
+<p>MC simulations for multilattice systems is now unavailable.</p>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.1. Ground state search and phase diagram calculation</a><ul>
+<li><a class="reference internal" href="#binary-systems">2.1.1. Binary systems</a><ul>
+<li><a class="reference internal" href="#example-1">2.1.1.1. Example 1</a></li>
+<li><a class="reference internal" href="#example-2">2.1.1.2. Example 2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ternary-systems">2.1.2. Ternary systems</a></li>
+<li><a class="reference internal" href="#multilattice-systems">2.1.3. Multilattice systems</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial-e.html"
+                        title="previous chapter"><span class="section-number">2. </span>Tutorials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial-e2.html"
+                        title="next chapter"><span class="section-number">2.2. </span>SQS exploration</a></p>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="tutorial-e.html" title="2. Tutorials" >previous</a></li>
+        <li><a href="tutorial-e2.html" title="2.2. SQS exploration" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 1.0) in English</a></li>
+        <li><a href="tutorial-e.html" ><span class="section-number">2. </span>Tutorials</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2020, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

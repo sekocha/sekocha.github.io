@@ -1,0 +1,54 @@
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1300853, 1890)
+   n (energy) = 9086
+   n (force)  = 1237251
+   n (stress) = 54516
+ # Test data ###
+  X (all) = (143680, 1890)
+   n (energy) = 1000
+   n (force)  = 136680
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.0010556854690169529 0.0012990117310805926
+ alpha = 0.0001 rmse (train, test) = 0.0010610217245713427 0.0016215528084376992
+ alpha = 0.001 rmse (train, test) = 0.0010879212280107034 0.0016837282803519988
+ alpha = 0.01 rmse (train, test) = 0.0012492605007611661 0.0018074823705916438
+ --- input parameters ----
+ cutoff = 12.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.7857142857142857) (1.0, 1.5714285714285714) (1.0, 2.357142857142857) (1.0, 3.142857142857143) 
+(1.0, 3.9285714285714284) (1.0, 4.714285714285714) (1.0, 5.5) (1.0, 6.285714285714286) (1.0, 7.071428571428571) 
+(1.0, 7.857142857142857) (1.0, 8.642857142857142) (1.0, 9.428571428571429) (1.0, 10.214285714285714) (1.0, 11.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 2
+ max_l = 2
+ gtinv_order = 2
+ gtinv_maxl = [2]
+ gtinv_sym = [0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  0.12036035601251306  (meV/atom)
+ rmse (force, train) =  0.000814799778444399  (eV/ang)
+ rmse (stress, train) =  0.001795012219837205  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  0.11383882316620202  (meV/atom)
+ rmse (force, test) =  0.001109587127796619  (eV/ang)
+ rmse (stress, test) =  0.001913133343074  (GPa)
+ elapsed time (features) = 85.896559715271 (s)
+ elapsed time (electrostatic) = 2.765655517578125e-05 (s)
+ elapsed time (regression) = 87.56083631515503 (s)

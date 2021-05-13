@@ -1,0 +1,461 @@
+SQS exploration
+====================
+Binary systems
+------------------------------------
+Example 1
+^^^^^^^^^^
+* Rocksalt structure
+
+* Exhaustive search
+
+In this tutorial, SQS with 8 cations is explored from a set of derivative structures with 8 cations.
+
+#. Preparing primitive lattice of rocksalt
+
+    Information of primitive lattice is described in **primitive_lattice**. ::
+
+        > mkdir sqs8
+        > cd sqs8
+        > vi primitive_lattice
+        axis1 = [3](0.000000000,2.000000000,2.000000000)
+        axis2 = [3](2.000000000,0.000000000,2.000000000)
+        axis3 = [3](2.000000000,2.000000000,0.000000000)
+        n_atoms = 1 1
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.500000000,0.500000000,0.500000000)
+
+    Non-primitive lattice can be automatically converted to primitive lattice using **bin/find_primitive**. Non-primitive lattice should be written in clupan structure format. ::
+
+        bin/find_primitive -f $(structure_name) > primitive_lattice
+
+#. Preparing structure population (searching for derivative structures)
+
+    SQS is explored from a set of derivative structures. 
+
+    Searching for derivative structures ::
+
+        > mkdir derivative
+        > cp primitive_lattice derivative/
+        > cd derivative
+        > vi derivative.in
+        n_lattice = 8
+        n_type = 2
+        symprec = 1e-5
+        > bin/derivative
+
+    Converting derivative.out to structure files ::
+
+        > bin/derivative_to_structure
+        229 structures are generated.
+
+    229 Independent structures with 8 cations are obtained.
+
+#. Searching for independent clusters
+
+    Independent pair clusters are explored for calculating correlation functions ::
+
+        > cd ..
+        > mkdir cluster_search
+        > cd cluster_search
+        > cp primitive_lattice cluster_search/
+        > vi cluster.in
+        n_sublattice = 1
+        max_cluster = 2
+        trunc_distance = 10.0 0.0 0.0 0.0
+        symprec = 1e-5
+        > bin/cluster_search
+        number of symmetry operations = 48
+        number of empty cluster = 1
+        number of 1-body clusters = 1
+        number of 2-body clusters = 13
+        number of all clusters = 15
+
+    15 clusters are obtained.
+
+#. Calculating correlation functions of all structures and finding SQS
+
+    Preparing structures for calculating correlation functions ::
+
+        > cd ..
+        > mkdir correlation
+        > cd correlation
+        > cp derivative/structure8_* correlation
+        > cd correlation
+        > vi setup_correlation.sh
+        #!/bin/zsh
+        count=0
+        for i in `ls ../derivative/structure*`;do
+            n1=`grep n_atoms $i | cut -d" " -f4`
+            n2=`grep n_atoms $i | cut -d" " -f5`
+            count=`expr $count + 1`
+            mkdir -p $count
+            cp -r $i $count/structure$count
+            echo " spin = 1 -1" > $count/correlation.in
+            if [ $n1 -ne $n2 ]; then
+                count=`expr $count + 1`
+                mkdir -p $count
+                cp -r $i $count/structure$count
+                echo " spin = -1 1" > $count/correlation.in
+            fi
+        done
+        cd ..
+        > ./setup_correlation.sh
+
+    377 structures including spin-flip structures are generated from 292 derivative structures.
+
+    Calculating correlation functions of 377 structures ::
+       
+       > for i in `ls -F`;do cp ../cluster_search/cluster.out $i;done
+       > dir=`pwd`; for i in {1..377};do cd $dir/$i; bin/correlation -f structure$i;done
+
+    Using calculated correlation functions, SQS-8 with the composition of 0.5 can be found.
+
+Example 2
+^^^^^^^^^^^^^^^
+* Rocksalt structure
+
+* Search of SQS with a larger supercell using simulated annealing 
+
+In this tutorial, SQS with 2x2x2 supercell (32 cations) of conventional rocksalt unit cell is explored using simulated annealing.
+
+#. Preparing conventional unit cell of rocksalt
+
+    Information of conventional unit cell is described in **primitive_lattice**. ::
+
+        > mkdir sqs_sa
+        > cd sqs_sa
+        > vi primitive_lattice
+        axis1 = [3](4.000000000,0.000000000,0.000000000)
+        axis2 = [3](0.000000000,4.000000000,0.000000000)
+        axis3 = [3](0.000000000,0.000000000,4.000000000)
+        n_atoms = 4 4
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.500000000,0.500000000,0.000000000)
+        position3 = [3](0.000000000,0.500000000,0.500000000)
+        position4 = [3](0.500000000,0.000000000,0.500000000)
+        position5 = [3](0.500000000,0.000000000,0.000000000)
+        position6 = [3](0.000000000,0.500000000,0.000000000)
+        position7 = [3](0.000000000,0.000000000,0.500000000)
+        position8 = [3](0.500000000,0.500000000,0.500000000)
+
+#. Searching for independent clusters
+
+    Independent pair clusters are explored for finding SQS ::
+
+        > cd ..
+        > mkdir cluster_search
+        > cd cluster_search
+        > cp primitive_lattice cluster_search/
+        > vi cluster.in
+        n_sublattice = 1
+        max_cluster = 4
+        trunc_distance = 10.0
+        symprec = 1e-5
+        > bin/cluster_search
+        number of symmetry operations = 192
+        number of empty cluster = 1
+        number of 1-body clusters = 1
+        number of 2-body clusters = 13
+        number of all clusters = 15
+
+    15 clusters are obtained.
+
+    In order to prepare **cluster_function.out**, correlation functions of an arbitrary structure are calculated. ::
+    
+        > vi correlation.in
+        spin = 1 -1
+        > vi structure_tmp
+        axis1 = [3](4.000000000,0.000000000,0.000000000)
+        axis2 = [3](0.000000000,4.000000000,0.000000000)
+        axis3 = [3](0.000000000,0.000000000,4.000000000)
+        n_atoms = 4 0 4
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.500000000,0.500000000,0.000000000)
+        position3 = [3](0.000000000,0.500000000,0.500000000)
+        position4 = [3](0.500000000,0.000000000,0.500000000)
+        position5 = [3](0.500000000,0.000000000,0.000000000)
+        position6 = [3](0.000000000,0.500000000,0.000000000)
+        position7 = [3](0.000000000,0.000000000,0.500000000)
+        position8 = [3](0.500000000,0.500000000,0.500000000)
+        axis_change = [3,3]((1.000000000,0.000000000,0.000000000),(0.000000000,1.000000000,0.000000000),(0.000000000,0.000000000,1.000000000))
+        n_type = 2
+        > bin/correlation -f structure_tmp
+
+#. Exploring SQS using simulated annealing
+
+    Performing simulated annealing ::
+
+        > cd ..
+        > mkdir sa
+        > cd sa
+        > cp ../cluster_search/{primitive_lattice, cluster.out,cluster_function.out}
+        > vi sqs.in
+        cell_expansion = 2 2 2
+        temp_init = 10000
+        temp_final = 0.01
+        temp_mul = 0.99
+        n_step = 300
+        spin = 1 -1
+        comp = 0.5
+        cluster_index = 2 3 4 5 6
+        criterion = abs
+        symprec = 1e-4
+        > bin/sqs
+
+    Converged structure is generated as **structure_sqs**.
+
+    If you convert **structure_sqs** to POSCAR (VASP structure file), type the following command. ::
+
+        > bin/structure_to_poscar -f structure_sqs
+
+Ternary systems
+------------------------------------
+Example 1
+^^^^^^^^^^^^^^^
+* Rocksalt structure
+
+* Search of SQS with a large supercell using simulated annealing 
+
+In this tutorial, SQS with 4x4x4 supercell (64 cations) of rocksalt primitive cell is explored using simulated annealing.
+
+#. Preparing primitive cell of rocksalt
+
+    Information of primitive cell is described in **primitive_lattice**. ::
+
+        > mkdir sqs_sa
+        > cd sqs_sa
+        > vi primitive_lattice
+        axis1 = [3](0.000000000,2.000000000,2.000000000)
+        axis2 = [3](2.000000000,0.000000000,2.000000000)
+        axis3 = [3](2.000000000,2.000000000,0.000000000)
+        n_atoms = 1 1
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.500000000,0.500000000,0.500000000)
+
+#. Searching for independent clusters
+
+    Independent pair clusters are explored for finding SQS ::
+
+        > cd ..
+        > mkdir cluster_search
+        > cd cluster_search
+        > cp primitive_lattice cluster_search/
+        > vi cluster.in
+        n_sublattice = 1
+        max_cluster = 2
+        trunc_distance = 6.0 0.0 0.0 0.0
+        symprec = 1e-5
+        > bin/cluster_search
+        number of symmetry operations = 48
+        number of empty cluster = 1
+        number of 1-body clusters = 1
+        number of 2-body clusters = 4
+        number of all clusters = 6
+
+    In order to prepare **cluster_function.out**, correlation functions of an arbitrary structure are calculated. ::
+    
+        > vi correlation.in
+        spin = 1 0 -1
+        > vi structure_tmp
+        axis1 = [3](0.000000000,2.000000000,2.000000000)
+        axis2 = [3](2.000000000,0.000000000,2.000000000)
+        axis3 = [3](6.000000000,6.000000000,0.000000000)
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.000000000,0.000000000,0.3333333333)
+        position3 = [3](0.000000000,0.000000000,0.6666666667)
+        position4 = [3](0.5000000000,0.5000000000,0.1666666667)
+        position5 = [3](0.5000000000,0.5000000000,0.5000000000)
+        position6 = [3](0.5000000000,0.5000000000,0.8333333333)
+        n_atoms = 1 1 1 3 
+        axis_change = [3,3]((1.000000000,0.000000000,0.000000000),(0.000000000,1.000000000,0.000000000),(0.000000000,0.000000000,3.000000000))
+        n_type = 3
+        > bin/correlation -f structure_tmp
+
+#. Exploring SQS using simulated annealing
+
+    Performing simulated annealing ::
+
+        > cd ..
+        > mkdir sa
+        > cd sa
+        > cp ../cluster_search/{primitive_lattice, cluster.out,cluster_function.out}
+        > vi sqs.in
+        cell_expansion = 4 4 4
+        temp_init = 1000
+        temp_final = 0.01
+        temp_mul = 0.95
+        n_step = 200
+        spin = 1 0 -1
+        comp = 0.5 0.25  # comp(B) and comp(C), comp(A) = 1.0-comp(B)-comp(C)
+        cluster_index = 3 4 5 6 7 8 9 10 11 12 13 14 # first column of cluster_function.out
+        criterion = abs  # rms or abs
+        symprec = 1e-5
+        > bin/sqs
+
+    In this case, cluster functions of up to 3rd NN will be optimized.
+    Converged structure is generated as **structure_sqs**.
+
+    If you convert **structure_sqs** to POSCAR (VASP structure file), type the following command. ::
+
+        > bin/structure_to_poscar -f structure_sqs
+
+Multilattice systems
+------------------------------------
+Example 1
+^^^^^^^^^^^
+* Wurtzite SiC-AlN system
+
+* Exhaustive search
+
+SQS for composition of 50%AlN with 8 cations and 8 anions is explored from a set of derivative structures.
+
+#. Preparing primitive lattice of wurtzite structure ::
+
+    > vi primitive_lattice
+    axis1 = [3](2.701133234,-1.559500000,0.000000000)
+    axis2 = [3](0.000000000,3.119000000,0.000000000)
+    axis3 = [3](0.000000000,0.000000000,4.991000000)
+    n_atoms = 2 2 
+    position1 = [3](0.3333333333,0.6666666666,0.000000000)
+    position2 = [3](0.6666666666,0.3333333333,0.5000000000)
+    position3 = [3](0.3333333333,0.6666666666,0.3750000000)
+    position4 = [3](0.6666666666,0.3333333333,0.8750000000)
+
+#. Searching for derivative structures at the fixed composition ::
+
+    > mkdir derivative
+    > cp primitive_lattice derivative/
+    > cd derivative
+    > vi derivative.in
+    n_lattice = 4
+    n_type = 2 2 # for 2x2 system
+    comp = 0.5 0.5 # compositions of Al and N (Two compositions should be the same in this case.)
+
+    > bin/derivative
+
+    > bin/derivative_to_structure
+    5996 structures are generated.
+
+#. Searching for independent pair clusters ::
+
+    > cd ..
+    > mkdir cluster_search
+    > cd cluster_search
+    > cp primitive_lattice cluster_search/
+    > vi cluster.in
+    n_sublattice = 2  # for 2x2 system
+    max_cluster = 2
+    trunc_distance = 4.0 0.0 0.0 0.0
+    symprec = 1e-5
+
+    > bin/cluster_search
+    number of symmetry operations = 4
+    number of empty cluster = 1
+    number of 1-body clusters = 2
+    number of 2-body clusters = 9
+    number of all clusters = 12
+
+#. Calculating correlation functions of all structures ::
+
+    > cd ..
+    > mkdir correlation
+    > cd correlation
+    > cp ../cluster_search/cluster.out .
+    > echo "spin = 1 -1 1 -1" > correlation.in # spins for Si, Al, C and N
+
+    > for i in {1..5996};do ~/git/clupan/version-1.0/bin/correlation -f ../derivative_lattice/structure16_$i; mv correlation.out correlation.out.$i;done
+
+#. Finding SQS-16 using calculated correlation functions.
+
+Example 2
+^^^^^^^^^^^^^^^
+* Rocksalt structure
+
+* Search of SQS with a large supercell using simulated annealing 
+
+In this tutorial, SQS with 4x4x4 supercell (64 cations) of rocksalt primitive cell is explored using simulated annealing.
+
+#. Preparing primitive cell of rocksalt
+
+    Information of primitive cell is described in **primitive_lattice**. ::
+
+        > mkdir sqs_sa
+        > cd sqs_sa
+        > vi primitive_lattice
+        axis1 = [3](0.000000000,2.000000000,2.000000000)
+        axis2 = [3](2.000000000,0.000000000,2.000000000)
+        axis3 = [3](2.000000000,2.000000000,0.000000000)
+        n_atoms = 1 1
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.500000000,0.500000000,0.500000000)
+
+#. Searching for independent clusters
+
+    Independent pair clusters are explored for finding SQS ::
+
+        > cd ..
+        > mkdir cluster_search
+        > cd cluster_search
+        > cp primitive_lattice cluster_search/
+        > vi cluster.in
+        n_sublattice = 2
+        max_cluster = 2
+        trunc_distance = 6.0 0.0 0.0 0.0
+        symprec = 1e-5
+        > bin/cluster_search
+        number of symmetry operations = 48
+        number of empty cluster = 1
+        number of 1-body clusters = 2
+        number of 2-body clusters = 13
+        number of all clusters = 16
+
+    In order to prepare **cluster_function.out**, correlation functions of an arbitrary structure are calculated. ::
+    
+        > vi correlation.in
+        spin = 1 -1 1 -1
+        > vi structure_tmp
+        axis1 = [3](0.000000000,2.000000000,2.000000000)
+        axis2 = [3](2.000000000,0.000000000,2.000000000)
+        axis3 = [3](6.000000000,6.000000000,0.000000000)
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.000000000,0.000000000,0.3333333333)
+        position3 = [3](0.000000000,0.000000000,0.6666666667)
+        position4 = [3](0.5000000000,0.5000000000,0.1666666667)
+        position5 = [3](0.5000000000,0.5000000000,0.5000000000)
+        position6 = [3](0.5000000000,0.5000000000,0.8333333333)
+        n_atoms = 2 1 2 1
+        axis_change = [3,3]((1.000000000,0.000000000,0.000000000),(0.000000000,1.000000000,0.000000000),(0.000000000,0.000000000,3.000000000))
+        n_type = 2 2
+        > bin/correlation -f structure_tmp
+
+#. Exploring SQS using simulated annealing
+
+    Performing simulated annealing ::
+
+        > cd ..
+        > mkdir sa
+        > cd sa
+        > cp ../cluster_search/{primitive_lattice, cluster.out,cluster_function.out}
+        > vi sqs.in
+        cell_expansion = 4 4 4
+        temp_init = 1000
+        temp_final = 0.01
+        temp_mul = 0.95
+        n_step = 200
+        spin = 1 -1 1 -1
+        comp = 0.5 0.5  # comp(B, sublattice 1) and comp(D, sublattice 2), 
+                        # comp(A, sublattice 1) = 1.0-comp(B), 
+                        # comp(C, sublattice 2) = 1.0-comp(D)
+        cluster_index = 3 4 5 6 7 8 # first column of cluster_function.out
+        criterion = abs  # rms or abs
+        symprec = 1e-5
+        > bin/sqs
+
+    In this case, cluster functions of up to 6th NN will be optimized.
+    Converged structure is generated as **structure_sqs**.
+
+    If you convert **structure_sqs** to POSCAR (VASP structure file), type the following command. ::
+
+        > bin/structure_to_poscar -f structure_sqs
+
+

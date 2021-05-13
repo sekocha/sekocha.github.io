@@ -1,0 +1,63 @@
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (5178510, 90)
+   n (energy) = 41508
+   n (force)  = 5028186
+   n (stress) = 108816
+ # Test data ###
+  X (all) = (538658, 90)
+   n (energy) = 1799
+   n (force)  = 526065
+   n (stress) = 10794
+ alpha = 1e-07 rmse (train, test) = 0.6396091405909186 0.5820101333289237
+ alpha = 1e-06 rmse (train, test) = 0.6396091429453774 0.5820118493182118
+ alpha = 1e-05 rmse (train, test) = 0.6396093754353815 0.5820291378683637
+ alpha = 0.0001 rmse (train, test) = 0.6396300738487413 0.5822126075871931
+ --- input parameters ----
+ cutoff = 6.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.5555555555555556) (1.0, 1.1111111111111112) (1.0, 1.6666666666666667) (1.0, 2.2222222222222223) 
+(1.0, 2.7777777777777777) (1.0, 3.3333333333333335) (1.0, 3.8888888888888893) (1.0, 4.444444444444445) (1.0, 5.0) 
+ des_type = pair
+ max_p = 3
+ model_type = 1
+ --- best model ----
+ alpha =  1e-07
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_0_Ti-Al
+ rmse (energy, train) =  52.246685522452914  (meV/atom)
+ rmse (force, train) =  0.3465426587866475  (eV/ang)
+ rmse (stress, train) =  2.4286936845958675  (GPa)
+ structures : vaspruns/train_vasprun_0_Ti-Al-L10
+ rmse (energy, train) =  35.515488837710336  (meV/atom)
+ rmse (force, train) =  0.33715163661158887  (eV/ang)
+ rmse (stress, train) =  2.3061207358801967  (GPa)
+ structures : vaspruns/train_vasprun_0_Ti-Al-ideal
+ rmse (energy, train) =  70.77420903212759  (meV/atom)
+ rmse (force, train) =  0.21283522946697236  (eV/ang)
+ rmse (stress, train) =  3.030018975106883  (GPa)
+ structures : vaspruns/train_vasprun_0_Ti-Al-1.5
+ rmse (energy, train) =  671.3229579691234  (meV/atom)
+ structures : vaspruns/train_vasprun_1_Ti
+ rmse (energy, train) =  136.08933670842237  (meV/atom)
+ structures : vaspruns/train_vasprun_2_Al
+ rmse (energy, train) =  58.51059108174962  (meV/atom)
+ structures : vaspruns/test_vasprun_0_Ti-Al
+ rmse (energy, test) =  53.218584040029576  (meV/atom)
+ rmse (force, test) =  0.35798629495076195  (eV/ang)
+ rmse (stress, test) =  2.4453755031122144  (GPa)
+ elapsed time (features) = 149.84418082237244 (s)
+ elapsed time (electrostatic) = 1.0251998901367188e-05 (s)
+ elapsed time (regression) = 28.0313982963562 (s)

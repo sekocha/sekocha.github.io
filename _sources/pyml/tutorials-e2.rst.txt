@@ -1,0 +1,67 @@
+.. clupan_document documentation master file, created by
+   sphinx-quickstart on Tue Feb 16 22:33:03 2010.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Bayesian optimization
+--------------------------------------
+
+Efficiency test for finding minimun/maximum using labeled data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Required files 
+
+    * x (dimension=2, (n_data x n_descriptors), numpy binary or text) 
+    * y (dimension=1, (n_data), numpy binary or text)
+    * name (dimension=1, (n_data), numpy binary or text, optional) 
+
+#. Efficiency test ::
+    
+    $(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t min --n_repeat 10
+    $(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t max --n_repeat 10
+
+Efficiency test for finding formation energy convex hull using labeled data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Required files 
+
+    * x (dimension=2, (n_data x n_descriptors), numpy binary or text) 
+    * y (dimension=1, (n_data), numpy binary or text)
+    * composition (dimension=1, (n_data), numpy binary or text) 
+    * name (dimension=1, (n_data), numpy binary or text, optional) 
+
+#. Efficiency test ::
+
+    $(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -c comp_train.npy -t convex
+
+Virtual screening for minimization/maximization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Required files 
+
+    * x (training) (dimension=2, (n_data x n_descriptors), numpy binary or text) 
+    * y (training) (dimension=1, (n_data), numpy binary or text)
+    * name (training) (dimension=1, (n_data), numpy binary or text) 
+    * x (prediction) (dimension=2, (n_data x n_descriptors), numpy binary or text) 
+    * y (prediction) (dimension=1, (n_data), numpy binary or text)
+    * name (prediction) (dimension=1, (n_data), numpy binary or text) 
+
+#. Virtual screening ::
+
+    $(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t min -m vs
+    $(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t max -m vs
+
+Virtual screening for finding formation energy convex hull
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Required files 
+
+    * x (training) (dimension=2, (n_data_t x n_descriptors), numpy binary or text) 
+    * y (training) (dimension=1, (n_data_t), numpy binary or text)
+    * composition (training) (dimension=1, (n_data_t), numpy binary or text) 
+    * name (training) (dimension=1, (n_data_t), numpy binary or text) 
+    * x (prediction) (dimension=2, (n_data_p x n_descriptors), numpy binary or text) 
+    * y (prediction) (dimension=1, (n_data_p), numpy binary or text)
+    * composition (prediction) (dimension=1, (n_data_p), numpy binary or text) 
+    * name (prediction) (dimension=1, (n_data_p), numpy binary or text) 
+
+#. Virtual screening ::
+
+    $(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t convex -m vs
+    

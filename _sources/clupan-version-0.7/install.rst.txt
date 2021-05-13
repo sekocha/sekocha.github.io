@@ -1,0 +1,94 @@
+インストールと基本的な設定
+==================================================================
+
+* LINUXのみ対応．Windows, Macには非対応．
+* 言語：C++
+* ライセンス：GPL v2
+* OPENMPによるマルチスレッド計算に対応．
+* バグが見つかった場合は， **seko at cms.mtl.kyoto-u.ac.jp** まで連絡して下さい．
+* CLUPANを学術論文のために使う場合は， [#f4]_ を参考文献として下さい．
+
+.. rubric:: Bibliography
+.. [#f4] A Seko, Y Koyama and I Tanaka, Phys. Rev. B 80, 165122 (2009).
+
+ダウンロード
+---------------------------------------------------
+最新のソースコードは以下のページからダウンロードできます．
+
+* `CLUPAN version 0.7 <http://sourceforge.net/projects/clupan/>`_
+
+sourceforgeのsubversionからも最新のソースコードをダウンロードすることができます．::
+
+    svn co https://clupan.svn.sourceforge.net/svnroot/clupan clupan
+
+2回目以降は，::
+
+    svn update
+
+のコマンドで最新のものと同期します．
+
+
+必要なライブラリ
+---------------------------------------------------
+
+* BOOST C++ libraries (http://www.boost.org)
+* GSL (GNU Scientific Library, http://www.gnu.org/software/gsl)
+* Spglib (written by Atsushi Togo, http://sourceforge.net/projects/spglib)
+
+OSがubuntuの場合，aptを用いてBOOST, GSLをインストールすることができます．::
+
+    aptitude install libboost-dev libgsl0-dev
+    
+マルチスレッドの計算には，2つのライブラリが必要です．
+
+* Intel TBB (http://www.threadingbuildingblocks.org/)
+* OPENMP
+
+OSがubuntuの場合，aptでインストールできます．::
+
+    aptitude install libtbb-dev
+
+
+コンパイル
+------------------------------------------------------------
+
+#. ソースコードの展開
+
+    次のコマンドによりソースコードを展開します．::
+
+        tar xvfz clupan-0.7.tar.gz
+
+#. Spglibのコンパイル
+
+    libsymspg.aの作成(http://sourceforge.net/projects/spglib)::
+
+        cd clupan-0.7/spglib
+        ./configure
+        make
+        cp ./src/.libs/libsymspg.a .
+
+#. clupanのコンパイル
+
+    マルチスレッド計算非対応のコンパイルには，makefile.intelもしくはmakefile.g++を用いる．
+    マルチスレッド計算対応のコンパイルには，makefile.mt_intelもしくはmakefile.mt_g++を用いる．
+    g++を用いてマルチスレッド対応のコンパイルを行う場合，version 4.2以上を使う必要があります．
+    インテルコンパイラーを用いて，マルチスレッド対応の計算を行う場合，以下のコマンドでコンパイルを行う．::
+
+        cd clupan-0.7
+        cp makefile.mt_intel makefile
+        make
+
+
+基本的な設定
+---------------------------------------------------
+
+* 配列のスタックサイズを変更するため，zshの場合，.zshenvに次のコマンドを書き込む．プログラム使用前に，コマンドを入力してもよい．::
+
+    ulimit -s unlimited
+
+* openmpを使ってコンパイルを行い，計算時にスレッド数を変更したい場合，環境変数OMP_NUM_THREADSを設定する．bash, zshの場合，::
+    
+    export OMP_NUM_THREADS=2
+
+
+

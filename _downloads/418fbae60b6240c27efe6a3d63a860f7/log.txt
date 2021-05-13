@@ -1,0 +1,54 @@
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1307791, 4590)
+   n (energy) = 9082
+   n (force)  = 1244217
+   n (stress) = 54492
+ # Test data ###
+  X (all) = (144561, 4590)
+   n (energy) = 999
+   n (force)  = 137568
+   n (stress) = 5994
+ alpha = 1e-05 rmse (train, test) = 0.026078470063195126 0.026501696530371103
+ alpha = 0.0001 rmse (train, test) = 0.02625419597942732 0.02638073887414275
+ alpha = 0.001 rmse (train, test) = 0.026485426582732195 0.026373410020447022
+ alpha = 0.01 rmse (train, test) = 0.026779563999008882 0.026546311148472494
+ --- input parameters ----
+ cutoff = 6.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.35714285714285715) (1.0, 0.7142857142857143) (1.0, 1.0714285714285714) (1.0, 1.4285714285714286) 
+(1.0, 1.7857142857142858) (1.0, 2.142857142857143) (1.0, 2.5) (1.0, 2.857142857142857) (1.0, 3.2142857142857144) 
+(1.0, 3.5714285714285716) (1.0, 3.928571428571429) (1.0, 4.285714285714286) (1.0, 4.642857142857143) (1.0, 5.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 4
+ gtinv_maxl = [4, 4, 2]
+ gtinv_sym = [0, 0, 0]
+ --- best model ----
+ alpha =  0.001
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  4.594838402184311  (meV/atom)
+ rmse (force, train) =  0.018590266201968124  (eV/ang)
+ rmse (stress, train) =  0.07605123483926678  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  4.60449215977004  (meV/atom)
+ rmse (force, test) =  0.01920872301151169  (eV/ang)
+ rmse (stress, test) =  0.06751412703951255  (GPa)
+ elapsed time (features) = 252.92785501480103 (s)
+ elapsed time (electrostatic) = 3.4809112548828125e-05 (s)
+ elapsed time (regression) = 466.7727253437042 (s)

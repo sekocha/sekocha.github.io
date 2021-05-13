@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>10. 基底状態の構造探索 &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in Japanese" href="index.html" />
+    <link rel="next" title="11. モンテカルロ（MC）シミュレーションによる熱力学平均の計算" href="mc.html" />
+    <link rel="prev" title="9. DFT計算の構造探索" href="search_poscar.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">10. 基底状態の構造探索</a><ul>
+<li><a class="reference internal" href="#gss">10.1. gss</a></li>
+<li><a class="reference internal" href="#gs-in">10.2. GS.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">10.2.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#nchange-tag">10.2.2. NCHANGE tag</a></li>
+<li><a class="reference internal" href="#spin-tag">10.2.3. SPIN tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">10.2.4. NUCELL tag</a></li>
+<li><a class="reference internal" href="#symprec-tag">10.2.5. SYMPREC tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="search_poscar.html" title="9. DFT計算の構造探索" accesskey="P">previous </a></li>
+              <li><a href="mc.html" title="11. モンテカルロ（MC）シミュレーションによる熱力学平均の計算" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index.html" accesskey="U">clupan (version 0.7) in Japanese</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="id1">
+<h1><span class="section-number">10. </span>基底状態の構造探索<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gss">
+<h2><span class="section-number">10.1. </span>gss<a class="headerlink" href="#gss" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ECIを用いて，任意のセルにおけるすべての配置のエネルギーを計算し，基底状態の構造を探索する．</p></li>
+<li><p>2元系のみ対応．</p></li>
+<li><p>OPENMPによるマルチスレッド計算に対応．</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>GS.in</p></li>
+<li><p><a class="reference internal" href="files.html#label-uposcar"><span class="std std-ref">UPOSCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files.html#label-upotcar"><span class="std std-ref">UPOTCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files.html#label-eci"><span class="std std-ref">ECI</span></a></p></li>
+<li><p><a class="reference internal" href="files.html#label-of-out"><span class="std std-ref">of.out</span></a></p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>gs.out</p></li>
+<li><p>LATTICE-GSS</p></li>
+</ul>
+</div>
+<div class="section" id="gs-in">
+<h2><span class="section-number">10.2. </span>GS.in<a class="headerlink" href="#gs-in" title="Permalink to this headline">¶</a></h2>
+<p>4原子のユニットセルのa,b軸を2倍にしたセル(16原子)において，12原子(spin=+1)，4原子(spin=-1)を配置させたすべての構造のエネルギーを計算する例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NUCELL</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span>
+<span class="n">NCHANGE</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">SPIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="section" id="isub-tag">
+<h3><span class="section-number">10.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
+<p>結晶格子において，原子の配置を考慮する格子点を指定する．
+UPOSCARの格子点数（6行目）のISUB番目に指定された格子点において，原子の配置を考慮する</p>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>Example : ISUB = 1 3</p></li>
+</ul>
+</div>
+<div class="section" id="nchange-tag">
+<h3><span class="section-number">10.2.2. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this headline">¶</a></h3>
+<p>原子の配置を考慮する格子点において，原子を配置させる数．
+N元系の場合は，N-1種類だけ指定する．
+一つ目の原子種の数は（格子点数-NCHANGE）となる．</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NCHANGE = 6</p></li>
+</ul>
+</div>
+<div class="section" id="spin-tag">
+<h3><span class="section-number">10.2.3. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
+<p>原子のスピンの値．2元系の場合，2つ指定する．
+<strong>correlation</strong> で用いたスピン-原子種の対応を用いる．</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : SPIN = 1 -1</p></li>
+</ul>
+<p>Exampleの場合，NCHANGEで指定した原子数だけスピンを-1にする．</p>
+</div>
+<div class="section" id="nucell-tag">
+<h3><span class="section-number">10.2.4. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
+<p>原子配置のエネルギーを計算するセルの大きさ．</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELL = 2 1 1</p></li>
+</ul>
+</div>
+<div class="section" id="symprec-tag">
+<h3><span class="section-number">10.2.5. </span>SYMPREC tag<a class="headerlink" href="#symprec-tag" title="Permalink to this headline">¶</a></h3>
+<p>対称操作を探索するときの計算精度．(fractional coordinate)</p>
+<ul class="simple">
+<li><p>Default : 1e-5</p></li>
+<li><p>Example : SYMPREC = 1e-5</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. 基底状態の構造探索</a><ul>
+<li><a class="reference internal" href="#gss">10.1. gss</a></li>
+<li><a class="reference internal" href="#gs-in">10.2. GS.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">10.2.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#nchange-tag">10.2.2. NCHANGE tag</a></li>
+<li><a class="reference internal" href="#spin-tag">10.2.3. SPIN tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">10.2.4. NUCELL tag</a></li>
+<li><a class="reference internal" href="#symprec-tag">10.2.5. SYMPREC tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="search_poscar.html"
+                        title="previous chapter"><span class="section-number">9. </span>DFT計算の構造探索</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mc.html"
+                        title="next chapter"><span class="section-number">11. </span>モンテカルロ（MC）シミュレーションによる熱力学平均の計算</a></p>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="search_poscar.html" title="9. DFT計算の構造探索" >previous</a></li>
+        <li><a href="mc.html" title="11. モンテカルロ（MC）シミュレーションによる熱力学平均の計算" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index.html" >clupan (version 0.7) in Japanese</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2020, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

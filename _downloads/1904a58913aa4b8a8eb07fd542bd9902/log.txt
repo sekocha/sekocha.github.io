@@ -1,0 +1,55 @@
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1237707, 20840)
+   n (energy) = 9084
+   n (force)  = 1174119
+   n (stress) = 54504
+ # Test data ###
+  X (all) = (137452, 20840)
+   n (energy) = 1000
+   n (force)  = 130452
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.005708462915971747 0.006339939303304719
+ alpha = 0.0001 rmse (train, test) = 0.005742257509919641 0.006253770327237042
+ alpha = 0.001 rmse (train, test) = 0.005797025445993766 0.006242156805493955
+ alpha = 0.01 rmse (train, test) = 0.005887497584343137 0.0062785305160293296
+ --- input parameters ----
+ cutoff = 12.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.5789473684210527) (1.0, 1.1578947368421053) (1.0, 1.736842105263158) (1.0, 2.3157894736842106) 
+(1.0, 2.8947368421052633) (1.0, 3.473684210526316) (1.0, 4.052631578947368) (1.0, 4.631578947368421) (1.0, 5.210526315789474) 
+(1.0, 5.7894736842105265) (1.0, 6.368421052631579) (1.0, 6.947368421052632) (1.0, 7.526315789473685) (1.0, 8.105263157894736) 
+(1.0, 8.68421052631579) (1.0, 9.263157894736842) (1.0, 9.842105263157896) (1.0, 10.421052631578949) (1.0, 11.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 8
+ gtinv_order = 4
+ gtinv_maxl = [8, 4, 2]
+ gtinv_sym = [0, 0, 0]
+ --- best model ----
+ alpha =  0.001
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  0.3267730932809149  (meV/atom)
+ rmse (force, train) =  0.0055139114681818785  (eV/ang)
+ rmse (stress, train) =  0.009902817986416552  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  0.3558562096172432  (meV/atom)
+ rmse (force, test) =  0.005916733733456625  (eV/ang)
+ rmse (stress, test) =  0.010095534516081518  (GPa)
+ elapsed time (features) = 891.9408714771271 (s)
+ elapsed time (electrostatic) = 4.363059997558594e-05 (s)
+ elapsed time (regression) = 2933.256535768509 (s)

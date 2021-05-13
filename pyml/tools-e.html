@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>4. Auxiliary tools &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="pyml" href="index-e.html" />
+    <link rel="prev" title="3. Compound descriptors" href="tutorials-e3.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">4. Auxiliary tools</a><ul>
+<li><a class="reference internal" href="#lammps-dump-format-to-poscar-format">4.1. Lammps Dump format to POSCAR format</a></li>
+<li><a class="reference internal" href="#poscar-format-to-lammps-structure-format">4.2. POSCAR format to Lammps structure format</a></li>
+<li><a class="reference internal" href="#tools-spg-py">4.3. tools/spg.py</a></li>
+<li><a class="reference internal" href="#regression-supervised-learning-py">4.4. regression/supervised_learning.py</a></li>
+<li><a class="reference internal" href="#modify-poscar-files">4.5. Modify poscar files</a></li>
+<li><a class="reference internal" href="#cif-format-to-poscar-format">4.6. Cif format to POSCAR format</a></li>
+<li><a class="reference internal" href="#prototype-structures-from-icsd">4.7. Prototype structures from ICSD</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="tutorials-e3.html" title="3. Compound descriptors" accesskey="P">previous </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">pyml</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="auxiliary-tools">
+<h1><span class="section-number">4. </span>Auxiliary tools<a class="headerlink" href="#auxiliary-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lammps-dump-format-to-poscar-format">
+<h2><span class="section-number">4.1. </span>Lammps Dump format to POSCAR format<a class="headerlink" href="#lammps-dump-format-to-poscar-format" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples (How to output dump.atom)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">write_dump</span> <span class="nb">all</span> <span class="n">custom</span> <span class="n">dump</span><span class="o">.</span><span class="n">atom</span> <span class="nb">id</span> <span class="nb">type</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span> <span class="n">modify</span> <span class="nb">format</span> <span class="n">line</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> </span><span class="si">%10.15g</span><span class="s2"> </span><span class="si">%10.15g</span><span class="s2"> </span><span class="si">%10.15g</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/lammps/lammps2poscar.py dump.atom
+</pre></div>
+</div>
+</div>
+<div class="section" id="poscar-format-to-lammps-structure-format">
+<h2><span class="section-number">4.2. </span>POSCAR format to Lammps structure format<a class="headerlink" href="#poscar-format-to-lammps-structure-format" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/lammps/poscar2lammps.py -p POSCAR
+$(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass
+$(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass -e Ti Al
+</pre></div>
+</div>
+</div>
+<div class="section" id="tools-spg-py">
+<h2><span class="section-number">4.3. </span>tools/spg.py<a class="headerlink" href="#tools-spg-py" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>($pyml)/tools/spg.py -p poscar --refine_cell --space_group
+</pre></div>
+</div>
+<p><strong>Examples (How to use from python)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.common.structure</span> <span class="k">import</span> <span class="n">Structure</span>
+<span class="kn">from</span> <span class="nn">pyml.tools.spg</span> <span class="k">import</span> <span class="n">SymCell</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SymCell</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">,</span> <span class="n">symprec</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">refine_cell</span><span class="p">()</span>
+<span class="n">st</span><span class="o">.</span><span class="n">print_poscar</span><span class="p">()</span>
+<span class="n">sg</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get_spacegroup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="regression-supervised-learning-py">
+<h2><span class="section-number">4.4. </span>regression/supervised_learning.py<a class="headerlink" href="#regression-supervised-learning-py" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples (How to use from python)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.regression.supervised_learning</span> <span class="k">import</span> <span class="n">KernelRidge</span> <span class="k">as</span> <span class="n">KR</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x_train.npy&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;y_train.npy&#39;</span><span class="p">)</span>
+
+<span class="n">reg</span> <span class="o">=</span> <span class="n">KR</span><span class="p">()</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">alpha</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">rmse_std</span> \
+    <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">optimization</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">n_times</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">iprint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">fit_error</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> \
+    <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modify-poscar-files">
+<h2><span class="section-number">4.5. </span>Modify poscar files<a class="headerlink" href="#modify-poscar-files" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples (How to use from python)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.common.readvasp</span> <span class="k">import</span> <span class="n">Poscar</span>
+<span class="kn">from</span> <span class="nn">pyml.common.structure</span> <span class="k">import</span> <span class="n">Structure</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Poscar</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">types</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_structure</span><span class="p">()</span>
+<span class="n">axis</span> <span class="o">*=</span> <span class="mf">3.5</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">Structure</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dirname</span> <span class="o">=</span> <span class="s1">&#39;./dft/&#39;</span><span class="o">+</span> <span class="n">system</span> <span class="o">+</span> <span class="s1">&#39;/init/&#39;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">print_poscar_tofile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">dirname</span><span class="o">+</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cif-format-to-poscar-format">
+<h2><span class="section-number">4.6. </span>Cif format to POSCAR format<a class="headerlink" href="#cif-format-to-poscar-format" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/cif2poscar.py test.cif
+</pre></div>
+</div>
+</div>
+<div class="section" id="prototype-structures-from-icsd">
+<h2><span class="section-number">4.7. </span>Prototype structures from ICSD<a class="headerlink" href="#prototype-structures-from-icsd" title="Permalink to this headline">¶</a></h2>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --anx NO
+$(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --nary 2 --metallic --remove_noname
+$(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --nary 2 --ionic --remove_noname
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Auxiliary tools</a><ul>
+<li><a class="reference internal" href="#lammps-dump-format-to-poscar-format">4.1. Lammps Dump format to POSCAR format</a></li>
+<li><a class="reference internal" href="#poscar-format-to-lammps-structure-format">4.2. POSCAR format to Lammps structure format</a></li>
+<li><a class="reference internal" href="#tools-spg-py">4.3. tools/spg.py</a></li>
+<li><a class="reference internal" href="#regression-supervised-learning-py">4.4. regression/supervised_learning.py</a></li>
+<li><a class="reference internal" href="#modify-poscar-files">4.5. Modify poscar files</a></li>
+<li><a class="reference internal" href="#cif-format-to-poscar-format">4.6. Cif format to POSCAR format</a></li>
+<li><a class="reference internal" href="#prototype-structures-from-icsd">4.7. Prototype structures from ICSD</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorials-e3.html"
+                        title="previous chapter"><span class="section-number">3. </span>Compound descriptors</a></p>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="tutorials-e3.html" title="3. Compound descriptors" >previous</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >pyml</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2020, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

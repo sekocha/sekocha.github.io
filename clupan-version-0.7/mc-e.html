@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in English" href="index-e.html" />
+    <link rel="next" title="12. Calculation of grand potential using thermodynamic integration" href="ti-e.html" />
+    <link rel="prev" title="10. Ground state search" href="gss-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">11.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#cmc">11.2. cmc</a></li>
+<li><a class="reference internal" href="#gcmc">11.3. gcmc</a></li>
+<li><a class="reference internal" href="#mc-in">11.4. MC.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">11.4.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#itemp-tag">11.4.2. ITEMP tag</a></li>
+<li><a class="reference internal" href="#temp-tag">11.4.3. TEMP tag</a></li>
+<li><a class="reference internal" href="#tempinit-tag-tempfinal-tag">11.4.4. TEMPINIT tag, TEMPFINAL tag</a></li>
+<li><a class="reference internal" href="#tempmul-tag">11.4.5. TEMPMUL tag</a></li>
+<li><a class="reference internal" href="#nstepann-tag">11.4.6. NSTEPANN tag</a></li>
+<li><a class="reference internal" href="#nstepeqv-tag">11.4.7. NSTEPEQV tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">11.4.8. NUCELL tag</a></li>
+<li><a class="reference internal" href="#ipos-tag">11.4.9. IPOS tag</a></li>
+<li><a class="reference internal" href="#spin-tag">11.4.10. SPIN tag</a></li>
+<li><a class="reference internal" href="#comp-tag">11.4.11. COMP tag</a></li>
+<li><a class="reference internal" href="#namepot-tag">11.4.12. NAMEPOT tag</a></li>
+<li><a class="reference internal" href="#nucellposcar-tag">11.4.13. NUCELLPOSCAR tag</a></li>
+<li><a class="reference internal" href="#mu-tag">11.4.14. MU tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="gss-e.html" title="10. Ground state search" accesskey="P">previous </a></li>
+              <li><a href="ti-e.html" title="12. Calculation of grand potential using thermodynamic integration" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">clupan (version 0.7) in English</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="calculation-of-thermodynamic-quantities-using-monte-carlo-mc-simulation">
+<h1><span class="section-number">11. </span>Calculation of thermodynamic quantities using Monte Carlo (MC) simulation<a class="headerlink" href="#calculation-of-thermodynamic-quantities-using-monte-carlo-mc-simulation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="theoretical-backgrounds">
+<h2><span class="section-number">11.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
+<p>Under construction.</p>
+</div>
+<div class="section" id="cmc">
+<h2><span class="section-number">11.2. </span>cmc<a class="headerlink" href="#cmc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Performing canonical MC simulation.</p></li>
+<li><p>Available only for binary systems.</p></li>
+<li><p>Available for multi-thread calculations using OPENMP.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>MC.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-uposcar"><span class="std std-ref">UPOSCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-upotcar"><span class="std std-ref">UPOTCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-eci"><span class="std std-ref">ECI</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-of-out"><span class="std std-ref">of.out</span></a></p></li>
+<li><p>(POSCAR, optinal)</p></li>
+<li><p>(POTCAR, optinal)</p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>cmc.out</p></li>
+<li><p>POSCAR_finish (Final atomic position)</p></li>
+</ul>
+</div>
+<div class="section" id="gcmc">
+<h2><span class="section-number">11.3. </span>gcmc<a class="headerlink" href="#gcmc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Performing semi-grand canonical MC simulation.</p></li>
+<li><p>Available only for binary systems.</p></li>
+<li><p>Available for multi-thread calculations using OPENMP.</p></li>
+<li><p>Input parameters except for MU tag are the same as those used in <strong>cmc</strong>.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>MC.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-uposcar"><span class="std std-ref">UPOSCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-upotcar"><span class="std std-ref">UPOTCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-eci"><span class="std std-ref">ECI</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-of-out"><span class="std std-ref">of.out</span></a></p></li>
+<li><p>(POSCAR, optinal)</p></li>
+<li><p>(POTCAR, optinal)</p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>gcmc.out</p></li>
+<li><p>POSCAR_finish (Final atomic position)</p></li>
+</ul>
+</div>
+<div class="section" id="mc-in">
+<h2><span class="section-number">11.4. </span>MC.in<a class="headerlink" href="#mc-in" title="Permalink to this headline">¶</a></h2>
+<p>An equilibration process is started from a random structure, and thermodynamic quantities are calculated at 1000 K using <strong>cmc</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ITEMP</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">TEMP</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">NSTEPANN</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">NSTEPEQV</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">NUCELL</span> <span class="o">=</span> <span class="mi">10</span> <span class="mi">10</span> <span class="mi">10</span>
+<span class="n">SPIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">IPOS</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">COMP</span> <span class="o">=</span> <span class="mi">3</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Starting from the structure specified by POSCAR, a thermodynamic equilibration process is performed by decreasing temperature gradually from 10000 K to 1000 K.
+Thermodynamic quantities are calculated at 1000 K using <strong>gcmc</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ITEMP</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">TEMPINIT</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">TEMPFINAL</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">TEMPMUL</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">NSTEPANN</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">NSTEPEQV</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">NUCELL</span> <span class="o">=</span> <span class="mi">10</span> <span class="mi">10</span> <span class="mi">10</span>
+<span class="n">SPIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">IPOS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NUCELLPOSCAR</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="n">NAMEPOT</span> <span class="o">=</span> <span class="n">Mg</span> <span class="n">Zn</span>
+<span class="n">MU</span> <span class="o">=</span> <span class="mf">0.200</span>
+</pre></div>
+</div>
+<div class="section" id="isub-tag">
+<h3><span class="section-number">11.4.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
+<p>Sublattice indexes for performing the CE.
+The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>Example : ISUB = 1 3</p></li>
+</ul>
+</div>
+<div class="section" id="itemp-tag">
+<h3><span class="section-number">11.4.2. </span>ITEMP tag<a class="headerlink" href="#itemp-tag" title="Permalink to this headline">¶</a></h3>
+<p>ITEMP tag determines how to set temperatures.</p>
+<ol class="arabic simple" start="0">
+<li><p>Setting temperatures manually.</p></li>
+<li><p>Automatic setting of temperatures using an exponential function</p></li>
+<li><p>Automatic setting of temperatures using an logarithmetic function</p></li>
+</ol>
+<ul class="simple">
+<li><p>Default : 0</p></li>
+<li><p>Example : ITEMP = 1</p></li>
+</ul>
+</div>
+<div class="section" id="temp-tag">
+<h3><span class="section-number">11.4.3. </span>TEMP tag<a class="headerlink" href="#temp-tag" title="Permalink to this headline">¶</a></h3>
+<p>Temperatures for ITEMP = 0.
+Thermodynamic quantities are calculated at the final temperature.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : TEMP = 1000 900 800</p></li>
+</ul>
+</div>
+<div class="section" id="tempinit-tag-tempfinal-tag">
+<h3><span class="section-number">11.4.4. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
+<p>Initial and final temperatures for TEMP = 1 or 2.
+Thermodynamic quantities are calculated at the final temperature.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : TEMPINIT = 5000</p></li>
+<li><p>Example : TEMPFINAL = 1000</p></li>
+</ul>
+</div>
+<div class="section" id="tempmul-tag">
+<h3><span class="section-number">11.4.5. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
+<p>Exponential base used in the automaic setting of temperatures for ITEMP = 1.
+Set values ranged from 0 to 1.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : TEMPMUL = 0.95</p></li>
+</ul>
+</div>
+<div class="section" id="nstepann-tag">
+<h3><span class="section-number">11.4.6. </span>NSTEPANN tag<a class="headerlink" href="#nstepann-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of steps per atom for performing equilibration.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NSTEPANN = 2000</p></li>
+</ul>
+</div>
+<div class="section" id="nstepeqv-tag">
+<h3><span class="section-number">11.4.7. </span>NSTEPEQV tag<a class="headerlink" href="#nstepeqv-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of steps per atom for calculating thermodynamic quantities.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NSTEPEQV = 2000</p></li>
+</ul>
+</div>
+<div class="section" id="nucell-tag">
+<h3><span class="section-number">11.4.8. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
+<p>MC simulation is performed using a supercell constructed by the NUCELL expansion of the unit cell.
+The supercell can only be constructed by an isotropical expansion.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELL = 10 10 10</p></li>
+</ul>
+</div>
+<div class="section" id="ipos-tag">
+<h3><span class="section-number">11.4.9. </span>IPOS tag<a class="headerlink" href="#ipos-tag" title="Permalink to this headline">¶</a></h3>
+<p>IPOS tag determines how to prepare the initial structure.</p>
+<ol class="arabic simple" start="0">
+<li><p>Random structure. The composition of the random structure is needed to be specified by COMP tag.</p></li>
+<li><p>Initial structure is prepared by POSCAR and POTCAR. NAMEPOT, SPIN and NUCELLPOSCAR tags are needed.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Default : 0</p></li>
+<li><p>Example : IPOS = 1</p></li>
+</ul>
+</div>
+<div class="section" id="spin-tag">
+<h3><span class="section-number">11.4.10. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
+<p>Spin values of atoms.
+In binary systems, SPIN tag has two kinds of values.
+The same correspondence between spins and atom types used in <strong>correlation</strong> should be used here.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : SPIN = 1 -1</p></li>
+</ul>
+</div>
+<div class="section" id="comp-tag">
+<h3><span class="section-number">11.4.11. </span>COMP tag<a class="headerlink" href="#comp-tag" title="Permalink to this headline">¶</a></h3>
+<p>Composition for the initial structure. (IPOS = 0)</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : COMP = 2 1</p></li>
+<li><p>Example : SPIN = 1 -1</p></li>
+</ul>
+<p>In the above example, MC simulation is started from a random structure with 2(spin=+1):1(spin=-1) composition.</p>
+</div>
+<div class="section" id="namepot-tag">
+<h3><span class="section-number">11.4.12. </span>NAMEPOT tag<a class="headerlink" href="#namepot-tag" title="Permalink to this headline">¶</a></h3>
+<p>Atom names (IPOS = 1).
+Do not set spin values for atoms which are not used for the CE.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NAMEPOT = Mg Zn O</p></li>
+<li><p>Example : SPIN = 1 -1</p></li>
+</ul>
+<p>In the above example, spin values for Mg and Zn are 1 and -1, respectively.</p>
+</div>
+<div class="section" id="nucellposcar-tag">
+<h3><span class="section-number">11.4.13. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of unit cells included in POSCAR (IPOS = 1).</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
+</ul>
+</div>
+<div class="section" id="mu-tag">
+<h3><span class="section-number">11.4.14. </span>MU tag<a class="headerlink" href="#mu-tag" title="Permalink to this headline">¶</a></h3>
+<p>Difference of chemical potentials for <strong>gcmc</strong>.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : MU = 0.2</p></li>
+</ul>
+<p>MU = mu(spin1) - mu(spin2).</p>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">11.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#cmc">11.2. cmc</a></li>
+<li><a class="reference internal" href="#gcmc">11.3. gcmc</a></li>
+<li><a class="reference internal" href="#mc-in">11.4. MC.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">11.4.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#itemp-tag">11.4.2. ITEMP tag</a></li>
+<li><a class="reference internal" href="#temp-tag">11.4.3. TEMP tag</a></li>
+<li><a class="reference internal" href="#tempinit-tag-tempfinal-tag">11.4.4. TEMPINIT tag, TEMPFINAL tag</a></li>
+<li><a class="reference internal" href="#tempmul-tag">11.4.5. TEMPMUL tag</a></li>
+<li><a class="reference internal" href="#nstepann-tag">11.4.6. NSTEPANN tag</a></li>
+<li><a class="reference internal" href="#nstepeqv-tag">11.4.7. NSTEPEQV tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">11.4.8. NUCELL tag</a></li>
+<li><a class="reference internal" href="#ipos-tag">11.4.9. IPOS tag</a></li>
+<li><a class="reference internal" href="#spin-tag">11.4.10. SPIN tag</a></li>
+<li><a class="reference internal" href="#comp-tag">11.4.11. COMP tag</a></li>
+<li><a class="reference internal" href="#namepot-tag">11.4.12. NAMEPOT tag</a></li>
+<li><a class="reference internal" href="#nucellposcar-tag">11.4.13. NUCELLPOSCAR tag</a></li>
+<li><a class="reference internal" href="#mu-tag">11.4.14. MU tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gss-e.html"
+                        title="previous chapter"><span class="section-number">10. </span>Ground state search</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ti-e.html"
+                        title="next chapter"><span class="section-number">12. </span>Calculation of grand potential using thermodynamic integration</a></p>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="gss-e.html" title="10. Ground state search" >previous</a></li>
+        <li><a href="ti-e.html" title="12. Calculation of grand potential using thermodynamic integration" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 0.7) in English</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2020, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

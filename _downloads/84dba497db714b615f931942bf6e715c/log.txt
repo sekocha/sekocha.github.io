@@ -1,0 +1,55 @@
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1245940, 7920)
+   n (energy) = 8977
+   n (force)  = 1183101
+   n (stress) = 53862
+ # Test data ###
+  X (all) = (138460, 7920)
+   n (energy) = 988
+   n (force)  = 131544
+   n (stress) = 5928
+ alpha = 1e-05 rmse (train, test) = 0.03185397069121221 0.03284618342450483
+ alpha = 0.0001 rmse (train, test) = 0.03194546375752693 0.032931663402260135
+ alpha = 0.001 rmse (train, test) = 0.032112262384288735 0.03305760132646684
+ alpha = 0.01 rmse (train, test) = 0.03249911963287542 0.033372654719128474
+ --- input parameters ----
+ cutoff = 12.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.5789473684210527) (1.0, 1.1578947368421053) (1.0, 1.736842105263158) (1.0, 2.3157894736842106) 
+(1.0, 2.8947368421052633) (1.0, 3.473684210526316) (1.0, 4.052631578947368) (1.0, 4.631578947368421) (1.0, 5.210526315789474) 
+(1.0, 5.7894736842105265) (1.0, 6.368421052631579) (1.0, 6.947368421052632) (1.0, 7.526315789473685) (1.0, 8.105263157894736) 
+(1.0, 8.68421052631579) (1.0, 9.263157894736842) (1.0, 9.842105263157896) (1.0, 10.421052631578949) (1.0, 11.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 4
+ gtinv_maxl = [4, 4, 2]
+ gtinv_sym = [0, 0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  3.324053584393329  (meV/atom)
+ rmse (force, train) =  0.029120884128317415  (eV/ang)
+ rmse (stress, train) =  0.09898312037885684  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  3.3012314162514045  (meV/atom)
+ rmse (force, test) =  0.03005673915761646  (eV/ang)
+ rmse (stress, test) =  0.09664816525810381  (GPa)
+ elapsed time (features) = 483.4217975139618 (s)
+ elapsed time (electrostatic) = 3.123283386230469e-05 (s)
+ elapsed time (regression) = 614.9737133979797 (s)

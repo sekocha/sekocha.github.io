@@ -1,0 +1,44 @@
+ data (scaling)
+ data (weight)
+ data (stacking)
+ data (scaling)
+ data (weight)
+ data (stacking)
+ # Training data ###
+  X (all) = (1291377, 1770)
+   n (energy) = 9024
+   n (force)  = 1228209
+   n (stress) = 54144
+ # Test data ###
+  X (all) = (143517, 1770)
+   n (energy) = 993
+   n (force)  = 136566
+   n (stress) = 5958
+ alpha = 1e-05 rmse (train, test) = 0.3737503124703468 0.37643432041526137
+ alpha = 0.0001 rmse (train, test) = 0.379510029858359 0.3828448807159175
+ alpha = 0.001 rmse (train, test) = 0.38631604512824663 0.38898269243653866
+ --- input parameters ----
+ cutoff = 11.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.5263157894736842) (1.0, 1.0526315789473684) (1.0, 1.5789473684210527) (1.0, 2.1052631578947367) 
+(1.0, 2.631578947368421) (1.0, 3.1578947368421053) (1.0, 3.6842105263157894) (1.0, 4.2105263157894735) (1.0, 4.7368421052631575) 
+(1.0, 5.263157894736842) (1.0, 5.789473684210526) (1.0, 6.315789473684211) (1.0, 6.842105263157895) (1.0, 7.368421052631579) 
+(1.0, 7.894736842105263) (1.0, 8.421052631578947) (1.0, 8.947368421052632) (1.0, 9.473684210526315) (1.0, 10.0) 
+ des_type = pair
+ max_p = 3
+ model_type = 2
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  27.57423366790582  (meV/atom)
+ rmse (force, train) =  0.35072299840938603  (eV/ang)
+ rmse (stress, train) =  1.1453093033249153  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  27.2702153392487  (meV/atom)
+ rmse (force, test) =  0.3531833131018389  (eV/ang)
+ rmse (stress, test) =  1.167725616744765  (GPa)
+ elapsed time (features) = 164.01792192459106 (s)
+ elapsed time (electrostatic) = 1.0967254638671875e-05 (s)
+ elapsed time (regression) = 142.01261854171753 (s)

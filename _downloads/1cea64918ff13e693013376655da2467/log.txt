@@ -1,0 +1,58 @@
+ matrix shape (X) = (1300585,4410)
+ Estimated memory allocation = 45.88 (GB)
+ matrix shape (X) = (144147,4410)
+ Estimated memory allocation = 5.09 (GB)
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1300585, 4410)
+   n (energy) = 9082
+   n (force)  = 1237011
+   n (stress) = 54492
+ # Test data ###
+  X (all) = (144147, 4410)
+   n (energy) = 999
+   n (force)  = 137154
+   n (stress) = 5994
+ alpha = 1e-05 rmse (train, test) = 0.28689927352740907 0.28979872696683134
+ alpha = 0.0001 rmse (train, test) = 0.2891776133368724 0.2921372343761176
+ alpha = 0.001 rmse (train, test) = 0.2922587121886715 0.2945588812111757
+ alpha = 0.01 rmse (train, test) = 0.2965423602062971 0.29850415698205834
+ --- input parameters ----
+ cutoff = 6.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.35714285714285715) (1.0, 0.7142857142857143) (1.0, 1.0714285714285714) (1.0, 1.4285714285714286) 
+(1.0, 1.7857142857142858) (1.0, 2.142857142857143) (1.0, 2.5) (1.0, 2.857142857142857) (1.0, 3.2142857142857144) 
+(1.0, 3.5714285714285716) (1.0, 3.928571428571429) (1.0, 4.285714285714286) (1.0, 4.642857142857143) (1.0, 5.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 4
+ gtinv_maxl = [4, 4, 0]
+ gtinv_sym = [0, 0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  14.578464947105582  (meV/atom)
+ rmse (force, train) =  0.28263435534364995  (eV/ang)
+ rmse (stress, train) =  0.7516449610349125  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  14.723607037490495  (meV/atom)
+ rmse (force, test) =  0.2857476450372222  (eV/ang)
+ rmse (stress, test) =  0.7392285899370914  (GPa)
+ elapsed time (features) = 210.8915934562683 (s)
+ elapsed time (electrostatic) = 2.6941299438476562e-05 (s)
+ elapsed time (regression) = 328.93615531921387 (s)

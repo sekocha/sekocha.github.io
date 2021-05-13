@@ -1,0 +1,64 @@
+Compound descriptors
+----------------------------------------------------
+Computing compositional descriptors from a composition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use -c option.
+
+**Examples** ::
+
+    ($pyml)/compound/compound.py -c Mg1Al2O4
+    ($pyml)/compound/compound.py -c Mg1Al2O4 -m 2 --cov
+
+Computing elemental and structural descriptors from poscar file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Available structural representations**
+
+Only Gaussian type of radial represenatations is available (2018/2/15).
+
+ * Generalized radial distribution function (Gaussian)
+ * Bond-orientational order parameter (Q_l)
+ * Angular Fourier series (Gaussian)
+
+**Examples** ::
+
+    ($pyml)/compound/compound.py -e -p ./poscar_unit -g 2 2 1 0 6 10 
+    ($pyml)/compound/compound.py -e -p ./poscar_unit -g 2 2 1 0 6 10 --gaussian_afs 5 -m 2 --cov
+    ($pyml)/compound/compound.py -e -p ./poscar_unit --bop 10 -m 2 --cov
+
+-g option gives arithmetic sequences for Gaussian parameters as follows. ::
+
+    -g $min_beta $max_beta $n_beta $min_r $max_r $n_r
+
+Options ::
+
+    --comp $comp           generate elemental representations from a composition
+    -p, --poscar $poscar   poscar file name
+    -e, --element          generate elemental representations
+    -c, --cutoff $cutoff   cutoff radius
+    -g, --gaussian         generate Gaussian-type representations
+    --gaussian_afs $max_l  generate AFS representations
+    --bop $max_l           generate BOP representations
+    -m, --max_moment $m    max moment of representations
+    --cov                  covariance of representations
+
+Getting atomic representations using python scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Examples** ::
+    
+    from pyml.compound.atom import Element, LocalConfig
+    
+    keys = Element().get_key()
+    e1 = Element().get_element_property('Al')
+    e2 = Element().get_element_property('Al', key='IE1')
+
+    lc = LocalConfig(st, cutoff)
+    p1 = np.linspace(params1[0], params1[1], int(params1[2]))
+    p2 = np.linspace(params2[0], params2[1], int(params2[2]))
+    params = list(itertools.product(p1, p2))
+
+    s1 = lc.gaussian(params, maxl=0)
+    s2 = lc.gaussian(params, maxl=5)
+
+
+

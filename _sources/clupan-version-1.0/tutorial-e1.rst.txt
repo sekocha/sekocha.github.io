@@ -1,0 +1,300 @@
+Ground state search and phase diagram calculation
+===================================================
+Binary systems
+---------------
+Example 1
+^^^^^^^^^^^^^^
+
+* CaO-SrO pseudobinary system
+
+* Without performing cluster analysis of structure population (CASP)
+
+#. Preparing primitive lattice of rocksalt
+
+    Information of primitive lattice is described in **primitive_lattice**. ::
+
+        > cat primitive_lattice
+        axis1 = [3](0.000000000,2.000000000,2.000000000)
+        axis2 = [3](2.000000000,0.000000000,2.000000000)
+        axis3 = [3](2.000000000,2.000000000,0.000000000)
+        n_atoms = 1 1
+        position1 = [3](0.000000000,0.000000000,0.000000000)
+        position2 = [3](0.500000000,0.500000000,0.500000000)
+
+    Non-primitive lattice can be automatically converted to primitive lattice using **find_primitive**. Non-primitive lattice should be written in clupan structure format. ::
+
+        tools/find_primitive -f $(structure_name) > primitive_lattice
+
+#. Preparing structure population (searching for derivative structures)
+
+    Structure population is needed for DFT structure selection and CV-CASP estimation. Derivative structures can be regarded as the structure population. In this tutorial, derivative structures with up to 8 cations are regarded as the structure population.
+
+    Searching for derivative structures ::
+
+        > cd derivative_structure
+        > ls 5/
+        derivative.in  primitive_lattice
+        > cat 5/derivative.in
+        n_lattice = 5
+        n_type = 2
+        symprec = 1e-5
+        
+        > j=`pwd`;for i in {2..8};do cd $j/$i; derivative;done
+
+    Converting derivative.out to structure files ::
+
+        > cd ../
+        > j=`pwd`;for i in {2..8};do cd $j/$i; derivative_to_structure;done
+        2 structures are generated.
+        3 structures are generated.
+        12 structures are generated.
+        14 structures are generated.
+        50 structures are generated.
+        52 structures are generated.
+        229 structures are generated.
+
+    362 structures with up to 8 cations are obtained.
+
+#. Searching for independent clusters
+
+    Independent clusters are required for calculating correlation functions ::
+
+        > cd cluster_search
+        > ls
+        cluster.in primitive_lattice
+        > cat cluster.in
+        n_sublattice = 1
+        max_cluster = 4
+        trunc_distance = 6.0 6.0 6.0 0.0
+        symprec = 1e-5
+
+        > cluster_search
+        number of symmetry operations = 48
+        number of empty cluster = 1
+        number of 1-body clusters = 1
+        number of 2-body clusters = 4
+        number of 3-body clusters = 12
+        number of 4-body clusters = 35
+        number of all clusters = 53
+
+    53 clusters up to 4-body cluster are obtained.
+
+#. Calculating correlation functions of all structures in the structure population
+
+    Preparing files for calculating correlation functions ::
+
+        > cd derivative_structure
+        > cat setup_correlation.sh
+        #!/bin/zsh
+        mkdir ../correlation
+        count=0
+        for i in {2..8};do 
+            for j in `ls $i/structure*`;do 
+                n1=`grep n_atoms $j | cut -d" " -f4`
+                n2=`grep n_atoms $j | cut -d" " -f5`
+                count=`expr $count + 1`
+                mkdir -p ../correlation/$count
+                cp -r $j ../correlation/$count/structure$count
+                echo " spin = 1 -1" > ../correlation/$count/correlation.in
+                if [ $n1 -ne $n2 ]; then
+                    count=`expr $count + 1`
+                    mkdir -p ../correlation/$count
+                    cp -r $j ../correlation/$count/structure$count
+                    echo " spin = -1 1" > ../correlation/$count/correlation.in
+                fi
+            done
+        done
+
+        > ./setup_correlation.sh
+
+    616 structures including spin-flip structures are prepared.
+
+    Calculating correlation functions of 616 structures ::
+       
+       > cd ../correlation
+       > for i in `ls -F`;do cp ../cluster_search/cluster.out $i;done
+
+       > dir=`pwd`; for i in `ls -F`;do name=${i%/}; cd $dir/$name; correlation -f structure$name;done
+
+#. DFT structure selection
+    
+    In this tutorials, 55 structures with up to 5 cations and end menbers of CaO and SrO are used for DFT calculation.
+
+#. DFT calculations
+
+    Calculate energies of 57 structures. Then prepare dft_energy file.
+    In order to perform DFT calculations, It may be as well to refine the structures using **tools/refine_cell**. ::
+
+        > cd ../
+        > mkdir energy
+        > for i in {1..55};do cp -r correlation/$i energy;done
+        > for i in {1..55};do tools/refine_cell -f $i/structure$i > $i/structure_refine$i;done
+
+    When using VASP for DFT calculations, POSCAR files can be automatically prepared. ::
+
+        > tools/structure_to_poscar -f $i/structure_refine$i > $i/POSCAR
+
+#. ECI estimation 
+
+    Calculated DFT energies are listed in dft_energy file. **Energy in dft_energy file has a unit of eV/primitive cell.** correlation file is needed for ECI estimation. ::
+
+        > cd ../lsf
+        > ls
+        dft_energy lsf.in ga.in setup_correlation.sh
+        > ./setup_correlation.sh
+
+    Genetic algorithm (GA) is performed for optimizing the set of clusters. ::
+
+        > cat ga.in
+        n_loop = 0
+        temp_init = 1
+        temp_final = 0.001
+        temp_mul = 0.9
+        base_cluster = 0 1 2 3 4 5
+        n_pop = 25
+        n_elite = 1
+        min_index = 6
+        max_index = 52
+        n_cluster = 3
+        max_iteration = 100
+        p_mating = 0.9
+        p_mutation = 0.03
+
+        > ga
+        default parameter : iweight = 0
+        default parameter : ex_cluster = 
+        generating population 
+        generating population using simulated annealing
+        iteration 0 : min_cv_score = 0.00484818
+        iteration 1 : min_cv_score = 0.004608
+        iteration 2 : min_cv_score = 0.004608
+        iteration 3 : min_cv_score = 0.004608
+
+        > tail -n 25 ga.out | head -n 1 
+        cv_score = 0.00436178; cluster_index = 34 46 11
+
+    By using the result of GA, eci file is prepared. ::
+
+        > cat lsf.in
+        cluster_index = 0 1 2 3 4 5 34 46 11
+
+        > lsf
+        > cat eci
+        cluster_index = 0 1 2 3 4 5 34 46 11 
+        eci = [9](-12.48423400,-0.3918767803,-0.03169960820,0.01169224996,-0.03735726419,0.002203187340,-0.01230658445,0.009218152246,-0.005353977333)
+        squared error = 0.0007125008537
+        cv score = 0.004378791536
+
+#. Ground state search
+
+    By calculating energies of 616 derivative structures, the ground state structure are found. Composition is defined as x=0 at CaO and x=1 at SrO. Practically, a larger number of structures should be prepared for the ground state search. ::
+
+        > cd ../gss
+        > cp ../lsf/eci .
+        > touch correlation
+        > for i in {1..616};do cat ../correlation/$i/correlation.out >> correlation;done
+        > cat gss.in
+        comp_cluster = 1
+        comp_def = 0.5 -0.5
+        
+        > gss
+
+    Energies of all 616 structures are positive.
+
+    .. image:: _static/CaO-SrO-gss.svg
+        :width: 400
+
+#. Semi-grand canonical Monte Carlo simulation
+
+    Semi-grand canonical MC simulations are performed starting from both CaO and SrO at several temperatures and chemical potentials. Chemical potential is defined as mu = mu_Sr(spin=-1) - mu_Ca(spin=+1). cluster.out file is obtained by **cluster**. cluster_function.out file is obtained by **correlation**. eci file is botained by **lsf**. ::
+
+        > cd ../mc
+        > cd start_CaO/100/0.00
+        > ls
+        cluster.out    eci    structure_CaO
+        cluster_function.out   mc.in 
+        > cat mc.in
+        cell_expansion = 10 10 10
+        i_temp = 0
+        temp = 100
+        n_step_ann = 2000
+        n_step_eqv = 2000
+        init_structure = structure_CaO
+        spin = 1 -1
+        simulation_type = gcmc
+        mu = 0.00
+
+        > mc
+
+    .. image:: _static/CaO-SrO-mc-comp.svg
+        :width: 600
+
+#. Free energy calculation
+
+    In order to obtain the phase diagram, the grand potential is estimated using the thermodynamic integration after performing MC simulation. First, information for thermodynamic integration is prepared in a file. Chemical potential is defined as mu = mu_Sr(spin=-1) - mu_Ca(spin=+1). Composition should be written as composition of Sr. ::
+
+        > cd ../ti
+        > cat ti_path_startc_1000
+        41 # number of points
+        0.00  1000  .00000454  -12.93970981 # chem. pot., temp., comp., energy
+        0.04  1000  .00000686  -12.93970735
+        0.08  1000  .00001061  -12.93970337
+        0.12  1000  .00002089  -12.93969246
+        > cat ti.in
+        initial_potential = -12.93971
+
+        > ti -f ti_path_startc_1000
+
+    .. image:: _static/CaO-SrO-grandpot.svg
+        :width: 600
+
+    Solubility limit can be found from the difference of the grand potentials of CaO and SrO. 
+
+    .. image:: _static/CaO-SrO-grandpot-500K.svg
+        :width: 600
+
+    Then, a phase diagram can be obtained.
+
+    .. image:: _static/CaO-SrO-phase-diagram.svg
+        :width: 400
+
+Example 2
+^^^^^^^^^^^^^^
+
+* CaO-SrO pseudobinary system
+
+* With performing CASP
+
+#. Performing CASP
+
+    Structure population is divided into 6 groups. ::
+
+    > cd ../casp
+    > touch correlation 
+    > for i in {1..616};do cat ../correlation/$i/correlation.out >> correlation;done
+    > tools/correlation_for_casp -f correlation > correlation_casp
+    > R -f casp.r
+
+
+#. DFT structure selection
+
+    In this tutorial, 10 structures are selected from each group. Total number of DFT structures is 60. ::
+
+        > tools/structure_selection -g group -n 10
+
+        number of structures in group 1 = 59
+        number of structures in group 2 = 54
+        number of structures in group 3 = 136
+        number of structures in group 4 = 244
+        number of structures in group 5 = 59
+        number of structures in group 6 = 64
+        randomly selected structures = 127,159,181,225,234,240,259,275,505,597,48,115,122,187,221,327,375,388,463,480,26,106,108,143,309,352,390,438,459,539,66,146,217,280,310,363,384,460,478,504,23,89,248,317,355,484,530,608,610,615,78,91,171,193,199,207,356,469,512,574
+
+Ternary systems
+------------------
+Coming soon...
+
+Multilattice systems
+---------------------
+MC simulations for multilattice systems is now unavailable.
+

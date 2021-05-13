@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>8. Optimization of clusters &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in English" href="index-e.html" />
+    <link rel="next" title="9. Structure selection for DFT calculations" href="search_poscar-e.html" />
+    <link rel="prev" title="7. Estimation of effective cluster interaction" href="lsf-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">8. Optimization of clusters</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">8.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#gasa">8.2. gasa</a></li>
+<li><a class="reference internal" href="#wgasa">8.3. wgasa</a></li>
+<li><a class="reference internal" href="#gasa-in">8.4. GASA.in</a><ul>
+<li><a class="reference internal" href="#nallcluster-tag">8.4.1. NALLCLUSTER tag</a></li>
+<li><a class="reference internal" href="#ncluster-tag">8.4.2. NCLUSTER tag</a></li>
+<li><a class="reference internal" href="#minindex-tag-maxindex-tag">8.4.3. MININDEX tag, MAXINDEX tag</a></li>
+<li><a class="reference internal" href="#basecluster-tag">8.4.4. BASECLUSTER tag</a></li>
+<li><a class="reference internal" href="#excluster-tag">8.4.5. EXCLUSTER tag</a></li>
+<li><a class="reference internal" href="#npop-tag">8.4.6. NPOP tag</a></li>
+<li><a class="reference internal" href="#nelite-tag">8.4.7. NELITE tag</a></li>
+<li><a class="reference internal" href="#pmating-tag">8.4.8. PMATING tag</a></li>
+<li><a class="reference internal" href="#pmutation-tag">8.4.9. PMUTATION tag</a></li>
+<li><a class="reference internal" href="#nloop-tag">8.4.10. NLOOP tag</a></li>
+<li><a class="reference internal" href="#tempinit-tag-tempfinal-tag">8.4.11. TEMPINIT tag, TEMPFINAL tag</a></li>
+<li><a class="reference internal" href="#tempmul-tag">8.4.12. TEMPMUL tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="lsf-e.html" title="7. Estimation of effective cluster interaction" accesskey="P">previous </a></li>
+              <li><a href="search_poscar-e.html" title="9. Structure selection for DFT calculations" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">clupan (version 0.7) in English</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="optimization-of-clusters">
+<h1><span class="section-number">8. </span>Optimization of clusters<a class="headerlink" href="#optimization-of-clusters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="theoretical-backgrounds">
+<h2><span class="section-number">8.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
+<p><strong>Optimization of clusters using the genetic algorithm</strong></p>
+<p>See <a class="reference internal" href="#ga1" id="id1"><span>[ga1]</span></a> and <a class="reference internal" href="#ga2" id="id2"><span>[ga2]</span></a>.</p>
+<dl class="citation">
+<dt class="label" id="ga1"><span class="brackets"><a class="fn-backref" href="#id1">ga1</a></span></dt>
+<dd><p>G L W Hart, V Blum, M J Walorski and A Zunger, Nat. Mater. 4, 391 (2005).</p>
+</dd>
+<dt class="label" id="ga2"><span class="brackets"><a class="fn-backref" href="#id2">ga2</a></span></dt>
+<dd><p>V Blum, G L W Hart, M J Walorski and A Zunger, Phys. Rev. B 72, 165113 (2005).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="gasa">
+<h2><span class="section-number">8.2. </span>gasa<a class="headerlink" href="#gasa" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Searching for the set of clusters that minimizes the CV score using the genetic algorithm.</p></li>
+<li><p>An initial population can be generated using the simulated annealing.</p></li>
+<li><p>Multi-thread calculations using OPENMP are available only for the simulated annealing.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>GASA.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-energy"><span class="std std-ref">ENERGY</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-correlation"><span class="std std-ref">CORRELATION</span></a></p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>gasa.out</p></li>
+</ul>
+</div>
+<div class="section" id="wgasa">
+<h2><span class="section-number">8.3. </span>wgasa<a class="headerlink" href="#wgasa" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Searching for the set of clusters that minimizes the weighted CV score using the genetic algorithm.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>GASA.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-energy"><span class="std std-ref">ENERGY</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-correlation"><span class="std std-ref">CORRELATION</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-weight"><span class="std std-ref">WEIGHT</span></a></p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>wgasa.out</p></li>
+</ul>
+</div>
+<div class="section" id="gasa-in">
+<h2><span class="section-number">8.4. </span>GASA.in<a class="headerlink" href="#gasa-in" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example</strong></p>
+<p>The set of clusters is optimized using the genetic algorithm.
+The cluster set is composed of no.0-5 clusters and 5 clusters selected among no.6-52 clusters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NLOOP</span>       <span class="o">=</span> <span class="mi">0</span>         <span class="c1"># only performing genetic algorithm</span>
+<span class="n">BASECLUSTER</span> <span class="o">=</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">NPOP</span>        <span class="o">=</span> <span class="mi">25</span>
+<span class="n">NELITE</span>      <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NALLCLUSTER</span> <span class="o">=</span> <span class="mi">53</span>
+<span class="n">MININDEX</span>    <span class="o">=</span> <span class="mi">6</span>
+<span class="n">MAXINDEX</span>    <span class="o">=</span> <span class="mi">52</span>
+<span class="n">NCLUSTER</span>    <span class="o">=</span> <span class="mi">5</span>
+<span class="n">MAXGENE</span>     <span class="o">=</span> <span class="mi">300</span>
+<span class="n">PMATING</span>     <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">PMUTATION</span>   <span class="o">=</span> <span class="mf">0.03</span>
+</pre></div>
+</div>
+<p>The initial population is generated by simulated annealing and the set of clusters is optimized using the genetic algorithm.
+The cluster set is composed of no.0-5 clusters and 5 clusters selected among no.6-52 clusters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NLOOP</span>       <span class="o">=</span> <span class="mi">100</span>
+<span class="n">TEMPINIT</span>    <span class="o">=</span> <span class="mi">1</span>
+<span class="n">TEMPFINAL</span>   <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">TEMPMUL</span>     <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">BASECLUSTER</span> <span class="o">=</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">NPOP</span>        <span class="o">=</span> <span class="mi">25</span>
+<span class="n">NELITE</span>      <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NALLCLUSTER</span> <span class="o">=</span> <span class="mi">53</span>
+<span class="n">MININDEX</span>    <span class="o">=</span> <span class="mi">6</span>
+<span class="n">MAXINDEX</span>    <span class="o">=</span> <span class="mi">52</span>
+<span class="n">NCLUSTER</span>    <span class="o">=</span> <span class="mi">5</span>
+<span class="n">MAXGENE</span>     <span class="o">=</span> <span class="mi">300</span>
+<span class="n">PMATING</span>     <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">PMUTATION</span>   <span class="o">=</span> <span class="mf">0.03</span>
+</pre></div>
+</div>
+<div class="section" id="nallcluster-tag">
+<h3><span class="section-number">8.4.1. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of all clusters included in CORRELATION file.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NALLCLUSTER = 53</p></li>
+</ul>
+</div>
+<div class="section" id="ncluster-tag">
+<h3><span class="section-number">8.4.2. </span>NCLUSTER tag<a class="headerlink" href="#ncluster-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of clusters for selection.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NCLUSTER = 5</p></li>
+</ul>
+</div>
+<div class="section" id="minindex-tag-maxindex-tag">
+<h3><span class="section-number">8.4.3. </span>MININDEX tag, MAXINDEX tag<a class="headerlink" href="#minindex-tag-maxindex-tag" title="Permalink to this headline">¶</a></h3>
+<p>Minimum and maximum cluster index for the optimization.</p>
+<ul class="simple">
+<li><p>Default : MININDEX = 0, MAXINDEX = NALLCLUSTER - 1</p></li>
+<li><p>Example : MININDEX = 5</p></li>
+<li><p>Example : MAXINDEX = 52</p></li>
+</ul>
+</div>
+<div class="section" id="basecluster-tag">
+<h3><span class="section-number">8.4.4. </span>BASECLUSTER tag<a class="headerlink" href="#basecluster-tag" title="Permalink to this headline">¶</a></h3>
+<p>Cluster indexes included for ECI evaluation.</p>
+<ul class="simple">
+<li><p>Default : empty</p></li>
+<li><p>Example : BASECLUSTER = 0 1 2 3 4 5</p></li>
+</ul>
+</div>
+<div class="section" id="excluster-tag">
+<h3><span class="section-number">8.4.5. </span>EXCLUSTER tag<a class="headerlink" href="#excluster-tag" title="Permalink to this headline">¶</a></h3>
+<p>Cluster indexes excluded for the optimization.</p>
+<ul class="simple">
+<li><p>Default : empty</p></li>
+<li><p>Example : EXCLUSTER = 15 23 34</p></li>
+</ul>
+</div>
+<div class="section" id="npop-tag">
+<h3><span class="section-number">8.4.6. </span>NPOP tag<a class="headerlink" href="#npop-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of cluster sets included in the population.</p>
+<ul class="simple">
+<li><p>Default : 30</p></li>
+<li><p>Example : NPOP = 25</p></li>
+</ul>
+</div>
+<div class="section" id="nelite-tag">
+<h3><span class="section-number">8.4.7. </span>NELITE tag<a class="headerlink" href="#nelite-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of elites (good cluster sets) kept for the next optimization step.</p>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>Example : NELITE = 5</p></li>
+</ul>
+</div>
+<div class="section" id="pmating-tag">
+<h3><span class="section-number">8.4.8. </span>PMATING tag<a class="headerlink" href="#pmating-tag" title="Permalink to this headline">¶</a></h3>
+<p>Probability of mating.</p>
+<ul class="simple">
+<li><p>Default : 0.9</p></li>
+<li><p>Example : PMATING = 0.95</p></li>
+</ul>
+</div>
+<div class="section" id="pmutation-tag">
+<h3><span class="section-number">8.4.9. </span>PMUTATION tag<a class="headerlink" href="#pmutation-tag" title="Permalink to this headline">¶</a></h3>
+<p>Probability of mutation.</p>
+<ul class="simple">
+<li><p>Default : 0.03</p></li>
+<li><p>Example : PMUTATION = 0.05</p></li>
+</ul>
+</div>
+<div class="section" id="nloop-tag">
+<h3><span class="section-number">8.4.10. </span>NLOOP tag<a class="headerlink" href="#nloop-tag" title="Permalink to this headline">¶</a></h3>
+<p>Number of steps for simulated annealing at one temperature.
+If you perform only the genetic algorithm, set NLOOP = 0.</p>
+<ul class="simple">
+<li><p>Default : 0</p></li>
+<li><p>Example : NLOOP = 100</p></li>
+</ul>
+</div>
+<div class="section" id="tempinit-tag-tempfinal-tag">
+<h3><span class="section-number">8.4.11. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
+<p>Initial and final temperatures in the simulated annealing.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : TEMPINIT = 1</p></li>
+<li><p>Example : TEMPFINAL = 0.001</p></li>
+</ul>
+</div>
+<div class="section" id="tempmul-tag">
+<h3><span class="section-number">8.4.12. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
+<p>Exponential base used in an automatic setting of temperatures in the simulated annealing.
+Set values ranged from 0 to 1.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : TEMPMUL = 0.9</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. Optimization of clusters</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">8.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#gasa">8.2. gasa</a></li>
+<li><a class="reference internal" href="#wgasa">8.3. wgasa</a></li>
+<li><a class="reference internal" href="#gasa-in">8.4. GASA.in</a><ul>
+<li><a class="reference internal" href="#nallcluster-tag">8.4.1. NALLCLUSTER tag</a></li>
+<li><a class="reference internal" href="#ncluster-tag">8.4.2. NCLUSTER tag</a></li>
+<li><a class="reference internal" href="#minindex-tag-maxindex-tag">8.4.3. MININDEX tag, MAXINDEX tag</a></li>
+<li><a class="reference internal" href="#basecluster-tag">8.4.4. BASECLUSTER tag</a></li>
+<li><a class="reference internal" href="#excluster-tag">8.4.5. EXCLUSTER tag</a></li>
+<li><a class="reference internal" href="#npop-tag">8.4.6. NPOP tag</a></li>
+<li><a class="reference internal" href="#nelite-tag">8.4.7. NELITE tag</a></li>
+<li><a class="reference internal" href="#pmating-tag">8.4.8. PMATING tag</a></li>
+<li><a class="reference internal" href="#pmutation-tag">8.4.9. PMUTATION tag</a></li>
+<li><a class="reference internal" href="#nloop-tag">8.4.10. NLOOP tag</a></li>
+<li><a class="reference internal" href="#tempinit-tag-tempfinal-tag">8.4.11. TEMPINIT tag, TEMPFINAL tag</a></li>
+<li><a class="reference internal" href="#tempmul-tag">8.4.12. TEMPMUL tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lsf-e.html"
+                        title="previous chapter"><span class="section-number">7. </span>Estimation of effective cluster interaction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="search_poscar-e.html"
+                        title="next chapter"><span class="section-number">9. </span>Structure selection for DFT calculations</a></p>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="lsf-e.html" title="7. Estimation of effective cluster interaction" >previous</a></li>
+        <li><a href="search_poscar-e.html" title="9. Structure selection for DFT calculations" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 0.7) in English</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2020, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
