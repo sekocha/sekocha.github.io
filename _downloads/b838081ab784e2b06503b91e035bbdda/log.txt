@@ -1,0 +1,54 @@
+ reading vaspruns ... train
+ end: vaspruns train
+ computing structural features ... 
+ end: structural features 
+ reading vaspruns ... test
+ end: vaspruns test
+ computing structural features ... 
+ end: structural features 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1267005, 4395)
+   n (energy) = 9084
+   n (force)  = 1203417
+   n (stress) = 54504
+ # Test data ###
+  X (all) = (140548, 4395)
+   n (energy) = 1000
+   n (force)  = 133548
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.0029614737605121563 0.0022433558781128934
+ alpha = 0.0001 rmse (train, test) = 0.0029672296084606 0.0022367048830578256
+ alpha = 0.001 rmse (train, test) = 0.0029833945497240778 0.0022464845736944678
+ alpha = 0.01 rmse (train, test) = 0.003043162658966353 0.0023158020984102297
+ --- input parameters ----
+ cutoff = 10.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.6428571428571429) (1.0, 1.2857142857142858) (1.0, 1.9285714285714288) (1.0, 2.5714285714285716) 
+(1.0, 3.2142857142857144) (1.0, 3.8571428571428577) (1.0, 4.5) (1.0, 5.142857142857143) (1.0, 5.7857142857142865) 
+(1.0, 6.428571428571429) (1.0, 7.071428571428572) (1.0, 7.714285714285715) (1.0, 8.357142857142858) (1.0, 9.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 3
+ gtinv_maxl = [4, 4]
+ gtinv_sym = [0, 0]
+ --- best model ----
+ alpha =  0.0001
+ -- Prediction Error --
+ structures : train_vasprun
+ rmse (energy, train) =  0.45510737657863  (meV/atom)
+ rmse (force, train) =  0.0010311278433704676  (eV/ang)
+ rmse (stress, train) =  0.003064432693728105  (GPa)
+ structures : test_vasprun
+ rmse (energy, test) =  0.44917220596490287  (meV/atom)
+ rmse (force, test) =  0.0010915379563991945  (eV/ang)
+ rmse (stress, test) =  0.0019207230735106002  (GPa)
+ elapsed time (features) = 220.8321213722229 (s)
+ elapsed time (electrostatic) = 3.0517578125e-05 (s)
+ elapsed time (regression) = 325.1198592185974 (s)
