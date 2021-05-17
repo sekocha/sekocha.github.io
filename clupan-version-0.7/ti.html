@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>12. 熱力学積分によるグランドポテンシャルの計算 &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,6 +29,8 @@
 
 <link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
 <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
     
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
@@ -38,6 +41,7 @@
             HAS_SOURCE:  true
   };
 </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -138,9 +142,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="id1">
+  <section id="id1">
 <h1><span class="section-number">12. </span>熱力学積分によるグランドポテンシャルの計算<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="theoretical-backgrounds">
+<section id="theoretical-backgrounds">
 <h2><span class="section-number">12.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
 <p>Under construction.</p>
 <p><strong>熱力学積分によるグランドポテンシャル</strong></p>
@@ -158,8 +162,8 @@
 <dd><p>A F Kohan, P D Tepesch, G Ceder and C Wolverton, Comput. Mater. Sci. 9, 389 (1998).</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="ti">
+</section>
+<section id="ti">
 <h2><span class="section-number">12.2. </span>ti<a class="headerlink" href="#ti" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>semi-grand canonical MC 計算の結果より，熱力学積分を用いて自由エネルギーの計算を行う．</p></li>
@@ -174,8 +178,8 @@
 <li><p>自由エネルギー</p></li>
 <li><p>グランドポテンシャル</p></li>
 </ul>
-</div>
-<div class="section" id="lte">
+</section>
+<section id="lte">
 <h2><span class="section-number">12.3. </span>lte<a class="headerlink" href="#lte" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>低温展開によりグランドポテンシャルを評価する．</p></li>
@@ -195,10 +199,10 @@
 <ul class="simple">
 <li><p>グランドポテンシャル</p></li>
 </ul>
-</div>
-<div class="section" id="ti-in">
+</section>
+<section id="ti-in">
 <h2><span class="section-number">12.4. </span>TI.in<a class="headerlink" href="#ti-in" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="initpot-tag">
+<section id="initpot-tag">
 <h3><span class="section-number">12.4.1. </span>INITPOT tag<a class="headerlink" href="#initpot-tag" title="Permalink to this headline">¶</a></h3>
 <p>経路の始点におけるグランドポテンシャルの値．
 始点が０Kのときは，有限の温度におけるグランドポテンシャルを低温展開により計算し，有限の温度から積分を始める．</p>
@@ -206,9 +210,9 @@
 <li><p>Default : 0</p></li>
 <li><p>Example : INITPOT = -0.016338475</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="lte-in">
+</section>
+</section>
+<section id="lte-in">
 <h2><span class="section-number">12.5. </span>LTE.in<a class="headerlink" href="#lte-in" title="Permalink to this headline">¶</a></h2>
 <p>T=0, mu=0.0からの低温展開を用いて，T=100, mu=0.0でのグランドポテンシャルを計算する例．T=0, mu=0.0での安定な構造のセルの大きさが，UPOSCARのすべての軸を2倍したものと同じである場合.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEMP</span> <span class="o">=</span> <span class="mi">100</span>
@@ -220,23 +224,23 @@
 <span class="n">NUCELLPOSCAR</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="section" id="temp-tag">
+<section id="temp-tag">
 <h3><span class="section-number">12.5.1. </span>TEMP tag<a class="headerlink" href="#temp-tag" title="Permalink to this headline">¶</a></h3>
 <p>低温展開によりポテンシャルを計算する温度．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : TEMP = 10</p></li>
 </ul>
-</div>
-<div class="section" id="mu-tag">
+</section>
+<section id="mu-tag">
 <h3><span class="section-number">12.5.2. </span>MU tag<a class="headerlink" href="#mu-tag" title="Permalink to this headline">¶</a></h3>
 <p>低温展開によりポテンシャルを計算する化学ポテンシャル．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : MU = 0.20</p></li>
 </ul>
-</div>
-<div class="section" id="nucell-tag">
+</section>
+<section id="nucell-tag">
 <h3><span class="section-number">12.5.3. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
 <p>低温展開を行うための，配置のエネルギーを計算する結晶格子のユニットセルの数．
 セルを大きくすると，低温展開によるグランドポテンシャルの値は収束する．</p>
@@ -244,8 +248,8 @@
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 4 4 4</p></li>
 </ul>
-</div>
-<div class="section" id="isub-tag">
+</section>
+<section id="isub-tag">
 <h3><span class="section-number">12.5.4. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>結晶格子において，原子を配置させる格子点と固定させる格子点を指定する．
 UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に，原子を配置させる．</p>
@@ -253,16 +257,16 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</div>
-<div class="section" id="nucellposcar-tag">
+</section>
+<section id="nucellposcar-tag">
 <h3><span class="section-number">12.5.5. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this headline">¶</a></h3>
 <p>始点の構造に含まれる結晶格子のユニットセルの数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
 </ul>
-</div>
-<div class="section" id="namepot-tag-spin-tag">
+</section>
+<section id="namepot-tag-spin-tag">
 <h3><span class="section-number">12.5.6. </span>NAMEPOT tag, SPIN tag<a class="headerlink" href="#namepot-tag-spin-tag" title="Permalink to this headline">¶</a></h3>
 <p>原子種および原子種に対応したspinの値．
 NAMEPOTで指定された原子に対して，スピンを対応させる．
@@ -273,9 +277,9 @@ NAMEPOTで指定された原子に対して，スピンを対応させる．
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>Exampleの場合，Mgがspin=1，Znがspin=-1となる．</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
                 </div>
@@ -359,7 +363,7 @@ NAMEPOTで指定された原子に対して，スピンを対応させる．
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
       </footer>
       <!-- /footer -->
 

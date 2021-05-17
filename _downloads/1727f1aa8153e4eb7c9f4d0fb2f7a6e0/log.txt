@@ -1,0 +1,59 @@
+ matrix shape (X) = (1398538,230)
+ Estimated memory allocation = 2.57 (GB)
+ matrix shape (X) = (137680,230)
+ Estimated memory allocation = 0.25 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1398538, 230)
+   n (energy) = 10759
+   n (force)  = 1329309
+   n (stress) = 58470
+ # Test data ###
+  X (all) = (137680, 230)
+   n (energy) = 988
+   n (force)  = 130764
+   n (stress) = 5928
+ alpha = 1e-05 rmse (train, test) = 0.06325790622936407 0.08897094370664806
+ alpha = 0.0001 rmse (train, test) = 0.06342331022644163 0.0882792929116358
+ alpha = 0.001 rmse (train, test) = 0.06432042596083237 0.08978315066068451
+ alpha = 0.01 rmse (train, test) = 0.06558825555994623 0.09274395415106682
+ --- input parameters ----
+ cutoff = 6.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 1.25) (1.0, 2.5) (1.0, 3.75) (1.0, 5.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 2
+ max_l = 2
+ gtinv_order = 2
+ gtinv_maxl = [2]
+ gtinv_sym = [0]
+ --- best model ----
+ alpha =  0.0001
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  9.457725482359438  (meV/atom)
+ rmse (force, train) =  0.05987626098835575  (eV/ang)
+ structures : vaspruns/train_vasprun_high
+ rmse (energy, train) =  11.727982585661186  (meV/atom)
+ rmse (force, train) =  0.14908085330194878  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  52.779248711253665  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  9.324225825533897  (meV/atom)
+ rmse (force, test) =  0.05880139006424631  (eV/ang)
+ structures : vaspruns/test_vasprun_high
+ rmse (energy, test) =  12.525795766282316  (meV/atom)
+ rmse (force, test) =  0.15145627027678202  (eV/ang)
+ elapsed time (features) = 55.35491704940796 (s)
+ elapsed time (electrostatic) = 4.076957702636719e-05 (s)
+ elapsed time (scaling, weight) = 1.7557578086853027 (s)
+ elapsed time (regression) = 9.124890565872192 (s)

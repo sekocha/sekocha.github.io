@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>11. モンテカルロ（MC）シミュレーションによる熱力学平均の計算 &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,6 +29,8 @@
 
 <link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
 <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
     
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
@@ -38,6 +41,7 @@
             HAS_SOURCE:  true
   };
 </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -142,13 +146,13 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="mc">
+  <section id="mc">
 <h1><span class="section-number">11. </span>モンテカルロ（MC）シミュレーションによる熱力学平均の計算<a class="headerlink" href="#mc" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="theoretical-backgrounds">
+<section id="theoretical-backgrounds">
 <h2><span class="section-number">11.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
 <p><strong>MetropolisアルゴリズムによるMCシミュレーション</strong></p>
-</div>
-<div class="section" id="cmc">
+</section>
+<section id="cmc">
 <h2><span class="section-number">11.2. </span>cmc<a class="headerlink" href="#cmc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>canonical MC 計算を行う．</p></li>
@@ -170,8 +174,8 @@
 <li><p>cmc.out</p></li>
 <li><p>POSCAR_finish (最終の原子位置)</p></li>
 </ul>
-</div>
-<div class="section" id="gcmc">
+</section>
+<section id="gcmc">
 <h2><span class="section-number">11.3. </span>gcmc<a class="headerlink" href="#gcmc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>semi-grand canonical MC 計算を行う．</p></li>
@@ -194,8 +198,8 @@
 <li><p>gcmc.out</p></li>
 <li><p>POSCAR_finish (最終の原子位置)</p></li>
 </ul>
-</div>
-<div class="section" id="mc-in">
+</section>
+<section id="mc-in">
 <h2><span class="section-number">11.4. </span>MC.in<a class="headerlink" href="#mc-in" title="Permalink to this headline">¶</a></h2>
 <p>初期構造をランダムに指定し，1000Kにおいてcmcにより熱力学平均を計算する例．:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
@@ -225,7 +229,7 @@
 <span class="n">MU</span> <span class="o">=</span> <span class="mf">0.200</span>
 </pre></div>
 </div>
-<div class="section" id="isub-tag">
+<section id="isub-tag">
 <h3><span class="section-number">11.4.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>結晶格子において，原子を配置させる格子点と固定させる格子点を指定する．
 UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に，原子を配置させる．</p>
@@ -233,8 +237,8 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</div>
-<div class="section" id="itemp-tag">
+</section>
+<section id="itemp-tag">
 <h3><span class="section-number">11.4.2. </span>ITEMP tag<a class="headerlink" href="#itemp-tag" title="Permalink to this headline">¶</a></h3>
 <p>温度設定の方法．</p>
 <ol class="arabic simple" start="0">
@@ -246,16 +250,16 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : 0</p></li>
 <li><p>Example : ITEMP = 1</p></li>
 </ul>
-</div>
-<div class="section" id="temp-tag">
+</section>
+<section id="temp-tag">
 <h3><span class="section-number">11.4.3. </span>TEMP tag<a class="headerlink" href="#temp-tag" title="Permalink to this headline">¶</a></h3>
 <p>annealする温度と，熱力学平均を計算する温度．最後に指定した温度において熱力学平均を計算する．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : TEMP = 1000 900 800</p></li>
 </ul>
-</div>
-<div class="section" id="tempinit-tag-tempfinal-tag">
+</section>
+<section id="tempinit-tag-tempfinal-tag">
 <h3><span class="section-number">11.4.4. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
 <p>simulated annealingの初期温度と最終温度．(ITEMP = 1 or 2)</p>
 <ul class="simple">
@@ -263,40 +267,40 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Example : TEMPINIT = 5000</p></li>
 <li><p>Example : TEMPFINAL = 1000</p></li>
 </ul>
-</div>
-<div class="section" id="tempmul-tag">
+</section>
+<section id="tempmul-tag">
 <h3><span class="section-number">11.4.5. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
 <p>simulated annealingにおける温度設定の指数関数の底．0から1の値を指定する．(ITEMP = 1)</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : TEMPMUL = 0.95</p></li>
 </ul>
-</div>
-<div class="section" id="nstepann-tag">
+</section>
+<section id="nstepann-tag">
 <h3><span class="section-number">11.4.6. </span>NSTEPANN tag<a class="headerlink" href="#nstepann-tag" title="Permalink to this headline">¶</a></h3>
 <p>annealする1原子あたりのステップ数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NSTEPANN = 2000</p></li>
 </ul>
-</div>
-<div class="section" id="nstepeqv-tag">
+</section>
+<section id="nstepeqv-tag">
 <h3><span class="section-number">11.4.7. </span>NSTEPEQV tag<a class="headerlink" href="#nstepeqv-tag" title="Permalink to this headline">¶</a></h3>
 <p>熱力学平均を計算する1原子あたりのステップ数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NSTEPEQV = 2000</p></li>
 </ul>
-</div>
-<div class="section" id="nucell-tag">
+</section>
+<section id="nucell-tag">
 <h3><span class="section-number">11.4.8. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
 <p>モンテカルロシミュレーションを行うセルに含まれるユニットセルの数．それぞれの軸に等倍にしか拡大できない．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 10 10 10</p></li>
 </ul>
-</div>
-<div class="section" id="ipos-tag">
+</section>
+<section id="ipos-tag">
 <h3><span class="section-number">11.4.9. </span>IPOS tag<a class="headerlink" href="#ipos-tag" title="Permalink to this headline">¶</a></h3>
 <p>初期構造の指定方法．</p>
 <ol class="arabic simple" start="0">
@@ -307,8 +311,8 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : 0</p></li>
 <li><p>Example : IPOS = 1</p></li>
 </ul>
-</div>
-<div class="section" id="spin-tag">
+</section>
+<section id="spin-tag">
 <h3><span class="section-number">11.4.10. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
 <p>原子のスピンの値．2元系の場合，2つ指定する．
 <strong>correlation</strong> で用いたスピン-原子種の対応を用いる．</p>
@@ -316,8 +320,8 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : none</p></li>
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
-</div>
-<div class="section" id="comp-tag">
+</section>
+<section id="comp-tag">
 <h3><span class="section-number">11.4.11. </span>COMP tag<a class="headerlink" href="#comp-tag" title="Permalink to this headline">¶</a></h3>
 <p>IPOS=0のときの初期構造の組成比．SPINで指定した順に，COMPを整数比で指定する．</p>
 <ul class="simple">
@@ -326,8 +330,8 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>Exampleの場合，SPIN=1とSPIN=-1の組成比が2:1となるようなランダムな構造を初期構造とする．</p>
-</div>
-<div class="section" id="namepot-tag">
+</section>
+<section id="namepot-tag">
 <h3><span class="section-number">11.4.12. </span>NAMEPOT tag<a class="headerlink" href="#namepot-tag" title="Permalink to this headline">¶</a></h3>
 <p>IPOS=1のとき，原子種をSPINに対応させるためのパラメータ．
 NAMEPOTで指定された原子に対して，スピンを対応させる．
@@ -338,16 +342,16 @@ NAMEPOTで指定された原子に対して，スピンを対応させる．
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>Exampleの場合，Mgがspin=1，Znがspin=-1となる．</p>
-</div>
-<div class="section" id="nucellposcar-tag">
+</section>
+<section id="nucellposcar-tag">
 <h3><span class="section-number">11.4.13. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this headline">¶</a></h3>
 <p>IPOS=1のとき，初期構造POSCARに含まれる結晶格子のユニットセルの数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
 </ul>
-</div>
-<div class="section" id="mu-tag">
+</section>
+<section id="mu-tag">
 <h3><span class="section-number">11.4.14. </span>MU tag<a class="headerlink" href="#mu-tag" title="Permalink to this headline">¶</a></h3>
 <p>gcmcのときの，化学ポテンシャルの差．</p>
 <ul class="simple">
@@ -355,9 +359,9 @@ NAMEPOTで指定された原子に対して，スピンを対応させる．
 <li><p>Example : MU = 0.2</p></li>
 </ul>
 <p>MU = mu(spin1) - mu(spin2)に対応する．</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
                 </div>
@@ -445,7 +449,7 @@ NAMEPOTで指定された原子に対して，スピンを対応させる．
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
       </footer>
       <!-- /footer -->
 

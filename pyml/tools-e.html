@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. Auxiliary tools &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,6 +29,8 @@
 
 <link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
 <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
     
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
@@ -38,6 +41,7 @@
             HAS_SOURCE:  true
   };
 </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -127,9 +131,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="auxiliary-tools">
+  <section id="auxiliary-tools">
 <h1><span class="section-number">4. </span>Auxiliary tools<a class="headerlink" href="#auxiliary-tools" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="lammps-dump-format-to-poscar-format">
+<section id="lammps-dump-format-to-poscar-format">
 <h2><span class="section-number">4.1. </span>Lammps Dump format to POSCAR format<a class="headerlink" href="#lammps-dump-format-to-poscar-format" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples (How to output dump.atom)</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">write_dump</span> <span class="nb">all</span> <span class="n">custom</span> <span class="n">dump</span><span class="o">.</span><span class="n">atom</span> <span class="nb">id</span> <span class="nb">type</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span> <span class="n">modify</span> <span class="nb">format</span> <span class="n">line</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> </span><span class="si">%10.15g</span><span class="s2"> </span><span class="si">%10.15g</span><span class="s2"> </span><span class="si">%10.15g</span><span class="s2">&quot;</span>
@@ -139,8 +143,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/lammps/lammps2poscar.py dump.atom
 </pre></div>
 </div>
-</div>
-<div class="section" id="poscar-format-to-lammps-structure-format">
+</section>
+<section id="poscar-format-to-lammps-structure-format">
 <h2><span class="section-number">4.2. </span>POSCAR format to Lammps structure format<a class="headerlink" href="#poscar-format-to-lammps-structure-format" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/lammps/poscar2lammps.py -p POSCAR
@@ -148,16 +152,16 @@ $(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass
 $(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass -e Ti Al
 </pre></div>
 </div>
-</div>
-<div class="section" id="tools-spg-py">
+</section>
+<section id="tools-spg-py">
 <h2><span class="section-number">4.3. </span>tools/spg.py<a class="headerlink" href="#tools-spg-py" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>($pyml)/tools/spg.py -p poscar --refine_cell --space_group
 </pre></div>
 </div>
 <p><strong>Examples (How to use from python)</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.common.structure</span> <span class="k">import</span> <span class="n">Structure</span>
-<span class="kn">from</span> <span class="nn">pyml.tools.spg</span> <span class="k">import</span> <span class="n">SymCell</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.common.structure</span> <span class="kn">import</span> <span class="n">Structure</span>
+<span class="kn">from</span> <span class="nn">pyml.tools.spg</span> <span class="kn">import</span> <span class="n">SymCell</span>
 
 <span class="n">sc</span> <span class="o">=</span> <span class="n">SymCell</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">,</span> <span class="n">symprec</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
 <span class="n">st</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">refine_cell</span><span class="p">()</span>
@@ -165,11 +169,11 @@ $(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass -e Ti Al
 <span class="n">sg</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get_spacegroup</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="regression-supervised-learning-py">
+</section>
+<section id="regression-supervised-learning-py">
 <h2><span class="section-number">4.4. </span>regression/supervised_learning.py<a class="headerlink" href="#regression-supervised-learning-py" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples (How to use from python)</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.regression.supervised_learning</span> <span class="k">import</span> <span class="n">KernelRidge</span> <span class="k">as</span> <span class="n">KR</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.regression.supervised_learning</span> <span class="kn">import</span> <span class="n">KernelRidge</span> <span class="k">as</span> <span class="n">KR</span>
 
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x_train.npy&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;y_train.npy&#39;</span><span class="p">)</span>
 
@@ -186,12 +190,12 @@ $(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass -e Ti Al
 <span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="modify-poscar-files">
+</section>
+<section id="modify-poscar-files">
 <h2><span class="section-number">4.5. </span>Modify poscar files<a class="headerlink" href="#modify-poscar-files" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples (How to use from python)</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.common.readvasp</span> <span class="k">import</span> <span class="n">Poscar</span>
-<span class="kn">from</span> <span class="nn">pyml.common.structure</span> <span class="k">import</span> <span class="n">Structure</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyml.common.readvasp</span> <span class="kn">import</span> <span class="n">Poscar</span>
+<span class="kn">from</span> <span class="nn">pyml.common.structure</span> <span class="kn">import</span> <span class="n">Structure</span>
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">Poscar</span><span class="p">(</span><span class="s1">&#39;poscar&#39;</span><span class="p">)</span>
 <span class="n">axis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">types</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_structure</span><span class="p">()</span>
@@ -203,15 +207,15 @@ $(pyml)/tools/lammps/poscar2lammps.py -p POSCAR --mass -e Ti Al
 <span class="n">st</span><span class="o">.</span><span class="n">print_poscar_tofile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">dirname</span><span class="o">+</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="cif-format-to-poscar-format">
+</section>
+<section id="cif-format-to-poscar-format">
 <h2><span class="section-number">4.6. </span>Cif format to POSCAR format<a class="headerlink" href="#cif-format-to-poscar-format" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/cif2poscar.py test.cif
 </pre></div>
 </div>
-</div>
-<div class="section" id="prototype-structures-from-icsd">
+</section>
+<section id="prototype-structures-from-icsd">
 <h2><span class="section-number">4.7. </span>Prototype structures from ICSD<a class="headerlink" href="#prototype-structures-from-icsd" title="Permalink to this headline">¶</a></h2>
 <p><strong>Examples</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --anx NO
@@ -219,8 +223,8 @@ $(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --nary 2 --metallic --remove
 $(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --nary 2 --ionic --remove_noname
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
                 </div>
@@ -291,7 +295,7 @@ $(pyml)/tools/get_icsd.py ./data-20160509/icsd_data --nary 2 --ionic --remove_no
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
       </footer>
       <!-- /footer -->
 

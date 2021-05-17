@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>9. Structure selection for DFT calculations &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,6 +29,8 @@
 
 <link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
 <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
     
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
@@ -38,6 +41,7 @@
             HAS_SOURCE:  true
   };
 </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -138,13 +142,13 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="structure-selection-for-dft-calculations">
+  <section id="structure-selection-for-dft-calculations">
 <h1><span class="section-number">9. </span>Structure selection for DFT calculations<a class="headerlink" href="#structure-selection-for-dft-calculations" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="theoretical-backgrounds">
+<section id="theoretical-backgrounds">
 <h2><span class="section-number">9.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="overview-e.html#ce1" id="id1"><span>[CE1]</span></a> to find how to select DFT structures.</p>
-</div>
-<div class="section" id="search-poscar-variance">
+</section>
+<section id="search-poscar-variance">
 <h2><span class="section-number">9.2. </span>search_poscar_variance<a class="headerlink" href="#search-poscar-variance" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Searching for a DFT structure for validating and improving a trial CE using the simulated annealing.</p></li>
@@ -165,8 +169,8 @@
 <ul class="simple">
 <li><p>POSCAR_new</p></li>
 </ul>
-</div>
-<div class="section" id="mkpos-in">
+</section>
+<section id="mkpos-in">
 <h2><span class="section-number">9.3. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this headline">¶</a></h2>
 <p>Searching for a structure with the lattice constructed by the 2x2x1 expansion of a 4-atoms unit cell (16-atoms cell).
 The structure has 12 A-atoms (spin=+1) and 4 B-atoms (spin=-1).
@@ -183,7 +187,7 @@ The structure is optimized for clusters specified by CLUSTERINDEX.</p>
 <span class="n">NSTEP</span> <span class="o">=</span> <span class="mi">20</span>
 </pre></div>
 </div>
-<div class="section" id="isub-tag">
+<section id="isub-tag">
 <h3><span class="section-number">9.3.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>Sublattice indexes for considering atomic configurations.
 Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6).</p>
@@ -191,8 +195,8 @@ Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6)
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</div>
-<div class="section" id="nchange-tag">
+</section>
+<section id="nchange-tag">
 <h3><span class="section-number">9.3.2. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of atoms.
 In N-nary systems, set N-1 kinds of atoms.
@@ -201,8 +205,8 @@ The number of the other kind of atoms is automatically set to (number of lattice
 <li><p>Default : none</p></li>
 <li><p>Example : NCHANGE = 16</p></li>
 </ul>
-</div>
-<div class="section" id="spin-tag">
+</section>
+<section id="spin-tag">
 <h3><span class="section-number">9.3.3. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
 <p>Spin values of atoms.
 In binary systems, SPIN tag has two kinds of values.
@@ -212,32 +216,32 @@ The same correspondence between spins and atom types used in <strong>correlation
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>In the above example, spin values of NCHANGE atoms are set to -1.</p>
-</div>
-<div class="section" id="nucell-tag">
+</section>
+<section id="nucell-tag">
 <h3><span class="section-number">9.3.4. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
 <p>A structure is searched for using the NUCELL expansion of the unit cell.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 2 2 2</p></li>
 </ul>
-</div>
-<div class="section" id="nallcluster-tag">
+</section>
+<section id="nallcluster-tag">
 <h3><span class="section-number">9.3.5. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of all clusters included in CORRELATION file.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NALLCLUSTER = 53</p></li>
 </ul>
-</div>
-<div class="section" id="clusterindex-tag">
+</section>
+<section id="clusterindex-tag">
 <h3><span class="section-number">9.3.6. </span>CLUSTERINDEX tag<a class="headerlink" href="#clusterindex-tag" title="Permalink to this headline">¶</a></h3>
 <p>Indexes of clusters used for the trial CE.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : CLUSTERINDEX = 0 1 2 3 4 5 8 16 35 48 49</p></li>
 </ul>
-</div>
-<div class="section" id="tempinit-tag-tempfinal-tag">
+</section>
+<section id="tempinit-tag-tempfinal-tag">
 <h3><span class="section-number">9.3.7. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
 <p>Initial and final temperatures in the simulated annealing.</p>
 <ul class="simple">
@@ -245,8 +249,8 @@ The same correspondence between spins and atom types used in <strong>correlation
 <li><p>Example : TEMPINIT = 1</p></li>
 <li><p>Example : TEMPFINAL = 0.001</p></li>
 </ul>
-</div>
-<div class="section" id="tempmul-tag">
+</section>
+<section id="tempmul-tag">
 <h3><span class="section-number">9.3.8. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
 <p>Exponential base for an automatic setting of temperatures in the simulated annealing.
 Set values ranged from 0 to 1.</p>
@@ -254,17 +258,17 @@ Set values ranged from 0 to 1.</p>
 <li><p>Default : none</p></li>
 <li><p>Example : TEMPMUL = 0.9</p></li>
 </ul>
-</div>
-<div class="section" id="nstep-tag">
+</section>
+<section id="nstep-tag">
 <h3><span class="section-number">9.3.9. </span>NSTEP tag<a class="headerlink" href="#nstep-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of steps for simulated annealing at one temperature.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NSTEP = 20</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="variance-energy">
+</section>
+</section>
+<section id="variance-energy">
 <h2><span class="section-number">9.4. </span>variance_energy<a class="headerlink" href="#variance-energy" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Calculating the mean variance of the predicted energy.</p></li>
@@ -280,8 +284,8 @@ Set values ranged from 0 to 1.</p>
 <ul class="simple">
 <li><p>Mean variance of the predicted energy</p></li>
 </ul>
-</div>
-<div class="section" id="variance-stpop">
+</section>
+<section id="variance-stpop">
 <h2><span class="section-number">9.5. </span>variance_stpop<a class="headerlink" href="#variance-stpop" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Under development.</p></li>
@@ -300,8 +304,8 @@ Set values ranged from 0 to 1.</p>
 <li><p>VARIANCE</p></li>
 <li><p>MEAN</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
                 </div>
@@ -385,7 +389,7 @@ Set values ranged from 0 to 1.</p>
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.3.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
       </footer>
       <!-- /footer -->
 

@@ -1,0 +1,59 @@
+ matrix shape (X) = (1432119,630)
+ Estimated memory allocation = 7.22 (GB)
+ matrix shape (X) = (139025,630)
+ Estimated memory allocation = 0.70 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1432119, 630)
+   n (energy) = 11004
+   n (force)  = 1362507
+   n (stress) = 58608
+ # Test data ###
+  X (all) = (139025, 630)
+   n (energy) = 983
+   n (force)  = 132144
+   n (stress) = 5898
+ alpha = 1e-05 rmse (train, test) = 0.013813357234698174 0.016616326606795087
+ alpha = 0.0001 rmse (train, test) = 0.013886739780080374 0.016845674422189334
+ alpha = 0.001 rmse (train, test) = 0.01410319577691442 0.01729018214391539
+ alpha = 0.01 rmse (train, test) = 0.015456269010433647 0.019952070913993678
+ --- input parameters ----
+ cutoff = 6.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 1.25) (1.0, 2.5) (1.0, 3.75) (1.0, 5.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 4
+ gtinv_maxl = [4, 4, 2]
+ gtinv_sym = [0, 0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  1.5226466818065107  (meV/atom)
+ rmse (force, train) =  0.014059469383597163  (eV/ang)
+ structures : vaspruns/train_vasprun_high
+ rmse (energy, train) =  2.3046820619685175  (meV/atom)
+ rmse (force, train) =  0.03229659213857784  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  10.141133188355562  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  1.4209331118050645  (meV/atom)
+ rmse (force, test) =  0.013388272627846299  (eV/ang)
+ structures : vaspruns/test_vasprun_high
+ rmse (energy, test) =  2.4409177289300956  (meV/atom)
+ rmse (force, test) =  0.03198700379596446  (eV/ang)
+ elapsed time (features) = 87.73599910736084 (s)
+ elapsed time (electrostatic) = 3.5762786865234375e-06 (s)
+ elapsed time (scaling, weight) = 4.3916401863098145 (s)
+ elapsed time (regression) = 21.252983808517456 (s)
