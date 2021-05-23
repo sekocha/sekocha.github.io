@@ -1,0 +1,61 @@
+ matrix shape (X) = (1540908,4410)
+ Estimated memory allocation = 54.36 (GB)
+ matrix shape (X) = (144970,4410)
+ Estimated memory allocation = 5.11 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1540908, 4410)
+   n (energy) = 11574
+   n (force)  = 1468014
+   n (stress) = 61320
+ # Test data ###
+  X (all) = (144970, 4410)
+   n (energy) = 1000
+   n (force)  = 137970
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.08998257010870236 0.0866536134017231
+ alpha = 0.0001 rmse (train, test) = 0.09021666025697482 0.08685856834246583
+ alpha = 0.001 rmse (train, test) = 0.09062158909675114 0.08717182182706701
+ alpha = 0.01 rmse (train, test) = 0.09139364541230774 0.08777204267898478
+ --- input parameters ----
+ cutoff = 8.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.5) (1.0, 1.0) (1.0, 1.5) (1.0, 2.0) 
+(1.0, 2.5) (1.0, 3.0) (1.0, 3.5) (1.0, 4.0) (1.0, 4.5) 
+(1.0, 5.0) (1.0, 5.5) (1.0, 6.0) (1.0, 6.5) (1.0, 7.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 4
+ gtinv_maxl = [4, 4, 0]
+ gtinv_sym = [0, 0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  5.085654127216428  (meV/atom)
+ rmse (force, train) =  0.09091329061146522  (eV/ang)
+ structures : vaspruns/train_vasprun_high
+ rmse (energy, train) =  10.521828896613101  (meV/atom)
+ rmse (force, train) =  0.18848767907579364  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  23.281261073503927  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  5.268125457101289  (meV/atom)
+ rmse (force, test) =  0.08606785349800052  (eV/ang)
+ structures : vaspruns/test_vasprun_high
+ rmse (energy, test) =  8.571087275526065  (meV/atom)
+ rmse (force, test) =  0.21256475664052363  (eV/ang)
+ elapsed time (features) = 201.72760558128357 (s)
+ elapsed time (electrostatic) = 5.9604644775390625e-06 (s)
+ elapsed time (scaling, weight) = 71.60728049278259 (s)
+ elapsed time (regression) = 295.06047439575195 (s)
