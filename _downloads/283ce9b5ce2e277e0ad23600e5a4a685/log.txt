@@ -1,0 +1,55 @@
+ matrix shape (X) = (1532638,285)
+ Estimated memory allocation = 3.49 (GB)
+ matrix shape (X) = (137116,285)
+ Estimated memory allocation = 0.31 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1532638, 285)
+   n (energy) = 11995
+   n (force)  = 1456467
+   n (stress) = 64176
+ # Test data ###
+  X (all) = (137116, 285)
+   n (energy) = 1000
+   n (force)  = 130116
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.039006435320611633 0.04692661470044291
+ alpha = 0.0001 rmse (train, test) = 0.03901267816291152 0.0468725885504603
+ alpha = 0.001 rmse (train, test) = 0.03908418638103142 0.04590237721402683
+ --- input parameters ----
+ cutoff = 10.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 1.0) (1.0, 2.0) (1.0, 3.0) (1.0, 4.0) 
+(1.0, 5.0) (1.0, 6.0) (1.0, 7.0) (1.0, 8.0) (1.0, 9.0) 
+ des_type = pair
+ max_p = 3
+ model_type = 2
+ --- best model ----
+ alpha =  0.001
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  5.023977153334262  (meV/atom)
+ rmse (force, train) =  0.0357130665417283  (eV/ang)
+ structures : vaspruns/train_vasprun_high
+ rmse (energy, train) =  29.28738860212099  (meV/atom)
+ rmse (force, train) =  0.06651686471122294  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  25.643706807164467  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  4.4784770203375475  (meV/atom)
+ rmse (force, test) =  0.0285945645679682  (eV/ang)
+ structures : vaspruns/test_vasprun_high
+ rmse (energy, test) =  29.4940027566466  (meV/atom)
+ rmse (force, test) =  0.06866324490280094  (eV/ang)
+ elapsed time (features) = 43.48348045349121 (s)
+ elapsed time (electrostatic) = 9.5367431640625e-06 (s)
+ elapsed time (scaling, weight) = 3.062990665435791 (s)
+ elapsed time (regression) = 16.907592296600342 (s)
