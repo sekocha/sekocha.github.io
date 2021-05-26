@@ -1,0 +1,54 @@
+ matrix shape (X) = (1641176,24530)
+ Estimated memory allocation = 322.06 (GB)
+ matrix shape (X) = (141874,24530)
+ Estimated memory allocation = 27.84 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1641176, 24530)
+   n (energy) = 11330
+   n (force)  = 1566096
+   n (stress) = 63750
+ # Test data ###
+  X (all) = (141874, 24530)
+   n (energy) = 1000
+   n (force)  = 134874
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.013365992669040903 0.011409279929176135
+ alpha = 0.0001 rmse (train, test) = 0.013437215824445238 0.011436418439836678
+ alpha = 0.001 rmse (train, test) = 0.01354883802138756 0.011494038194600736
+ alpha = 0.01 rmse (train, test) = 0.013722059486670376 0.011601250857761355
+ --- input parameters ----
+ cutoff = 8.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.7777777777777778) (1.0, 1.5555555555555556) (1.0, 2.3333333333333335) (1.0, 3.111111111111111) 
+(1.0, 3.888888888888889) (1.0, 4.666666666666667) (1.0, 5.444444444444445) (1.0, 6.222222222222222) (1.0, 7.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 2
+ max_l = 6
+ gtinv_order = 3
+ gtinv_maxl = [6, 4]
+ gtinv_sym = [0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  0.9948266618208612  (meV/atom)
+ rmse (force, train) =  0.01333954683034007  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  3.851617821454173  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  1.013199510111923  (meV/atom)
+ rmse (force, test) =  0.01135422113082277  (eV/ang)
+ elapsed time (features) = 823.2443995475769 (s)
+ elapsed time (electrostatic) = 2.0742416381835938e-05 (s)
+ elapsed time (scaling, weight) = 354.58793926239014 (s)
+ elapsed time (regression) = 5759.227413892746 (s)

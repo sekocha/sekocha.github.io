@@ -1,0 +1,54 @@
+ matrix shape (X) = (1641176,34190)
+ Estimated memory allocation = 448.89 (GB)
+ matrix shape (X) = (141874,34190)
+ Estimated memory allocation = 38.81 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1641176, 34190)
+   n (energy) = 11330
+   n (force)  = 1566096
+   n (stress) = 63750
+ # Test data ###
+  X (all) = (141874, 34190)
+   n (energy) = 1000
+   n (force)  = 134874
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.013161771522849567 0.011336510217243924
+ alpha = 0.0001 rmse (train, test) = 0.01324440871455568 0.011365284793796896
+ alpha = 0.001 rmse (train, test) = 0.013367196134656133 0.011409498012796932
+ alpha = 0.01 rmse (train, test) = 0.013560676099283214 0.01149568986991612
+ --- input parameters ----
+ cutoff = 12.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 1.2222222222222223) (1.0, 2.4444444444444446) (1.0, 3.666666666666667) (1.0, 4.888888888888889) 
+(1.0, 6.111111111111112) (1.0, 7.333333333333334) (1.0, 8.555555555555557) (1.0, 9.777777777777779) (1.0, 11.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 2
+ max_l = 10
+ gtinv_order = 3
+ gtinv_maxl = [10, 4]
+ gtinv_sym = [0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  0.8423164328348819  (meV/atom)
+ rmse (force, train) =  0.0132358688682245  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  3.980690509273371  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  0.8473745013947654  (meV/atom)
+ rmse (force, test) =  0.011370214730874127  (eV/ang)
+ elapsed time (features) = 1574.5879755020142 (s)
+ elapsed time (electrostatic) = 6.9141387939453125e-06 (s)
+ elapsed time (scaling, weight) = 936.0172469615936 (s)
+ elapsed time (regression) = 8814.845726251602 (s)

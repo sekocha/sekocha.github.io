@@ -1,0 +1,54 @@
+ matrix shape (X) = (1641176,1900)
+ Estimated memory allocation = 24.95 (GB)
+ matrix shape (X) = (141874,1900)
+ Estimated memory allocation = 2.16 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1641176, 1900)
+   n (energy) = 11330
+   n (force)  = 1566096
+   n (stress) = 63750
+ # Test data ###
+  X (all) = (141874, 1900)
+   n (energy) = 1000
+   n (force)  = 134874
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.019800924461480247 0.016545970257891954
+ alpha = 0.0001 rmse (train, test) = 0.019820621744906036 0.0165656591107638
+ alpha = 0.001 rmse (train, test) = 0.019886540900132355 0.016636238393718195
+ alpha = 0.01 rmse (train, test) = 0.020018968390009554 0.016744475954682182
+ --- input parameters ----
+ cutoff = 8.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.7777777777777778) (1.0, 1.5555555555555556) (1.0, 2.3333333333333335) (1.0, 3.111111111111111) 
+(1.0, 3.888888888888889) (1.0, 4.666666666666667) (1.0, 5.444444444444445) (1.0, 6.222222222222222) (1.0, 7.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 4
+ gtinv_order = 3
+ gtinv_maxl = [4, 0]
+ gtinv_sym = [0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  2.0838363264479662  (meV/atom)
+ rmse (force, train) =  0.01915882572375365  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  7.597062931119664  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  2.1321698544290006  (meV/atom)
+ rmse (force, test) =  0.015779103036865357  (eV/ang)
+ elapsed time (features) = 126.49993991851807 (s)
+ elapsed time (electrostatic) = 3.337860107421875e-06 (s)
+ elapsed time (scaling, weight) = 28.224344730377197 (s)
+ elapsed time (regression) = 123.56005835533142 (s)

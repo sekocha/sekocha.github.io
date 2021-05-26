@@ -1,0 +1,54 @@
+ matrix shape (X) = (1641176,6215)
+ Estimated memory allocation = 81.60 (GB)
+ matrix shape (X) = (141874,6215)
+ Estimated memory allocation = 7.05 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1641176, 6215)
+   n (energy) = 11330
+   n (force)  = 1566096
+   n (stress) = 63750
+ # Test data ###
+  X (all) = (141874, 6215)
+   n (energy) = 1000
+   n (force)  = 134874
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.019488168178983398 0.016692917033767646
+ alpha = 0.0001 rmse (train, test) = 0.019593029532019045 0.01677776852746928
+ alpha = 0.001 rmse (train, test) = 0.01973897139533945 0.016909808380683206
+ alpha = 0.01 rmse (train, test) = 0.019960836154063157 0.01710211623711887
+ --- input parameters ----
+ cutoff = 6.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.5555555555555556) (1.0, 1.1111111111111112) (1.0, 1.6666666666666667) (1.0, 2.2222222222222223) 
+(1.0, 2.7777777777777777) (1.0, 3.3333333333333335) (1.0, 3.8888888888888893) (1.0, 4.444444444444445) (1.0, 5.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 2
+ max_l = 4
+ gtinv_order = 3
+ gtinv_maxl = [4, 2]
+ gtinv_sym = [0, 0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  2.243392257175953  (meV/atom)
+ rmse (force, train) =  0.018560492299662085  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  5.6733010189222055  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  2.279393000912261  (meV/atom)
+ rmse (force, test) =  0.015521175590224317  (eV/ang)
+ elapsed time (features) = 247.94723510742188 (s)
+ elapsed time (electrostatic) = 3.5762786865234375e-06 (s)
+ elapsed time (scaling, weight) = 103.41776275634766 (s)
+ elapsed time (regression) = 569.8210730552673 (s)

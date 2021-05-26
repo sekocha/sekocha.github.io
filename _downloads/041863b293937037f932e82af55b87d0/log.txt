@@ -1,0 +1,54 @@
+ matrix shape (X) = (1641176,1890)
+ Estimated memory allocation = 24.81 (GB)
+ matrix shape (X) = (141874,1890)
+ Estimated memory allocation = 2.15 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1641176, 1890)
+   n (energy) = 11330
+   n (force)  = 1566096
+   n (stress) = 63750
+ # Test data ###
+  X (all) = (141874, 1890)
+   n (energy) = 1000
+   n (force)  = 134874
+   n (stress) = 6000
+ alpha = 1e-05 rmse (train, test) = 0.019800957056385186 0.016546055792742546
+ alpha = 0.0001 rmse (train, test) = 0.0198209449081067 0.016566232553703337
+ alpha = 0.001 rmse (train, test) = 0.019888106868785244 0.016637964866249837
+ alpha = 0.01 rmse (train, test) = 0.020021066334147908 0.016745944522779596
+ --- input parameters ----
+ cutoff = 8.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.7777777777777778) (1.0, 1.5555555555555556) (1.0, 2.3333333333333335) (1.0, 3.111111111111111) 
+(1.0, 3.888888888888889) (1.0, 4.666666666666667) (1.0, 5.444444444444445) (1.0, 6.222222222222222) (1.0, 7.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 2
+ max_l = 4
+ gtinv_order = 2
+ gtinv_maxl = [4]
+ gtinv_sym = [0]
+ --- best model ----
+ alpha =  1e-05
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_low
+ rmse (energy, train) =  2.083882247833697  (meV/atom)
+ rmse (force, train) =  0.019158799156809108  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce
+ rmse (energy, train) =  7.598410619420763  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  2.132273043235908  (meV/atom)
+ rmse (force, test) =  0.015779080587426764  (eV/ang)
+ elapsed time (features) = 105.3918046951294 (s)
+ elapsed time (electrostatic) = 5.7220458984375e-06 (s)
+ elapsed time (scaling, weight) = 43.85016655921936 (s)
+ elapsed time (regression) = 139.26963877677917 (s)
