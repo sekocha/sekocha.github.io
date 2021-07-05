@@ -1,0 +1,39 @@
+:orphan:
+
+Rb-2020-05-28-dataset-3000-common6
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 450px
+
+The current structure dataset is composed of 3,000 structures generated from six simple structures (FCC, BCC, HCP, simple cubic, omega, beta-Sn types). A more detailed procedure is found in `J. Chem. Phys. 148, 234106 (2018) <https://aip.scitation.org/doi/abs/10.1063/1.5027283>`_.
+The procedure to estimate interatomic potentials from the dataset is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_ and `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+- **All Pareto optimal MLPs are available** :download:`here         <pot-Rb-2020-05-28-dataset-3000-common6.tar.gz>`.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1 core / 36 cores), RMSE [meV/atom] / [eV/ang.]
+ :widths: 5,10,10
+
+  pair-1 , 0.014 / 0.005 , 83.603 / 0.0544
+  pair-15 , 0.014 / 0.022 , 80.202 / 0.0267
+  pair-16 , 0.021 / 0.007 , 33.452 / 0.0125
+  pair-3 , 0.031 / 0.009 , 17.879 / 0.0090
+  pair-17 , 0.031 / 0.009 , 14.643 / 0.0083
+  pair-18 , 0.042 / 0.012 , 10.353 / 0.0358
+  pair-11 , 0.066 / 0.013 , 3.2083 / 0.0039
+  pair-25 , 0.068 / 0.015 , 3.0754 / 0.0019
+  pair-12 , 0.091 / 0.018 , 1.4627 / 0.0024
+  pair-26 , 0.094 / 0.033 , 0.6686 / 0.0013
+  pair-27 , 0.119 / 0.023 , 0.5360 / 0.0010
+  pair-48 , 0.177 / 0.025 , 0.5209 / 0.0009
+  pair-55 , 0.222 / 0.028 , 0.5165 / 0.0008
+  pair-49 , 0.232 / 0.033 , 0.5145 / 0.0007
+  gtinv-341 , 3.329 / 0.165 , 0.5028 / 0.0007
+  gtinv-441 , 3.341 / 0.164 , 0.5002 / 0.0007
+  gtinv-469 , 3.892 / 0.190 , 0.4940 / 0.0006
+  gtinv-363 , 12.481 / 0.563 , 0.4923 / 0.0006
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+
