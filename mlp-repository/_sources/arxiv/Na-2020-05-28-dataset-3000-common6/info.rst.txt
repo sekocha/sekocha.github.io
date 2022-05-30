@@ -1,0 +1,49 @@
+:orphan:
+
+Na-2020-05-28-dataset-3000-common6
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 350px
+
+The current structure dataset is composed of 3,000 structures generated from six simple structures (FCC, BCC, HCP, simple cubic, omega, beta-Sn types). A more detailed procedure is found in `J. Chem. Phys. 148, 234106 (2018) <https://aip.scitation.org/doi/abs/10.1063/1.5027283>`_. The procedure to estimate interatomic potentials from the dataset is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_ and `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+
+- **All Pareto optimal MLPs are available** :download:`here         <pot-Na-2020-05-28-dataset-3000-common6.tar.gz>`.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1 core / 36 cores), RMSE [meV/atom] / [eV/ang.]
+ :widths: 5,10,10
+
+  pair-1 , 0.014 / 0.005 , 38.570 / 0.0163
+  pair-15 , 0.019 / 0.014 , 31.149 / 0.0105
+  pair-2 , 0.021 / 0.007 , 5.5212 / 0.0154
+  pair-16 , 0.021 / 0.007 , 4.7871 / 0.0107
+  pair-9 , 0.032 / 0.008 , 3.4206 / 0.0065
+  pair-23 , 0.034 / 0.034 , 2.6077 / 0.0021
+  pair-30 , 0.045 / 0.008 , 2.2229 / 0.0056
+  pair-10 , 0.050 / 0.011 , 1.0324 / 0.0036
+  pair-24 , 0.051 / 0.011 , 0.4476 / 0.0016
+  pair-45 , 0.086 / 0.013 , 0.3293 / 0.0015
+  pair-25 , 0.088 / 0.014 , 0.2647 / 0.0014
+  pair-26 , 0.095 / 0.018 , 0.2359 / 0.0010
+  pair-46 , 0.102 / 0.015 , 0.2027 / 0.0013
+  pair-53 , 0.135 / 0.017 , 0.1975 / 0.0013
+  pair-47 , 0.141 / 0.019 , 0.1931 / 0.0010
+  pair-48 , 0.169 / 0.025 , 0.1885 / 0.0009
+  pair-54 , 0.174 / 0.021 , 0.1842 / 0.0010
+  pair-55 , 0.223 / 0.027 , 0.1773 / 0.0009
+  pair-56 , 0.289 / 0.032 , 0.1726 / 0.0008
+  gtinv-286 , 0.685 / 0.061 , 0.1724 / 0.0008
+  gtinv-474 , 0.689 / 0.062 , 0.1684 / 0.0008
+  gtinv-341 , 3.349 / 0.165 , 0.1611 / 0.0007
+  gtinv-441 , 3.383 / 0.185 , 0.1599 / 0.0007
+  gtinv-442 , 3.470 / 0.171 , 0.1577 / 0.0007
+  gtinv-470 , 4.034 / 0.195 , 0.1544 / 0.0006
+  gtinv-479 , 21.476 / 0.910 , 0.1542 / 0.0005
+  gtinv-368 , 21.538 / 0.906 , 0.1540 / 0.0005
+  gtinv-480 , 21.680 / 0.918 , 0.1526 / 0.0005
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+

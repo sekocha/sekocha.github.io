@@ -1,0 +1,40 @@
+:orphan:
+
+Ti-Al-2021-09-06
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 350px
+
+The current structure dataset comprises 54145 structures generated from elemental ICSD structures and binary ICSD prototype alloy structures. A more detailed procedure is found in `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+**Predictions using Pareto optimal MLPs**
+
+.. image:: summary/prediction-ecoh-volume.png
+   :height: 700px
+
+The cohesive energy and volume are obtained by performing a local structure optimization from the DFT equilibrium structure. In addition, the DFT equilibrium structure is obtained by optimizing a prototype structure included in ICSD, and the prototype is used as the structure legend in the figure. Therefore, the structure type of the converged structure is sometimes different from that shown in the legend even if the potential energy surface predicted by MLP is almost the same as the true one.
+
+The other properties predicted by each Pareto optimal MLP are available from column **Predictions** in the following table.
+
+Ti-Al-2021-09-06 shows large prediction errors. They should be carefully used. Such an MLP is often accurate for reasonable structures, but it is not accurate for unrealistic structures.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1core/36cores), RMSE [meV/atom]/[eV/A], Predictions, Files
+ :widths: 5,10,10,7,10
+
+  pair-21 , 0.030 / 0.007 , 43.109 / 0.2967 , --,--
+  pair-37 , 0.035 / 0.006 , 19.725 / 0.1919 , --,--
+  pair-49 , 0.041 / 0.006 , 11.009 / 0.1594 , --,--
+  pair-44 , 0.279 / 0.028 , 10.571 / 0.1650 , --,--
+  gtinv-722 , 0.303 / 0.029 , 8.0136 / 0.1199 , :doc:`predictions <predictions/gtinv-722/prediction>`, :download:`mlp.lammps <pot/gtinv-722/mlp.lammps>` :download:`input <pot/gtinv-722/parameters.dat>` :download:`log <pot/gtinv-722/log.dat>`
+  pair-60 , 0.414 / 0.034 , 5.1117 / 0.1329 , :doc:`predictions <predictions/pair-60/prediction>`, :download:`mlp.lammps <pot/pair-60/mlp.lammps>` :download:`input <pot/pair-60/parameters.dat>` :download:`log <pot/pair-60/log.dat>`
+  gtinv-759 , 0.564 / 0.047 , 4.7879 / 0.0976 , :doc:`predictions <predictions/gtinv-759/prediction>`, :download:`mlp.lammps <pot/gtinv-759/mlp.lammps>` :download:`input <pot/gtinv-759/parameters.dat>` :download:`log <pot/gtinv-759/log.dat>`
+  gtinv-820 , 0.796 / 0.055 , 4.0516 / 0.0917 , :doc:`predictions <predictions/gtinv-820/prediction>`, :download:`mlp.lammps <pot/gtinv-820/mlp.lammps>` :download:`input <pot/gtinv-820/parameters.dat>` :download:`log <pot/gtinv-820/log.dat>`
+  gtinv-254 , 0.891 / 0.063 , 2.5536 / 0.0786 , :doc:`predictions <predictions/gtinv-254/prediction>`, :download:`mlp.lammps <pot/gtinv-254/mlp.lammps>` :download:`input <pot/gtinv-254/parameters.dat>` :download:`log <pot/gtinv-254/log.dat>`
+  gtinv-411 , 1.192 / 0.070 , 2.2697 / 0.0734 , :doc:`predictions <predictions/gtinv-411/prediction>`, :download:`mlp.lammps <pot/gtinv-411/mlp.lammps>` :download:`input <pot/gtinv-411/parameters.dat>` :download:`log <pot/gtinv-411/log.dat>`
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+
+- All Pareto optimal MLPs are available :download:`here         <pot-Ti-Al-2021-09-06.tar.gz>`.

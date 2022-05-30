@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Theoretical background &mdash; Polynomial Machine Learning Potential Repository (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    './',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Polynomial Machine Learning Potential Repository (Kyoto University)" href="index.html" />
+    <link rel="next" title="Machine Learning Potentials (Old versions)" href="arxiv/index-e.html" />
+    <link rel="prev" title="Machine Learning Potentials (Binary alloy systems)" href="alloy2/index-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">PolyMLP Repository (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">Theoretical background</a><ul>
+<li><a class="reference internal" href="#structural-features">Structural features</a></li>
+<li><a class="reference internal" href="#potential-energy-models">Potential energy models</a></li>
+<li><a class="reference internal" href="#parameters-for-developing-mlps">Parameters for developing MLPs</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="alloy2/index-e.html" title="Machine Learning Potentials (Binary alloy systems)" accesskey="P">previous </a></li>
+              <li><a href="arxiv/index-e.html" title="Machine Learning Potentials (Old versions)" accesskey="N">next </a></li>
+              <li><a href="genindex.html" title="General Index" accesskey="I">index </a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="theoretical-background">
+<span id="mlp-formulation"></span><h1>Theoretical background<a class="headerlink" href="#theoretical-background" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="structural-features">
+<h2>Structural features<a class="headerlink" href="#structural-features" title="Permalink to this headline">¶</a></h2>
+<p>The atomic energy is described by a function of polynomial invariants for the O(3) group. A pth-order polynomial invariant for a radial index n and a set of pairs composed of the angular number and the element unordered pair {(l<sub>1</sub>,t<sub>1</sub>),(l<sub>2</sub>,t<sub>2</sub>), …,(l<sub>p</sub>,t<sub>p</sub>)} is defined as a linear combination of products of p order parameters, expressed as</p>
+<div class="math">
+<p><img src="_images/math/f835c4b1e055f9f610b8844b8f39d5ebdbd88ebe.svg" alt="d_{nl_1l_2\cdots l_p,t_1t_2\cdots t_p,(\sigma)}^{(i)} =
+\sum_{m_1,m_2,\cdots, m_p} c^{l_1l_2\cdots l_p,(\sigma)}_{m_1m_2\cdots m_p}
+a_{nl_1m_1,t_1}^{(i)} a_{nl_2m_2,t_2}^{(i)} \cdots a_{nl_pm_p,t_p}^{(i)}."/></p>
+</div><p>Linearly independent coefficient sets are obtained using the group-theoretical projector operation method for a given set of angular numbers, ensuring that the linear combinations are invariant for arbitrary rotation. In terms of fourth- and higher-order polynomial invariants, multiple invariants are linearly independent for most of the angular number sets, which are distinguished by index <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.svg" alt="\sigma"/> if necessary. The order parameters of atom i and element pair (s<sub>i</sub>,s) are approximately estimated from the neighboring atomic density of element s around atom i as</p>
+<div class="math">
+<p><img src="_images/math/b045f426bd4cd8ae7b5550b0f64709d4699eb715.svg" alt="a_{nlm,\{s_i,s\}}^{(i)} = \sum_{\{j | r_{ij} \leq r_c,s_j = s\} }
+f_n(r_{ij}) Y_{lm}^* (\theta_{ij}, \phi_{ij}),"/></p>
+</div><p>where (<img class="math" src="_images/math/774df2c68904c92b7c0db636d12ca2ca6ee21263.svg" alt="r_{ij}"/>, <img class="math" src="_images/math/da506bb020aaee96b813fbc978d0dbd23beeca92.svg" alt="\theta_{ij}"/>, <img class="math" src="_images/math/9b0f715dd898479a7c8a990f4106ced2f8b6563c.svg" alt="\phi_{ij}"/>) denotes the spherical coordinates of neighboring atom j centered at the position of atom i.</p>
+<p>[1] A. Seko, A. Togo, and I. Tanaka, Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential, <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108">Phys. Rev. B 99, 214108 (2019)</a></p>
+<p>[2] A. Seko, Machine learning potentials for multicomponent systems: The Ti-Al binary system, <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104">Phys. Rev. B 102, 174104 (2020)</a></p>
+</div>
+<div class="section" id="potential-energy-models">
+<h2>Potential energy models<a class="headerlink" href="#potential-energy-models" title="Permalink to this headline">¶</a></h2>
+<p>In the repository, the atomic energy is measured from the energy of the isolated state of the atom.
+A potential energy model is identified with a combination of polynomial functions and structural features.
+Given a set of structural features D, polynomial functions are written as</p>
+<div class="math">
+<p><img src="_images/math/0e75c1a9b70937b1388dc1357d38aac2d7fcf62c.svg" alt="F_1 \left(D\right) = \sum_i w_i d_i \\"/></p>
+</div><div class="math">
+<p><img src="_images/math/a2562143321ed1419648bff7ac736c8e7f3d7b4e.svg" alt="F_{2,\rm pow} \left(D\right) = \sum_{i} w_{ii} d_i d_i \\"/></p>
+</div><div class="math">
+<p><img src="_images/math/6bb85911d1c336114927cab18f64d6b4792f8dd6.svg" alt="F_2 \left(D\right) = \sum_{\{i,j\}} w_{ij} d_i d_j \\"/></p>
+</div><div class="math">
+<p><img src="_images/math/7d05ab0f171e77f2ad44866a90d118b883d7fff7.svg" alt="F_{3,\rm pow} \left(D\right) = \sum_{i} w_{iii} d_i d_i d_i \\"/></p>
+</div><div class="math">
+<p><img src="_images/math/1d7da51670e6ffd8426a80df35265c4bb67da3c0.svg" alt="F_3 \left(D\right) = \sum_{\{i,j,k\}} w_{ijk} d_i d_j d_k"/></p>
+</div><p>where w denotes a coefficient.</p>
+<ul class="simple">
+<li><p>Pairwise structural features</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/4e10b42dff8e3b0f63ee0a31ef38289a32e310b2.svg" alt="D_{\rm pair}^{(i)} = \{d_{n0}^{(i)}\}"/></p>
+</div><ul class="simple">
+<li><p>Polynomial invariants</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/af4e71e5dd15d46a77f8fb6f27907c885e667462.svg" alt="D^{(i)} = D_{\rm pair}^{(i)} \cup D_2^{(i)} \cup D_3^{(i)} \cup D_4^{(i)} \cup \cdots"/></p>
+</div><div class="math">
+<p><img src="_images/math/eb8a47f3f109087478f370f5baf8d798d48eafe0.svg" alt="D_2^{(i)} = \{d_{nll}^{(i)}\}"/></p>
+</div><div class="math">
+<p><img src="_images/math/b82ede63ebee2b1580c662438fdd1665ea963b38.svg" alt="D_3^{(i)} = \{d_{nl_1l_2l_3}^{(i)}\}"/></p>
+</div><div class="math">
+<p><img src="_images/math/d55b6340e627185cbc2ebc39a92071d792b49b12.svg" alt="D_4^{(i)} = \{d_{nl_1l_2l_3l_4,(\sigma)}^{(i)}\}"/></p>
+</div><p>Machine learning potentials in the repository are developed from the following potential energy models.</p>
+<ul class="simple">
+<li><p>model type = 1, feature type = pair</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/cd945f66e46091303aa1dfcb1a82ce0bc949d2ca.svg" alt="E^{(i)} = F_1\left(D_{\rm pair}^{(i)} \right)
+        + F_{2,\rm pow} \left(D_{\rm pair}^{(i)} \right)
+        + F_{3,\rm pow} \left(D_{\rm pair}^{(i)} \right)
+        + \cdots"/></p>
+</div><ul class="simple">
+<li><p>model type = 2, feature type = pair (An extension of EAM potentials)</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/6a93b18d6e67c9de842b55902f7fa256e2303f2d.svg" alt="E^{(i)} = F_1\left(D_{\rm pair}^{(i)} \right)
+        + F_{2} \left(D_{\rm pair}^{(i)} \right)
+        + F_{3} \left(D_{\rm pair}^{(i)} \right)
+        + \cdots"/></p>
+</div><ul class="simple">
+<li><p>model type = 1, feature type = polynomial invariants (Linear polynomial form)</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/ffb6c1916bc5cd3671275d50c09443ac43a53759.svg" alt="E^{(i)} = F_1 \left(D^{(i)} \right)"/></p>
+</div><ul class="simple">
+<li><p>model type = 1, feature type = polynomial invariants</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/8a94d4f9f00e0404912aefa46cdb8035e983e3da.svg" alt="E^{(i)} = F_1 \left(D^{(i)} \right)
+        + F_{2,\rm pow} \left(D^{(i)} \right)
+        + F_{3,\rm pow} \left(D^{(i)} \right)
+        + \cdots"/></p>
+</div><ul class="simple">
+<li><p>model type = 2, feature type = polynomial invariants</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/2bc5ad0cc0c642d26c4734588e2dddcb66a84b54.svg" alt="E^{(i)} = F_1 \left(D^{(i)} \right)
+        + F_{2} \left(D^{(i)} \right)
+        + F_{3} \left(D^{(i)} \right)
+        + \cdots"/></p>
+</div><ul class="simple">
+<li><p>model type = 3, feature type = polynomial invariants</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/6fd047958a53c3e9fc0016a0edab42b268e8c05e.svg" alt="E^{(i)} = F_1 \left( D^{(i)} \right)
+        + F_2 \left( D_{\rm pair}^{(i)} \right)
+        + F_3 \left( D_{\rm pair}^{(i)} \right)
+        + \cdots"/></p>
+</div><ul class="simple">
+<li><p>model type = 4, feature type = polynomial invariants</p></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/94af41e2b686883661ed57320e8f47540e23e563.svg" alt="E^{(i)} = F_1 \left( D^{(i)} \right)
+        + F_2 \left( D_{\rm pair}^{(i)} \cup D_2^{(i)} \right)
+        + \cdots"/></p>
+</div></div>
+<div class="section" id="parameters-for-developing-mlps">
+<h2>Parameters for developing MLPs<a class="headerlink" href="#parameters-for-developing-mlps" title="Permalink to this headline">¶</a></h2>
+<p>Parameters used for developing an MLP are found in <strong>log</strong> and <strong>input</strong> links at column “Files”.</p>
+<ul>
+<li><p>Example of parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of atom species</span>
+<span class="n">n_type</span> <span class="mi">2</span>
+
+<span class="c1"># use derivatives in training or not: True or False</span>
+<span class="n">with_force</span> <span class="kc">True</span>
+
+<span class="c1"># regression method (ridge or lasso or normal)</span>
+<span class="n">reg_method</span> <span class="n">ridge</span>
+
+<span class="c1"># cutoff radius</span>
+<span class="n">cutoff</span> <span class="mf">10.0</span>
+
+<span class="c1"># model type with respect to structural features</span>
+<span class="c1"># 1 (power of features)</span>
+<span class="c1"># 2 (polynomial of all features)</span>
+<span class="c1"># 3 (polynomial of pair features + invariants)</span>
+<span class="c1"># 4 (polynomial of pair features and invariants(order=2) + invariants)</span>
+<span class="n">model_type</span> <span class="mi">1</span>
+
+<span class="c1"># degree of polynomials</span>
+<span class="n">max_p</span> <span class="mi">2</span>
+
+<span class="c1"># structural feature type (pair or gtinv)</span>
+<span class="n">des_type</span> <span class="n">gtinv</span>
+
+<span class="c1"># pairwise function type (gaussian or sph_bessel)</span>
+<span class="n">pair_type</span> <span class="n">gaussian</span>
+<span class="c1"># sequence for a in exp(-a(r-b)^2) [min, max, n]</span>
+<span class="n">gaussian_params1</span> <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mi">1</span>
+<span class="c1"># sequence for b in exp(-a(r-b)^2) [min, max, n]</span>
+<span class="n">gaussian_params2</span> <span class="mi">0</span> <span class="mf">10.0</span> <span class="mi">15</span>
+
+<span class="c1"># maximum order of group-theoretical invariants</span>
+<span class="n">gtinv_order</span> <span class="mi">4</span>
+<span class="c1"># maximum l values of group-theoretical invariants</span>
+<span class="n">gtinv_maxl</span> <span class="mi">7</span> <span class="mi">7</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="c1"># use only symmetric invariants or not</span>
+<span class="n">gtinv_sym</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Theoretical background</a><ul>
+<li><a class="reference internal" href="#structural-features">Structural features</a></li>
+<li><a class="reference internal" href="#potential-energy-models">Potential energy models</a></li>
+<li><a class="reference internal" href="#parameters-for-developing-mlps">Parameters for developing MLPs</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="alloy2/index-e.html"
+                          title="previous chapter">Machine Learning Potentials (Binary alloy systems)</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="arxiv/index-e.html"
+                          title="next chapter">Machine Learning Potentials (Old versions)</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="index.html">PolyMLP Repository (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="alloy2/index-e.html" title="Machine Learning Potentials (Binary alloy systems)" >previous</a></li>
+        <li><a href="arxiv/index-e.html" title="Machine Learning Potentials (Old versions)" >next</a></li>
+        <li><a href="genindex.html" title="General Index" >index</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
