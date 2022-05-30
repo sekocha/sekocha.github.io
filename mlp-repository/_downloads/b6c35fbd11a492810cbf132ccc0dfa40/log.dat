@@ -1,0 +1,74 @@
+ matrix shape (X) = (1255731,10560)
+ Estimated memory allocation = 106.08 (GB)
+ matrix shape (X) = (138739,10560)
+ Estimated memory allocation = 11.72 (GB)
+ reading vaspruns ... train
+ computing structural features ... 
+ reading vaspruns ... test
+ computing structural features ... 
+ scaling features ...
+ applying weights ...
+ scaling features ...
+ applying weights ...
+ # Training data ###
+  X (all) = (1255731, 10560)
+   n (energy) = 9762
+   n (force)  = 1191795
+   n (stress) = 54174
+ # Test data ###
+  X (all) = (138739, 10560)
+   n (energy) = 1075
+   n (force)  = 131700
+   n (stress) = 5964
+ alpha = 1e-05 rmse (train, test) = 0.19901144237020943 0.2152460062040079
+ alpha = 0.0001 rmse (train, test) = 0.19938547106254217 0.21170704716214483
+ alpha = 0.001 rmse (train, test) = 0.20012247351268864 0.21315689129403384
+ alpha = 0.01 rmse (train, test) = 0.20156881272074387 0.21330534721775468
+ alpha = 0.1 rmse (train, test) = 0.20443396190657034 0.2118902487458239
+ alpha = 1.0 rmse (train, test) = 0.21060651032085656 0.2161747685048902
+ alpha = 10.0 rmse (train, test) = 0.2239870937022639 0.22991716964947906
+ --- input parameters ----
+ cutoff = 7.0
+ pair_type = gaussian
+ pair_params =
+(1.0, 0.0) (1.0, 0.6666666666666666) (1.0, 1.3333333333333333) (1.0, 2.0) (1.0, 2.6666666666666665) 
+(1.0, 3.333333333333333) (1.0, 4.0) (1.0, 4.666666666666666) (1.0, 5.333333333333333) (1.0, 6.0) 
+ des_type = gtinv
+ max_p = 2
+ model_type = 4
+ max_l = 12
+ gtinv_order = 3
+ gtinv_maxl = [12, 8]
+ gtinv_sym = [0, 0]
+ --- best model ----
+ alpha =  0.0001
+ -- Prediction Error --
+ structures : vaspruns/train_vasprun_0
+ rmse (energy, train) =  7.412839590519294  (meV/atom)
+ rmse (force, train) =  0.09396193618880243  (eV/ang)
+ structures : vaspruns/train_vasprun_1
+ rmse (energy, train) =  8.447367342660364  (meV/atom)
+ rmse (force, train) =  0.18115392740133077  (eV/ang)
+ structures : vaspruns/train_vasprun_2
+ rmse (energy, train) =  8.60770494295371  (meV/atom)
+ rmse (force, train) =  0.25408492684169237  (eV/ang)
+ structures : vaspruns/train_vasprun_3
+ rmse (energy, train) =  10.540708285372176  (meV/atom)
+ rmse (force, train) =  0.3072241419996045  (eV/ang)
+ structures : vaspruns/train_vasprun_4
+ rmse (energy, train) =  12.629061311544262  (meV/atom)
+ rmse (force, train) =  0.3559243783480508  (eV/ang)
+ structures : vaspruns/train_vasprun_high_woforce1
+ rmse (energy, train) =  30.779444726531484  (meV/atom)
+ structures : vaspruns/test_vasprun_low
+ rmse (energy, test) =  5.4997304569176375  (meV/atom)
+ rmse (force, test) =  0.1283617160991893  (eV/ang)
+ structures : vaspruns/test_vasprun_high
+ rmse (energy, test) =  9.542407027232073  (meV/atom)
+ rmse (force, test) =  0.2674908164565982  (eV/ang)
+ structures : vaspruns/test_vasprun_high_woforce1
+ rmse (energy, test) =  38.81373287173845  (meV/atom)
+ elapsed time (features) = 547.3831684589386 (s)
+ elapsed time (electrostatic) = 8.106231689453125e-06 (s)
+ elapsed time (scaling, weight) = 135.18208050727844 (s)
+ elapsed time (regression) = 1670.02317404747 (s)
