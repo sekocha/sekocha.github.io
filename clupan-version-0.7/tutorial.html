@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>13. チュートリアル &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -133,16 +132,16 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="id1">
+  <div class="section" id="id1">
 <h1><span class="section-number">13. </span>チュートリアル<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<section id="tutorial-1">
+<div class="section" id="tutorial-1">
 <h2><span class="section-number">13.1. </span>Tutorial 1: 指定したセルの範囲内でのすべての原子配置においてエネルギー計算を行う<a class="headerlink" href="#tutorial-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>岩塩型MgO-ZnO系</p></li>
 <li><p>あらかじめ準備されたDFT構造およびエネルギーを用いる．ここでは，mkposcarは用いず，DFT構造の最適化は行わない．</p></li>
 <li><p>ユニットセルを2x1x1倍したセル内でのすべての原子配置において，エネルギー計算を行う．（計算量を軽減するためセルの大きさは小さく指定している．）</p></li>
 </ul>
-<section id="step-1-searching-for-independent-clusters-on-the-lattice">
+<div class="section" id="step-1-searching-for-independent-clusters-on-the-lattice">
 <h3><span class="section-number">13.1.1. </span>Step 1. searching for independent clusters on the lattice<a class="headerlink" href="#step-1-searching-for-independent-clusters-on-the-lattice" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing lattice information (UPOSCAR and UPOTCAR)</p>
@@ -197,8 +196,8 @@
 </div>
 </li>
 </ol>
-</section>
-<section id="step-2-calculating-correlation-functions-for-dft-structures">
+</div>
+<div class="section" id="step-2-calculating-correlation-functions-for-dft-structures">
 <h3><span class="section-number">13.1.2. </span>Step 2. calculating correlation functions for DFT structures<a class="headerlink" href="#step-2-calculating-correlation-functions-for-dft-structures" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing DFT structures (POSCAR and POTCAR)</p>
@@ -239,9 +238,9 @@ CE.in  POSCAR  POTCAR  UPOSCAR  UPOTCAR  position.out
 </li>
 <li><p>executing <strong>correlation</strong> for calculating correlation functions and generating of.out and correlation.out</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">tutorials</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">001</span><span class="o">/</span>
-<span class="o">&gt;</span> <span class="n">echo</span> <span class="s2">&quot; structure 001&quot;</span> <span class="o">&gt;</span> <span class="n">correlation</span><span class="o">.</span><span class="mi">001</span>
-<span class="o">&gt;</span> <span class="n">correlation</span> <span class="o">&gt;&gt;</span> <span class="n">correlation</span><span class="o">.</span><span class="mi">001</span>
-<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">correlation</span><span class="o">.</span><span class="mi">001</span>
+<span class="o">&gt;</span> <span class="n">echo</span> <span class="s2">&quot; structure 001&quot;</span> <span class="o">&gt;</span> <span class="n">correlation</span><span class="mf">.001</span>
+<span class="o">&gt;</span> <span class="n">correlation</span> <span class="o">&gt;&gt;</span> <span class="n">correlation</span><span class="mf">.001</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">correlation</span><span class="mf">.001</span>
  <span class="n">structure</span> <span class="mi">001</span>
 <span class="mi">1</span>
 <span class="mi">1</span>
@@ -259,8 +258,8 @@ CE.in  POSCAR  POTCAR  UPOSCAR  UPOTCAR  position.out
 </div>
 </li>
 </ol>
-</section>
-<section id="step-3-optimizing-a-set-of-clusters-and-estimating-their-ecis">
+</div>
+<div class="section" id="step-3-optimizing-a-set-of-clusters-and-estimating-their-ecis">
 <h3><span class="section-number">13.1.3. </span>Step 3. optimizing a set of clusters and estimating their ECIs<a class="headerlink" href="#step-3-optimizing-a-set-of-clusters-and-estimating-their-ecis" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing ENERGY and CORRELATION</p>
@@ -346,8 +345,8 @@ CE.in  POSCAR  POTCAR  UPOSCAR  UPOTCAR  position.out
 </div>
 </li>
 </ol>
-</section>
-<section id="step-4-calculating-energies-of-possible-configurations-within-2x1x1-supercell">
+</div>
+<div class="section" id="step-4-calculating-energies-of-possible-configurations-within-2x1x1-supercell">
 <h3><span class="section-number">13.1.4. </span>Step 4. calculating energies of possible configurations within 2x1x1 supercell<a class="headerlink" href="#step-4-calculating-energies-of-possible-configurations-within-2x1x1-supercell" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing lattice information, ECI, of.out</p>
@@ -394,9 +393,9 @@ nchange1/  nchange2/  nchange3/  nchange4/  nchange5/  nchange6/  nchange7/
 <li><p>drawing a figure using gs.out</p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/gss.png"><img alt="../_images/gss.png" src="../_images/gss.png" style="width: 400px;" /></a>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
                 </div>
@@ -407,8 +406,9 @@ nchange1/  nchange2/  nchange3/  nchange4/  nchange5/  nchange6/  nchange7/
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">13. チュートリアル</a><ul>
 <li><a class="reference internal" href="#tutorial-1">13.1. Tutorial 1: 指定したセルの範囲内でのすべての原子配置においてエネルギー計算を行う</a><ul>
 <li><a class="reference internal" href="#step-1-searching-for-independent-clusters-on-the-lattice">13.1.1. Step 1. searching for independent clusters on the lattice</a></li>
@@ -421,12 +421,17 @@ nchange1/  nchange2/  nchange3/  nchange4/  nchange5/  nchange6/  nchange7/
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="ti.html"
-                        title="previous chapter"><span class="section-number">12. </span>熱力学積分によるグランドポテンシャルの計算</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="index-e.html"
-                        title="next chapter">clupan (version 0.7) in English</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="ti.html"
+                          title="previous chapter"><span class="section-number">12. </span>熱力学積分によるグランドポテンシャルの計算</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="index-e.html"
+                          title="next chapter">clupan (version 0.7) in English</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -470,8 +475,8 @@ nchange1/  nchange2/  nchange3/  nchange4/  nchange5/  nchange6/  nchange7/
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 

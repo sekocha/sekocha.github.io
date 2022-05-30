@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>8. Optimization of clusters &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -144,9 +143,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="optimization-of-clusters">
+  <div class="section" id="optimization-of-clusters">
 <h1><span class="section-number">8. </span>Optimization of clusters<a class="headerlink" href="#optimization-of-clusters" title="Permalink to this headline">¶</a></h1>
-<section id="theoretical-backgrounds">
+<div class="section" id="theoretical-backgrounds">
 <h2><span class="section-number">8.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
 <p><strong>Optimization of clusters using the genetic algorithm</strong></p>
 <p>See <a class="reference internal" href="#ga1" id="id1"><span>[ga1]</span></a> and <a class="reference internal" href="#ga2" id="id2"><span>[ga2]</span></a>.</p>
@@ -158,8 +157,8 @@
 <dd><p>V Blum, G L W Hart, M J Walorski and A Zunger, Phys. Rev. B 72, 165113 (2005).</p>
 </dd>
 </dl>
-</section>
-<section id="gasa">
+</div>
+<div class="section" id="gasa">
 <h2><span class="section-number">8.2. </span>gasa<a class="headerlink" href="#gasa" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Searching for the set of clusters that minimizes the CV score using the genetic algorithm.</p></li>
@@ -176,8 +175,8 @@
 <ul class="simple">
 <li><p>gasa.out</p></li>
 </ul>
-</section>
-<section id="wgasa">
+</div>
+<div class="section" id="wgasa">
 <h2><span class="section-number">8.3. </span>wgasa<a class="headerlink" href="#wgasa" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Searching for the set of clusters that minimizes the weighted CV score using the genetic algorithm.</p></li>
@@ -193,8 +192,8 @@
 <ul class="simple">
 <li><p>wgasa.out</p></li>
 </ul>
-</section>
-<section id="gasa-in">
+</div>
+<div class="section" id="gasa-in">
 <h2><span class="section-number">8.4. </span>GASA.in<a class="headerlink" href="#gasa-in" title="Permalink to this headline">¶</a></h2>
 <p><strong>Example</strong></p>
 <p>The set of clusters is optimized using the genetic algorithm.
@@ -230,23 +229,23 @@ The cluster set is composed of no.0-5 clusters and 5 clusters selected among no.
 <span class="n">PMUTATION</span>   <span class="o">=</span> <span class="mf">0.03</span>
 </pre></div>
 </div>
-<section id="nallcluster-tag">
+<div class="section" id="nallcluster-tag">
 <h3><span class="section-number">8.4.1. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of all clusters included in CORRELATION file.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NALLCLUSTER = 53</p></li>
 </ul>
-</section>
-<section id="ncluster-tag">
+</div>
+<div class="section" id="ncluster-tag">
 <h3><span class="section-number">8.4.2. </span>NCLUSTER tag<a class="headerlink" href="#ncluster-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of clusters for selection.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NCLUSTER = 5</p></li>
 </ul>
-</section>
-<section id="minindex-tag-maxindex-tag">
+</div>
+<div class="section" id="minindex-tag-maxindex-tag">
 <h3><span class="section-number">8.4.3. </span>MININDEX tag, MAXINDEX tag<a class="headerlink" href="#minindex-tag-maxindex-tag" title="Permalink to this headline">¶</a></h3>
 <p>Minimum and maximum cluster index for the optimization.</p>
 <ul class="simple">
@@ -254,56 +253,56 @@ The cluster set is composed of no.0-5 clusters and 5 clusters selected among no.
 <li><p>Example : MININDEX = 5</p></li>
 <li><p>Example : MAXINDEX = 52</p></li>
 </ul>
-</section>
-<section id="basecluster-tag">
+</div>
+<div class="section" id="basecluster-tag">
 <h3><span class="section-number">8.4.4. </span>BASECLUSTER tag<a class="headerlink" href="#basecluster-tag" title="Permalink to this headline">¶</a></h3>
 <p>Cluster indexes included for ECI evaluation.</p>
 <ul class="simple">
 <li><p>Default : empty</p></li>
 <li><p>Example : BASECLUSTER = 0 1 2 3 4 5</p></li>
 </ul>
-</section>
-<section id="excluster-tag">
+</div>
+<div class="section" id="excluster-tag">
 <h3><span class="section-number">8.4.5. </span>EXCLUSTER tag<a class="headerlink" href="#excluster-tag" title="Permalink to this headline">¶</a></h3>
 <p>Cluster indexes excluded for the optimization.</p>
 <ul class="simple">
 <li><p>Default : empty</p></li>
 <li><p>Example : EXCLUSTER = 15 23 34</p></li>
 </ul>
-</section>
-<section id="npop-tag">
+</div>
+<div class="section" id="npop-tag">
 <h3><span class="section-number">8.4.6. </span>NPOP tag<a class="headerlink" href="#npop-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of cluster sets included in the population.</p>
 <ul class="simple">
 <li><p>Default : 30</p></li>
 <li><p>Example : NPOP = 25</p></li>
 </ul>
-</section>
-<section id="nelite-tag">
+</div>
+<div class="section" id="nelite-tag">
 <h3><span class="section-number">8.4.7. </span>NELITE tag<a class="headerlink" href="#nelite-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of elites (good cluster sets) kept for the next optimization step.</p>
 <ul class="simple">
 <li><p>Default : 1</p></li>
 <li><p>Example : NELITE = 5</p></li>
 </ul>
-</section>
-<section id="pmating-tag">
+</div>
+<div class="section" id="pmating-tag">
 <h3><span class="section-number">8.4.8. </span>PMATING tag<a class="headerlink" href="#pmating-tag" title="Permalink to this headline">¶</a></h3>
 <p>Probability of mating.</p>
 <ul class="simple">
 <li><p>Default : 0.9</p></li>
 <li><p>Example : PMATING = 0.95</p></li>
 </ul>
-</section>
-<section id="pmutation-tag">
+</div>
+<div class="section" id="pmutation-tag">
 <h3><span class="section-number">8.4.9. </span>PMUTATION tag<a class="headerlink" href="#pmutation-tag" title="Permalink to this headline">¶</a></h3>
 <p>Probability of mutation.</p>
 <ul class="simple">
 <li><p>Default : 0.03</p></li>
 <li><p>Example : PMUTATION = 0.05</p></li>
 </ul>
-</section>
-<section id="nloop-tag">
+</div>
+<div class="section" id="nloop-tag">
 <h3><span class="section-number">8.4.10. </span>NLOOP tag<a class="headerlink" href="#nloop-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of steps for simulated annealing at one temperature.
 If you perform only the genetic algorithm, set NLOOP = 0.</p>
@@ -311,8 +310,8 @@ If you perform only the genetic algorithm, set NLOOP = 0.</p>
 <li><p>Default : 0</p></li>
 <li><p>Example : NLOOP = 100</p></li>
 </ul>
-</section>
-<section id="tempinit-tag-tempfinal-tag">
+</div>
+<div class="section" id="tempinit-tag-tempfinal-tag">
 <h3><span class="section-number">8.4.11. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
 <p>Initial and final temperatures in the simulated annealing.</p>
 <ul class="simple">
@@ -320,8 +319,8 @@ If you perform only the genetic algorithm, set NLOOP = 0.</p>
 <li><p>Example : TEMPINIT = 1</p></li>
 <li><p>Example : TEMPFINAL = 0.001</p></li>
 </ul>
-</section>
-<section id="tempmul-tag">
+</div>
+<div class="section" id="tempmul-tag">
 <h3><span class="section-number">8.4.12. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
 <p>Exponential base used in an automatic setting of temperatures in the simulated annealing.
 Set values ranged from 0 to 1.</p>
@@ -329,9 +328,9 @@ Set values ranged from 0 to 1.</p>
 <li><p>Default : none</p></li>
 <li><p>Example : TEMPMUL = 0.9</p></li>
 </ul>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
                 </div>
@@ -342,8 +341,9 @@ Set values ranged from 0 to 1.</p>
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">8. Optimization of clusters</a><ul>
 <li><a class="reference internal" href="#theoretical-backgrounds">8.1. Theoretical backgrounds</a></li>
 <li><a class="reference internal" href="#gasa">8.2. gasa</a></li>
@@ -367,12 +367,17 @@ Set values ranged from 0 to 1.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="lsf-e.html"
-                        title="previous chapter"><span class="section-number">7. </span>Estimation of effective cluster interaction</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="search_poscar-e.html"
-                        title="next chapter"><span class="section-number">9. </span>Structure selection for DFT calculations</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="lsf-e.html"
+                          title="previous chapter"><span class="section-number">7. </span>Estimation of effective cluster interaction</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="search_poscar-e.html"
+                          title="next chapter"><span class="section-number">9. </span>Structure selection for DFT calculations</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -416,8 +421,8 @@ Set values ranged from 0 to 1.</p>
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 

@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>5. クラスターの探索 &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -134,9 +133,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="id1">
+  <div class="section" id="id1">
 <h1><span class="section-number">5. </span>クラスターの探索<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<section id="cluster">
+<div class="section" id="cluster">
 <h2><span class="section-number">5.1. </span>cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>結晶格子の対称操作を探索し，独立なクラスターを探索する．</p></li>
@@ -154,8 +153,8 @@
 <li><p><a class="reference internal" href="files.html#label-position-out"><span class="std std-ref">position.out</span></a></p></li>
 <li><p>cluster.out</p></li>
 </ul>
-</section>
-<section id="ce-in">
+</div>
+<div class="section" id="ce-in">
 <h2><span class="section-number">5.2. </span>CE.in<a class="headerlink" href="#ce-in" title="Permalink to this headline">¶</a></h2>
 <p>すべての原子間距離が6.0以下のクラスターを4体まで探索する例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
@@ -163,7 +162,7 @@
 <span class="n">DTRUNC</span> <span class="o">=</span> <span class="mf">6.0</span> <span class="mf">6.0</span> <span class="mf">6.0</span> <span class="mf">0.0</span>
 </pre></div>
 </div>
-<section id="isub-tag">
+<div class="section" id="isub-tag">
 <h3><span class="section-number">5.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>結晶格子において，クラスター展開を行う格子点を指定する．
 UPOSCARの格子点数（6行目）のISUB番目に指定された格子点において，クラスター展開を行う．</p>
@@ -171,33 +170,33 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</section>
-<section id="nmax-tag">
+</div>
+<div class="section" id="nmax-tag">
 <h3><span class="section-number">5.2.2. </span>NMAX tag<a class="headerlink" href="#nmax-tag" title="Permalink to this headline">¶</a></h3>
 <p>クラスターに含まれる最大格子点数．</p>
 <ul class="simple">
 <li><p>Default : 4</p></li>
 <li><p>Example : NMAX = 6</p></li>
 </ul>
-</section>
-<section id="dtrunc-tag">
+</div>
+<div class="section" id="dtrunc-tag">
 <h3><span class="section-number">5.2.3. </span>DTRUNC tag<a class="headerlink" href="#dtrunc-tag" title="Permalink to this headline">¶</a></h3>
 <p>クラスターに含まれる原子間距離の最大値．左から順に2体，3体，4体，5体以上の値を指定する．</p>
 <ul class="simple">
 <li><p>Default : 6.0 6.0 6.0 6.0</p></li>
 <li><p>Example : DTRUNC = 6.0 6.0 6.0 5.0</p></li>
 </ul>
-</section>
-<section id="symprec-tag">
+</div>
+<div class="section" id="symprec-tag">
 <h3><span class="section-number">5.2.4. </span>SYMPREC tag<a class="headerlink" href="#symprec-tag" title="Permalink to this headline">¶</a></h3>
 <p>対称操作を探索するときの計算精度(単位：fractional coordinate)．</p>
 <ul class="simple">
 <li><p>Default : 1e-5</p></li>
 <li><p>Example : SYMPREC = 1e-5</p></li>
 </ul>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
                 </div>
@@ -208,8 +207,9 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">5. クラスターの探索</a><ul>
 <li><a class="reference internal" href="#cluster">5.1. cluster</a></li>
 <li><a class="reference internal" href="#ce-in">5.2. CE.in</a><ul>
@@ -223,12 +223,17 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="mkposcar.html"
-                        title="previous chapter"><span class="section-number">4. </span>DFT計算のための初期構造</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="correlation.html"
-                        title="next chapter"><span class="section-number">6. </span>相関関数の計算</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mkposcar.html"
+                          title="previous chapter"><span class="section-number">4. </span>DFT計算のための初期構造</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="correlation.html"
+                          title="next chapter"><span class="section-number">6. </span>相関関数の計算</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -272,8 +277,8 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 

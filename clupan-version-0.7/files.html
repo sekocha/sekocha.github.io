@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>3. 入力，出力ファイル &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -137,9 +136,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="id1">
+  <div class="section" id="id1">
 <h1><span class="section-number">3. </span>入力，出力ファイル<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<section id="uposcar">
+<div class="section" id="uposcar">
 <span id="label-uposcar"></span><h2><span class="section-number">3.1. </span>UPOSCAR<a class="headerlink" href="#uposcar" title="Permalink to this headline">¶</a></h2>
 <p>結晶格子のユニットセルを記述する．書式はVASPのものと同じ．</p>
 <ul>
@@ -163,8 +162,8 @@
 </div>
 </li>
 </ul>
-</section>
-<section id="upotcar">
+</div>
+<div class="section" id="upotcar">
 <span id="label-upotcar"></span><h2><span class="section-number">3.2. </span>UPOTCAR<a class="headerlink" href="#upotcar" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>Sample</p>
@@ -174,19 +173,19 @@
 </div>
 </li>
 </ul>
-</section>
-<section id="position-out">
+</div>
+<div class="section" id="position-out">
 <span id="label-position-out"></span><h2><span class="section-number">3.3. </span>position.out<a class="headerlink" href="#position-out" title="Permalink to this headline">¶</a></h2>
 <p>クラスターの格子点（ユニットセル内の格子点，並進ベクトル）を記述する．
 <strong>cluster</strong> で生成される． <strong>correlation</strong> で使用する．</p>
-</section>
-<section id="of-out">
+</div>
+<div class="section" id="of-out">
 <span id="label-of-out"></span><h2><span class="section-number">3.4. </span>of.out<a class="headerlink" href="#of-out" title="Permalink to this headline">¶</a></h2>
 <p>クラスターの格子点（ユニットセル内の格子点，並進ベクトル），および多元系の計算で使用するonsiteのクラスター関数の組み合わせを記述する．
 <strong>correlation</strong> で生成される．
 <strong>gss</strong> , <strong>cmc</strong>, <strong>gcmc</strong>, <strong>search_poscar_variance</strong>, <strong>lte</strong> で使用する．</p>
-</section>
-<section id="energy">
+</div>
+<div class="section" id="energy">
 <span id="label-energy"></span><h2><span class="section-number">3.5. </span>ENERGY<a class="headerlink" href="#energy" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>1列目 : エネルギー</p></li>
@@ -201,8 +200,8 @@
 </div>
 </li>
 </ul>
-</section>
-<section id="correlation">
+</div>
+<div class="section" id="correlation">
 <span id="label-correlation"></span><h2><span class="section-number">3.6. </span>CORRELATION<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>構造ごとにコメントを1行入れ，プログラム <strong>correlation</strong> の標準出力をCORRELATIONに並べる．</p></li>
@@ -232,8 +231,8 @@ done
 </div>
 </li>
 </ul>
-</section>
-<section id="weight">
+</div>
+<div class="section" id="weight">
 <span id="label-weight"></span><h2><span class="section-number">3.7. </span>WEIGHT<a class="headerlink" href="#weight" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>構造数の重みを指定する．</p></li>
@@ -249,8 +248,8 @@ done
 </div>
 </li>
 </ul>
-</section>
-<section id="eci">
+</div>
+<div class="section" id="eci">
 <span id="label-eci"></span><h2><span class="section-number">3.8. </span>ECI<a class="headerlink" href="#eci" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>プログラム <strong>lsf</strong> の標準出力から，sum of square error以下の行を消去する．</p></li>
@@ -265,15 +264,15 @@ done
 </div>
 </li>
 </ul>
-</section>
-<section id="variance">
+</div>
+<div class="section" id="variance">
 <span id="label-variance"></span><h2><span class="section-number">3.9. </span>VARIANCE<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>構造母集団の相関関数の分散共分散行列．</p>
 <blockquote>
 <div><div class="math">
-<p><span class="math">\bm{\Sigma}_{\alpha_1, \alpha_2} = \frac{1}{N_{\rm all}} \sum_{i=1}^{N_{\rm all}} \left( \varphi_{\alpha_1} (i) - \bm{\mu}_{\alpha_1} \right) \left( \varphi_{\alpha_2} (i) - \bm{\mu}_{\alpha_2} \right)</span></p>
-</div><p>ここで， <span class="math">N_{\rm all}</span> は構造母集団の構造数， <span class="math">\varphi_\alpha (i)</span> は構造iのクラスター <span class="math">\alpha</span> の相関関数， <span class="math">\bm{\mu}_\alpha</span> は構造母集団のクラスター <span class="math">\alpha</span> の平均相関関数を表す．</p>
+<p><img src="../_images/math/8af17332eceab1270361c748cc40529b16eb2c5b.svg" alt="\bm{\Sigma}_{\alpha_1, \alpha_2} = \frac{1}{N_{\rm all}} \sum_{i=1}^{N_{\rm all}} \left( \varphi_{\alpha_1} (i) - \bm{\mu}_{\alpha_1} \right) \left( \varphi_{\alpha_2} (i) - \bm{\mu}_{\alpha_2} \right)"/></p>
+</div><p>ここで， <img class="math" src="../_images/math/303e8b98f6a5c6f7a568597e9686fa5a8eac1c66.svg" alt="N_{\rm all}"/> は構造母集団の構造数， <img class="math" src="../_images/math/289e5197cc8ee00c597346ab8f5d0883f1e36aa1.svg" alt="\varphi_\alpha (i)"/> は構造iのクラスター <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.svg" alt="\alpha"/> の相関関数， <img class="math" src="../_images/math/7990d617b17144c42c12849c37ddf3e14469cad8.svg" alt="\bm{\mu}_\alpha"/> は構造母集団のクラスター <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.svg" alt="\alpha"/> の平均相関関数を表す．</p>
 </div></blockquote>
 </li>
 <li><p>プログラム <strong>variance_stpop</strong> により生成される．</p></li>
@@ -294,15 +293,15 @@ done
 </div>
 </li>
 </ul>
-</section>
-<section id="mean">
+</div>
+<div class="section" id="mean">
 <span id="label-mean"></span><h2><span class="section-number">3.10. </span>MEAN<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>構造母集団の相関関数の平均値．</p>
 <blockquote>
 <div><div class="math">
-<p><span class="math">\bm{\mu}_\alpha = \frac{1}{N_{\rm all}} \sum_{i=1}^{N_{\rm all}} \varphi_\alpha (i)</span></p>
-</div><p>ここで， <span class="math">N_{\rm all}</span> は構造母集団の構造数， <span class="math">\varphi_\alpha (i)</span> は，構造iのクラスター <span class="math">\alpha</span> の相関関数を表す．</p>
+<p><img src="../_images/math/30fadb981c871d9aea38fde46fdd92b97f851360.svg" alt="\bm{\mu}_\alpha = \frac{1}{N_{\rm all}} \sum_{i=1}^{N_{\rm all}} \varphi_\alpha (i)"/></p>
+</div><p>ここで， <img class="math" src="../_images/math/303e8b98f6a5c6f7a568597e9686fa5a8eac1c66.svg" alt="N_{\rm all}"/> は構造母集団の構造数， <img class="math" src="../_images/math/289e5197cc8ee00c597346ab8f5d0883f1e36aa1.svg" alt="\varphi_\alpha (i)"/> は，構造iのクラスター <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.svg" alt="\alpha"/> の相関関数を表す．</p>
 </div></blockquote>
 </li>
 <li><p>プログラム <strong>variance_stpop</strong> により生成される．</p></li>
@@ -317,8 +316,8 @@ done
 </div>
 </li>
 </ul>
-</section>
-<section id="path-data">
+</div>
+<div class="section" id="path-data">
 <span id="label-path-data"></span><h2><span class="section-number">3.11. </span>path_data<a class="headerlink" href="#path-data" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>熱力学積分を行う経路およびその経路に沿ったエネルギー，組成を指定する．</p></li>
@@ -352,8 +351,8 @@ done
 </div>
 </li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
                 </div>
@@ -364,8 +363,9 @@ done
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">3. 入力，出力ファイル</a><ul>
 <li><a class="reference internal" href="#uposcar">3.1. UPOSCAR</a></li>
 <li><a class="reference internal" href="#upotcar">3.2. UPOTCAR</a></li>
@@ -382,12 +382,17 @@ done
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="install.html"
-                        title="previous chapter"><span class="section-number">2. </span>インストールと基本的な設定</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="mkposcar.html"
-                        title="next chapter"><span class="section-number">4. </span>DFT計算のための初期構造</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install.html"
+                          title="previous chapter"><span class="section-number">2. </span>インストールと基本的な設定</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mkposcar.html"
+                          title="next chapter"><span class="section-number">4. </span>DFT計算のための初期構造</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -431,8 +436,8 @@ done
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 

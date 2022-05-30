@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>10. Ground state search &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -135,9 +134,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="ground-state-search">
+  <div class="section" id="ground-state-search">
 <h1><span class="section-number">10. </span>Ground state search<a class="headerlink" href="#ground-state-search" title="Permalink to this headline">¶</a></h1>
-<section id="gss">
+<div class="section" id="gss">
 <h2><span class="section-number">10.1. </span>gss<a class="headerlink" href="#gss" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Searching for the ground state structures by calculating energies of all configurations within an arbitrary lattice.</p></li>
@@ -157,8 +156,8 @@
 <li><p>gs.out</p></li>
 <li><p>LATTICE-GSS</p></li>
 </ul>
-</section>
-<section id="gs-in">
+</div>
+<div class="section" id="gs-in">
 <h2><span class="section-number">10.2. </span>GS.in<a class="headerlink" href="#gs-in" title="Permalink to this headline">¶</a></h2>
 <p>Energies of all structures with 12 A-atoms (spin=+1) and 4 B-atoms (spin=-1) constructed by the 2x2x1 expansion of a 4-atoms unit cell (16-atoms cell).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
@@ -167,7 +166,7 @@
 <span class="n">SPIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 </div>
-<section id="isub-tag">
+<div class="section" id="isub-tag">
 <h3><span class="section-number">10.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>Sublattice indexes for considering atomic configurations.
 Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6).</p>
@@ -175,8 +174,8 @@ Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6)
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</section>
-<section id="nchange-tag">
+</div>
+<div class="section" id="nchange-tag">
 <h3><span class="section-number">10.2.2. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of atoms.
 In N-nary systems, set N-1 kinds of atoms.
@@ -185,8 +184,8 @@ The number of the other kind of atoms is automatically set to (number of lattice
 <li><p>Default : none</p></li>
 <li><p>Example : NCHANGE = 6</p></li>
 </ul>
-</section>
-<section id="spin-tag">
+</div>
+<div class="section" id="spin-tag">
 <h3><span class="section-number">10.2.3. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
 <p>Spin values of atoms.
 In binary systems, SPIN tag has two kinds of values.
@@ -196,25 +195,25 @@ The same correspondence between spins and atom types used in <strong>correlation
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>In the above example, spin values of NCHANGE atoms are set to -1.</p>
-</section>
-<section id="nucell-tag">
+</div>
+<div class="section" id="nucell-tag">
 <h3><span class="section-number">10.2.4. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
 <p>Energies of all configurations within a supercell constructed by the NUCELL expansion of the unit cell.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 2 1 1</p></li>
 </ul>
-</section>
-<section id="symprec-tag">
+</div>
+<div class="section" id="symprec-tag">
 <h3><span class="section-number">10.2.5. </span>SYMPREC tag<a class="headerlink" href="#symprec-tag" title="Permalink to this headline">¶</a></h3>
 <p>Numerical precision for searching for symmetry operations (unit: fractional coordinates).</p>
 <ul class="simple">
 <li><p>Default : 1e-5</p></li>
 <li><p>Example : SYMPREC = 1e-5</p></li>
 </ul>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
                 </div>
@@ -225,8 +224,9 @@ The same correspondence between spins and atom types used in <strong>correlation
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">10. Ground state search</a><ul>
 <li><a class="reference internal" href="#gss">10.1. gss</a></li>
 <li><a class="reference internal" href="#gs-in">10.2. GS.in</a><ul>
@@ -241,12 +241,17 @@ The same correspondence between spins and atom types used in <strong>correlation
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="search_poscar-e.html"
-                        title="previous chapter"><span class="section-number">9. </span>Structure selection for DFT calculations</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="mc-e.html"
-                        title="next chapter"><span class="section-number">11. </span>Calculation of thermodynamic quantities using Monte Carlo (MC) simulation</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="search_poscar-e.html"
+                          title="previous chapter"><span class="section-number">9. </span>Structure selection for DFT calculations</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mc-e.html"
+                          title="next chapter"><span class="section-number">11. </span>Calculation of thermodynamic quantities using Monte Carlo (MC) simulation</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -290,8 +295,8 @@ The same correspondence between spins and atom types used in <strong>correlation
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 

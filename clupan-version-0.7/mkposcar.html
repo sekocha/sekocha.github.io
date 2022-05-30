@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>4. DFT計算のための初期構造 &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -136,9 +135,9 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="dft">
+  <div class="section" id="dft">
 <h1><span class="section-number">4. </span>DFT計算のための初期構造<a class="headerlink" href="#dft" title="Permalink to this headline">¶</a></h1>
-<section id="mkposcar">
+<div class="section" id="mkposcar">
 <h2><span class="section-number">4.1. </span>mkposcar<a class="headerlink" href="#mkposcar" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>結晶格子の対称操作を探索し，独立な原子配置を持つ構造を生成する．</p></li>
@@ -158,8 +157,8 @@
 <ul class="simple">
 <li><p>POSCAR_1 - POSCAR_nstruct</p></li>
 </ul>
-</section>
-<section id="mkpos-in">
+</div>
+<div class="section" id="mkpos-in">
 <h2><span class="section-number">4.2. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this headline">¶</a></h2>
 <p>4原子のユニットセルのa,b軸を2倍にしたセル(16原子)において，対称性の高い順に，12原子，4原子を配置させた5構造を生成する例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
@@ -169,7 +168,7 @@
 <span class="n">SELECT</span> <span class="o">=</span> <span class="n">Highsym</span>
 </pre></div>
 </div>
-<section id="isub-tag">
+<div class="section" id="isub-tag">
 <h3><span class="section-number">4.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>結晶格子において，原子の配置を考慮する格子点を指定する．
 UPOSCARの格子点数（6行目）のISUB番目に指定された格子点において，原子の配置を考慮する．</p>
@@ -177,16 +176,16 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</section>
-<section id="nucell-tag">
+</div>
+<div class="section" id="nucell-tag">
 <h3><span class="section-number">4.2.2. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
 <p>UPOSCARをNUCELL倍したcellにおいて，独立な原子配置を持つ構造を生成．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 2 2 2</p></li>
 </ul>
-</section>
-<section id="nchange-tag">
+</div>
+<div class="section" id="nchange-tag">
 <h3><span class="section-number">4.2.3. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this headline">¶</a></h3>
 <p>原子の配置を考慮する格子点において，原子を配置させる数．
 N元系の場合は，N-1種類だけ指定する．
@@ -195,16 +194,16 @@ N元系の場合は，N-1種類だけ指定する．
 <li><p>Default : none</p></li>
 <li><p>Example : NCHANGE = 6 2</p></li>
 </ul>
-</section>
-<section id="nstruct-tag">
+</div>
+<div class="section" id="nstruct-tag">
 <h3><span class="section-number">4.2.4. </span>NSTRUCT tag<a class="headerlink" href="#nstruct-tag" title="Permalink to this headline">¶</a></h3>
 <p>生成する構造数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NSTRUCT = 10</p></li>
 </ul>
-</section>
-<section id="select-tag">
+</div>
+<div class="section" id="select-tag">
 <h3><span class="section-number">4.2.5. </span>SELECT tag<a class="headerlink" href="#select-tag" title="Permalink to this headline">¶</a></h3>
 <p>構造の生成方法．</p>
 <ul class="simple">
@@ -212,8 +211,8 @@ N元系の場合は，N-1種類だけ指定する．
 <li><p>SELECT = Highsym : 対称性の高い順に構造を生成．</p></li>
 <li><p>SELECT = Random : ランダムに構造を生成．</p></li>
 </ul>
-</section>
-<section id="iout-tag">
+</div>
+<div class="section" id="iout-tag">
 <h3><span class="section-number">4.2.6. </span>IOUT tag<a class="headerlink" href="#iout-tag" title="Permalink to this headline">¶</a></h3>
 <p>ファイルを出力するかどうかを指定するパラメータ．</p>
 <ul class="simple">
@@ -221,9 +220,9 @@ N元系の場合は，N-1種類だけ指定する．
 <li><p>0 : POSCARを出力しない.</p></li>
 <li><p>1 : POSCARを出力.</p></li>
 </ul>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
                 </div>
@@ -234,8 +233,9 @@ N元系の場合は，N-1種類だけ指定する．
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">4. DFT計算のための初期構造</a><ul>
 <li><a class="reference internal" href="#mkposcar">4.1. mkposcar</a></li>
 <li><a class="reference internal" href="#mkpos-in">4.2. MKPOS.in</a><ul>
@@ -251,12 +251,17 @@ N元系の場合は，N-1種類だけ指定する．
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="files.html"
-                        title="previous chapter"><span class="section-number">3. </span>入力，出力ファイル</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cluster.html"
-                        title="next chapter"><span class="section-number">5. </span>クラスターの探索</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="files.html"
+                          title="previous chapter"><span class="section-number">3. </span>入力，出力ファイル</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="cluster.html"
+                          title="next chapter"><span class="section-number">5. </span>クラスターの探索</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -300,8 +305,8 @@ N元系の場合は，N-1種類だけ指定する．
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 

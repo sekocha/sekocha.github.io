@@ -1,27 +1,27 @@
 
 .. _mlp_lammps_section:
 
-Lammps simulations using machine learning potentials
-======================================================
+Lammps simulations using polynomial machine learning potentials
+=================================================================
 
-
-**lammps-mlip** package and **boost** library are required to use machine learning potentials in lammps code. 
-**lammps-mlip** package for LAMMPS software is available on GitHub `[lammps-mlip-package] <https://github.com/sekocha/lammps-mlip-package>`_.
-Machine learning potentials for a wide range of systems can be found in :ref:`Machine Learning Potential Repository<mlp_section>`. If you use **lammps-mlip** package and machine learning potentials in the repository for academic purposes, please cite the following article [1].
+**lammps-polymlp** package and **boost** library are required to use polynomial machine learning potentials in lammps code. 
+**lammps-polymlp** package for LAMMPS software is available on GitHub `[lammps-polymlp-package] <https://github.com/sekocha/lammps-polymlp-package>`_.
+Machine learning potentials for a wide range of systems can be found in `Machine Learning Potential Repository <mlp-repositiory/index.html>`_. 
+If you use **lammps-polymlp** package and machine learning potentials in the repository for academic purposes, please cite the following article [1].
 
 [1] A. Seko, A. Togo and I. Tanaka, "Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential", Phys. Rev. B 99, 214108 (2019).
 
 
-Building lammps with lammps-mlip package
+Building lammps with lammps-polymlp package
 ----------------------------------------------
-#. Unzip **lammps-mlip.tar.gz**, and then copy all the components in the **lammps-mlip** package to the latest lammps source code directory as ::
+#. Unzip **lammps-polymlp.tar.gz**, and then copy all the components in the **lammps-polymlp** package to the latest lammps source code directory as ::
 
-    > cp -r lammps-mlip/lib/mlip $(lammps_src)/lib
-    > cp -r lammps-mlip/src/USER-MLIP $(lammps_src)/src
+    > cp -r lammps-polymlp-package/lib/polymlp $(lammps_src)/lib
+    > cp -r lammps-polymlp-package/src/USER-POLYMLP $(lammps_src)/src
 
-#. Modify $(lammps_src)/lib/mlip/Makefile.lammps to specify an installed directory of the boost library.
+#. Modify $(lammps_src)/lib/polymlp/Makefile.lammps to specify an installed directory of the boost library.
 
-#. Add "user-mlip" to variable PACKUSER defined in $(lammps_src)/src/Makefile and activate user-mlip package as ::
+#. Add "user-polymlp" to variable PACKUSER defined in $(lammps_src)/src/Makefile and activate user-polymlp package as ::
 
     > vi $(lammps_src)/src/Makefile
         PACKUSER = user-atc user-awpmd user-cgdna user-cgsdk user-colvars \
@@ -29,13 +29,15 @@ Building lammps with lammps-mlip package
             user-intel user-lb user-manifold user-meamc user-mgpt user-misc user-molfile \
             user-netcdf user-omp user-phonon user-qmmm user-qtb \
             user-quip user-reaxc user-smd user-smtbq user-sph user-tally \
-            user-vtk user-mlip
+            user-vtk user-polymlp
 
-    > make yes-user-mlip
+    > make yes-user-polymlp
 
-#. Build lammps binary files ::
+#. Build lammps binary files (It requires approximately ten minutes for compiling polymlp_gtinv_data.cpp.) ::
 
     > make serial -j 36
+
+(lammps-polymlp-package is tested using LAMMPS_VERSION "3 Mar 2020”)
 
 
 Lammps input commands to specify a machine learning potential
@@ -43,13 +45,8 @@ Lammps input commands to specify a machine learning potential
 
 The following lammps input commands specify a machine learning potential. ::
 
-    pair_style  mlip_pair
-    pair_coeff * * pyml.lammps.mlip Ti Al
-
-or ::
-
-    pair_style  mlip_gtinv
-    pair_coeff * * pyml.lammps.mlip Ti Al
+    pair_style  polymlp
+    pair_coeff * * mlp.lammps Ti Al
 
 Scaling with respect to number of atoms
 ------------------------------------------------------------------
@@ -136,8 +133,8 @@ A tutorial for lammps simulation
     units metal
     read_data structure.lammps
 
-    pair_style  mlip
-    pair_coeff * * pyml.lammps.mlip Ti Al
+    pair_style  mlip_gtinv
+    pair_coeff * * mlp.lammps Ti Al
 
     # Define minimization parameters
     variable etol equal 0.0

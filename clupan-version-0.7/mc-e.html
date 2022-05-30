@@ -6,8 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    
     <title>11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,8 +14,8 @@
     
 
 <link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
-<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
-<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
 
 <link rel="stylesheet" href="../_static/css/font-awesome.min.css">
 
@@ -146,13 +145,13 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <section id="calculation-of-thermodynamic-quantities-using-monte-carlo-mc-simulation">
+  <div class="section" id="calculation-of-thermodynamic-quantities-using-monte-carlo-mc-simulation">
 <h1><span class="section-number">11. </span>Calculation of thermodynamic quantities using Monte Carlo (MC) simulation<a class="headerlink" href="#calculation-of-thermodynamic-quantities-using-monte-carlo-mc-simulation" title="Permalink to this headline">¶</a></h1>
-<section id="theoretical-backgrounds">
+<div class="section" id="theoretical-backgrounds">
 <h2><span class="section-number">11.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
 <p>Under construction.</p>
-</section>
-<section id="cmc">
+</div>
+<div class="section" id="cmc">
 <h2><span class="section-number">11.2. </span>cmc<a class="headerlink" href="#cmc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Performing canonical MC simulation.</p></li>
@@ -174,8 +173,8 @@
 <li><p>cmc.out</p></li>
 <li><p>POSCAR_finish (Final atomic position)</p></li>
 </ul>
-</section>
-<section id="gcmc">
+</div>
+<div class="section" id="gcmc">
 <h2><span class="section-number">11.3. </span>gcmc<a class="headerlink" href="#gcmc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Performing semi-grand canonical MC simulation.</p></li>
@@ -198,8 +197,8 @@
 <li><p>gcmc.out</p></li>
 <li><p>POSCAR_finish (Final atomic position)</p></li>
 </ul>
-</section>
-<section id="mc-in">
+</div>
+<div class="section" id="mc-in">
 <h2><span class="section-number">11.4. </span>MC.in<a class="headerlink" href="#mc-in" title="Permalink to this headline">¶</a></h2>
 <p>An equilibration process is started from a random structure, and thermodynamic quantities are calculated at 1000 K using <strong>cmc</strong>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
@@ -230,7 +229,7 @@ Thermodynamic quantities are calculated at 1000 K using <strong>gcmc</strong>.</
 <span class="n">MU</span> <span class="o">=</span> <span class="mf">0.200</span>
 </pre></div>
 </div>
-<section id="isub-tag">
+<div class="section" id="isub-tag">
 <h3><span class="section-number">11.4.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
 <p>Sublattice indexes for performing the CE.
 The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
@@ -238,8 +237,8 @@ The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</section>
-<section id="itemp-tag">
+</div>
+<div class="section" id="itemp-tag">
 <h3><span class="section-number">11.4.2. </span>ITEMP tag<a class="headerlink" href="#itemp-tag" title="Permalink to this headline">¶</a></h3>
 <p>ITEMP tag determines how to set temperatures.</p>
 <ol class="arabic simple" start="0">
@@ -251,8 +250,8 @@ The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
 <li><p>Default : 0</p></li>
 <li><p>Example : ITEMP = 1</p></li>
 </ul>
-</section>
-<section id="temp-tag">
+</div>
+<div class="section" id="temp-tag">
 <h3><span class="section-number">11.4.3. </span>TEMP tag<a class="headerlink" href="#temp-tag" title="Permalink to this headline">¶</a></h3>
 <p>Temperatures for ITEMP = 0.
 Thermodynamic quantities are calculated at the final temperature.</p>
@@ -260,8 +259,8 @@ Thermodynamic quantities are calculated at the final temperature.</p>
 <li><p>Default : none</p></li>
 <li><p>Example : TEMP = 1000 900 800</p></li>
 </ul>
-</section>
-<section id="tempinit-tag-tempfinal-tag">
+</div>
+<div class="section" id="tempinit-tag-tempfinal-tag">
 <h3><span class="section-number">11.4.4. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
 <p>Initial and final temperatures for TEMP = 1 or 2.
 Thermodynamic quantities are calculated at the final temperature.</p>
@@ -270,8 +269,8 @@ Thermodynamic quantities are calculated at the final temperature.</p>
 <li><p>Example : TEMPINIT = 5000</p></li>
 <li><p>Example : TEMPFINAL = 1000</p></li>
 </ul>
-</section>
-<section id="tempmul-tag">
+</div>
+<div class="section" id="tempmul-tag">
 <h3><span class="section-number">11.4.5. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
 <p>Exponential base used in the automaic setting of temperatures for ITEMP = 1.
 Set values ranged from 0 to 1.</p>
@@ -279,24 +278,24 @@ Set values ranged from 0 to 1.</p>
 <li><p>Default : none</p></li>
 <li><p>Example : TEMPMUL = 0.95</p></li>
 </ul>
-</section>
-<section id="nstepann-tag">
+</div>
+<div class="section" id="nstepann-tag">
 <h3><span class="section-number">11.4.6. </span>NSTEPANN tag<a class="headerlink" href="#nstepann-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of steps per atom for performing equilibration.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NSTEPANN = 2000</p></li>
 </ul>
-</section>
-<section id="nstepeqv-tag">
+</div>
+<div class="section" id="nstepeqv-tag">
 <h3><span class="section-number">11.4.7. </span>NSTEPEQV tag<a class="headerlink" href="#nstepeqv-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of steps per atom for calculating thermodynamic quantities.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NSTEPEQV = 2000</p></li>
 </ul>
-</section>
-<section id="nucell-tag">
+</div>
+<div class="section" id="nucell-tag">
 <h3><span class="section-number">11.4.8. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
 <p>MC simulation is performed using a supercell constructed by the NUCELL expansion of the unit cell.
 The supercell can only be constructed by an isotropical expansion.</p>
@@ -304,8 +303,8 @@ The supercell can only be constructed by an isotropical expansion.</p>
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 10 10 10</p></li>
 </ul>
-</section>
-<section id="ipos-tag">
+</div>
+<div class="section" id="ipos-tag">
 <h3><span class="section-number">11.4.9. </span>IPOS tag<a class="headerlink" href="#ipos-tag" title="Permalink to this headline">¶</a></h3>
 <p>IPOS tag determines how to prepare the initial structure.</p>
 <ol class="arabic simple" start="0">
@@ -316,8 +315,8 @@ The supercell can only be constructed by an isotropical expansion.</p>
 <li><p>Default : 0</p></li>
 <li><p>Example : IPOS = 1</p></li>
 </ul>
-</section>
-<section id="spin-tag">
+</div>
+<div class="section" id="spin-tag">
 <h3><span class="section-number">11.4.10. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
 <p>Spin values of atoms.
 In binary systems, SPIN tag has two kinds of values.
@@ -326,8 +325,8 @@ The same correspondence between spins and atom types used in <strong>correlation
 <li><p>Default : none</p></li>
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
-</section>
-<section id="comp-tag">
+</div>
+<div class="section" id="comp-tag">
 <h3><span class="section-number">11.4.11. </span>COMP tag<a class="headerlink" href="#comp-tag" title="Permalink to this headline">¶</a></h3>
 <p>Composition for the initial structure. (IPOS = 0)</p>
 <ul class="simple">
@@ -336,8 +335,8 @@ The same correspondence between spins and atom types used in <strong>correlation
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>In the above example, MC simulation is started from a random structure with 2(spin=+1):1(spin=-1) composition.</p>
-</section>
-<section id="namepot-tag">
+</div>
+<div class="section" id="namepot-tag">
 <h3><span class="section-number">11.4.12. </span>NAMEPOT tag<a class="headerlink" href="#namepot-tag" title="Permalink to this headline">¶</a></h3>
 <p>Atom names (IPOS = 1).
 Do not set spin values for atoms which are not used for the CE.</p>
@@ -347,16 +346,16 @@ Do not set spin values for atoms which are not used for the CE.</p>
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>In the above example, spin values for Mg and Zn are 1 and -1, respectively.</p>
-</section>
-<section id="nucellposcar-tag">
+</div>
+<div class="section" id="nucellposcar-tag">
 <h3><span class="section-number">11.4.13. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this headline">¶</a></h3>
 <p>Number of unit cells included in POSCAR (IPOS = 1).</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
 </ul>
-</section>
-<section id="mu-tag">
+</div>
+<div class="section" id="mu-tag">
 <h3><span class="section-number">11.4.14. </span>MU tag<a class="headerlink" href="#mu-tag" title="Permalink to this headline">¶</a></h3>
 <p>Difference of chemical potentials for <strong>gcmc</strong>.</p>
 <ul class="simple">
@@ -364,9 +363,9 @@ Do not set spin values for atoms which are not used for the CE.</p>
 <li><p>Example : MU = 0.2</p></li>
 </ul>
 <p>MU = mu(spin1) - mu(spin2).</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
                 </div>
@@ -377,8 +376,9 @@ Do not set spin values for atoms which are not used for the CE.</p>
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation</a><ul>
 <li><a class="reference internal" href="#theoretical-backgrounds">11.1. Theoretical backgrounds</a></li>
 <li><a class="reference internal" href="#cmc">11.2. cmc</a></li>
@@ -404,12 +404,17 @@ Do not set spin values for atoms which are not used for the CE.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="gss-e.html"
-                        title="previous chapter"><span class="section-number">10. </span>Ground state search</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="ti-e.html"
-                        title="next chapter"><span class="section-number">12. </span>Calculation of grand potential using thermodynamic integration</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="gss-e.html"
+                          title="previous chapter"><span class="section-number">10. </span>Ground state search</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="ti-e.html"
+                          title="next chapter"><span class="section-number">12. </span>Calculation of grand potential using thermodynamic integration</a></p>
+  </div>
 <div id="searchbox" role="search">
   <h3>Quick search</h3>
   <form class="search form-inline" action="../search.html" method="get">
@@ -453,8 +458,8 @@ Do not set spin values for atoms which are not used for the CE.</p>
 
       <!-- footer -->
       <footer role="contentinfo">
-          &copy; Copyright 2020, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.0.1.
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
       </footer>
       <!-- /footer -->
 
