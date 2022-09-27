@@ -6,7 +6,7 @@ Lammps simulations using polynomial machine learning potentials
 
 **lammps-polymlp** package and **boost** library are required to use polynomial machine learning potentials in lammps code. 
 **lammps-polymlp** package for LAMMPS software is available on GitHub `[lammps-polymlp-package] <https://github.com/sekocha/lammps-polymlp-package>`_.
-Machine learning potentials for a wide range of systems can be found in `Machine Learning Potential Repository <mlp-repositiory/index.html>`_. 
+Machine learning potentials for a wide range of systems can be found in `Machine Learning Potential Repository <https://sekocha.github.io/mlp-repository/index.html>`_. 
 If you use **lammps-polymlp** package and machine learning potentials in the repository for academic purposes, please cite the following article [1].
 
 [1] A. Seko, A. Togo and I. Tanaka, "Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential", Phys. Rev. B 99, 214108 (2019).
@@ -60,7 +60,7 @@ So the required computational time can be estimated by :math:`t * n_{\rm atoms} 
 Parameters controlling accuracy and computational cost of machine learning potentials
 -------------------------------------------------------------------------------------------
 
-Input parameters used to construct a machine learning potential can be found in the correponding potential file **pyml.lammps.mlip**. Input parameters that control the accuracy and the computational cost are listed as follows.
+Input parameters used to construct a machine learning potential can be found in the correponding potential file **mlp.lammps**. Input parameters that control the accuracy and the computational cost are listed as follows.
 
 **1. Structural features representing neighboring atomic distribution**
 
@@ -133,7 +133,7 @@ A tutorial for lammps simulation
     units metal
     read_data structure.lammps
 
-    pair_style  mlip_gtinv
+    pair_style  polymlp
     pair_coeff * * mlp.lammps Ti Al
 
     # Define minimization parameters

@@ -43,6 +43,7 @@
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
 <script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
@@ -133,16 +134,16 @@
                 <div class="body">
                   
   <div class="section" id="id1">
-<h1><span class="section-number">13. </span>チュートリアル<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">13. </span>チュートリアル<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="tutorial-1">
-<h2><span class="section-number">13.1. </span>Tutorial 1: 指定したセルの範囲内でのすべての原子配置においてエネルギー計算を行う<a class="headerlink" href="#tutorial-1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.1. </span>Tutorial 1: 指定したセルの範囲内でのすべての原子配置においてエネルギー計算を行う<a class="headerlink" href="#tutorial-1" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>岩塩型MgO-ZnO系</p></li>
 <li><p>あらかじめ準備されたDFT構造およびエネルギーを用いる．ここでは，mkposcarは用いず，DFT構造の最適化は行わない．</p></li>
 <li><p>ユニットセルを2x1x1倍したセル内でのすべての原子配置において，エネルギー計算を行う．（計算量を軽減するためセルの大きさは小さく指定している．）</p></li>
 </ul>
 <div class="section" id="step-1-searching-for-independent-clusters-on-the-lattice">
-<h3><span class="section-number">13.1.1. </span>Step 1. searching for independent clusters on the lattice<a class="headerlink" href="#step-1-searching-for-independent-clusters-on-the-lattice" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.1. </span>Step 1. searching for independent clusters on the lattice<a class="headerlink" href="#step-1-searching-for-independent-clusters-on-the-lattice" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing lattice information (UPOSCAR and UPOTCAR)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">tutorials</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">cluster</span>
@@ -198,7 +199,7 @@
 </ol>
 </div>
 <div class="section" id="step-2-calculating-correlation-functions-for-dft-structures">
-<h3><span class="section-number">13.1.2. </span>Step 2. calculating correlation functions for DFT structures<a class="headerlink" href="#step-2-calculating-correlation-functions-for-dft-structures" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.2. </span>Step 2. calculating correlation functions for DFT structures<a class="headerlink" href="#step-2-calculating-correlation-functions-for-dft-structures" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing DFT structures (POSCAR and POTCAR)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">tutorials</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">correlation</span>
@@ -260,7 +261,7 @@ CE.in  POSCAR  POTCAR  UPOSCAR  UPOTCAR  position.out
 </ol>
 </div>
 <div class="section" id="step-3-optimizing-a-set-of-clusters-and-estimating-their-ecis">
-<h3><span class="section-number">13.1.3. </span>Step 3. optimizing a set of clusters and estimating their ECIs<a class="headerlink" href="#step-3-optimizing-a-set-of-clusters-and-estimating-their-ecis" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.3. </span>Step 3. optimizing a set of clusters and estimating their ECIs<a class="headerlink" href="#step-3-optimizing-a-set-of-clusters-and-estimating-their-ecis" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing ENERGY and CORRELATION</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">tutorials</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">gasa</span>
@@ -347,7 +348,7 @@ CE.in  POSCAR  POTCAR  UPOSCAR  UPOTCAR  position.out
 </ol>
 </div>
 <div class="section" id="step-4-calculating-energies-of-possible-configurations-within-2x1x1-supercell">
-<h3><span class="section-number">13.1.4. </span>Step 4. calculating energies of possible configurations within 2x1x1 supercell<a class="headerlink" href="#step-4-calculating-energies-of-possible-configurations-within-2x1x1-supercell" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.4. </span>Step 4. calculating energies of possible configurations within 2x1x1 supercell<a class="headerlink" href="#step-4-calculating-energies-of-possible-configurations-within-2x1x1-supercell" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>preparing lattice information, ECI, of.out</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd tutorials/1/gss
@@ -476,7 +477,7 @@ nchange1/  nchange2/  nchange3/  nchange4/  nchange5/  nchange6/  nchange7/
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
       </footer>
       <!-- /footer -->
 

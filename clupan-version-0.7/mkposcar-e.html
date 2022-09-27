@@ -43,6 +43,7 @@
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
 <script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
@@ -136,9 +137,9 @@
                 <div class="body">
                   
   <div class="section" id="preparation-of-initial-structures-for-dft-calculations">
-<h1><span class="section-number">4. </span>Preparation of initial structures for DFT calculations<a class="headerlink" href="#preparation-of-initial-structures-for-dft-calculations" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Preparation of initial structures for DFT calculations<a class="headerlink" href="#preparation-of-initial-structures-for-dft-calculations" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="mkposcar">
-<h2><span class="section-number">4.1. </span>mkposcar<a class="headerlink" href="#mkposcar" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>mkposcar<a class="headerlink" href="#mkposcar" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>This program searches for symmetric operations and generates independent DFT structures.</p></li>
 <li><p>Generating high symmetric structures or random structures.</p></li>
@@ -158,7 +159,7 @@
 </ul>
 </div>
 <div class="section" id="mkpos-in">
-<h2><span class="section-number">4.2. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this heading">¶</a></h2>
 <p><strong>Example</strong></p>
 <p>Generating 5 structures with a lattice constructed by the 2x2x1 expansion of a 4-atoms unit cell (16-atoms cell).
 The structures have 12 A-atoms and 4 B-atoms.</p>
@@ -170,7 +171,7 @@ The structures have 12 A-atoms and 4 B-atoms.</p>
 </pre></div>
 </div>
 <div class="section" id="isub-tag">
-<h3><span class="section-number">4.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this heading">¶</a></h3>
 <p>Sublattice indexes for considering atomic configurations.
 Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6).</p>
 <ul class="simple">
@@ -179,7 +180,7 @@ Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6)
 </ul>
 </div>
 <div class="section" id="nucell-tag">
-<h3><span class="section-number">4.2.2. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.2. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this heading">¶</a></h3>
 <p>Independent atomic configurations are searched for on the lattice constructed by the NUCELL expansion of the unit cell.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -187,7 +188,7 @@ Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6)
 </ul>
 </div>
 <div class="section" id="nchange-tag">
-<h3><span class="section-number">4.2.3. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.3. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this heading">¶</a></h3>
 <p>Number of atoms.
 In N-nary systems, set N-1 kinds of atoms.
 The number of the other kind of atoms is automatically set to (number of lattice sites - NCHANGE).</p>
@@ -197,7 +198,7 @@ The number of the other kind of atoms is automatically set to (number of lattice
 </ul>
 </div>
 <div class="section" id="nstruct-tag">
-<h3><span class="section-number">4.2.4. </span>NSTRUCT tag<a class="headerlink" href="#nstruct-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.4. </span>NSTRUCT tag<a class="headerlink" href="#nstruct-tag" title="Permalink to this heading">¶</a></h3>
 <p>Number of structures.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -205,7 +206,7 @@ The number of the other kind of atoms is automatically set to (number of lattice
 </ul>
 </div>
 <div class="section" id="select-tag">
-<h3><span class="section-number">4.2.5. </span>SELECT tag<a class="headerlink" href="#select-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.5. </span>SELECT tag<a class="headerlink" href="#select-tag" title="Permalink to this heading">¶</a></h3>
 <p>SELECT tag detemines how to generate structures.</p>
 <ul class="simple">
 <li><p>Default : Highsym</p></li>
@@ -214,7 +215,7 @@ The number of the other kind of atoms is automatically set to (number of lattice
 </ul>
 </div>
 <div class="section" id="iout-tag">
-<h3><span class="section-number">4.2.6. </span>IOUT tag<a class="headerlink" href="#iout-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.6. </span>IOUT tag<a class="headerlink" href="#iout-tag" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Default : 1</p></li>
 <li><p>0 : POSCARs are not output.</p></li>
@@ -306,7 +307,7 @@ The number of the other kind of atoms is automatically set to (number of lattice
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
       </footer>
       <!-- /footer -->
 

@@ -43,6 +43,7 @@
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
 <script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
@@ -144,9 +145,9 @@
                 <div class="body">
                   
   <div class="section" id="id1">
-<h1><span class="section-number">8. </span>クラスター組み合わせの最適化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">8. </span>クラスター組み合わせの最適化<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="theoretical-backgrounds">
-<h2><span class="section-number">8.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this heading">¶</a></h2>
 <p><strong>遺伝的アルゴリズムによるクラスターの組み合わせの最適化</strong> <a class="footnote-reference brackets" href="#ga1" id="id2">1</a> <a class="footnote-reference brackets" href="#ga2" id="id3">2</a></p>
 <p>クラスターの組み合わせを最適化するとき，CV scoreを計算誤差の指標として用いることが一般的である．与えられたN種類のDFT構造とm種類のクラスターのもとで，CV scoreをできるだけ小さくするようにM種類のクラスターの候補の中から，m種類のクラスター(M &gt; m)を選択する．その際に遺伝的アルゴリズムなど効率の良い最適化手法が用いられる．</p>
 <p>遺伝的アルゴリズムでは，まずクラスターの組み合わせの親集団を作る．次に親集団から２つのクラスターの組み合わせ（親）を選び，２つの親を混ぜ合わせ（交配），新しいクラスターの組み合わせ（子）を作る．極小点に収束するのを防ぐため，少しだけ子の情報をランダムに変化させる（突然変異）．最後に，子のクラスターの数を調整する（情報調整）．子のCV scoreが親より良ければ親集団に追加し，悪ければ棄却する．このような交配を繰り返し，最も良いクラスターの組み合わせを探す．</p>
@@ -162,7 +163,7 @@
 </dl>
 </div>
 <div class="section" id="gasa">
-<h2><span class="section-number">8.2. </span>gasa<a class="headerlink" href="#gasa" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2. </span>gasa<a class="headerlink" href="#gasa" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>遺伝的アルゴリズムにより，交差検定スコア(CV score)が最小となるクラスターの組み合わせを探索する．</p></li>
 <li><p>シミュレーティッドアニーリングにより，初期集団を作成することもできる．</p></li>
@@ -180,7 +181,7 @@
 </ul>
 </div>
 <div class="section" id="wgasa">
-<h2><span class="section-number">8.3. </span>wgasa<a class="headerlink" href="#wgasa" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3. </span>wgasa<a class="headerlink" href="#wgasa" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>遺伝的アルゴリズム，およびシミュレーティッドアニーリングにより，重み付き交差検定スコア(WCV score)が最小となるクラスターの組み合わせを探索する．</p></li>
 <li><p>入力は，WEIGHTファイル以外 <strong>gasa</strong> と同じ．</p></li>
@@ -198,7 +199,7 @@
 </ul>
 </div>
 <div class="section" id="gasa-in">
-<h2><span class="section-number">8.4. </span>GASA.in<a class="headerlink" href="#gasa-in" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.4. </span>GASA.in<a class="headerlink" href="#gasa-in" title="Permalink to this heading">¶</a></h2>
 <p>遺伝的アルゴリズムにより，クラスターの組み合わせを最適化する例．0-5番のクラスターを必ず組み合わせに含め，6-52番のクラスターの中から5個選ぶ．:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NLOOP</span>       <span class="o">=</span> <span class="mi">0</span>         <span class="c1"># for genetic algorithm</span>
 <span class="n">BASECLUSTER</span> <span class="o">=</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span>
@@ -231,7 +232,7 @@
 </pre></div>
 </div>
 <div class="section" id="nallcluster-tag">
-<h3><span class="section-number">8.4.1. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.1. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this heading">¶</a></h3>
 <p>クラスターの総数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -239,7 +240,7 @@
 </ul>
 </div>
 <div class="section" id="ncluster-tag">
-<h3><span class="section-number">8.4.2. </span>NCLUSTER tag<a class="headerlink" href="#ncluster-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.2. </span>NCLUSTER tag<a class="headerlink" href="#ncluster-tag" title="Permalink to this heading">¶</a></h3>
 <p>選択するクラスターの数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -247,7 +248,7 @@
 </ul>
 </div>
 <div class="section" id="minindex-tag-maxindex-tag">
-<h3><span class="section-number">8.4.3. </span>MININDEX tag, MAXINDEX tag<a class="headerlink" href="#minindex-tag-maxindex-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.3. </span>MININDEX tag, MAXINDEX tag<a class="headerlink" href="#minindex-tag-maxindex-tag" title="Permalink to this heading">¶</a></h3>
 <p>遺伝的アルゴリズムにより探索する範囲を指定．
 MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 <ul class="simple">
@@ -257,7 +258,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="basecluster-tag">
-<h3><span class="section-number">8.4.4. </span>BASECLUSTER tag<a class="headerlink" href="#basecluster-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.4. </span>BASECLUSTER tag<a class="headerlink" href="#basecluster-tag" title="Permalink to this heading">¶</a></h3>
 <p>クラスターの組み合わせに必ず含めるクラスターの番号．</p>
 <ul class="simple">
 <li><p>Default : empty</p></li>
@@ -265,7 +266,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="excluster-tag">
-<h3><span class="section-number">8.4.5. </span>EXCLUSTER tag<a class="headerlink" href="#excluster-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.5. </span>EXCLUSTER tag<a class="headerlink" href="#excluster-tag" title="Permalink to this heading">¶</a></h3>
 <p>遺伝的アルゴリズムにより探索する範囲から除くクラスターの番号．</p>
 <ul class="simple">
 <li><p>Default : empty</p></li>
@@ -273,7 +274,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="npop-tag">
-<h3><span class="section-number">8.4.6. </span>NPOP tag<a class="headerlink" href="#npop-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.6. </span>NPOP tag<a class="headerlink" href="#npop-tag" title="Permalink to this heading">¶</a></h3>
 <p>初期集団に含まれるクラスターの組み合わせの数．</p>
 <ul class="simple">
 <li><p>Default : 30</p></li>
@@ -281,7 +282,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="nelite-tag">
-<h3><span class="section-number">8.4.7. </span>NELITE tag<a class="headerlink" href="#nelite-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.7. </span>NELITE tag<a class="headerlink" href="#nelite-tag" title="Permalink to this heading">¶</a></h3>
 <p>世代交代の際における，エリート（CV scoreの良いもの）を残す数．</p>
 <ul class="simple">
 <li><p>Default : 1</p></li>
@@ -289,7 +290,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="pmating-tag">
-<h3><span class="section-number">8.4.8. </span>PMATING tag<a class="headerlink" href="#pmating-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.8. </span>PMATING tag<a class="headerlink" href="#pmating-tag" title="Permalink to this heading">¶</a></h3>
 <p>交配の確率．</p>
 <ul class="simple">
 <li><p>Default : 0.9</p></li>
@@ -297,7 +298,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="pmutation-tag">
-<h3><span class="section-number">8.4.9. </span>PMUTATION tag<a class="headerlink" href="#pmutation-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.9. </span>PMUTATION tag<a class="headerlink" href="#pmutation-tag" title="Permalink to this heading">¶</a></h3>
 <p>突然変異の確率．</p>
 <ul class="simple">
 <li><p>Default : 0.03</p></li>
@@ -305,7 +306,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="nloop-tag">
-<h3><span class="section-number">8.4.10. </span>NLOOP tag<a class="headerlink" href="#nloop-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.10. </span>NLOOP tag<a class="headerlink" href="#nloop-tag" title="Permalink to this heading">¶</a></h3>
 <p>simulated annealingの各温度におけるステップ数．遺伝的アルゴリズムのみを行う場合，0に設定する．</p>
 <ul class="simple">
 <li><p>Default : 0</p></li>
@@ -313,7 +314,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="tempinit-tag-tempfinal-tag">
-<h3><span class="section-number">8.4.11. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.11. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this heading">¶</a></h3>
 <p>simulated annealingの初期温度と最終温度．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -322,7 +323,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
 </ul>
 </div>
 <div class="section" id="tempmul-tag">
-<h3><span class="section-number">8.4.12. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.4.12. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this heading">¶</a></h3>
 <p>simulated annealingにおける温度設定の指数関数の底．0から1の値を指定する．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -422,7 +423,7 @@ MININDEXはクラスターの番号の最小値，MAXINDEXは最大値．</p>
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
       </footer>
       <!-- /footer -->
 

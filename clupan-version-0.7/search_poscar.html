@@ -43,6 +43,7 @@
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
 <script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
@@ -142,9 +143,9 @@
                 <div class="body">
                   
   <div class="section" id="dft">
-<h1><span class="section-number">9. </span>DFT計算の構造探索<a class="headerlink" href="#dft" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9. </span>DFT計算の構造探索<a class="headerlink" href="#dft" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="theoretical-backgrounds">
-<h2><span class="section-number">9.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this heading">¶</a></h2>
 <p>精度の高いクラスター展開には，交差検定スコアが低いことは必要条件であるが，十分条件ではない．
 クラスター展開を偏った相関関数を持つ構造についてのみ行い，その結果を用いて，相関関数が大きく離れた構造のシミュレーションを行うと，交差検定スコアが低いにも関わらず，計算誤差が大きいというような場合がありえる．
 このような問題を避けるためには，交差検定スコアの絶対値だけを精度の指標にするのではなく，相関関数が大きく離れた構造に対する予測精度についても検討しなければならない．</p>
@@ -163,7 +164,7 @@ N種類のモデル構造とm種類のクラスターのもとで，最小二乗
 よって， <img class="math" src="../_images/math/65e60d95fc7bc06725cb967be10982e4bf310122.svg" alt="\Lambda"/> を小さくするDFT構造を選ぶことで，クラスター展開の予測精度を向上させる．</p>
 </div>
 <div class="section" id="search-poscar-variance">
-<h2><span class="section-number">9.2. </span>search_poscar_variance<a class="headerlink" href="#search-poscar-variance" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.2. </span>search_poscar_variance<a class="headerlink" href="#search-poscar-variance" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>trial CEを検定および改善するための，DFT構造をsimulated annealingにより探索する．</p></li>
 <li><p>CORRELATIONによりtrial CEの相関関数を指定する．</p></li>
@@ -185,7 +186,7 @@ N種類のモデル構造とm種類のクラスターのもとで，最小二乗
 </ul>
 </div>
 <div class="section" id="mkpos-in">
-<h2><span class="section-number">9.3. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.3. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this heading">¶</a></h2>
 <p>4原子のユニットセルのa,b軸を2倍にしたセル(16原子)において，12原子(spin=+1)，4原子(spin=-1)を配置させた構造を探索する例．CLUSTERINDEXで指定したクラスターに対して最適な構造を探索する．:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">NUCELL</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span>
@@ -200,7 +201,7 @@ N種類のモデル構造とm種類のクラスターのもとで，最小二乗
 </pre></div>
 </div>
 <div class="section" id="isub-tag">
-<h3><span class="section-number">9.3.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this heading">¶</a></h3>
 <p>結晶格子において，クラスター展開を行う格子点を指定する．
 UPOSCARの格子点数（6行目）のISUB番目に指定された格子点において，クラスター展開を行う</p>
 <ul class="simple">
@@ -209,7 +210,7 @@ UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に�
 </ul>
 </div>
 <div class="section" id="nchange-tag">
-<h3><span class="section-number">9.3.2. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.2. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this heading">¶</a></h3>
 <p>原子の配置を考慮する格子点において，原子を配置させる数．
 N元系の場合は，N-1種類だけ指定する．
 一つ目の原子種の数は（格子点数-NCHANGE）となる．</p>
@@ -219,7 +220,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="spin-tag">
-<h3><span class="section-number">9.3.3. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.3. </span>SPIN tag<a class="headerlink" href="#spin-tag" title="Permalink to this heading">¶</a></h3>
 <p>原子のスピンの値．2元系の場合，2つ指定する．
 <strong>correlation</strong> で用いたスピン-原子種の対応を用いる．</p>
 <ul class="simple">
@@ -229,7 +230,7 @@ N元系の場合は，N-1種類だけ指定する．
 <p>Exampleの場合，NCHANGEで指定した原子数だけスピンを-1にする．</p>
 </div>
 <div class="section" id="nucell-tag">
-<h3><span class="section-number">9.3.4. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.4. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this heading">¶</a></h3>
 <p>UPOSCARをNUCELL倍したcellにおいて構造を探索．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -237,7 +238,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="nallcluster-tag">
-<h3><span class="section-number">9.3.5. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.5. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this heading">¶</a></h3>
 <p>クラスターの総数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -245,7 +246,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="clusterindex-tag">
-<h3><span class="section-number">9.3.6. </span>CLUSTERINDEX tag<a class="headerlink" href="#clusterindex-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.6. </span>CLUSTERINDEX tag<a class="headerlink" href="#clusterindex-tag" title="Permalink to this heading">¶</a></h3>
 <p>trial CEのクラスター番号．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -253,7 +254,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="tempinit-tag-tempfinal-tag">
-<h3><span class="section-number">9.3.7. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.7. </span>TEMPINIT tag, TEMPFINAL tag<a class="headerlink" href="#tempinit-tag-tempfinal-tag" title="Permalink to this heading">¶</a></h3>
 <p>simulated annealingの初期温度と最終温度．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -262,7 +263,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="tempmul-tag">
-<h3><span class="section-number">9.3.8. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.8. </span>TEMPMUL tag<a class="headerlink" href="#tempmul-tag" title="Permalink to this heading">¶</a></h3>
 <p>simulated annealingにおける温度設定の指数関数の底．0から1の値を指定する．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -270,7 +271,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="nstep-tag">
-<h3><span class="section-number">9.3.9. </span>NSTEP tag<a class="headerlink" href="#nstep-tag" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.9. </span>NSTEP tag<a class="headerlink" href="#nstep-tag" title="Permalink to this heading">¶</a></h3>
 <p>設定温度毎の1原子あたりのステップ数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
@@ -279,7 +280,7 @@ N元系の場合は，N-1種類だけ指定する．
 </div>
 </div>
 <div class="section" id="variance-energy">
-<h2><span class="section-number">9.4. </span>variance_energy<a class="headerlink" href="#variance-energy" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4. </span>variance_energy<a class="headerlink" href="#variance-energy" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>予測エネルギーの分散を計算する．</p></li>
 </ul>
@@ -296,7 +297,7 @@ N元系の場合は，N-1種類だけ指定する．
 </ul>
 </div>
 <div class="section" id="variance-stpop">
-<h2><span class="section-number">9.5. </span>variance_stpop<a class="headerlink" href="#variance-stpop" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5. </span>variance_stpop<a class="headerlink" href="#variance-stpop" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>プログラム <strong>search_poscar_variance</strong> で必要となるVARIANCE, MEANを計算する．</p></li>
 <li><p>プログラム <strong>mkposcar</strong> によりランダム構造を作り， <strong>correlation</strong> で相関関数を計算することにより，相関関数の平均値(MEAN)，分散共分散行列(VARIANCE)を作成することもできる．</p></li>
@@ -405,7 +406,7 @@ N元系の場合は，N-1種類だけ指定する．
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
       </footer>
       <!-- /footer -->
 
