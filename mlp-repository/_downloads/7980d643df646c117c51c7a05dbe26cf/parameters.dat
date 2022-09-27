@@ -1,0 +1,26 @@
+n_type 2
+with_force True
+reg_method ridge
+alpha_min -5
+alpha_max 1
+n_alpha 7
+des_type gtinv
+pair_type gaussian
+gaussian_params1 1.0 1.0 1
+gaussian_params2 0.0 7.0 10
+cutoff 8.0
+model_type 4
+max_p 2
+gtinv_order 3
+gtinv_maxl 4 4 
+gtinv_sym False False 
+
+train_data vaspruns/train_vasprun_0_Mg vaspruns/train_vasprun_1_Mg vaspruns/train_vasprun_2_Mg vaspruns/train_vasprun_3_Mg vaspruns/train_vasprun_4_Mg vaspruns/train_vasprun_high_woforce1_Mg vaspruns/train_vasprun_high_woforce2_Mg vaspruns/train_vasprun_0_Ge vaspruns/train_vasprun_1_Ge vaspruns/train_vasprun_2_Ge vaspruns/train_vasprun_3_Ge vaspruns/train_vasprun_4_Ge vaspruns/train_vasprun_high_woforce1_Ge vaspruns/train_vasprun_high_woforce2_Ge vaspruns/train_vasprun_0 vaspruns/train_vasprun_1 vaspruns/train_vasprun_2 vaspruns/train_vasprun_3 vaspruns/train_vasprun_4 vaspruns/train_vasprun_high_woforce1 vaspruns/train_vasprun_high_woforce2
+train_data_force True True True True True False False True True True True True False False True True True True True False False
+train_data_weight 1.0 1.0 1.0 1.0 1.0 1.0 0.1 1.0 1.0 1.0 1.0 1.0 1.0 0.1 1.0 1.0 1.0 1.0 1.0 1.0 0.1
+test_data vaspruns/test_vasprun_low_Mg vaspruns/test_vasprun_high_Mg vaspruns/test_vasprun_high_woforce1_Mg vaspruns/test_vasprun_high_woforce2_Mg vaspruns/test_vasprun_low_Ge vaspruns/test_vasprun_high_Ge vaspruns/test_vasprun_high_woforce1_Ge vaspruns/test_vasprun_high_woforce2_Ge vaspruns/test_vasprun_low vaspruns/test_vasprun_high vaspruns/test_vasprun_high_woforce1 vaspruns/test_vasprun_high_woforce2
+test_data_force True True False False True True False False True True False False
+test_data_weight 1.0 1.0 1.0 0.1 1.0 1.0 1.0 0.1 1.0 1.0 1.0 0.1
+
+with_stress False
+atomic_energy -0.00040000 -0.77067288
