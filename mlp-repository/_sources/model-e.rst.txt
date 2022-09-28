@@ -1,0 +1,174 @@
+
+.. _mlp_formulation:
+
+Theoretical background
+==========================================================
+
+Structural features
+-----------------------
+
+The atomic energy is described by a function of polynomial invariants for the O(3) group. A pth-order polynomial invariant for a radial index n and a set of pairs composed of the angular number and the element unordered pair {(l\ :sub:`1`\,t\ :sub:`1`\),(l\ :sub:`2`,t\ :sub:`2`\), ...,(l\ :sub:`p`,t\ :sub:`p`\)} is defined as a linear combination of products of p order parameters, expressed as
+
+.. math::
+
+    d_{nl_1l_2\cdots l_p,t_1t_2\cdots t_p,(\sigma)}^{(i)} =
+    \sum_{m_1,m_2,\cdots, m_p} c^{l_1l_2\cdots l_p,(\sigma)}_{m_1m_2\cdots m_p}
+    a_{nl_1m_1,t_1}^{(i)} a_{nl_2m_2,t_2}^{(i)} \cdots a_{nl_pm_p,t_p}^{(i)}.
+
+
+Linearly independent coefficient sets are obtained using the group-theoretical projector operation method for a given set of angular numbers, ensuring that the linear combinations are invariant for arbitrary rotation. In terms of fourth- and higher-order polynomial invariants, multiple invariants are linearly independent for most of the angular number sets, which are distinguished by index :math:`\sigma` if necessary. The order parameters of atom i and element pair (s\ :sub:`i`\,s) are approximately estimated from the neighboring atomic density of element s around atom i as
+
+.. math::
+
+    a_{nlm,\{s_i,s\}}^{(i)} = \sum_{\{j | r_{ij} \leq r_c,s_j = s\} }
+    f_n(r_{ij}) Y_{lm}^* (\theta_{ij}, \phi_{ij}),
+
+where (:math:`r_{ij}`, :math:`\theta_{ij}`, :math:`\phi_{ij}`) denotes the spherical coordinates of neighboring atom j centered at the position of atom i.
+
+[1] A. Seko, A. Togo, and I. Tanaka, Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential, `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_ 
+
+[2] A. Seko, Machine learning potentials for multicomponent systems: The Ti-Al binary system, `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_
+
+Potential energy models
+------------------------------
+
+In the repository, the atomic energy is measured from the energy of the isolated state of the atom.
+A potential energy model is identified with a combination of polynomial functions and structural features.
+Given a set of structural features D, polynomial functions are written as
+
+.. math::
+    F_1 \left(D\right) = \sum_i w_i d_i \\
+.. math::
+    F_{2,\rm pow} \left(D\right) = \sum_{i} w_{ii} d_i d_i \\
+.. math::
+    F_2 \left(D\right) = \sum_{\{i,j\}} w_{ij} d_i d_j \\
+.. math::
+    F_{3,\rm pow} \left(D\right) = \sum_{i} w_{iii} d_i d_i d_i \\
+.. math::
+    F_3 \left(D\right) = \sum_{\{i,j,k\}} w_{ijk} d_i d_j d_k
+
+where w denotes a coefficient.
+
+* Pairwise structural features
+
+.. math::
+   D_{\rm pair}^{(i)} = \{d_{n0}^{(i)}\}
+
+* Polynomial invariants
+
+.. math::
+    D^{(i)} = D_{\rm pair}^{(i)} \cup D_2^{(i)} \cup D_3^{(i)} \cup D_4^{(i)} \cup \cdots
+.. math::
+    D_2^{(i)} = \{d_{nll}^{(i)}\}
+.. math::
+    D_3^{(i)} = \{d_{nl_1l_2l_3}^{(i)}\}
+.. math::
+    D_4^{(i)} = \{d_{nl_1l_2l_3l_4,(\sigma)}^{(i)}\}
+
+Machine learning potentials in the repository are developed from the following potential energy models.
+
+* model type = 1, feature type = pair
+
+.. math::
+
+    E^{(i)} = F_1\left(D_{\rm pair}^{(i)} \right)
+            + F_{2,\rm pow} \left(D_{\rm pair}^{(i)} \right)
+            + F_{3,\rm pow} \left(D_{\rm pair}^{(i)} \right)
+            + \cdots
+
+* model type = 2, feature type = pair (An extension of EAM potentials)
+
+.. math::
+
+    E^{(i)} = F_1\left(D_{\rm pair}^{(i)} \right)
+            + F_{2} \left(D_{\rm pair}^{(i)} \right)
+            + F_{3} \left(D_{\rm pair}^{(i)} \right)
+            + \cdots
+
+* model type = 1, feature type = polynomial invariants (Linear polynomial form)
+
+.. math::
+
+    E^{(i)} = F_1 \left(D^{(i)} \right)
+
+* model type = 1, feature type = polynomial invariants
+
+.. math::
+
+    E^{(i)} = F_1 \left(D^{(i)} \right)
+            + F_{2,\rm pow} \left(D^{(i)} \right)
+            + F_{3,\rm pow} \left(D^{(i)} \right)
+            + \cdots
+
+* model type = 2, feature type = polynomial invariants
+
+.. math::
+
+    E^{(i)} = F_1 \left(D^{(i)} \right)
+            + F_{2} \left(D^{(i)} \right)
+            + F_{3} \left(D^{(i)} \right)
+            + \cdots 
+
+* model type = 3, feature type = polynomial invariants
+
+.. math::
+
+    E^{(i)} = F_1 \left( D^{(i)} \right)
+            + F_2 \left( D_{\rm pair}^{(i)} \right)
+            + F_3 \left( D_{\rm pair}^{(i)} \right)
+            + \cdots 
+
+* model type = 4, feature type = polynomial invariants
+
+.. math::
+
+    E^{(i)} = F_1 \left( D^{(i)} \right)
+            + F_2 \left( D_{\rm pair}^{(i)} \cup D_2^{(i)} \right)
+            + \cdots
+
+Parameters for developing MLPs
+---------------------------------
+Parameters used for developing an MLP are found in **log** and **input** links at column "Files".
+
+* Example of parameters ::
+
+    # number of atom species
+    n_type 2
+
+    # use derivatives in training or not: True or False
+    with_force True
+
+    # regression method (ridge or lasso or normal)
+    reg_method ridge
+
+    # cutoff radius
+    cutoff 10.0
+
+    # model type with respect to structural features
+    # 1 (power of features)
+    # 2 (polynomial of all features)
+    # 3 (polynomial of pair features + invariants)
+    # 4 (polynomial of pair features and invariants(order=2) + invariants)
+    model_type 1
+
+    # degree of polynomials
+    max_p 2
+
+    # structural feature type (pair or gtinv)
+    des_type gtinv
+
+    # pairwise function type (gaussian or sph_bessel)
+    pair_type gaussian
+    # sequence for a in exp(-a(r-b)^2) [min, max, n]
+    gaussian_params1 1.0 1.0 1
+    # sequence for b in exp(-a(r-b)^2) [min, max, n]
+    gaussian_params2 0 10.0 15
+
+    # maximum order of group-theoretical invariants
+    gtinv_order 4
+    # maximum l values of group-theoretical invariants
+    gtinv_maxl 7 7 2 0 0
+    # use only symmetric invariants or not
+    gtinv_sym False False False False False
+
+

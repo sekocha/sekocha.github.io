@@ -1,0 +1,40 @@
+:orphan:
+
+Cu-Ag-2022-06-12
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 350px
+
+The current structure dataset comprises 35729 structures generated from elemental ICSD structures and binary ICSD prototype alloy structures. A more detailed procedure is found in `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+**Predictions using Pareto optimal MLPs**
+
+.. image:: summary/prediction-ecoh-volume.png
+   :height: 700px
+
+The cohesive energy and volume are obtained by performing a local structure optimization from the DFT equilibrium structure. In addition, the DFT equilibrium structure is obtained by optimizing a prototype structure included in ICSD, and the prototype is used as the structure legend in the figure. Therefore, the structure type of the converged structure is sometimes different from that shown in the legend even if the potential energy surface predicted by MLP is almost the same as the true one.
+
+The other properties predicted by each Pareto optimal MLP are available from column **Predictions** in the following table.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1core/36cores), RMSE [meV/atom]/[eV/A], Predictions, Files
+ :widths: 5,10,10,7,10
+
+  pair-33 , 0.028 / 0.005 , 9.6703 / 0.0660 , --,--
+  pair-37 , 0.039 / 0.005 , 9.1101 / 0.0626 , --,--
+  pair-49 , 0.041 / 0.005 , 3.5571 / 0.0315 , :doc:`predictions <predictions/pair-49/prediction>`, :download:`mlp.lammps <pot/pair-49/mlp.lammps>` :download:`input <pot/pair-49/parameters.dat>` :download:`log <pot/pair-49/log.dat>`
+  pair-50 , 0.078 / 0.008 , 2.4553 / 0.0324 , :doc:`predictions <predictions/pair-50/prediction>`, :download:`mlp.lammps <pot/pair-50/mlp.lammps>` :download:`input <pot/pair-50/parameters.dat>` :download:`log <pot/pair-50/log.dat>`
+  gtinv-722 , 0.266 / 0.023 , 1.8185 / 0.0226 , :doc:`predictions <predictions/gtinv-722/prediction>`, :download:`mlp.lammps <pot/gtinv-722/mlp.lammps>` :download:`input <pot/gtinv-722/parameters.dat>` :download:`log <pot/gtinv-722/log.dat>`
+  pair-60 , 0.335 / 0.025 , 1.6005 / 0.0242 , :doc:`predictions <predictions/pair-60/prediction>`, :download:`mlp.lammps <pot/pair-60/mlp.lammps>` :download:`input <pot/pair-60/parameters.dat>` :download:`log <pot/pair-60/log.dat>`
+  gtinv-182 , 0.525 / 0.035 , 0.7839 / 0.0120 , :doc:`predictions <predictions/gtinv-182/prediction>`, :download:`mlp.lammps <pot/gtinv-182/mlp.lammps>` :download:`input <pot/gtinv-182/parameters.dat>` :download:`log <pot/gtinv-182/log.dat>`
+  gtinv-257 , 0.792 / 0.055 , 0.7413 / 0.0135 , :doc:`predictions <predictions/gtinv-257/prediction>`, :download:`mlp.lammps <pot/gtinv-257/mlp.lammps>` :download:`input <pot/gtinv-257/parameters.dat>` :download:`log <pot/gtinv-257/log.dat>`
+  gtinv-411 , 0.864 / 0.056 , 0.6981 / 0.0112 , :doc:`predictions <predictions/gtinv-411/prediction>`, :download:`mlp.lammps <pot/gtinv-411/mlp.lammps>` :download:`input <pot/gtinv-411/parameters.dat>` :download:`log <pot/gtinv-411/log.dat>`
+  gtinv-416 , 1.187 / 0.076 , 0.6753 / 0.0123 , :doc:`predictions <predictions/gtinv-416/prediction>`, :download:`mlp.lammps <pot/gtinv-416/mlp.lammps>` :download:`input <pot/gtinv-416/parameters.dat>` :download:`log <pot/gtinv-416/log.dat>`
+  gtinv-269 , 1.464 / 0.086 , 0.5580 / 0.0103 , :doc:`predictions <predictions/gtinv-269/prediction>`, :download:`mlp.lammps <pot/gtinv-269/mlp.lammps>` :download:`input <pot/gtinv-269/parameters.dat>` :download:`log <pot/gtinv-269/log.dat>`
+  gtinv-272 , 1.986 / 0.120 , 0.4315 / 0.0098 , :doc:`predictions <predictions/gtinv-272/prediction>`, :download:`mlp.lammps <pot/gtinv-272/mlp.lammps>` :download:`input <pot/gtinv-272/parameters.dat>` :download:`log <pot/gtinv-272/log.dat>`
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+
+- All Pareto optimal MLPs are available :download:`here         <pot-Cu-Ag-2022-06-12.tar.gz>`.

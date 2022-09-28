@@ -1,0 +1,65 @@
+:orphan:
+
+Sb-2021-07-09-all-icsd
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 350px
+
+The current structure dataset comprises 13383 structures generated from unique ICSD prototype structures composed of single elements with zero oxidation state. A more detailed procedure is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_. The procedure to estimate interatomic potentials from the dataset is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_ and `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+**Improvement from \*\*-dataset-10000-all-icsd**
+
+* More robust for structures with a small interatomic distance
+* More robust for structures with a large interatomic distance
+* More complex potential models are included.
+* MLPs are estimated without using DFT stress tensors.
+* MLPs are estimated by using small regression weights for energetically unstable structures.
+
+
+- **All Pareto optimal MLPs are available** :download:`here         <pot-Sb-2021-07-09-all-icsd.tar.gz>`.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1 core / 36 cores), RMSE [meV/atom] / [eV/ang.]
+ :widths: 5,10,10
+
+  pair-1 , 0.012 / 0.003 , 287.59 / 0.6061
+  pair-14 , 0.017 / 0.038 , 62.104 / 0.2348
+  pair-27 , 0.018 / 0.005 , 35.167 / 0.2169
+  pair-28 , 0.027 / 0.007 , 33.170 / 0.2092
+  pair-31 , 0.050 / 0.007 , 31.348 / 0.2077
+  pair-32 , 0.051 / 0.010 , 29.266 / 0.2032
+  pair-33 , 0.069 / 0.012 , 26.554 / 0.1947
+  pair-34 , 0.096 / 0.016 , 26.124 / 0.1948
+  pair-37 , 0.136 / 0.018 , 22.764 / 0.1834
+  gtinv-300 , 0.228 / 0.023 , 12.266 / 0.1102
+  gtinv-235 , 0.281 / 0.023 , 10.439 / 0.1029
+  gtinv-175 , 0.376 / 0.031 , 9.9486 / 0.1033
+  gtinv-240 , 0.393 / 0.030 , 9.6009 / 0.1025
+  gtinv-312 , 0.472 / 0.036 , 8.9805 / 0.0998
+  gtinv-190 , 0.523 / 0.038 , 8.2255 / 0.0946
+  gtinv-255 , 0.573 / 0.040 , 7.8422 / 0.0934
+  gtinv-195 , 0.748 / 0.053 , 7.3823 / 0.0929
+  gtinv-260 , 0.787 / 0.053 , 7.1589 / 0.0921
+  gtinv-265 , 0.983 / 0.070 , 6.9532 / 0.0923
+  gtinv-270 , 1.323 / 0.091 , 6.8089 / 0.0932
+  gtinv-313 , 1.590 / 0.102 , 6.7448 / 0.0904
+  gtinv-191 , 1.600 / 0.102 , 6.1991 / 0.0861
+  gtinv-339 , 1.704 / 0.073 , 5.9182 / 0.0854
+  gtinv-342 , 1.775 / 0.083 , 5.5149 / 0.0826
+  gtinv-345 , 1.915 / 0.092 , 5.4884 / 0.0863
+  gtinv-261 , 2.341 / 0.142 , 5.2876 / 0.0835
+  gtinv-340 , 2.596 / 0.116 , 5.2700 / 0.0814
+  gtinv-197 , 2.819 / 0.158 , 4.9638 / 0.0821
+  gtinv-343 , 2.986 / 0.131 , 4.8743 / 0.0774
+  gtinv-346 , 3.371 / 0.155 , 4.7226 / 0.0777
+  gtinv-351 , 3.420 / 0.142 , 4.7074 / 0.0753
+  gtinv-354 , 3.661 / 0.154 , 4.2960 / 0.0748
+  gtinv-286 , 6.000 / 0.346 , 4.2568 / 0.0758
+  gtinv-355 , 6.437 / 0.289 , 3.8635 / 0.0711
+  gtinv-356 , 10.754 / 0.555 , 3.8186 / 0.0703
+  gtinv-359 , 11.526 / 0.649 , 3.6515 / 0.0683
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+

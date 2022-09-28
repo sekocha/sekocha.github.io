@@ -1,0 +1,64 @@
+:orphan:
+
+Pb-2021-08-04-all-icsd
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 350px
+
+The current structure dataset comprises 14168 structures generated from unique ICSD prototype structures composed of single elements with zero oxidation state. A more detailed procedure is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_. The procedure to estimate interatomic potentials from the dataset is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_ and `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+**Improvement from \*\*-dataset-10000-all-icsd**
+
+* More robust for structures with a small interatomic distance
+* More robust for structures with a large interatomic distance
+* More complex potential models are included.
+* MLPs are estimated without using DFT stress tensors.
+* MLPs are estimated by using small regression weights for energetically unstable structures.
+
+**Predictions using Pareto optimal MLPs**
+
+.. image:: summary/prediction-ecoh-volume.png
+   :height: 350px
+
+The cohesive energy and volume are obtained by performing a local structure optimization from the DFT equilibrium structure. In addition, the DFT equilibrium structure is obtained by optimizing a prototype structure included in ICSD, and the prototype is used as the structure legend in the figure. Therefore, the structure type of the converged structure is sometimes different from that shown in the legend even if the potential energy surface predicted by MLP is almost the same as the true one.
+
+The other properties predicted by each Pareto optimal MLP are available from column **Predictions** in the following table.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1core/36cores), RMSE [meV/atom]/[eV/A], Predictions, Files
+ :widths: 5,10,10,7,10
+
+  pair-14 , 0.017 / 0.038 , 47.884 / 0.0990 , --,--
+  pair-27 , 0.018 / 0.005 , 14.222 / 0.0642 , --,--
+  pair-28 , 0.027 / 0.007 , 11.499 / 0.0609 , --,--
+  pair-29 , 0.039 / 0.009 , 11.306 / 0.0626 , --,--
+  pair-31 , 0.050 / 0.007 , 10.467 / 0.0594 , --,--
+  pair-32 , 0.051 / 0.010 , 9.5828 / 0.0585 , :doc:`predictions <predictions/pair-32/prediction>`, :download:`mlp.lammps <pot/pair-32/mlp.lammps>` :download:`input <pot/pair-32/parameters.dat>` :download:`log <pot/pair-32/log.dat>`
+  pair-33 , 0.069 / 0.012 , 9.4665 / 0.0572 , :doc:`predictions <predictions/pair-33/prediction>`, :download:`mlp.lammps <pot/pair-33/mlp.lammps>` :download:`input <pot/pair-33/parameters.dat>` :download:`log <pot/pair-33/log.dat>`
+  pair-34 , 0.096 / 0.016 , 8.6344 / 0.0581 , :doc:`predictions <predictions/pair-34/prediction>`, :download:`mlp.lammps <pot/pair-34/mlp.lammps>` :download:`input <pot/pair-34/parameters.dat>` :download:`log <pot/pair-34/log.dat>`
+  pair-35 , 0.121 / 0.021 , 7.9531 / 0.0595 , :doc:`predictions <predictions/pair-35/prediction>`, :download:`mlp.lammps <pot/pair-35/mlp.lammps>` :download:`input <pot/pair-35/parameters.dat>` :download:`log <pot/pair-35/log.dat>`
+  pair-38 , 0.171 / 0.022 , 7.0298 / 0.0536 , :doc:`predictions <predictions/pair-38/prediction>`, :download:`mlp.lammps <pot/pair-38/mlp.lammps>` :download:`input <pot/pair-38/parameters.dat>` :download:`log <pot/pair-38/log.dat>`
+  gtinv-300 , 0.228 / 0.023 , 4.7748 / 0.0417 , :doc:`predictions <predictions/gtinv-300/prediction>`, :download:`mlp.lammps <pot/gtinv-300/mlp.lammps>` :download:`input <pot/gtinv-300/parameters.dat>` :download:`log <pot/gtinv-300/log.dat>`
+  gtinv-235 , 0.281 / 0.023 , 4.5529 / 0.0399 , :doc:`predictions <predictions/gtinv-235/prediction>`, :download:`mlp.lammps <pot/gtinv-235/mlp.lammps>` :download:`input <pot/gtinv-235/parameters.dat>` :download:`log <pot/gtinv-235/log.dat>`
+  gtinv-303 , 0.339 / 0.029 , 3.3054 / 0.0384 , :doc:`predictions <predictions/gtinv-303/prediction>`, :download:`mlp.lammps <pot/gtinv-303/mlp.lammps>` :download:`input <pot/gtinv-303/parameters.dat>` :download:`log <pot/gtinv-303/log.dat>`
+  gtinv-175 , 0.376 / 0.031 , 3.2298 / 0.0372 , :doc:`predictions <predictions/gtinv-175/prediction>`, :download:`mlp.lammps <pot/gtinv-175/mlp.lammps>` :download:`input <pot/gtinv-175/parameters.dat>` :download:`log <pot/gtinv-175/log.dat>`
+  gtinv-240 , 0.393 / 0.030 , 3.1645 / 0.0367 , :doc:`predictions <predictions/gtinv-240/prediction>`, :download:`mlp.lammps <pot/gtinv-240/mlp.lammps>` :download:`input <pot/gtinv-240/parameters.dat>` :download:`log <pot/gtinv-240/log.dat>`
+  gtinv-312 , 0.472 / 0.036 , 3.0315 / 0.0356 , :doc:`predictions <predictions/gtinv-312/prediction>`, :download:`mlp.lammps <pot/gtinv-312/mlp.lammps>` :download:`input <pot/gtinv-312/parameters.dat>` :download:`log <pot/gtinv-312/log.dat>`
+  gtinv-190 , 0.523 / 0.038 , 2.9059 / 0.0342 , :doc:`predictions <predictions/gtinv-190/prediction>`, :download:`mlp.lammps <pot/gtinv-190/mlp.lammps>` :download:`input <pot/gtinv-190/parameters.dat>` :download:`log <pot/gtinv-190/log.dat>`
+  gtinv-255 , 0.573 / 0.040 , 2.8526 / 0.0339 , :doc:`predictions <predictions/gtinv-255/prediction>`, :download:`mlp.lammps <pot/gtinv-255/mlp.lammps>` :download:`input <pot/gtinv-255/parameters.dat>` :download:`log <pot/gtinv-255/log.dat>`
+  gtinv-195 , 0.748 / 0.053 , 2.7196 / 0.0335 , :doc:`predictions <predictions/gtinv-195/prediction>`, :download:`mlp.lammps <pot/gtinv-195/mlp.lammps>` :download:`input <pot/gtinv-195/parameters.dat>` :download:`log <pot/gtinv-195/log.dat>`
+  gtinv-260 , 0.787 / 0.053 , 2.6319 / 0.0330 , :doc:`predictions <predictions/gtinv-260/prediction>`, :download:`mlp.lammps <pot/gtinv-260/mlp.lammps>` :download:`input <pot/gtinv-260/parameters.dat>` :download:`log <pot/gtinv-260/log.dat>`
+  gtinv-242 , 1.506 / 0.092 , 2.6241 / 0.0321 , :doc:`predictions <predictions/gtinv-242/prediction>`, :download:`mlp.lammps <pot/gtinv-242/mlp.lammps>` :download:`input <pot/gtinv-242/parameters.dat>` :download:`log <pot/gtinv-242/log.dat>`
+  gtinv-191 , 1.600 / 0.102 , 2.5639 / 0.0309 , :doc:`predictions <predictions/gtinv-191/prediction>`, :download:`mlp.lammps <pot/gtinv-191/mlp.lammps>` :download:`input <pot/gtinv-191/parameters.dat>` :download:`log <pot/gtinv-191/log.dat>`
+  gtinv-339 , 1.704 / 0.073 , 2.4101 / 0.0324 , :doc:`predictions <predictions/gtinv-339/prediction>`, :download:`mlp.lammps <pot/gtinv-339/mlp.lammps>` :download:`input <pot/gtinv-339/parameters.dat>` :download:`log <pot/gtinv-339/log.dat>`
+  gtinv-342 , 1.775 / 0.083 , 2.1237 / 0.0308 , :doc:`predictions <predictions/gtinv-342/prediction>`, :download:`mlp.lammps <pot/gtinv-342/mlp.lammps>` :download:`input <pot/gtinv-342/parameters.dat>` :download:`log <pot/gtinv-342/log.dat>`
+  gtinv-348 , 2.068 / 0.102 , 2.0405 / 0.0305 , :doc:`predictions <predictions/gtinv-348/prediction>`, :download:`mlp.lammps <pot/gtinv-348/mlp.lammps>` :download:`input <pot/gtinv-348/parameters.dat>` :download:`log <pot/gtinv-348/log.dat>`
+  gtinv-343 , 2.986 / 0.131 , 1.9335 / 0.0287 , :doc:`predictions <predictions/gtinv-343/prediction>`, :download:`mlp.lammps <pot/gtinv-343/mlp.lammps>` :download:`input <pot/gtinv-343/parameters.dat>` :download:`log <pot/gtinv-343/log.dat>`
+  gtinv-354 , 3.661 / 0.154 , 1.9158 / 0.0286 , :doc:`predictions <predictions/gtinv-354/prediction>`, :download:`mlp.lammps <pot/gtinv-354/mlp.lammps>` :download:`input <pot/gtinv-354/parameters.dat>` :download:`log <pot/gtinv-354/log.dat>`
+  gtinv-357 , 3.742 / 0.166 , 1.7071 / 0.0276 , :doc:`predictions <predictions/gtinv-357/prediction>`, :download:`mlp.lammps <pot/gtinv-357/mlp.lammps>` :download:`input <pot/gtinv-357/parameters.dat>` :download:`log <pot/gtinv-357/log.dat>`
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+
+- All Pareto optimal MLPs are available :download:`here         <pot-Pb-2021-08-04-all-icsd.tar.gz>`.

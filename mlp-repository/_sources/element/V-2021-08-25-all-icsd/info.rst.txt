@@ -1,0 +1,55 @@
+:orphan:
+
+V-2021-08-25-all-icsd
+====================================================
+
+.. image:: summary/pareto.png
+   :height: 350px
+
+The current structure dataset comprises 10952 structures generated from unique ICSD prototype structures composed of single elements with zero oxidation state. A more detailed procedure is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_. The procedure to estimate interatomic potentials from the dataset is found in `Phys. Rev. B 99, 214108 (2019) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108>`_ and `Phys. Rev. B 102, 174104 (2020) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104>`_.
+
+**Improvement from \*\*-dataset-10000-all-icsd**
+
+* More robust for structures with a small interatomic distance
+* More robust for structures with a large interatomic distance
+* More complex potential models are included.
+* MLPs are estimated without using DFT stress tensors.
+* MLPs are estimated by using small regression weights for energetically unstable structures.
+
+**Predictions using Pareto optimal MLPs**
+
+.. image:: summary/prediction-ecoh-volume.png
+   :height: 350px
+
+The cohesive energy and volume are obtained by performing a local structure optimization from the DFT equilibrium structure. In addition, the DFT equilibrium structure is obtained by optimizing a prototype structure included in ICSD, and the prototype is used as the structure legend in the figure. Therefore, the structure type of the converged structure is sometimes different from that shown in the legend even if the potential energy surface predicted by MLP is almost the same as the true one.
+
+The other properties predicted by each Pareto optimal MLP are available from column **Predictions** in the following table.
+
+V-2021-08-25-all-icsd shows large prediction errors. They should be carefully used. Such an MLP is often accurate for reasonable structures, but it is not accurate for unrealistic structures.
+
+.. csv-table:: Pareto optimals
+ :header: Name, Time [ms] (1core/36cores), RMSE [meV/atom]/[eV/A], Predictions, Files
+ :widths: 5,10,10,7,10
+
+  pair-1 , 0.012 / 0.003 , 247.40 / 0.8091 , --,--
+  pair-14 , 0.017 / 0.038 , 50.371 / 0.3783 , --,--
+  pair-27 , 0.018 / 0.005 , 43.569 / 0.3497 , --,--
+  pair-31 , 0.050 / 0.007 , 40.644 / 0.3373 , --,--
+  pair-37 , 0.136 / 0.018 , 34.279 / 0.3301 , --,--
+  gtinv-300 , 0.228 / 0.023 , 20.523 / 0.2296 , --,--
+  gtinv-235 , 0.281 / 0.023 , 18.985 / 0.2172 , --,--
+  gtinv-170 , 0.282 / 0.022 , 18.813 / 0.2183 , --,--
+  gtinv-312 , 0.472 / 0.036 , 15.215 / 0.2140 , --,--
+  gtinv-190 , 0.523 / 0.038 , 14.263 / 0.2053 , --,--
+  gtinv-301 , 0.743 / 0.062 , 11.341 / 0.1920 , --,--
+  gtinv-171 , 0.818 / 0.060 , 10.937 / 0.1876 , --,--
+  gtinv-172 , 1.152 / 0.075 , 7.8793 / 0.1666 , :doc:`predictions <predictions/gtinv-172/prediction>`, :download:`mlp.lammps <pot/gtinv-172/mlp.lammps>` :download:`input <pot/gtinv-172/parameters.dat>` :download:`log <pot/gtinv-172/log.dat>`
+  gtinv-174 , 1.973 / 0.134 , 6.7718 / 0.1595 , :doc:`predictions <predictions/gtinv-174/prediction>`, :download:`mlp.lammps <pot/gtinv-174/mlp.lammps>` :download:`input <pot/gtinv-174/parameters.dat>` :download:`log <pot/gtinv-174/log.dat>`
+  gtinv-194 , 3.908 / 0.240 , 5.7995 / 0.1535 , :doc:`predictions <predictions/gtinv-194/prediction>`, :download:`mlp.lammps <pot/gtinv-194/mlp.lammps>` :download:`input <pot/gtinv-194/parameters.dat>` :download:`log <pot/gtinv-194/log.dat>`
+  gtinv-224 , 14.066 / 0.687 , 5.3379 / 0.1540 , :doc:`predictions <predictions/gtinv-224/prediction>`, :download:`mlp.lammps <pot/gtinv-224/mlp.lammps>` :download:`input <pot/gtinv-224/parameters.dat>` :download:`log <pot/gtinv-224/log.dat>`
+  gtinv-289 , 14.825 / 0.712 , 5.2958 / 0.1531 , :doc:`predictions <predictions/gtinv-289/prediction>`, :download:`mlp.lammps <pot/gtinv-289/mlp.lammps>` :download:`input <pot/gtinv-289/parameters.dat>` :download:`log <pot/gtinv-289/log.dat>`
+
+Column "Time" shows the time required to compute the energy and forces for **1 MD step** and **1 atom**, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.
+
+- All Pareto optimal MLPs are available :download:`here         <pot-V-2021-08-25-all-icsd.tar.gz>`.
