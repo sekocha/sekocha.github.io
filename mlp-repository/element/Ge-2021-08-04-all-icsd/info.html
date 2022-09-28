@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Ge-2021-08-04-all-icsd &mdash; Polynomial Machine Learning Potential Repository (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Polynomial Machine Learning Potential Repository (Kyoto University)" href="../../index.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">PolyMLP Repository (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="../../genindex.html" title="General Index" accesskey="I">index </a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="ge-2021-08-04-all-icsd">
+<h1>Ge-2021-08-04-all-icsd<a class="headerlink" href="#ge-2021-08-04-all-icsd" title="Permalink to this heading">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/pareto232.png"><img alt="../../_images/pareto232.png" src="../../_images/pareto232.png" style="height: 350px;" /></a>
+<p>The current structure dataset comprises 13325 structures generated from unique ICSD prototype structures composed of single elements with zero oxidation state. A more detailed procedure is found in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108">Phys. Rev. B 99, 214108 (2019)</a>. The procedure to estimate interatomic potentials from the dataset is found in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108">Phys. Rev. B 99, 214108 (2019)</a> and <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104">Phys. Rev. B 102, 174104 (2020)</a>.</p>
+<p><strong>Improvement from **-dataset-10000-all-icsd</strong></p>
+<ul class="simple">
+<li><p>More robust for structures with a small interatomic distance</p></li>
+<li><p>More robust for structures with a large interatomic distance</p></li>
+<li><p>More complex potential models are included.</p></li>
+<li><p>MLPs are estimated without using DFT stress tensors.</p></li>
+<li><p>MLPs are estimated by using small regression weights for energetically unstable structures.</p></li>
+</ul>
+<p><strong>Predictions using Pareto optimal MLPs</strong></p>
+<a class="reference internal image-reference" href="../../_images/prediction-ecoh-volume126.png"><img alt="../../_images/prediction-ecoh-volume126.png" src="../../_images/prediction-ecoh-volume126.png" style="height: 350px;" /></a>
+<p>The cohesive energy and volume are obtained by performing a local structure optimization from the DFT equilibrium structure. In addition, the DFT equilibrium structure is obtained by optimizing a prototype structure included in ICSD, and the prototype is used as the structure legend in the figure. Therefore, the structure type of the converged structure is sometimes different from that shown in the legend even if the potential energy surface predicted by MLP is almost the same as the true one.</p>
+<p>The other properties predicted by each Pareto optimal MLP are available from column <strong>Predictions</strong> in the following table.</p>
+<p>Ge-2021-08-04-all-icsd shows large prediction errors. They should be carefully used. Such an MLP is often accurate for reasonable structures, but it is not accurate for unrealistic structures.</p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Pareto optimals</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 24%" />
+<col style="width: 24%" />
+<col style="width: 17%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Time [ms] (1core/36cores)</p></th>
+<th class="head"><p>RMSE [meV/atom]/[eV/A]</p></th>
+<th class="head"><p>Predictions</p></th>
+<th class="head"><p>Files</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pair-14</p></td>
+<td><p>0.017 / 0.038</p></td>
+<td><p>73.269 / 0.2330</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-27</p></td>
+<td><p>0.018 / 0.005</p></td>
+<td><p>28.342 / 0.1637</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-28</p></td>
+<td><p>0.027 / 0.007</p></td>
+<td><p>26.707 / 0.1660</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-31</p></td>
+<td><p>0.050 / 0.007</p></td>
+<td><p>23.740 / 0.1559</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-32</p></td>
+<td><p>0.051 / 0.010</p></td>
+<td><p>23.660 / 0.1549</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-33</p></td>
+<td><p>0.069 / 0.012</p></td>
+<td><p>22.145 / 0.1504</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-37</p></td>
+<td><p>0.136 / 0.018</p></td>
+<td><p>19.623 / 0.1405</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-300</p></td>
+<td><p>0.228 / 0.023</p></td>
+<td><p>11.387 / 0.0807</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-235</p></td>
+<td><p>0.281 / 0.023</p></td>
+<td><p>9.8064 / 0.0717</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-235/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/71254d97e92c8fe277cdf5fcd9dded0a/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/34d5a8d30e047ee1cb676763f85d4ef9/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/8f37be1892464f034526e8fd8cdfea32/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-175</p></td>
+<td><p>0.376 / 0.031</p></td>
+<td><p>9.7406 / 0.0734</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-175/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/11c74e65e9ebc1f4edd6e5f854b1d988/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/1748d9191ea7567bdf679c593ca42145/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/c46201b679d00caeff2b4dd1603bc882/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-240</p></td>
+<td><p>0.393 / 0.030</p></td>
+<td><p>9.4340 / 0.0724</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-240/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/093dc3ccc9dec3cb4c987b1b128a1c57/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/8b998b1137f48424e62ff719e2da79ae/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/3b102ad49aac0bcc1e7673f43af6c7aa/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-312</p></td>
+<td><p>0.472 / 0.036</p></td>
+<td><p>8.4679 / 0.0725</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-312/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/90ac8d2a405a2d06170c4a8ed6cc5642/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/20088ef2ccd75e0ac7cc02127a9d0d48/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/125f576e1a141e53f1696d4ee1ca49db/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-190</p></td>
+<td><p>0.523 / 0.038</p></td>
+<td><p>7.5332 / 0.0665</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-190/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/54882f670375b0d2982ea460131ea104/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/acf40d3b1658fd94e656ec00bd4472cd/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/da1467d89b82650fdffd215df0f1a19c/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-255</p></td>
+<td><p>0.573 / 0.040</p></td>
+<td><p>7.2238 / 0.0650</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-255/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/4497b66762ef2fe9157caff9327e0dd0/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/5d598373c59644ea16e6418290a17ed7/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/8de22eaad86990148814ce0714eeba71/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-236</p></td>
+<td><p>0.804 / 0.059</p></td>
+<td><p>6.3391 / 0.0654</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-236/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/2ce51b30a616bcb67c35e6a1f8198225/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/42773a29fd95598e6d2111ee309a9355/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/5eddf99417a2aea0073a7a06d469d599/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-176</p></td>
+<td><p>1.108 / 0.075</p></td>
+<td><p>6.2910 / 0.0673</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-176/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/f14e8207601f67228906457aca9d8830/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/f2d8f5388663505e98c4e27e1437fb52/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/bf1170e0a57abaf1baf61c12b4516783/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-241</p></td>
+<td><p>1.126 / 0.076</p></td>
+<td><p>5.9713 / 0.0652</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-241/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/15dbb997f07024649459fa89cd8070e5/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/07c0f482511a907c30cbdf220db45a8b/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/717f08c733e63bc888c8cb25403a8aae/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-172</p></td>
+<td><p>1.152 / 0.075</p></td>
+<td><p>5.5992 / 0.0668</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-172/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/fe998c41aa60111e6ead3eebce475881/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/acf4c139fb6aa28a9aea4c6e87094673/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/d208c752766ba3879536264f2ac8a980/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-237</p></td>
+<td><p>1.177 / 0.073</p></td>
+<td><p>5.2381 / 0.0632</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-237/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/62129a21610029eca35b0c1b4654fbfa/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/5e2e3a7b9ee6b9657b99942863dcecbc/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/ed82044ef6fce9d083324d01843733cc/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-242</p></td>
+<td><p>1.506 / 0.092</p></td>
+<td><p>5.1468 / 0.0631</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-242/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/74867099963601f7dc54fe7c570c47bf/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/72fbe667a0b9cd0fcf9c9a85591d331f/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/51047ea7b3f8939ec368ee770cc840df/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-191</p></td>
+<td><p>1.600 / 0.102</p></td>
+<td><p>4.8013 / 0.0613</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-191/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/b781d98124153dfe54615bb35b0d0f34/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/215c5bd36dc9f6ea8e9e11df8d8d2e57/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/c92d59a302bd52f68cc013c6fc7f2d65/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-256</p></td>
+<td><p>1.780 / 0.109</p></td>
+<td><p>4.6845 / 0.0598</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-256/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/7ac5e57211f8e6482ded3468b7a8f00c/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/95234e62ed1428e9f43b6a3c40a6efc7/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/77150a4f98788a7e2ff1776ba097c7a7/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-192</p></td>
+<td><p>2.106 / 0.124</p></td>
+<td><p>4.3299 / 0.0600</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-192/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/e9cd43888d946e569cc0bb542a496aba/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/f282867683faf4adf01da9874a899f06/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/b211a8bb0c455e07b2572d4736582d49/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-257</p></td>
+<td><p>2.164 / 0.129</p></td>
+<td><p>4.2810 / 0.0586</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-257/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/5bfb28e7e14f57f930a1e011ef8d56e6/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/668ac6a41841464e2b912f2d785c578c/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/a715683fbc5333744690fc50524e25c6/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-262</p></td>
+<td><p>2.839 / 0.166</p></td>
+<td><p>4.2363 / 0.0578</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-262/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/ca7cf24852e63f66c43ac1083047eece/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/56c8444153689aeecf38dc04d64bb92d/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/92d0d870f6b3f94f6ce68737b58222b7/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-346</p></td>
+<td><p>3.371 / 0.155</p></td>
+<td><p>4.1752 / 0.0594</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-346/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/02415c6000f803a42462aa3a643a3c47/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/18c776cde6f3558e931df0bfde68eb59/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/d28bfbf21169fc6fbb2f7d25fdebf288/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-351</p></td>
+<td><p>3.420 / 0.142</p></td>
+<td><p>4.1158 / 0.0559</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-351/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/e5e7e0d737da32de8d0ee260c69d32cf/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/c18789b2e11a42f9673484cd2c6cc959/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/d478be537d641261f6f0a98f27a17221/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-194</p></td>
+<td><p>3.908 / 0.240</p></td>
+<td><p>3.9325 / 0.0578</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-194/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/b889e4623b897670fb70d90e11a4c9db/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/09bf1d5b55643555e61845289ad32a00/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/4761227a49bbdf53b0015be9c4a20627/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-259</p></td>
+<td><p>4.078 / 0.244</p></td>
+<td><p>3.8921 / 0.0566</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-259/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/aaccbb48d7986a2533933245168d5ceb/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/2af4e46663823efd7918d97bdad800fc/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/11c41ad6ac7fb2fa831196f03c584b59/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-341</p></td>
+<td><p>4.119 / 0.255</p></td>
+<td><p>3.8286 / 0.0550</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-341/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/9522a33eefe4e96683bd4e855a09342f/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/07bfb3f2e5fdd96f6cb6009ea62eb3bc/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/dbb0d7630e26893de77d107cc13cd6e9/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-347</p></td>
+<td><p>5.540 / 0.290</p></td>
+<td><p>3.3497 / 0.0560</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-347/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/58bd447dae0d5db92f06052de6cce5c0/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/0e96fc4cba62a536b5d4cafea81b74ca/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/3d7128bcabca86103d6607d4ed7780d5/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-223</p></td>
+<td><p>13.159 / 0.653</p></td>
+<td><p>3.3413 / 0.0541</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-223/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/997d140fb8f670398f38bf29038f86f4/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/0dfff0d17cc2d30f974f1beedf6b1290/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/19c1da46d7d54cfca16f7158ec355030/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-288</p></td>
+<td><p>13.824 / 0.659</p></td>
+<td><p>3.3396 / 0.0529</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-288/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/7bfa8f4d950a1547d4bdda22fc116cc3/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/302b00bc26aac46bd52f897824fcfdea/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/a6bb15fb4207717097804059e8602936/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-224</p></td>
+<td><p>14.066 / 0.687</p></td>
+<td><p>3.2818 / 0.0533</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-224/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/b3c0c89580b1f3c89abc55fa02cc43d5/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/4b0e6e1655e2f177bacdca3733eef835/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/14578cb305c5685f6ce08d4d29a4ca6b/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-228</p></td>
+<td><p>16.624 / 0.807</p></td>
+<td><p>3.2515 / 0.0545</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-228/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/9d26c003e77c4195f6c44cb287fd16cd/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/193e10d018470385b7d7348468b61ca9/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/5df2ad0dda387df7481d53e7c511932c/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-229</p></td>
+<td><p>17.857 / 0.829</p></td>
+<td><p>3.2154 / 0.0536</p></td>
+<td><p><a class="reference internal" href="predictions/gtinv-229/prediction.html"><span class="doc">predictions</span></a></p></td>
+<td><p><a class="reference download internal" download="" href="../../_downloads/ca16a1d197371634f221527ded1b15f3/mlp.lammps"><code class="xref download docutils literal notranslate"><span class="pre">mlp.lammps</span></code></a> <a class="reference download internal" download="" href="../../_downloads/856a9e8ef296887b84a850ab40a27f0a/parameters.dat"><code class="xref download docutils literal notranslate"><span class="pre">input</span></code></a> <a class="reference download internal" download="" href="../../_downloads/5b9184cdfce02f17eb584d7af54aaf0a/log.dat"><code class="xref download docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Column “Time” shows the time required to compute the energy and forces for <strong>1 MD step</strong> and <strong>1 atom</strong>, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 &#64; 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.</p>
+<ul class="simple">
+<li><p>All Pareto optimal MLPs are available <a class="reference download internal" download="" href="../../_downloads/4cc17d14c76546e8373ad593518e151f/pot-Ge-2021-08-04-all-icsd.tar.gz"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p></li>
+</ul>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../index.html">PolyMLP Repository (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../../genindex.html" title="General Index" >index</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

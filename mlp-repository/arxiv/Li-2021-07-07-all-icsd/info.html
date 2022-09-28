@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Li-2021-07-07-all-icsd &mdash; Polynomial Machine Learning Potential Repository (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Polynomial Machine Learning Potential Repository (Kyoto University)" href="../../index.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">PolyMLP Repository (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="../../genindex.html" title="General Index" accesskey="I">index </a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="li-2021-07-07-all-icsd">
+<h1>Li-2021-07-07-all-icsd<a class="headerlink" href="#li-2021-07-07-all-icsd" title="Permalink to this heading">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/pareto159.png"><img alt="../../_images/pareto159.png" src="../../_images/pareto159.png" style="height: 350px;" /></a>
+<p>The current structure dataset comprises 13980 structures generated from unique ICSD prototype structures composed of single elements with zero oxidation state. A more detailed procedure is found in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108">Phys. Rev. B 99, 214108 (2019)</a>. The procedure to estimate interatomic potentials from the dataset is found in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.214108">Phys. Rev. B 99, 214108 (2019)</a> and <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.174104">Phys. Rev. B 102, 174104 (2020)</a>.</p>
+<p><strong>Improvement from **-dataset-10000-all-icsd</strong></p>
+<ul class="simple">
+<li><p>More robust for structures with a small interatomic distance</p></li>
+<li><p>More robust for structures with a large interatomic distance</p></li>
+<li><p>More complex potential models are included.</p></li>
+<li><p>MLPs are estimated without using DFT stress tensors.</p></li>
+<li><p>MLPs are estimated by using small regression weights for energetically unstable structures.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>All Pareto optimal MLPs are available</strong> <a class="reference download internal" download="" href="../../_downloads/44356b2655cb47de6bd13ef6c04030e7/pot-Li-2021-07-07-all-icsd.tar.gz"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p></li>
+</ul>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Pareto optimals</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Time [ms] (1 core / 36 cores)</p></th>
+<th class="head"><p>RMSE [meV/atom] / [eV/ang.]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pair-1</p></td>
+<td><p>0.012 / 0.003</p></td>
+<td><p>93.968 / 0.1682</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-14</p></td>
+<td><p>0.017 / 0.038</p></td>
+<td><p>20.873 / 0.0574</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-27</p></td>
+<td><p>0.018 / 0.005</p></td>
+<td><p>9.5581 / 0.0367</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-28</p></td>
+<td><p>0.027 / 0.007</p></td>
+<td><p>5.6414 / 0.0286</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-29</p></td>
+<td><p>0.039 / 0.009</p></td>
+<td><p>5.4874 / 0.0279</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-31</p></td>
+<td><p>0.050 / 0.007</p></td>
+<td><p>5.4673 / 0.0278</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-32</p></td>
+<td><p>0.051 / 0.010</p></td>
+<td><p>5.0171 / 0.0250</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-33</p></td>
+<td><p>0.069 / 0.012</p></td>
+<td><p>4.7292 / 0.0232</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-35</p></td>
+<td><p>0.121 / 0.021</p></td>
+<td><p>4.6627 / 0.0225</p></td>
+</tr>
+<tr class="row-odd"><td><p>pair-37</p></td>
+<td><p>0.136 / 0.018</p></td>
+<td><p>4.6315 / 0.0213</p></td>
+</tr>
+<tr class="row-even"><td><p>pair-38</p></td>
+<td><p>0.171 / 0.022</p></td>
+<td><p>4.2207 / 0.0203</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-300</p></td>
+<td><p>0.228 / 0.023</p></td>
+<td><p>3.5596 / 0.0134</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-235</p></td>
+<td><p>0.281 / 0.023</p></td>
+<td><p>3.4099 / 0.0129</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-303</p></td>
+<td><p>0.339 / 0.029</p></td>
+<td><p>2.1154 / 0.0119</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-175</p></td>
+<td><p>0.376 / 0.031</p></td>
+<td><p>2.0328 / 0.0113</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-240</p></td>
+<td><p>0.393 / 0.030</p></td>
+<td><p>2.0240 / 0.0113</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-312</p></td>
+<td><p>0.472 / 0.036</p></td>
+<td><p>1.7808 / 0.0096</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-190</p></td>
+<td><p>0.523 / 0.038</p></td>
+<td><p>1.6873 / 0.0091</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-255</p></td>
+<td><p>0.573 / 0.040</p></td>
+<td><p>1.6667 / 0.0090</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-195</p></td>
+<td><p>0.748 / 0.053</p></td>
+<td><p>1.3312 / 0.0085</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-260</p></td>
+<td><p>0.787 / 0.053</p></td>
+<td><p>1.3277 / 0.0085</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-318</p></td>
+<td><p>0.906 / 0.068</p></td>
+<td><p>1.3158 / 0.0092</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-265</p></td>
+<td><p>0.983 / 0.070</p></td>
+<td><p>1.2229 / 0.0086</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-342</p></td>
+<td><p>1.775 / 0.083</p></td>
+<td><p>1.0879 / 0.0086</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-330</p></td>
+<td><p>1.834 / 0.118</p></td>
+<td><p>1.0815 / 0.0070</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-220</p></td>
+<td><p>1.890 / 0.117</p></td>
+<td><p>1.0281 / 0.0066</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-285</p></td>
+<td><p>2.031 / 0.123</p></td>
+<td><p>1.0186 / 0.0065</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-225</p></td>
+<td><p>2.394 / 0.148</p></td>
+<td><p>0.9987 / 0.0066</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-290</p></td>
+<td><p>2.494 / 0.149</p></td>
+<td><p>0.9863 / 0.0065</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-343</p></td>
+<td><p>2.986 / 0.131</p></td>
+<td><p>0.8763 / 0.0077</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-346</p></td>
+<td><p>3.371 / 0.155</p></td>
+<td><p>0.8625 / 0.0079</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-351</p></td>
+<td><p>3.420 / 0.142</p></td>
+<td><p>0.8081 / 0.0068</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-354</p></td>
+<td><p>3.661 / 0.154</p></td>
+<td><p>0.6986 / 0.0065</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-357</p></td>
+<td><p>3.742 / 0.166</p></td>
+<td><p>0.6475 / 0.0063</p></td>
+</tr>
+<tr class="row-even"><td><p>gtinv-355</p></td>
+<td><p>6.437 / 0.289</p></td>
+<td><p>0.5484 / 0.0055</p></td>
+</tr>
+<tr class="row-odd"><td><p>gtinv-356</p></td>
+<td><p>10.754 / 0.555</p></td>
+<td><p>0.5135 / 0.0053</p></td>
+</tr>
+</tbody>
+</table>
+<p>Column “Time” shows the time required to compute the energy and forces for <strong>1 MD step</strong> and <strong>1 atom</strong>, which is estimated from a simulation of 10 runs for a structure with 284 atoms using a workstation with Intel(R) Xeon(R) CPU E5-2695 v4 &#64; 2.10GHz.
+Note that the MLPs should be carefully used for extreme structures. The MLPs often return meaningless values for them.</p>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../index.html">PolyMLP Repository (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../../genindex.html" title="General Index" >index</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -1,0 +1,4391 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>gtinv-272 (Be-Si-2022-06-12) &mdash; Polynomial Machine Learning Potential Repository (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../../../_static/css/bootstrap3/bootswatch-yeti.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../../../_static/css/adjust_theme/bootswatch-yeti.css" type="text/css" />
+
+<link rel="stylesheet" href="../../../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../../../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../../../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="top" title="Polynomial Machine Learning Potential Repository (Kyoto University)" href="../../../../index.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../../../index.html">PolyMLP Repository (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="../../../../genindex.html" title="General Index" accesskey="I">index </a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="gtinv-272-be-si-2022-06-12">
+<h1>gtinv-272 (Be-Si-2022-06-12)<a class="headerlink" href="#gtinv-272-be-si-2022-06-12" title="Permalink to this heading">¶</a></h1>
+<p><strong>Energy distribution</strong></p>
+<a class="reference internal image-reference" href="../../../../_images/distribution256.png"><img alt="../../../../_images/distribution256.png" src="../../../../_images/distribution256.png" style="height: 300px;" /></a>
+<p><strong>Convex hull (formation energy)</strong></p>
+<a class="reference internal image-reference" href="../../../../_images/convex256.png"><img alt="../../../../_images/convex256.png" src="../../../../_images/convex256.png" style="height: 300px;" /></a>
+<p><strong>Stable structures</strong></p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Convex hull (formation energy)</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Composition</p></th>
+<th class="head"><p>Formation energy (eV/atom)</p></th>
+<th class="head"><p>Structure</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>Be</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.0</p></td>
+<td><p>0.0</p></td>
+<td><p>Si</p></td>
+</tr>
+</tbody>
+</table>
+<p>The convex hull and stable structures are obtained by performing local structure optimizations only from structure prototypes used for estimating the MLP. Therefore, they are often inconsistent with experimental structures and/or theoretical globally-stable structures. In addition, the prototype is used as the structure legend in the figure. Therefore, the structure type of the converged structure is sometimes different from that shown in the legend even if the potential energy surface predicted by MLP is almost the same as the true one.</p>
+<p><strong>Equation of state for each structure</strong></p>
+<a class="reference internal image-reference" href="../../../../_images/e-v-sep256.png"><img alt="../../../../_images/e-v-sep256.png" src="../../../../_images/e-v-sep256.png" style="height: 1200px;" /></a>
+<p><strong>Prototype structure energy</strong></p>
+<a class="reference internal image-reference" href="../../../../_images/icsd-pred256.png"><img alt="../../../../_images/icsd-pred256.png" src="../../../../_images/icsd-pred256.png" style="height: 300px;" /></a>
+<p><strong>Phonon density of states</strong></p>
+<a class="reference internal image-reference" href="../../../../_images/dos256.png"><img alt="../../../../_images/dos256.png" src="../../../../_images/dos256.png" style="height: 1000px;" /></a>
+<p><strong>Prototype structure energy, Lattice constants, Elastic constants</strong></p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Prototype structure energy</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Prototype</p></th>
+<th class="head"><p>MLP (eV/atom)</p></th>
+<th class="head"><p>DFT (eV/atom)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>icsd-167735-10-[Ru2B3]</p></td>
+<td><p>-4.05998</p></td>
+<td><p>-4.0602</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-639148-10-[NiHg4]</p></td>
+<td><p>-3.97855</p></td>
+<td><p>-3.97942</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-108762-10-[Hg4Pt]</p></td>
+<td><p>-3.97855</p></td>
+<td><p>-3.97942</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-424636-10-[MnGa4]</p></td>
+<td><p>-3.97855</p></td>
+<td><p>-3.97942</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-248490-10-[Pt2Si]</p></td>
+<td><p>-3.95358</p></td>
+<td><p>-3.95325</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-638227-10-[Fluorite-CaF2]</p></td>
+<td><p>-3.95357</p></td>
+<td><p>-3.95316</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-169457-10-[ZrH2]</p></td>
+<td><p>-3.95355</p></td>
+<td><p>-3.95313</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-97006-10-[InMg2]</p></td>
+<td><p>-3.9498</p></td>
+<td><p>-3.94967</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-648748-10-[Pd4Se]</p></td>
+<td><p>-3.93789</p></td>
+<td><p>-3.93972</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-42773-10-[IrGe4]</p></td>
+<td><p>-3.93532</p></td>
+<td><p>-3.94492</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-635642-01-[Hg5Mn2]</p></td>
+<td><p>-3.92868</p></td>
+<td><p>-3.92356</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-106786-10-[Hg2Pt]</p></td>
+<td><p>-3.91112</p></td>
+<td><p>-3.91121</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-5258-01-[FeSi2]</p></td>
+<td><p>-3.89868</p></td>
+<td><p>-3.89867</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-105521-10-[Al5W]</p></td>
+<td><p>-3.89465</p></td>
+<td><p>-3.89537</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-107998-10-[MoNi4]</p></td>
+<td><p>-3.88069</p></td>
+<td><p>-3.88038</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-30446-01-[Fe2B]</p></td>
+<td><p>-3.87298</p></td>
+<td><p>-3.8725</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-58745-01-[Fe6Ge6Mg]</p></td>
+<td><p>-3.869</p></td>
+<td><p>-3.86563</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-185626-10-[Al3Ni2]</p></td>
+<td><p>-3.8678</p></td>
+<td><p>-3.87053</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-239-10-[Cu3Se2]</p></td>
+<td><p>-3.86063</p></td>
+<td><p>-3.86058</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-58607-10-[Au2Ti]</p></td>
+<td><p>-3.86051</p></td>
+<td><p>-3.8603</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-652553-10-[AlCr2-MoSi2]</p></td>
+<td><p>-3.86039</p></td>
+<td><p>-3.86038</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-58471-01-[CuZr2]</p></td>
+<td><p>-3.86023</p></td>
+<td><p>-3.86041</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-420250-01-[LiPd2Tl]</p></td>
+<td><p>-3.84831</p></td>
+<td><p>-3.84941</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-105191-01-[Al3Ti]</p></td>
+<td><p>-3.8483</p></td>
+<td><p>-3.8494</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-643301-01-[Au3Cd]</p></td>
+<td><p>-3.84689</p></td>
+<td><p>-3.84802</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-640726-10-[CuSmP2]</p></td>
+<td><p>-3.84672</p></td>
+<td><p>-3.84808</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-416747-01-[Al3Zr]</p></td>
+<td><p>-3.84652</p></td>
+<td><p>-3.84812</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-609153-01-[AlPt3]</p></td>
+<td><p>-3.84494</p></td>
+<td><p>-3.84528</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-99787-10-[Fe3Pt]</p></td>
+<td><p>-3.84492</p></td>
+<td><p>-3.84467</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-648572-01-[CuInPt2]</p></td>
+<td><p>-3.84492</p></td>
+<td><p>-3.84467</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-181127-10-[Auricupride-AuCu3]</p></td>
+<td><p>-3.84492</p></td>
+<td><p>-3.84467</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-69199-01-[U3Si]</p></td>
+<td><p>-3.84482</p></td>
+<td><p>-3.845</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-649037-01-[Ni3Ti]</p></td>
+<td><p>-3.84434</p></td>
+<td><p>-3.8426</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-59586-01-[Pd5Th3]</p></td>
+<td><p>-3.84121</p></td>
+<td><p>-3.83964</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-104506-01-[Ni3Sn]</p></td>
+<td><p>-3.84013</p></td>
+<td><p>-3.83905</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-260285-01-[UCl3]</p></td>
+<td><p>-3.84005</p></td>
+<td><p>-3.83935</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-659829-01-[Al2Li3]</p></td>
+<td><p>-3.83988</p></td>
+<td><p>-3.84626</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-69557-10-[CdI2(hP9)]</p></td>
+<td><p>-3.83616</p></td>
+<td><p>-3.83649</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-655706-10-[Cu2Te(HT)]</p></td>
+<td><p>-3.83416</p></td>
+<td><p>-3.83439</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-150584-10-[Fe13Ge3]</p></td>
+<td><p>-3.83392</p></td>
+<td><p>-3.83055</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-611176-01-[Fe2P]</p></td>
+<td><p>-3.82701</p></td>
+<td><p>-3.83195</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-105726-01-[Pd5Ti3]</p></td>
+<td><p>-3.82034</p></td>
+<td><p>-3.82158</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-635208-10-[CoGa3]</p></td>
+<td><p>-3.81858</p></td>
+<td><p>-3.82014</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-155842-10-[Co5Fe11]</p></td>
+<td><p>-3.81633</p></td>
+<td><p>-3.81589</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-610464-10-[PbClF/Cu2Sb]</p></td>
+<td><p>-3.81589</p></td>
+<td><p>-3.81615</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-189711-10-[Heusler(alloy)-AlLiSi]</p></td>
+<td><p>-3.81094</p></td>
+<td><p>-3.81134</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-16504-01-[CrSi2]</p></td>
+<td><p>-3.8082</p></td>
+<td><p>-3.80881</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-16606-01-[Nb3Te4]</p></td>
+<td><p>-3.80115</p></td>
+<td><p>-3.80231</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-629380-10-[Al3Os2]</p></td>
+<td><p>-3.80039</p></td>
+<td><p>-3.80107</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-629406-10-[Cu4Ti3]</p></td>
+<td><p>-3.79936</p></td>
+<td><p>-3.79941</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-409859-01-[La2Sb]</p></td>
+<td><p>-3.79752</p></td>
+<td><p>-3.79784</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-103995-01-[Ga3Ti2]</p></td>
+<td><p>-3.79358</p></td>
+<td><p>-3.7936</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-639227-10-[Si2U3]</p></td>
+<td><p>-3.77839</p></td>
+<td><p>-3.77792</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-188260-10-[Heusler-AlCu2Mn]</p></td>
+<td><p>-3.77642</p></td>
+<td><p>-3.77715</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-189695-01-[CuHg2Ti]</p></td>
+<td><p>-3.77642</p></td>
+<td><p>-3.77715</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-161109-01-[CoSn]</p></td>
+<td><p>-3.76421</p></td>
+<td><p>-3.76273</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-638227-01-[Fluorite-CaF2]</p></td>
+<td><p>-3.76271</p></td>
+<td><p>-3.76262</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-248490-01-[Pt2Si]</p></td>
+<td><p>-3.76271</p></td>
+<td><p>-3.76267</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-169457-01-[ZrH2]</p></td>
+<td><p>-3.76268</p></td>
+<td><p>-3.76267</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-611457-01-[NbAs]</p></td>
+<td><p>-3.75945</p></td>
+<td><p>-3.75935</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-105636-01-[PbU]</p></td>
+<td><p>-3.75945</p></td>
+<td><p>-3.75936</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-52294-01-[GeTe(supercell)]</p></td>
+<td><p>-3.75923</p></td>
+<td><p>-3.75915</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-659806-01-[GeTe(subcell)]</p></td>
+<td><p>-3.75923</p></td>
+<td><p>-3.75915</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-639037-01-[HgIn]</p></td>
+<td><p>-3.75923</p></td>
+<td><p>-3.75915</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-610464-01-[PbClF/Cu2Sb]</p></td>
+<td><p>-3.7517</p></td>
+<td><p>-3.75023</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-409859-10-[La2Sb]</p></td>
+<td><p>-3.74565</p></td>
+<td><p>-3.7468</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-639879-01-[In5In4]</p></td>
+<td><p>-3.74273</p></td>
+<td><p>-3.74274</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-108707-01-[HgMn]</p></td>
+<td><p>-3.74262</p></td>
+<td><p>-3.74277</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-59508-01-[AuCu]</p></td>
+<td><p>-3.74262</p></td>
+<td><p>-3.74277</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-633467-01-[FeSe(tP2)]</p></td>
+<td><p>-3.74262</p></td>
+<td><p>-3.74277</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-42428-01-[Fe3Pt]</p></td>
+<td><p>-3.74256</p></td>
+<td><p>-3.74274</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-106325-01-[BiIn]</p></td>
+<td><p>-3.74254</p></td>
+<td><p>-3.74235</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-105948-01-[InNi2]</p></td>
+<td><p>-3.74162</p></td>
+<td><p>-3.74304</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-161133-10-[Fe2Si(HT)]</p></td>
+<td><p>-3.74162</p></td>
+<td><p>-3.74304</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-611618-01-[TiAs]</p></td>
+<td><p>-3.73808</p></td>
+<td><p>-3.7379</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-618702-01-[ScTe]</p></td>
+<td><p>-3.73808</p></td>
+<td><p>-3.7379</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-100654-01-[BiSe]</p></td>
+<td><p>-3.73605</p></td>
+<td><p>-3.73583</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-239-01-[Cu3Se2]</p></td>
+<td><p>-3.73306</p></td>
+<td><p>-3.73345</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-189711-01-[Heusler(alloy)-AlLiSi]</p></td>
+<td><p>-3.73293</p></td>
+<td><p>-3.73252</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-73839-10-[Ni3S2]</p></td>
+<td><p>-3.73188</p></td>
+<td><p>-3.72906</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-103995-10-[Ga3Ti2]</p></td>
+<td><p>-3.72585</p></td>
+<td><p>-3.72562</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-659829-10-[Al2Li3]</p></td>
+<td><p>-3.72356</p></td>
+<td><p>-3.7249</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-240119-01-[AlLi]</p></td>
+<td><p>-3.72307</p></td>
+<td><p>-3.72354</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-73839-01-[Ni3S2]</p></td>
+<td><p>-3.72087</p></td>
+<td><p>-3.71682</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-102712-01-[CoU]</p></td>
+<td><p>-3.71921</p></td>
+<td><p>-3.72109</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-185626-01-[Al3Ni2]</p></td>
+<td><p>-3.71627</p></td>
+<td><p>-3.71635</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-168897-01-[LaI]</p></td>
+<td><p>-3.71522</p></td>
+<td><p>-3.71414</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-626692-01-[Nickeline-NiAs]</p></td>
+<td><p>-3.71522</p></td>
+<td><p>-3.71414</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-629406-01-[Cu4Ti3]</p></td>
+<td><p>-3.69939</p></td>
+<td><p>-3.69867</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-625334-10-[Laves(2H)-MgZn2]</p></td>
+<td><p>-3.69412</p></td>
+<td><p>-3.69418</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-16606-10-[Nb3Te4]</p></td>
+<td><p>-3.68429</p></td>
+<td><p>-3.68587</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-652553-01-[AlCr2-MoSi2]</p></td>
+<td><p>-3.68225</p></td>
+<td><p>-3.68272</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-58607-01-[Au2Ti]</p></td>
+<td><p>-3.68222</p></td>
+<td><p>-3.68272</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-58471-10-[CuZr2]</p></td>
+<td><p>-3.68219</p></td>
+<td><p>-3.68272</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-635060-01-[Fersilicite-FeSi]</p></td>
+<td><p>-3.68202</p></td>
+<td><p>-3.68222</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-16504-10-[CrSi2]</p></td>
+<td><p>-3.67818</p></td>
+<td><p>-3.67816</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-55492-01-[BaPt]</p></td>
+<td><p>-3.67451</p></td>
+<td><p>-3.675</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-246555-01-[Co2Nd]</p></td>
+<td><p>-3.6706</p></td>
+<td><p>-3.67006</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-648572-10-[CuInPt2]</p></td>
+<td><p>-3.66808</p></td>
+<td><p>-3.6689</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-181127-01-[Auricupride-AuCu3]</p></td>
+<td><p>-3.66808</p></td>
+<td><p>-3.6689</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-99787-01-[Fe3Pt]</p></td>
+<td><p>-3.66808</p></td>
+<td><p>-3.66889</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-609153-10-[AlPt3]</p></td>
+<td><p>-3.66807</p></td>
+<td><p>-3.66898</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-69199-10-[U3Si]</p></td>
+<td><p>-3.66806</p></td>
+<td><p>-3.66897</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-643301-10-[Au3Cd]</p></td>
+<td><p>-3.66218</p></td>
+<td><p>-3.66332</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-640726-01-[CuSmP2]</p></td>
+<td><p>-3.66218</p></td>
+<td><p>-3.66332</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-416747-10-[Al3Zr]</p></td>
+<td><p>-3.66218</p></td>
+<td><p>-3.66331</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-644708-01-[WC]</p></td>
+<td><p>-3.66174</p></td>
+<td><p>-3.66244</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-659856-01-[LiPt]</p></td>
+<td><p>-3.66174</p></td>
+<td><p>-3.66244</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-420250-10-[LiPd2Tl]</p></td>
+<td><p>-3.66127</p></td>
+<td><p>-3.66182</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-105191-10-[Al3Ti]</p></td>
+<td><p>-3.66127</p></td>
+<td><p>-3.66182</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-639879-10-[In5In4]</p></td>
+<td><p>-3.65836</p></td>
+<td><p>-3.65731</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-105726-10-[Pd5Ti3]</p></td>
+<td><p>-3.65773</p></td>
+<td><p>-3.65763</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-59586-10-[Pd5Th3]</p></td>
+<td><p>-3.64256</p></td>
+<td><p>-3.6426</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-649037-10-[Ni3Ti]</p></td>
+<td><p>-3.63289</p></td>
+<td><p>-3.63434</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-69557-01-[CdI2(hP9)]</p></td>
+<td><p>-3.62795</p></td>
+<td><p>-3.62774</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-625334-01-[Laves(2H)-MgZn2]</p></td>
+<td><p>-3.62211</p></td>
+<td><p>-3.62094</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-618295-01-[MoC1-x]</p></td>
+<td><p>-3.62105</p></td>
+<td><p>-3.6214</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-260285-10-[UCl3]</p></td>
+<td><p>-3.61734</p></td>
+<td><p>-3.6175</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-104506-10-[Ni3Sn]</p></td>
+<td><p>-3.61726</p></td>
+<td><p>-3.61749</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-107998-01-[MoNi4]</p></td>
+<td><p>-3.61665</p></td>
+<td><p>-3.61577</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-650527-01-[CsCl]</p></td>
+<td><p>-3.61633</p></td>
+<td><p>-3.61536</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-611176-10-[Fe2P]</p></td>
+<td><p>-3.60969</p></td>
+<td><p>-3.61096</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-635642-10-[Hg5Mn2]</p></td>
+<td><p>-3.60676</p></td>
+<td><p>-3.61518</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-629380-01-[Al3Os2]</p></td>
+<td><p>-3.60577</p></td>
+<td><p>-3.60638</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-167735-01-[Ru2B3]</p></td>
+<td><p>-3.60097</p></td>
+<td><p>-3.60051</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-103775-01-[NaTl]</p></td>
+<td><p>-3.58995</p></td>
+<td><p>-3.59141</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-42773-01-[IrGe4]</p></td>
+<td><p>-3.58373</p></td>
+<td><p>-3.59073</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-105521-01-[Al5W]</p></td>
+<td><p>-3.58162</p></td>
+<td><p>-3.58105</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-155842-01-[Co5Fe11]</p></td>
+<td><p>-3.57274</p></td>
+<td><p>-3.5731</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-106786-01-[Hg2Pt]</p></td>
+<td><p>-3.56884</p></td>
+<td><p>-3.57012</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-58745-10-[Fe6Ge6Mg]</p></td>
+<td><p>-3.56765</p></td>
+<td><p>-3.56612</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-161133-01-[Fe2Si(HT)]</p></td>
+<td><p>-3.56144</p></td>
+<td><p>-3.5616</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-105948-10-[InNi2]</p></td>
+<td><p>-3.56144</p></td>
+<td><p>-3.5616</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-42472-01-[CoO]</p></td>
+<td><p>-3.55296</p></td>
+<td><p>-3.55306</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-181788-01-[NaCl]</p></td>
+<td><p>-3.55295</p></td>
+<td><p>-3.55309</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-639227-01-[Si2U3]</p></td>
+<td><p>-3.54334</p></td>
+<td><p>-3.54357</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-262070-01-[AlLi(hP8)]</p></td>
+<td><p>-3.54204</p></td>
+<td><p>-3.54226</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-97006-01-[InMg2]</p></td>
+<td><p>-3.53048</p></td>
+<td><p>-3.53024</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-655706-01-[Cu2Te(HT)]</p></td>
+<td><p>-3.52539</p></td>
+<td><p>-3.52596</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-246555-10-[Co2Nd]</p></td>
+<td><p>-3.49284</p></td>
+<td><p>-3.49296</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-189695-10-[CuHg2Ti]</p></td>
+<td><p>-3.4834</p></td>
+<td><p>-3.48358</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-188260-01-[Heusler-AlCu2Mn]</p></td>
+<td><p>-3.4834</p></td>
+<td><p>-3.48358</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-648748-01-[Pd4Se]</p></td>
+<td><p>-3.48092</p></td>
+<td><p>-3.48289</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-150584-01-[Fe13Ge3]</p></td>
+<td><p>-3.4783</p></td>
+<td><p>-3.4785</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-5258-10-[FeSi2]</p></td>
+<td><p>-3.4364</p></td>
+<td><p>-3.43808</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-30446-10-[Fe2B]</p></td>
+<td><p>-3.41923</p></td>
+<td><p>-3.41909</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-635208-01-[CoGa3]</p></td>
+<td><p>-3.39572</p></td>
+<td><p>-3.39604</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-424636-01-[MnGa4]</p></td>
+<td><p>-3.1341</p></td>
+<td><p>-3.13389</p></td>
+</tr>
+<tr class="row-even"><td><p>icsd-108762-01-[Hg4Pt]</p></td>
+<td><p>-3.1341</p></td>
+<td><p>-3.13389</p></td>
+</tr>
+<tr class="row-odd"><td><p>icsd-639148-01-[NiHg4]</p></td>
+<td><p>-3.1341</p></td>
+<td><p>-3.13389</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">Lattice parameters (CoU(Ba)(x=0.50))</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.64</p></td>
+<td><p>5.711</p></td>
+<td><p>5.711</p></td>
+<td><p>5.711</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.572</p></td>
+<td><p>5.7</p></td>
+<td><p>5.7</p></td>
+<td><p>5.7</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">Elastic constants (CoU(Ba)(x=0.50))</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>138.9</p></td>
+<td><p>95.1</p></td>
+<td><p>95.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>95.1</p></td>
+<td><p>138.9</p></td>
+<td><p>95.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>95.1</p></td>
+<td><p>95.1</p></td>
+<td><p>138.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-34.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-34.2</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-34.2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">Lattice parameters (InNi2(B82)(x=0.33))</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>10.362</p></td>
+<td><p>5.402</p></td>
+<td><p>2.503</p></td>
+<td><p>4.728</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>103.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>10.649</p></td>
+<td><p>3.897</p></td>
+<td><p>3.897</p></td>
+<td><p>4.858</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">Elastic constants (InNi2(B82)(x=0.33))</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>184.4</p></td>
+<td><p>95.3</p></td>
+<td><p>76.3</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-0.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>95.3</p></td>
+<td><p>243.3</p></td>
+<td><p>94.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-14.0</p></td>
+</tr>
+<tr class="row-even"><td><p>76.3</p></td>
+<td><p>94.8</p></td>
+<td><p>279.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-4.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>114.7</p></td>
+<td><p>1.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>1.0</p></td>
+<td><p>118.7</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-0.9</p></td>
+<td><p>-14.0</p></td>
+<td><p>-4.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>49.7</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">Lattice parameters (WC(Bh)(x=0.50))</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.582</p></td>
+<td><p>2.631</p></td>
+<td><p>2.631</p></td>
+<td><p>3.863</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.501</p></td>
+<td><p>2.629</p></td>
+<td><p>2.629</p></td>
+<td><p>3.842</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">Elastic constants (WC(Bh)(x=0.50))</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>119.3</p></td>
+<td><p>109.5</p></td>
+<td><p>87.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>109.5</p></td>
+<td><p>119.3</p></td>
+<td><p>87.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>87.0</p></td>
+<td><p>87.0</p></td>
+<td><p>125.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.6</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>4.9</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">Lattice parameters (MoNi4(D1a)(x=0.20))</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.612</p></td>
+<td><p>5.341</p></td>
+<td><p>5.341</p></td>
+<td><p>3.37</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.62</p></td>
+<td><p>5.352</p></td>
+<td><p>5.352</p></td>
+<td><p>3.359</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">Elastic constants (MoNi4(D1a)(x=0.20))</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>212.9</p></td>
+<td><p>65.7</p></td>
+<td><p>44.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>59.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>65.7</p></td>
+<td><p>212.9</p></td>
+<td><p>44.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-59.1</p></td>
+</tr>
+<tr class="row-even"><td><p>44.4</p></td>
+<td><p>44.4</p></td>
+<td><p>249.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-7.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-7.6</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>59.1</p></td>
+<td><p>-59.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.8</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">Lattice parameters (Al3Ti(D022)(x=0.75))</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.826</p></td>
+<td><p>3.806</p></td>
+<td><p>3.806</p></td>
+<td><p>7.082</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.714</p></td>
+<td><p>3.774</p></td>
+<td><p>3.774</p></td>
+<td><p>7.141</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">Elastic constants (Al3Ti(D022)(x=0.75))</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>38.5</p></td>
+<td><p>83.8</p></td>
+<td><p>67.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>83.8</p></td>
+<td><p>38.5</p></td>
+<td><p>67.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>67.5</p></td>
+<td><p>67.5</p></td>
+<td><p>151.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>8.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>8.9</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>4.6</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">Lattice parameters (CsCl(B2)(x=0.50))</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.367</p></td>
+<td><p>2.833</p></td>
+<td><p>2.833</p></td>
+<td><p>2.833</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.368</p></td>
+<td><p>2.833</p></td>
+<td><p>2.833</p></td>
+<td><p>2.833</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">Elastic constants (CsCl(B2)(x=0.50))</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>38.8</p></td>
+<td><p>136.5</p></td>
+<td><p>136.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>136.5</p></td>
+<td><p>38.8</p></td>
+<td><p>136.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>136.5</p></td>
+<td><p>136.5</p></td>
+<td><p>38.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.7</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.7</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">Lattice parameters (AuCu3(L12)(x=0.25))</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.926</p></td>
+<td><p>3.411</p></td>
+<td><p>3.411</p></td>
+<td><p>3.411</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.88</p></td>
+<td><p>3.406</p></td>
+<td><p>3.406</p></td>
+<td><p>3.406</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-text">Elastic constants (AuCu3(L12)(x=0.25))</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>302.0</p></td>
+<td><p>63.0</p></td>
+<td><p>63.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>63.0</p></td>
+<td><p>302.0</p></td>
+<td><p>63.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>63.0</p></td>
+<td><p>63.0</p></td>
+<td><p>302.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.4</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-text">Lattice parameters (Cu2Sb(C38)(x=0.33))</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>10.641</p></td>
+<td><p>3.469</p></td>
+<td><p>3.469</p></td>
+<td><p>5.306</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>10.733</p></td>
+<td><p>3.454</p></td>
+<td><p>3.454</p></td>
+<td><p>5.398</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-text">Elastic constants (Cu2Sb(C38)(x=0.33))</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>234.3</p></td>
+<td><p>-4.8</p></td>
+<td><p>35.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-4.8</p></td>
+<td><p>234.3</p></td>
+<td><p>35.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>35.5</p></td>
+<td><p>35.5</p></td>
+<td><p>130.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>28.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>28.9</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>26.1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id19">
+<caption><span class="caption-text">Lattice parameters (Al3Zr(D023)(x=0.75))</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.792</p></td>
+<td><p>3.915</p></td>
+<td><p>3.569</p></td>
+<td><p>14.646</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.732</p></td>
+<td><p>3.782</p></td>
+<td><p>3.782</p></td>
+<td><p>14.241</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-text">Elastic constants (Al3Zr(D023)(x=0.75))</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>75.8</p></td>
+<td><p>63.9</p></td>
+<td><p>68.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>319817.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>63.9</p></td>
+<td><p>106.5</p></td>
+<td><p>81.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>177535.7</p></td>
+</tr>
+<tr class="row-even"><td><p>68.8</p></td>
+<td><p>81.2</p></td>
+<td><p>136.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>191803.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-86774.2</p></td>
+<td><p>0.0</p></td>
+<td><p>-10851.3</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>43644.1</p></td>
+<td><p>62910.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>319817.5</p></td>
+<td><p>177535.7</p></td>
+<td><p>191803.8</p></td>
+<td><p>-10851.3</p></td>
+<td><p>62910.3</p></td>
+<td><p>-6794.2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id21">
+<caption><span class="caption-text">Lattice parameters (FeSi(B20)(x=0.50))</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.711</p></td>
+<td><p>4.542</p></td>
+<td><p>4.542</p></td>
+<td><p>4.542</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.496</p></td>
+<td><p>4.514</p></td>
+<td><p>4.514</p></td>
+<td><p>4.514</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id22">
+<caption><span class="caption-text">Elastic constants (FeSi(B20)(x=0.50))</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-19.7</p></td>
+<td><p>127.4</p></td>
+<td><p>127.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>127.4</p></td>
+<td><p>-19.7</p></td>
+<td><p>127.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>127.4</p></td>
+<td><p>127.4</p></td>
+<td><p>-19.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-75.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-75.9</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-75.9</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id23">
+<caption><span class="caption-text">Lattice parameters (Si2U3(D5a)(x=0.40))</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.787</p></td>
+<td><p>7.003</p></td>
+<td><p>7.003</p></td>
+<td><p>2.403</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.768</p></td>
+<td><p>7.001</p></td>
+<td><p>7.001</p></td>
+<td><p>2.401</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id24">
+<caption><span class="caption-text">Elastic constants (Si2U3(D5a)(x=0.40))</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-661633.0</p></td>
+<td><p>661806.8</p></td>
+<td><p>37.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>661806.8</p></td>
+<td><p>-661633.0</p></td>
+<td><p>37.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>37.8</p></td>
+<td><p>37.8</p></td>
+<td><p>260.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>4.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>4.6</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>20.4</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id25">
+<caption><span class="caption-text">Lattice parameters (Ni3Sn(D019)(x=0.25))</span><a class="headerlink" href="#id25" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.91</p></td>
+<td><p>4.735</p></td>
+<td><p>4.735</p></td>
+<td><p>4.083</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.854</p></td>
+<td><p>4.75</p></td>
+<td><p>4.75</p></td>
+<td><p>4.034</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id26">
+<caption><span class="caption-text">Elastic constants (Ni3Sn(D019)(x=0.25))</span><a class="headerlink" href="#id26" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>117.7</p></td>
+<td><p>98.3</p></td>
+<td><p>82.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>98.3</p></td>
+<td><p>91.0</p></td>
+<td><p>72.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>82.4</p></td>
+<td><p>72.0</p></td>
+<td><p>123.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-5.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-5.4</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.7</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id27">
+<caption><span class="caption-text">Lattice parameters (Fe2P(C22)(x=0.67))</span><a class="headerlink" href="#id27" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.357</p></td>
+<td><p>3.365</p></td>
+<td><p>10.699</p></td>
+<td><p>6.177</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.488</p></td>
+<td><p>2.859</p></td>
+<td><p>11.703</p></td>
+<td><p>6.718</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id28">
+<caption><span class="caption-text">Elastic constants (Fe2P(C22)(x=0.67))</span><a class="headerlink" href="#id28" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>206.6</p></td>
+<td><p>68.6</p></td>
+<td><p>68.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>68.6</p></td>
+<td><p>131.7</p></td>
+<td><p>78.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>68.6</p></td>
+<td><p>78.0</p></td>
+<td><p>131.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>26.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>51.4</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>51.4</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id29">
+<caption><span class="caption-text">Lattice parameters (Cu2Sb(C38)(x=0.67))</span><a class="headerlink" href="#id29" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.821</p></td>
+<td><p>3.511</p></td>
+<td><p>3.511</p></td>
+<td><p>6.239</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>13.482</p></td>
+<td><p>3.44</p></td>
+<td><p>3.44</p></td>
+<td><p>6.836</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id30">
+<caption><span class="caption-text">Elastic constants (Cu2Sb(C38)(x=0.67))</span><a class="headerlink" href="#id30" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>166.7</p></td>
+<td><p>123.6</p></td>
+<td><p>85.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>123.6</p></td>
+<td><p>166.7</p></td>
+<td><p>85.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>85.9</p></td>
+<td><p>85.9</p></td>
+<td><p>160.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-6.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-6.9</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>70.2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id31">
+<caption><span class="caption-text">Lattice parameters (Ni3Sn(D019)(x=0.75))</span><a class="headerlink" href="#id31" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>13.923</p></td>
+<td><p>6.723</p></td>
+<td><p>7.459</p></td>
+<td><p>4.442</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.843</p></td>
+<td><p>5.167</p></td>
+<td><p>8.924</p></td>
+<td><p>4.457</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id32">
+<caption><span class="caption-text">Elastic constants (Ni3Sn(D019)(x=0.75))</span><a class="headerlink" href="#id32" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>86.4</p></td>
+<td><p>42.4</p></td>
+<td><p>-2.3</p></td>
+<td><p>0.0</p></td>
+<td><p>122769.7</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>42.4</p></td>
+<td><p>187.4</p></td>
+<td><p>41.5</p></td>
+<td><p>0.0</p></td>
+<td><p>-103446.2</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>-2.3</p></td>
+<td><p>41.5</p></td>
+<td><p>82.2</p></td>
+<td><p>0.0</p></td>
+<td><p>-75016.9</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.7</p></td>
+<td><p>-1.7</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>122769.7</p></td>
+<td><p>-103446.2</p></td>
+<td><p>-75016.9</p></td>
+<td><p>-1.7</p></td>
+<td><p>12.6</p></td>
+<td><p>3918.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>3918.6</p></td>
+<td><p>-15585.2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id33">
+<caption><span class="caption-text">Lattice parameters (Ni3Ti(D024)(x=0.75))</span><a class="headerlink" href="#id33" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.685</p></td>
+<td><p>5.165</p></td>
+<td><p>5.165</p></td>
+<td><p>8.787</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.756</p></td>
+<td><p>5.208</p></td>
+<td><p>5.208</p></td>
+<td><p>8.688</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id34">
+<caption><span class="caption-text">Elastic constants (Ni3Ti(D024)(x=0.75))</span><a class="headerlink" href="#id34" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-530526.9</p></td>
+<td><p>-207485.6</p></td>
+<td><p>-33811.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-63309.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>-207485.6</p></td>
+<td><p>168.3</p></td>
+<td><p>305827.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>-33811.8</p></td>
+<td><p>305827.0</p></td>
+<td><p>402363.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-6669.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.6</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-63309.9</p></td>
+<td><p>0.0</p></td>
+<td><p>-6669.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>26667.6</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id35">
+<caption><span class="caption-text">Lattice parameters (Fe2P(C22)(x=0.33))</span><a class="headerlink" href="#id35" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>10.723</p></td>
+<td><p>6.642</p></td>
+<td><p>6.642</p></td>
+<td><p>2.526</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>10.616</p></td>
+<td><p>6.713</p></td>
+<td><p>6.713</p></td>
+<td><p>2.448</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id36">
+<caption><span class="caption-text">Elastic constants (Fe2P(C22)(x=0.33))</span><a class="headerlink" href="#id36" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>139.0</p></td>
+<td><p>133.6</p></td>
+<td><p>67.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>133.6</p></td>
+<td><p>139.0</p></td>
+<td><p>67.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>67.0</p></td>
+<td><p>67.0</p></td>
+<td><p>149.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10.6</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.7</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id37">
+<caption><span class="caption-text">Lattice parameters (MoNi4(D1a)(x=0.80))</span><a class="headerlink" href="#id37" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>13.03</p></td>
+<td><p>5.721</p></td>
+<td><p>5.721</p></td>
+<td><p>3.981</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>13.087</p></td>
+<td><p>5.995</p></td>
+<td><p>5.995</p></td>
+<td><p>3.641</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id38">
+<caption><span class="caption-text">Elastic constants (MoNi4(D1a)(x=0.80))</span><a class="headerlink" href="#id38" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>131.4</p></td>
+<td><p>73.4</p></td>
+<td><p>36.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-2.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>73.4</p></td>
+<td><p>131.4</p></td>
+<td><p>36.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2.2</p></td>
+</tr>
+<tr class="row-even"><td><p>36.2</p></td>
+<td><p>36.2</p></td>
+<td><p>94.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-1.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-1.4</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-2.2</p></td>
+<td><p>2.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>15.4</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id39">
+<caption><span class="caption-text">Lattice parameters (MgZn2(C14)(x=0.33))</span><a class="headerlink" href="#id39" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>10.071</p></td>
+<td><p>4.343</p></td>
+<td><p>4.343</p></td>
+<td><p>7.398</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>10.093</p></td>
+<td><p>4.317</p></td>
+<td><p>4.317</p></td>
+<td><p>7.503</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id40">
+<caption><span class="caption-text">Elastic constants (MgZn2(C14)(x=0.33))</span><a class="headerlink" href="#id40" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>170.5</p></td>
+<td><p>104.6</p></td>
+<td><p>98.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>104.6</p></td>
+<td><p>170.5</p></td>
+<td><p>98.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>98.9</p></td>
+<td><p>98.9</p></td>
+<td><p>157.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>38.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>38.8</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>33.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id41">
+<caption><span class="caption-text">Lattice parameters (CrSi2(C40)(x=0.67))</span><a class="headerlink" href="#id41" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.752</p></td>
+<td><p>4.244</p></td>
+<td><p>4.244</p></td>
+<td><p>7.229</p></td>
+<td><p>81.14</p></td>
+<td><p>98.86</p></td>
+<td><p>116.31</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.399</p></td>
+<td><p>4.377</p></td>
+<td><p>4.377</p></td>
+<td><p>6.727</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id42">
+<caption><span class="caption-text">Elastic constants (CrSi2(C40)(x=0.67))</span><a class="headerlink" href="#id42" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>159.9</p></td>
+<td><p>97.7</p></td>
+<td><p>42.3</p></td>
+<td><p>6.9</p></td>
+<td><p>2.5</p></td>
+<td><p>-35.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>97.7</p></td>
+<td><p>134.4</p></td>
+<td><p>40.4</p></td>
+<td><p>-7.2</p></td>
+<td><p>-2.0</p></td>
+<td><p>9.2</p></td>
+</tr>
+<tr class="row-even"><td><p>42.3</p></td>
+<td><p>40.4</p></td>
+<td><p>224.7</p></td>
+<td><p>0.1</p></td>
+<td><p>-0.2</p></td>
+<td><p>-1.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>6.9</p></td>
+<td><p>-7.2</p></td>
+<td><p>0.1</p></td>
+<td><p>37.1</p></td>
+<td><p>0.8</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>2.5</p></td>
+<td><p>-2.0</p></td>
+<td><p>-0.2</p></td>
+<td><p>0.8</p></td>
+<td><p>36.3</p></td>
+<td><p>3.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>-35.0</p></td>
+<td><p>9.2</p></td>
+<td><p>-1.9</p></td>
+<td><p>1.0</p></td>
+<td><p>3.3</p></td>
+<td><p>57.8</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id43">
+<caption><span class="caption-text">Lattice parameters (AlCu2Mn(L21)(x=0.75))</span><a class="headerlink" href="#id43" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>13.062</p></td>
+<td><p>5.934</p></td>
+<td><p>5.934</p></td>
+<td><p>5.934</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>13.123</p></td>
+<td><p>5.944</p></td>
+<td><p>5.944</p></td>
+<td><p>5.944</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id44">
+<caption><span class="caption-text">Elastic constants (AlCu2Mn(L21)(x=0.75))</span><a class="headerlink" href="#id44" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>16.1</p></td>
+<td><p>138.9</p></td>
+<td><p>138.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>138.9</p></td>
+<td><p>16.1</p></td>
+<td><p>138.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>138.9</p></td>
+<td><p>138.9</p></td>
+<td><p>16.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-15.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-15.2</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-15.2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id45">
+<caption><span class="caption-text">Lattice parameters (InNi2(B82)(x=0.67))</span><a class="headerlink" href="#id45" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>13.26</p></td>
+<td><p>5.241</p></td>
+<td><p>3.292</p></td>
+<td><p>4.856</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>108.31</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.614</p></td>
+<td><p>4.081</p></td>
+<td><p>4.081</p></td>
+<td><p>5.247</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id46">
+<caption><span class="caption-text">Elastic constants (InNi2(B82)(x=0.67))</span><a class="headerlink" href="#id46" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>168.7</p></td>
+<td><p>87.3</p></td>
+<td><p>52.3</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-13.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>87.3</p></td>
+<td><p>159.3</p></td>
+<td><p>32.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>16.6</p></td>
+</tr>
+<tr class="row-even"><td><p>52.3</p></td>
+<td><p>32.8</p></td>
+<td><p>158.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>7.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>1.1</p></td>
+<td><p>5.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>5.0</p></td>
+<td><p>14.5</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-13.1</p></td>
+<td><p>16.6</p></td>
+<td><p>7.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>47.3</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id47">
+<caption><span class="caption-text">Lattice parameters (AuCu3(L12)(x=0.75))</span><a class="headerlink" href="#id47" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.824</p></td>
+<td><p>3.716</p></td>
+<td><p>3.716</p></td>
+<td><p>3.716</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.749</p></td>
+<td><p>3.708</p></td>
+<td><p>3.708</p></td>
+<td><p>3.708</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id48">
+<caption><span class="caption-text">Elastic constants (AuCu3(L12)(x=0.75))</span><a class="headerlink" href="#id48" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>105.6</p></td>
+<td><p>75.0</p></td>
+<td><p>75.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>75.0</p></td>
+<td><p>105.6</p></td>
+<td><p>75.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>75.0</p></td>
+<td><p>75.0</p></td>
+<td><p>105.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.4</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.4</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.4</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id49">
+<caption><span class="caption-text">Lattice parameters (NiAs(B81)(x=0.50))</span><a class="headerlink" href="#id49" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.556</p></td>
+<td><p>2.665</p></td>
+<td><p>2.665</p></td>
+<td><p>7.515</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.603</p></td>
+<td><p>2.675</p></td>
+<td><p>2.675</p></td>
+<td><p>7.49</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id50">
+<caption><span class="caption-text">Elastic constants (NiAs(B81)(x=0.50))</span><a class="headerlink" href="#id50" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>122.8</p></td>
+<td><p>80.7</p></td>
+<td><p>96.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>80.7</p></td>
+<td><p>122.8</p></td>
+<td><p>96.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>96.9</p></td>
+<td><p>96.9</p></td>
+<td><p>311.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>43.3</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>43.3</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>21.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id51">
+<caption><span class="caption-text">Lattice parameters (Al3Ti(D022)(x=0.25))</span><a class="headerlink" href="#id51" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.833</p></td>
+<td><p>3.404</p></td>
+<td><p>3.404</p></td>
+<td><p>6.788</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.875</p></td>
+<td><p>3.402</p></td>
+<td><p>3.402</p></td>
+<td><p>6.828</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id52">
+<caption><span class="caption-text">Elastic constants (Al3Ti(D022)(x=0.25))</span><a class="headerlink" href="#id52" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>273.9</p></td>
+<td><p>40.6</p></td>
+<td><p>35.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>40.6</p></td>
+<td><p>273.9</p></td>
+<td><p>35.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>35.8</p></td>
+<td><p>35.8</p></td>
+<td><p>279.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-5.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-5.7</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id53">
+<caption><span class="caption-text">Lattice parameters (Si2U3(D5a)(x=0.60))</span><a class="headerlink" href="#id53" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>12.346</p></td>
+<td><p>6.11</p></td>
+<td><p>6.11</p></td>
+<td><p>3.307</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>12.185</p></td>
+<td><p>6.011</p></td>
+<td><p>6.011</p></td>
+<td><p>3.373</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id54">
+<caption><span class="caption-text">Elastic constants (Si2U3(D5a)(x=0.60))</span><a class="headerlink" href="#id54" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-236095.0</p></td>
+<td><p>236334.1</p></td>
+<td><p>86.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>236334.1</p></td>
+<td><p>-236095.0</p></td>
+<td><p>86.8</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>86.8</p></td>
+<td><p>86.8</p></td>
+<td><p>218.3</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>34.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>34.2</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>50.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id55">
+<caption><span class="caption-text">Lattice parameters (MgZn2(C14)(x=0.67))</span><a class="headerlink" href="#id55" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>14.183</p></td>
+<td><p>5.923</p></td>
+<td><p>5.923</p></td>
+<td><p>5.602</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>14.314</p></td>
+<td><p>5.555</p></td>
+<td><p>5.555</p></td>
+<td><p>6.427</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id56">
+<caption><span class="caption-text">Elastic constants (MgZn2(C14)(x=0.67))</span><a class="headerlink" href="#id56" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>156.4</p></td>
+<td><p>68.6</p></td>
+<td><p>54.3</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>68.6</p></td>
+<td><p>156.4</p></td>
+<td><p>54.3</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>54.3</p></td>
+<td><p>54.3</p></td>
+<td><p>103.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>33.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>33.2</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>43.9</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id57">
+<caption><span class="caption-text">Lattice parameters (CrSi2(C40)(x=0.33))</span><a class="headerlink" href="#id57" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>10.403</p></td>
+<td><p>4.139</p></td>
+<td><p>4.139</p></td>
+<td><p>6.311</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>10.457</p></td>
+<td><p>4.137</p></td>
+<td><p>4.137</p></td>
+<td><p>6.348</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id58">
+<caption><span class="caption-text">Elastic constants (CrSi2(C40)(x=0.33))</span><a class="headerlink" href="#id58" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>206.4</p></td>
+<td><p>80.1</p></td>
+<td><p>95.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>80.1</p></td>
+<td><p>206.4</p></td>
+<td><p>95.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>95.0</p></td>
+<td><p>95.0</p></td>
+<td><p>176.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>41.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>41.5</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>63.1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id59">
+<caption><span class="caption-text">Lattice parameters (NaTl(B32)(x=0.50))</span><a class="headerlink" href="#id59" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.524</p></td>
+<td><p>5.692</p></td>
+<td><p>5.692</p></td>
+<td><p>5.692</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.528</p></td>
+<td><p>5.692</p></td>
+<td><p>5.692</p></td>
+<td><p>5.692</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id60">
+<caption><span class="caption-text">Elastic constants (NaTl(B32)(x=0.50))</span><a class="headerlink" href="#id60" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>38.9</p></td>
+<td><p>164.1</p></td>
+<td><p>164.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>164.1</p></td>
+<td><p>38.9</p></td>
+<td><p>164.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>164.1</p></td>
+<td><p>164.1</p></td>
+<td><p>38.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-8.1</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-8.1</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-8.1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id61">
+<caption><span class="caption-text">Lattice parameters (Ni3Ti(D024)(x=0.25))</span><a class="headerlink" href="#id61" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.945</p></td>
+<td><p>4.783</p></td>
+<td><p>4.783</p></td>
+<td><p>8.031</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.867</p></td>
+<td><p>4.793</p></td>
+<td><p>4.793</p></td>
+<td><p>7.934</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>120.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id62">
+<caption><span class="caption-text">Elastic constants (Ni3Ti(D024)(x=0.25))</span><a class="headerlink" href="#id62" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>130.7</p></td>
+<td><p>130.3</p></td>
+<td><p>120.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>130.3</p></td>
+<td><p>130.7</p></td>
+<td><p>120.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>120.7</p></td>
+<td><p>120.7</p></td>
+<td><p>138.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>26.6</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>26.6</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id63">
+<caption><span class="caption-text">Lattice parameters (Al3Zr(D023)(x=0.25))</span><a class="headerlink" href="#id63" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.838</p></td>
+<td><p>3.41</p></td>
+<td><p>3.41</p></td>
+<td><p>13.538</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.86</p></td>
+<td><p>3.401</p></td>
+<td><p>3.401</p></td>
+<td><p>13.636</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id64">
+<caption><span class="caption-text">Elastic constants (Al3Zr(D023)(x=0.25))</span><a class="headerlink" href="#id64" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>302.2</p></td>
+<td><p>56.6</p></td>
+<td><p>44.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>56.6</p></td>
+<td><p>302.2</p></td>
+<td><p>44.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>44.9</p></td>
+<td><p>44.9</p></td>
+<td><p>298.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-0.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-0.7</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-6.9</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id65">
+<caption><span class="caption-text">Lattice parameters (AuCu(L10)(x=0.50))</span><a class="headerlink" href="#id65" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>11.206</p></td>
+<td><p>2.552</p></td>
+<td><p>2.552</p></td>
+<td><p>3.442</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>11.157</p></td>
+<td><p>2.55</p></td>
+<td><p>2.55</p></td>
+<td><p>3.431</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id66">
+<caption><span class="caption-text">Elastic constants (AuCu(L10)(x=0.50))</span><a class="headerlink" href="#id66" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>151.6</p></td>
+<td><p>79.4</p></td>
+<td><p>51.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>79.4</p></td>
+<td><p>151.6</p></td>
+<td><p>51.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>51.5</p></td>
+<td><p>51.5</p></td>
+<td><p>157.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>12.9</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>12.9</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10.9</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id67">
+<caption><span class="caption-text">Lattice parameters (AlCu2Mn(L21)(x=0.25))</span><a class="headerlink" href="#id67" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>V (A^3/atom)</p></th>
+<th class="head"><p>a (A)</p></th>
+<th class="head"><p>b (A)</p></th>
+<th class="head"><p>c (A)</p></th>
+<th class="head"><p>alpha</p></th>
+<th class="head"><p>beta</p></th>
+<th class="head"><p>gamma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>9.928</p></td>
+<td><p>5.416</p></td>
+<td><p>5.416</p></td>
+<td><p>5.416</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFT</p></td>
+<td><p>9.886</p></td>
+<td><p>5.408</p></td>
+<td><p>5.408</p></td>
+<td><p>5.408</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+<td><p>90.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id68">
+<caption><span class="caption-text">Elastic constants (AlCu2Mn(L21)(x=0.25))</span><a class="headerlink" href="#id68" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>49.6</p></td>
+<td><p>140.8</p></td>
+<td><p>140.8</p></td>
+<td><p>-5095.2</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>140.8</p></td>
+<td><p>49.6</p></td>
+<td><p>140.8</p></td>
+<td><p>-25529.5</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>140.8</p></td>
+<td><p>140.8</p></td>
+<td><p>49.6</p></td>
+<td><p>-25529.7</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-5095.2</p></td>
+<td><p>-25529.5</p></td>
+<td><p>-25529.7</p></td>
+<td><p>19585.1</p></td>
+<td><p>-252.7</p></td>
+<td><p>-252.7</p></td>
+</tr>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-252.7</p></td>
+<td><p>5.8</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>-252.7</p></td>
+<td><p>0.0</p></td>
+<td><p>5.8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../../../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../../../index.html">PolyMLP Repository (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../../../../genindex.html" title="General Index" >index</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
