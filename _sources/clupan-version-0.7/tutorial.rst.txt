@@ -1,0 +1,237 @@
+チュートリアル
+====================================================================================================
+
+Tutorial 1: 指定したセルの範囲内でのすべての原子配置においてエネルギー計算を行う
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+* 岩塩型MgO-ZnO系
+* あらかじめ準備されたDFT構造およびエネルギーを用いる．ここでは，mkposcarは用いず，DFT構造の最適化は行わない．
+* ユニットセルを2x1x1倍したセル内でのすべての原子配置において，エネルギー計算を行う．（計算量を軽減するためセルの大きさは小さく指定している．）
+
+Step 1. searching for independent clusters on the lattice 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#. preparing lattice information (UPOSCAR and UPOTCAR) ::
+
+    > cd tutorials/1/cluster
+    > cat UPOSCAR
+    rocksalt-lattice
+    1.0
+    4.15700000000000      0.00000000000000      0.00000000000000
+    0.00000000000000      4.15700000000000      0.00000000000000
+    0.00000000000000      0.00000000000000      4.15700000000000
+    4 4 
+    Direct
+    0.00000000000000      0.00000000000000      0.00000000000000
+    0.50000000000000      0.50000000000000      0.00000000000000
+    0.50000000000000      0.00000000000000      0.50000000000000
+    0.00000000000000      0.50000000000000      0.50000000000000
+    0.00000000000000      0.00000000000000      0.50000000000000
+    0.50000000000000      0.00000000000000      0.00000000000000
+    0.00000000000000      0.50000000000000      0.00000000000000
+    0.50000000000000      0.50000000000000      0.50000000000000
+
+    > cat UPOTCAR
+    VRHFIN =Mg:
+    VRHFIN =O:
+
+#. preparing CE.in ::
+    
+    > cat CE.in
+    ISUB = 1
+    NMAX = 4
+    DTRUNC = 6 6 6 0
+
+#. executing **cluster** for generating cluster.out and position.out ::
+    
+    > cluster
+    default parameter : SYMPREC = 1e-05
+    n_cluster (empty) = 1
+    n_cluster (point) = 1
+    seaching for 2 body clusters ...
+    n_cluster (2 body) = 4
+    seaching for 3 body clusters ...
+    n_cluster (3 body) = 12
+    seaching for 4 body clusters ...
+    n_cluster (4 body) = 35
+    n_all_cluster = 53
+
+    > ls
+    CE.in  UPOSCAR  UPOTCAR  cluster.out  position.out
+
+Step 2. calculating correlation functions for DFT structures
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#. preparing DFT structures (POSCAR and POTCAR) ::
+
+    > cd tutorials/1/correlation
+    > ls
+    001/ 002/ 003/ ... 029/ 030/
+    > ls 001/
+    POSCAR POTCAR
+
+#. preparing lattice information (UPOSCAR and UPOTCAR) ::
+    
+    > cd tutorials/1/correlation
+    > for i in {001..030};do cp {UPOSCAR,UPOTCAR} $i;done
+
+#. preparing CE.in ::
+
+    > cd tutorials/1/correlation
+    > cat CE.in
+    ISUB = 1
+    NAMEPOT = Mg Zn O
+    SPIN = 1 -1
+    NUCELLPOSCAR = 2 2 2
+    SYMPREC = 1e-5
+    > for i in {001..030};do cp CE.in $i;done
+
+#. preparing position.out ::
+
+    > cd tutorials/1/correlation
+    > cp ../cluster/position.out .
+    > for i in {001..030};do cp position.out $i;done
+    > ls 001/
+    CE.in  POSCAR  POTCAR  UPOSCAR  UPOTCAR  position.out
+
+#. executing **correlation** for calculating correlation functions and generating of.out and correlation.out ::
+    
+    > cd tutorials/1/001/
+    > echo " structure 001" > correlation.001
+    > correlation >> correlation.001
+    > cat correlation.001
+     structure 001
+    1
+    1
+    1
+    ...
+
+#. executing **correlation** for calculating correlation functions of all structures and preparing CORRELATION ::
+
+    > cd tutorials/1/correlation
+    > for i in {001..030};do cd tutorials/1/correlation/$i; echo " structure $i" >| correlation.$i; correlation >> correlation.$i;done 
+    > cd tutorials/1/correlation
+    > for i in {001..030};do cat $i/correlation.$i;done > CORRELATION
+
+Step 3. optimizing a set of clusters and estimating their ECIs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#. preparing ENERGY and CORRELATION ::
+
+    > cd tutorials/1/gasa
+    > cp ../correlation/CORRELATION .
+
+#. preparing GASA.in ::
+
+    > cat GASA.in
+    NLOOP = 0
+    BASECLUSTER = 0 1 2 3 4 5
+    NPOP        = 50
+    NELITE      = 3
+    NALLCLUSTER = 53
+    MININDEX    = 6
+    MAXINDEX    = 52
+    NCLUSTER    = 5
+    MAXGENE     = 200
+    PMATING     = 0.9
+    PMUTATION   = 0.03
+
+    > ls
+    ENERGY CORRELATION GASA.in
+
+#. executing **gasa** for optimizing a set of clusters (A different result may be obtained.) ::
+
+    > gasa
+     initial population
+      cv score = 0.00222288 8 14 37 48 52 
+      cv score = 0.0013192 6 10 31 39 47 
+    ...
+     generation 1
+     generation 2
+    ...
+     generation 199
+     generation 200
+
+    > tail -n 51 gasa.out | head -n 2
+     generation 200
+    0.000380998 12 49 14 50 39 
+
+#. preparing LS.in ::
+
+    > grep NALLCLUSTER GASA.in | cut -f 4- -d " " > LS.in
+    > grep BASECLUSTER GASA.in | cut -f 4- -d " " >> LS.in
+    > tail -n 50 gasa.out | head -n 1 | cut -f 3- -d " " >> LS.in
+
+#. executing **lsf** for estimating ECIs ::
+
+    > lsf
+    0   -0.03762950309
+    1   -0.006265528600
+    2   0.05964064765
+    3   -0.008588932374
+    4   -0.01597202189
+    5   0.001424126588
+    12   0.007407443471
+    49   -0.0005923858386
+    14   -0.001214238460
+    50   0.0006339154097
+    39   0.001143178365
+    sum of square error = 1.748e-06
+    cross validation score = 0.0003810
+    --- diagonal terms of precision matrix  ---
+    1     0.3565
+    2     0.9031
+    3     0.1426
+    4      1.082
+    5     0.1536
+    12     0.8314
+    49     0.1646
+    14     0.5158
+    50    0.09850
+    39     0.9147
+    trace of precision matrix = 5.162
+
+    > lsf | head -n 11 > ECI
+
+Step 4. calculating energies of possible configurations within 2x1x1 supercell
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+#. preparing lattice information, ECI, of.out ::
+
+    > cd tutorials/1/gss
+    > ls
+    nchange1/  nchange2/  nchange3/  nchange4/  nchange5/  nchange6/  nchange7/
+
+    > cp ../correlation/001/of.out .
+    > cp ../gasa/ECI .
+    > for i in {1..7};do cp {of.out,ECI} nchange$i/;done
+
+#. preparing GS.in ::
+
+    > cat nchange1/GS.in
+    ISUB = 1
+    NCHANGE = 1
+    SPIN = 1 -1
+    NUCELL = 2 1 1
+
+    > ls nchange1
+    ECI  GS.in  UPOSCAR  UPOTCAR  of.out
+
+#. executing **gss** ::
+
+    > cd nchange4
+    > gss
+     default parameter : SYMPREC = 1e-05
+     cell size (ground state search) = 2 1 1 
+     cell size (calculation of correlation function) = 2 2 2 
+    ECI and output energies in gs.out have same unit. 
+    calculating symmetry operations
+    calculating combinations of atoms
+     number of configurations = 35
+     number of elements in an array for atomic configurations = 140
+     required memory for configurations = 0.00028 (MB) 
+    calculating all cluster positions 
+    calculating energies for all configurations 
+    elapse (calculation of energies) = 0.4 (sec) 
+
+#. drawing a figure using gs.out 
+
+.. image:: gss.png
+    :width: 400
+

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>7. Estimation of effective cluster interaction &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in English" href="index-e.html" />
+    <link rel="next" title="8. Optimization of clusters" href="gasa-e.html" />
+    <link rel="prev" title="6. Calculation of correlation functions" href="correlation-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">7. Estimation of effective cluster interaction</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">7.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#lsf">7.2. lsf</a></li>
+<li><a class="reference internal" href="#wlsf">7.3. wlsf</a></li>
+<li><a class="reference internal" href="#ls-in">7.4. LS.in</a></li>
+<li><a class="reference internal" href="#statistic">7.5. statistic</a></li>
+<li><a class="reference internal" href="#stat-in">7.6. STAT.in</a><ul>
+<li><a class="reference internal" href="#nallcluster-tag">7.6.1. NALLCLUSTER tag</a></li>
+<li><a class="reference internal" href="#cutco-tag">7.6.2. CUTCO tag</a></li>
+<li><a class="reference internal" href="#cutvar-tag">7.6.3. CUTVAR tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="correlation-e.html" title="6. Calculation of correlation functions" accesskey="P">previous </a></li>
+              <li><a href="gasa-e.html" title="8. Optimization of clusters" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">clupan (version 0.7) in English</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="estimation-of-effective-cluster-interaction">
+<h1><span class="section-number">7. </span>Estimation of effective cluster interaction<a class="headerlink" href="#estimation-of-effective-cluster-interaction" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="theoretical-backgrounds">
+<h2><span class="section-number">7.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this heading">¶</a></h2>
+<p><strong>Estimation of ECI using the least-squares technique</strong></p>
+<p>See <a class="reference internal" href="#lsf1" id="id1"><span>[lsf1]</span></a> and <a class="reference internal" href="#lsf2" id="id2"><span>[lsf2]</span></a>.</p>
+<p><strong>Cross validation (CV) score</strong></p>
+<p>See <a class="reference internal" href="#cv1" id="id3"><span>[cv1]</span></a>, <a class="reference internal" href="#cv2" id="id4"><span>[cv2]</span></a> and <a class="reference internal" href="#cv3" id="id5"><span>[cv3]</span></a>.</p>
+<dl class="citation">
+<dt class="label" id="lsf1"><span class="brackets"><a class="fn-backref" href="#id1">lsf1</a></span></dt>
+<dd><p>D de Fontaine, Solid State Physics 47, Academic Press, (1994).</p>
+</dd>
+<dt class="label" id="lsf2"><span class="brackets"><a class="fn-backref" href="#id2">lsf2</a></span></dt>
+<dd><p>Z W Lu, S H Wei, A Zunger, S Frota-Pessoa and L G Ferreira, Phys. Rev. B 44, 512 (1991).</p>
+</dd>
+<dt class="label" id="cv1"><span class="brackets"><a class="fn-backref" href="#id3">cv1</a></span></dt>
+<dd><p>M Stone, J. R. Stat. Soc. Ser. B. Methodol. 36, 111 (1974).</p>
+</dd>
+<dt class="label" id="cv2"><span class="brackets"><a class="fn-backref" href="#id4">cv2</a></span></dt>
+<dd><p>A van de Walle and G Ceder, J. Phase Equilib. 23, 348 (2002).</p>
+</dd>
+<dt class="label" id="cv3"><span class="brackets"><a class="fn-backref" href="#id5">cv3</a></span></dt>
+<dd><p>N A Zarkevich and D D Johnson, Phys. Rev. Lett. 92, 255702 (2004).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="lsf">
+<h2><span class="section-number">7.2. </span>lsf<a class="headerlink" href="#lsf" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Estimating ECI from DFT energies and correlation functions for the DFT structures using the least-squares technique.</p></li>
+<li><p>Estimating the CV score.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>LS.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-energy"><span class="std std-ref">ENERGY</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-correlation"><span class="std std-ref">CORRELATION</span></a></p></li>
+</ul>
+<p><strong>Output</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="files-e.html#label-e-eci"><span class="std std-ref">ECI</span></a></p></li>
+<li><p>Residual sum of squares</p></li>
+<li><p>CV score</p></li>
+<li><p>diagonal terms of precision matrix</p></li>
+</ul>
+</div>
+<div class="section" id="wlsf">
+<h2><span class="section-number">7.3. </span>wlsf<a class="headerlink" href="#wlsf" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Estimating ECI from DFT energies and correlation functions for the DFT structures using the weighted least-squares technique.</p></li>
+<li><p>In addition to the estimation of the ECI, the weighted CV (WCV) score is evaluated.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>LS.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-energy"><span class="std std-ref">ENERGY</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-correlation"><span class="std std-ref">CORRELATION</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-weight"><span class="std std-ref">WEIGHT</span></a></p></li>
+</ul>
+<p><strong>Output</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="files-e.html#label-e-eci"><span class="std std-ref">ECI</span></a></p></li>
+<li><p>WCV score</p></li>
+</ul>
+</div>
+<div class="section" id="ls-in">
+<h2><span class="section-number">7.4. </span>LS.in<a class="headerlink" href="#ls-in" title="Permalink to this heading">¶</a></h2>
+<p>LS.in specifies clusters for estimating ECIs.</p>
+<ul>
+<li><p>first line : number of all clusters</p></li>
+<li><p>after second line : indexes of clusters in cluster.out</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">53</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+<span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">11</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="statistic">
+<h2><span class="section-number">7.5. </span>statistic<a class="headerlink" href="#statistic" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Examining variances of clusters and correlations between clusters.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>STAT.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-correlation"><span class="std std-ref">CORRELATION</span></a></p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>statistic.out</p></li>
+</ul>
+</div>
+<div class="section" id="stat-in">
+<h2><span class="section-number">7.6. </span>STAT.in<a class="headerlink" href="#stat-in" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="nallcluster-tag">
+<h3><span class="section-number">7.6.1. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this heading">¶</a></h3>
+<p>Number of all clusters.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NALLCLUSTER = 53</p></li>
+</ul>
+</div>
+<div class="section" id="cutco-tag">
+<h3><span class="section-number">7.6.2. </span>CUTCO tag<a class="headerlink" href="#cutco-tag" title="Permalink to this heading">¶</a></h3>
+<p>Truncation value for correlations between clusters.
+One cluster is output out of the two clusters with strong correlation.</p>
+<ul class="simple">
+<li><p>Default : 1.0</p></li>
+<li><p>Example : CUTCO = 0.95</p></li>
+</ul>
+</div>
+<div class="section" id="cutvar-tag">
+<h3><span class="section-number">7.6.3. </span>CUTVAR tag<a class="headerlink" href="#cutvar-tag" title="Permalink to this heading">¶</a></h3>
+<p>Truncation value for variances of clusters.
+Clusters with variances less than CUTVAR are output.</p>
+<ul class="simple">
+<li><p>Default : 0.0</p></li>
+<li><p>Example : CUTVAR = 0.05</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">7. Estimation of effective cluster interaction</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">7.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#lsf">7.2. lsf</a></li>
+<li><a class="reference internal" href="#wlsf">7.3. wlsf</a></li>
+<li><a class="reference internal" href="#ls-in">7.4. LS.in</a></li>
+<li><a class="reference internal" href="#statistic">7.5. statistic</a></li>
+<li><a class="reference internal" href="#stat-in">7.6. STAT.in</a><ul>
+<li><a class="reference internal" href="#nallcluster-tag">7.6.1. NALLCLUSTER tag</a></li>
+<li><a class="reference internal" href="#cutco-tag">7.6.2. CUTCO tag</a></li>
+<li><a class="reference internal" href="#cutvar-tag">7.6.3. CUTVAR tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="correlation-e.html"
+                          title="previous chapter"><span class="section-number">6. </span>Calculation of correlation functions</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="gasa-e.html"
+                          title="next chapter"><span class="section-number">8. </span>Optimization of clusters</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="correlation-e.html" title="6. Calculation of correlation functions" >previous</a></li>
+        <li><a href="gasa-e.html" title="8. Optimization of clusters" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 0.7) in English</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

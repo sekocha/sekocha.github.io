@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>6. Calculation of correlation functions &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in English" href="index-e.html" />
+    <link rel="next" title="7. Estimation of effective cluster interaction" href="lsf-e.html" />
+    <link rel="prev" title="5. Search for independent clusters" href="cluster-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">6. Calculation of correlation functions</a><ul>
+<li><a class="reference internal" href="#correlation">6.1. correlation</a></li>
+<li><a class="reference internal" href="#ce-in">6.2. CE.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">6.2.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#nucellposcar-tag">6.2.2. NUCELLPOSCAR tag</a></li>
+<li><a class="reference internal" href="#namepot-tag-spin-tag">6.2.3. NAMEPOT tag, SPIN tag</a></li>
+<li><a class="reference internal" href="#symprec-tag">6.2.4. SYMPREC tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="cluster-e.html" title="5. Search for independent clusters" accesskey="P">previous </a></li>
+              <li><a href="lsf-e.html" title="7. Estimation of effective cluster interaction" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">clupan (version 0.7) in English</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="calculation-of-correlation-functions">
+<h1><span class="section-number">6. </span>Calculation of correlation functions<a class="headerlink" href="#calculation-of-correlation-functions" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="correlation">
+<h2><span class="section-number">6.1. </span>correlation<a class="headerlink" href="#correlation" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Calculating correlation functions for a structure.</p></li>
+<li><p>Crystal lattice is determined by UPOSCAR and UPOTCAR files.</p></li>
+<li><p>Clusters for calculating correlations functions are specified by position.out.</p></li>
+<li><p>Available only for binary systems.</p></li>
+<li><p>Available for multi-thread calculations using OPENMP.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>CE.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-uposcar"><span class="std std-ref">UPOSCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-upotcar"><span class="std std-ref">UPOTCAR</span></a></p></li>
+<li><p>POSCAR</p></li>
+<li><p>POTCAR</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-position-out"><span class="std std-ref">position.out</span></a></p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>correlation.out</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-of-out"><span class="std std-ref">of.out</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="ce-in">
+<h2><span class="section-number">6.2. </span>CE.in<a class="headerlink" href="#ce-in" title="Permalink to this heading">¶</a></h2>
+<p><strong>Example</strong></p>
+<p>Calculating correlation functions for a structure with the lattice constructed by the 2x1x1 expansion of UPOSCAR.
+Spin values are set to 1 and -1 for Mg and Zn, respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NUCELLPOSCAR</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="n">NAMEPOT</span> <span class="o">=</span> <span class="n">Mg</span> <span class="n">Zn</span>
+<span class="n">SPIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="section" id="isub-tag">
+<h3><span class="section-number">6.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this heading">¶</a></h3>
+<p>Sublattice indexes for performing the CE.
+The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>Example : ISUB = 1 3</p></li>
+</ul>
+</div>
+<div class="section" id="nucellposcar-tag">
+<h3><span class="section-number">6.2.2. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this heading">¶</a></h3>
+<p>Number of unit cells included in POSCAR.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
+</ul>
+</div>
+<div class="section" id="namepot-tag-spin-tag">
+<h3><span class="section-number">6.2.3. </span>NAMEPOT tag, SPIN tag<a class="headerlink" href="#namepot-tag-spin-tag" title="Permalink to this heading">¶</a></h3>
+<p>Atom names and spin values for the atom names.
+Do not set spin values for atoms which are not used for the CE.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NAMEPOT = Mg Zn</p></li>
+<li><p>Example : SPIN = 1 -1</p></li>
+</ul>
+<p>In the above example, spin values for Mg and Zn are 1 and -1, respectively.</p>
+</div>
+<div class="section" id="symprec-tag">
+<h3><span class="section-number">6.2.4. </span>SYMPREC tag<a class="headerlink" href="#symprec-tag" title="Permalink to this heading">¶</a></h3>
+<p>Numerical precision for searching for symmetry operations (unit: fractional coordinates).</p>
+<ul class="simple">
+<li><p>Default : 1e-5</p></li>
+<li><p>Example : SYMPREC = 1e-5</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6. Calculation of correlation functions</a><ul>
+<li><a class="reference internal" href="#correlation">6.1. correlation</a></li>
+<li><a class="reference internal" href="#ce-in">6.2. CE.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">6.2.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#nucellposcar-tag">6.2.2. NUCELLPOSCAR tag</a></li>
+<li><a class="reference internal" href="#namepot-tag-spin-tag">6.2.3. NAMEPOT tag, SPIN tag</a></li>
+<li><a class="reference internal" href="#symprec-tag">6.2.4. SYMPREC tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="cluster-e.html"
+                          title="previous chapter"><span class="section-number">5. </span>Search for independent clusters</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="lsf-e.html"
+                          title="next chapter"><span class="section-number">7. </span>Estimation of effective cluster interaction</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="cluster-e.html" title="5. Search for independent clusters" >previous</a></li>
+        <li><a href="lsf-e.html" title="7. Estimation of effective cluster interaction" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 0.7) in English</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

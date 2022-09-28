@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>12. Calculation of grand potential using thermodynamic integration &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in English" href="index-e.html" />
+    <link rel="next" title="13. Tutorials" href="tutorial-e.html" />
+    <link rel="prev" title="11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation" href="mc-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">12. Calculation of grand potential using thermodynamic integration</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">12.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#id3">12.2. ti</a></li>
+<li><a class="reference internal" href="#id4">12.3. lte</a></li>
+<li><a class="reference internal" href="#ti-in">12.4. TI.in</a><ul>
+<li><a class="reference internal" href="#initpot-tag">12.4.1. INITPOT tag</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lte-in">12.5. LTE.in</a><ul>
+<li><a class="reference internal" href="#temp-tag">12.5.1. TEMP tag</a></li>
+<li><a class="reference internal" href="#mu-tag">12.5.2. MU tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">12.5.3. NUCELL tag</a></li>
+<li><a class="reference internal" href="#isub-tag">12.5.4. ISUB tag</a></li>
+<li><a class="reference internal" href="#nucellposcar-tag">12.5.5. NUCELLPOSCAR tag</a></li>
+<li><a class="reference internal" href="#namepot-tag-spin-tag">12.5.6. NAMEPOT tag, SPIN tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="mc-e.html" title="11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation" accesskey="P">previous </a></li>
+              <li><a href="tutorial-e.html" title="13. Tutorials" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">clupan (version 0.7) in English</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="calculation-of-grand-potential-using-thermodynamic-integration">
+<h1><span class="section-number">12. </span>Calculation of grand potential using thermodynamic integration<a class="headerlink" href="#calculation-of-grand-potential-using-thermodynamic-integration" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="theoretical-backgrounds">
+<h2><span class="section-number">12.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this heading">¶</a></h2>
+<p><strong>Thermodynamic integration</strong></p>
+<p>See <a class="reference internal" href="#ti" id="id1"><span>[TI]</span></a>.</p>
+<dl class="citation">
+<dt class="label" id="ti"><span class="brackets"><a class="fn-backref" href="#id1">TI</a></span></dt>
+<dd><p>A van de Walle and M Asta, Modell. Simul. Mater. Sci. Eng. 10, 521 (2002).</p>
+</dd>
+</dl>
+<div class="math">
+<p><img src="../_images/math/a86e59e8ef5bb4f95158fec5ffa6ceb89c8714da.svg" alt="\beta_1\phi(\beta_1,\mu_1) = \beta_0\phi(\beta_0,\mu_0) + \int_{(\beta_0,\mu_0)}^{(\beta_1,\mu_1)} (E+\mu x, \beta x )d(\beta,\mu)"/></p>
+</div><p><strong>Low-temperature expansion for grand potential</strong></p>
+<p>See <a class="reference internal" href="#lte" id="id2"><span>[LTE]</span></a>.</p>
+<dl class="citation">
+<dt class="label" id="lte"><span class="brackets"><a class="fn-backref" href="#id2">LTE</a></span></dt>
+<dd><p>A F Kohan, P D Tepesch, G Ceder and C Wolverton, Comput. Mater. Sci. 9, 389 (1998).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">12.2. </span>ti<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Calculating grand potential using semi-grand canonical MC and thermodynamic integration.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>TI.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-path-data"><span class="std std-ref">path_data</span></a></p></li>
+</ul>
+<p><strong>Output</strong></p>
+<ul class="simple">
+<li><p>Free energy</p></li>
+<li><p>Grand potential</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">12.3. </span>lte<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Estimating grand potential at a temperature and a chemical potential using the low temperature expansion.</p></li>
+<li><p>Available only for binary systems.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>LTE.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-uposcar"><span class="std std-ref">UPOSCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-upotcar"><span class="std std-ref">UPOTCAR</span></a></p></li>
+<li><p>POSCAR</p></li>
+<li><p>POTCAR</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-eci"><span class="std std-ref">ECI</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-of-out"><span class="std std-ref">of.out</span></a></p></li>
+</ul>
+<p><strong>Output</strong></p>
+<ul class="simple">
+<li><p>Grand potential</p></li>
+</ul>
+</div>
+<div class="section" id="ti-in">
+<h2><span class="section-number">12.4. </span>TI.in<a class="headerlink" href="#ti-in" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="initpot-tag">
+<h3><span class="section-number">12.4.1. </span>INITPOT tag<a class="headerlink" href="#initpot-tag" title="Permalink to this heading">¶</a></h3>
+<p>Value of grand-potential at the initial point of the path.
+When the temperature of the initial point of the path is 0 K, the grand potential at a finite temperature evaluated using the low-temperature expansion should be used.
+The initial point of the path should be set to the finite temperature.</p>
+<ul class="simple">
+<li><p>Default : 0</p></li>
+<li><p>Example : INITPOT = -0.016338475</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="lte-in">
+<h2><span class="section-number">12.5. </span>LTE.in<a class="headerlink" href="#lte-in" title="Permalink to this heading">¶</a></h2>
+<p>Calculating the grand potential at T=100K and mu=0.0 using the low temperature expansion around T=0.
+The size of the stable structure at T=0 and mu=0.0 is the same as the size of the 2x2x2 expansion of UPOSCAR.
+The stable structure at T=0 and mu=0.0 is specified by POSCAR.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEMP</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">MU</span> <span class="o">=</span> <span class="mf">0.00</span>
+<span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">SPIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">NAMEPOT</span> <span class="o">=</span> <span class="n">Mg</span> <span class="n">Zn</span>
+<span class="n">NUCELL</span> <span class="o">=</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">4</span>
+<span class="n">NUCELLPOSCAR</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="section" id="temp-tag">
+<h3><span class="section-number">12.5.1. </span>TEMP tag<a class="headerlink" href="#temp-tag" title="Permalink to this heading">¶</a></h3>
+<p>Temperature for the low temperature expansion.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : TEMP = 10</p></li>
+</ul>
+</div>
+<div class="section" id="mu-tag">
+<h3><span class="section-number">12.5.2. </span>MU tag<a class="headerlink" href="#mu-tag" title="Permalink to this heading">¶</a></h3>
+<p>Chemical potential for the low temperature expansion.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : MU = 0.20</p></li>
+</ul>
+</div>
+<div class="section" id="nucell-tag">
+<h3><span class="section-number">12.5.3. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this heading">¶</a></h3>
+<p>Low temperature expansion is performed using a supercell constructed by the NUCELL expansion of the unit cell.
+The grand potential calculated using the low temperature expansion converges as the supercell size increases.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELL = 4 4 4</p></li>
+</ul>
+</div>
+<div class="section" id="isub-tag">
+<h3><span class="section-number">12.5.4. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this heading">¶</a></h3>
+<p>Sublattice indexes for performing the CE.
+The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>Example : ISUB = 1 3</p></li>
+</ul>
+</div>
+<div class="section" id="nucellposcar-tag">
+<h3><span class="section-number">12.5.5. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this heading">¶</a></h3>
+<p>Number of unit cells included in POSCAR (initial structure).</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
+</ul>
+</div>
+<div class="section" id="namepot-tag-spin-tag">
+<h3><span class="section-number">12.5.6. </span>NAMEPOT tag, SPIN tag<a class="headerlink" href="#namepot-tag-spin-tag" title="Permalink to this heading">¶</a></h3>
+<p>Atom names and spin values for the atom names.
+Do not set spin values for atoms which are not used for the CE.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NAMEPOT = Mg Zn O</p></li>
+<li><p>Example : SPIN = 1 -1</p></li>
+</ul>
+<p>In the above example, spin values for Mg and Zn are 1 and -1, respectively.</p>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">12. Calculation of grand potential using thermodynamic integration</a><ul>
+<li><a class="reference internal" href="#theoretical-backgrounds">12.1. Theoretical backgrounds</a></li>
+<li><a class="reference internal" href="#id3">12.2. ti</a></li>
+<li><a class="reference internal" href="#id4">12.3. lte</a></li>
+<li><a class="reference internal" href="#ti-in">12.4. TI.in</a><ul>
+<li><a class="reference internal" href="#initpot-tag">12.4.1. INITPOT tag</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lte-in">12.5. LTE.in</a><ul>
+<li><a class="reference internal" href="#temp-tag">12.5.1. TEMP tag</a></li>
+<li><a class="reference internal" href="#mu-tag">12.5.2. MU tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">12.5.3. NUCELL tag</a></li>
+<li><a class="reference internal" href="#isub-tag">12.5.4. ISUB tag</a></li>
+<li><a class="reference internal" href="#nucellposcar-tag">12.5.5. NUCELLPOSCAR tag</a></li>
+<li><a class="reference internal" href="#namepot-tag-spin-tag">12.5.6. NAMEPOT tag, SPIN tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mc-e.html"
+                          title="previous chapter"><span class="section-number">11. </span>Calculation of thermodynamic quantities using Monte Carlo (MC) simulation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tutorial-e.html"
+                          title="next chapter"><span class="section-number">13. </span>Tutorials</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="mc-e.html" title="11. Calculation of thermodynamic quantities using Monte Carlo (MC) simulation" >previous</a></li>
+        <li><a href="tutorial-e.html" title="13. Tutorials" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 0.7) in English</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>3. 入力，出力ファイル &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in Japanese" href="index.html" />
+    <link rel="next" title="4. DFT計算のための初期構造" href="mkposcar.html" />
+    <link rel="prev" title="2. インストールと基本的な設定" href="install.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">3. 入力，出力ファイル</a><ul>
+<li><a class="reference internal" href="#uposcar">3.1. UPOSCAR</a></li>
+<li><a class="reference internal" href="#upotcar">3.2. UPOTCAR</a></li>
+<li><a class="reference internal" href="#position-out">3.3. position.out</a></li>
+<li><a class="reference internal" href="#of-out">3.4. of.out</a></li>
+<li><a class="reference internal" href="#energy">3.5. ENERGY</a></li>
+<li><a class="reference internal" href="#correlation">3.6. CORRELATION</a></li>
+<li><a class="reference internal" href="#weight">3.7. WEIGHT</a></li>
+<li><a class="reference internal" href="#eci">3.8. ECI</a></li>
+<li><a class="reference internal" href="#variance">3.9. VARIANCE</a></li>
+<li><a class="reference internal" href="#mean">3.10. MEAN</a></li>
+<li><a class="reference internal" href="#path-data">3.11. path_data</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="install.html" title="2. インストールと基本的な設定" accesskey="P">previous </a></li>
+              <li><a href="mkposcar.html" title="4. DFT計算のための初期構造" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index.html" accesskey="U">clupan (version 0.7) in Japanese</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="id1">
+<h1><span class="section-number">3. </span>入力，出力ファイル<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="uposcar">
+<span id="label-uposcar"></span><h2><span class="section-number">3.1. </span>UPOSCAR<a class="headerlink" href="#uposcar" title="Permalink to this heading">¶</a></h2>
+<p>結晶格子のユニットセルを記述する．書式はVASPのものと同じ．</p>
+<ul>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rocksalt</span><span class="o">-</span><span class="n">lattice</span>
+<span class="mf">1.0</span>
+    <span class="mf">4.157000000</span>      <span class="mf">0.000000000</span>      <span class="mf">0.000000000</span>   <span class="c1"># axis</span>
+    <span class="mf">0.000000000</span>      <span class="mf">4.157000000</span>      <span class="mf">0.000000000</span>
+    <span class="mf">0.000000000</span>      <span class="mf">0.000000000</span>      <span class="mf">4.157000000</span>
+<span class="mi">4</span> <span class="mi">4</span> <span class="c1"># number of lattice sites</span>
+<span class="n">Direct</span>
+    <span class="mf">0.000000000</span>      <span class="mf">0.000000000</span>      <span class="mf">0.000000000</span>   <span class="c1"># lattice position</span>
+    <span class="mf">0.500000000</span>      <span class="mf">0.500000000</span>      <span class="mf">0.000000000</span>
+    <span class="mf">0.500000000</span>      <span class="mf">0.000000000</span>      <span class="mf">0.500000000</span>
+    <span class="mf">0.000000000</span>      <span class="mf">0.500000000</span>      <span class="mf">0.500000000</span>
+    <span class="mf">0.000000000</span>      <span class="mf">0.000000000</span>      <span class="mf">0.500000000</span>
+    <span class="mf">0.500000000</span>      <span class="mf">0.000000000</span>      <span class="mf">0.000000000</span>
+    <span class="mf">0.000000000</span>      <span class="mf">0.500000000</span>      <span class="mf">0.000000000</span>
+    <span class="mf">0.500000000</span>      <span class="mf">0.500000000</span>      <span class="mf">0.500000000</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="upotcar">
+<span id="label-upotcar"></span><h2><span class="section-number">3.2. </span>UPOTCAR<a class="headerlink" href="#upotcar" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VRHFIN</span> <span class="o">=</span><span class="n">Mg</span><span class="p">:</span>
+<span class="n">VRHFIN</span> <span class="o">=</span><span class="n">O</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="position-out">
+<span id="label-position-out"></span><h2><span class="section-number">3.3. </span>position.out<a class="headerlink" href="#position-out" title="Permalink to this heading">¶</a></h2>
+<p>クラスターの格子点（ユニットセル内の格子点，並進ベクトル）を記述する．
+<strong>cluster</strong> で生成される． <strong>correlation</strong> で使用する．</p>
+</div>
+<div class="section" id="of-out">
+<span id="label-of-out"></span><h2><span class="section-number">3.4. </span>of.out<a class="headerlink" href="#of-out" title="Permalink to this heading">¶</a></h2>
+<p>クラスターの格子点（ユニットセル内の格子点，並進ベクトル），および多元系の計算で使用するonsiteのクラスター関数の組み合わせを記述する．
+<strong>correlation</strong> で生成される．
+<strong>gss</strong> , <strong>cmc</strong>, <strong>gcmc</strong>, <strong>search_poscar_variance</strong>, <strong>lte</strong> で使用する．</p>
+</div>
+<div class="section" id="energy">
+<span id="label-energy"></span><h2><span class="section-number">3.5. </span>ENERGY<a class="headerlink" href="#energy" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>1列目 : エネルギー</p></li>
+<li><p>2列目 : コメント（構造番号）</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.8934986</span> <span class="mi">1</span>
+<span class="mf">2.4398790</span> <span class="mi">2</span>
+<span class="mf">4.3428997</span> <span class="mi">3</span>
+<span class="mf">3.7830942</span> <span class="mi">4</span>
+<span class="mf">4.8734704</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="correlation">
+<span id="label-correlation"></span><h2><span class="section-number">3.6. </span>CORRELATION<a class="headerlink" href="#correlation" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>構造ごとにコメントを1行入れ，プログラム <strong>correlation</strong> の標準出力をCORRELATIONに並べる．</p></li>
+<li><p>CORRELATIONの作成のためのシェルスクリプト例．$WORKDIRは相関関数を計算するディレクトリ．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in {1..$n};do
+    cd $WORK_DIR/$i
+    echo &quot;structure &quot;$i &gt;&gt; $WORK_DIR/CORRELATION
+    correlation &gt;&gt; $WORK_DIR/CORRELATION
+done
+</pre></div>
+</div>
+</li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">0</span>
+<span class="mf">0.5</span>
+<span class="n">structure</span> <span class="mi">2</span>
+<span class="mi">1</span>
+<span class="mf">0.5</span>
+<span class="mf">0.2</span>
+<span class="n">structure</span> <span class="mi">3</span>
+<span class="mi">1</span>
+<span class="mf">0.8</span>
+<span class="o">-</span><span class="mf">0.3</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="weight">
+<span id="label-weight"></span><h2><span class="section-number">3.7. </span>WEIGHT<a class="headerlink" href="#weight" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>構造数の重みを指定する．</p></li>
+<li><p>1列目 : 重み</p></li>
+<li><p>2列目 : コメント（構造番号）</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.0</span> <span class="mi">1</span>
+<span class="mf">2.0</span> <span class="mi">2</span>
+<span class="mf">1.0</span> <span class="mi">3</span>
+<span class="mf">3.0</span> <span class="mi">4</span>
+<span class="mf">5.0</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="eci">
+<span id="label-eci"></span><h2><span class="section-number">3.8. </span>ECI<a class="headerlink" href="#eci" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>プログラム <strong>lsf</strong> の標準出力から，sum of square error以下の行を消去する．</p></li>
+<li><p>モンテカルロシミュレーションの時には，エネルギーの単位をUPOSCARで指定した <strong>ユニットセルあたり</strong> にする必要がある．</p></li>
+<li><p><strong>gss</strong>, <strong>cmc</strong>, <strong>gcmc</strong>, <strong>lte</strong> で使用する．</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>    <span class="mf">7.9025344</span>
+<span class="mi">1</span>    <span class="o">-</span><span class="mf">2.5040100</span>
+<span class="mi">6</span>    <span class="o">-</span><span class="mf">0.51742919</span>
+<span class="mi">8</span>    <span class="mf">3.2831494</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="variance">
+<span id="label-variance"></span><h2><span class="section-number">3.9. </span>VARIANCE<a class="headerlink" href="#variance" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>構造母集団の相関関数の分散共分散行列．</p>
+<blockquote>
+<div><div class="math">
+<p><img src="../_images/math/8af17332eceab1270361c748cc40529b16eb2c5b.svg" alt="\bm{\Sigma}_{\alpha_1, \alpha_2} = \frac{1}{N_{\rm all}} \sum_{i=1}^{N_{\rm all}} \left( \varphi_{\alpha_1} (i) - \bm{\mu}_{\alpha_1} \right) \left( \varphi_{\alpha_2} (i) - \bm{\mu}_{\alpha_2} \right)"/></p>
+</div><p>ここで， <img class="math" src="../_images/math/303e8b98f6a5c6f7a568597e9686fa5a8eac1c66.svg" alt="N_{\rm all}"/> は構造母集団の構造数， <img class="math" src="../_images/math/289e5197cc8ee00c597346ab8f5d0883f1e36aa1.svg" alt="\varphi_\alpha (i)"/> は構造iのクラスター <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.svg" alt="\alpha"/> の相関関数， <img class="math" src="../_images/math/7990d617b17144c42c12849c37ddf3e14469cad8.svg" alt="\bm{\mu}_\alpha"/> は構造母集団のクラスター <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.svg" alt="\alpha"/> の平均相関関数を表す．</p>
+</div></blockquote>
+</li>
+<li><p>プログラム <strong>variance_stpop</strong> により生成される．</p></li>
+<li><p>プログラム <strong>mkposcar</strong> によりランダム構造を作り， <strong>correlation</strong> で相関関数を計算することによりを作成することもできる．その場合，cluster.outのクラスターの番号順に，構造母集団の相関関数の分散共分散を並べる．</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">S_00</span> <span class="n">S_10</span> <span class="n">S_20</span> <span class="n">S_30</span> <span class="n">S_40</span>
+<span class="o">//</span> <span class="n">S_01</span> <span class="n">S_11</span> <span class="n">S_21</span> <span class="n">S_31</span> <span class="n">S_41</span>
+<span class="o">//</span> <span class="n">S_02</span> <span class="n">S_12</span> <span class="n">S_22</span> <span class="n">S_32</span> <span class="n">S_42</span>
+<span class="o">//</span> <span class="n">S_03</span> <span class="n">S_13</span> <span class="n">S_23</span> <span class="n">S_33</span> <span class="n">S_43</span>
+<span class="o">//</span> <span class="n">S_04</span> <span class="n">S_14</span> <span class="n">S_24</span> <span class="n">S_34</span> <span class="n">S_44</span>
+
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mf">0.0310019</span> <span class="mf">0.000310993</span> <span class="mf">0.000844725</span> <span class="mf">0.000183406</span>
+<span class="mi">0</span> <span class="mf">0.000310993</span> <span class="mf">0.0219471</span> <span class="mf">0.00205187</span> <span class="o">-</span><span class="mf">0.000421977</span>
+<span class="mi">0</span> <span class="mf">0.000844725</span> <span class="mf">0.00205187</span> <span class="mf">0.0217157</span> <span class="o">-</span><span class="mf">0.000413628</span>
+<span class="mi">0</span> <span class="mf">0.000183406</span> <span class="o">-</span><span class="mf">0.000421977</span> <span class="o">-</span><span class="mf">0.000413628</span> <span class="mf">0.00530565</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="mean">
+<span id="label-mean"></span><h2><span class="section-number">3.10. </span>MEAN<a class="headerlink" href="#mean" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>構造母集団の相関関数の平均値．</p>
+<blockquote>
+<div><div class="math">
+<p><img src="../_images/math/30fadb981c871d9aea38fde46fdd92b97f851360.svg" alt="\bm{\mu}_\alpha = \frac{1}{N_{\rm all}} \sum_{i=1}^{N_{\rm all}} \varphi_\alpha (i)"/></p>
+</div><p>ここで， <img class="math" src="../_images/math/303e8b98f6a5c6f7a568597e9686fa5a8eac1c66.svg" alt="N_{\rm all}"/> は構造母集団の構造数， <img class="math" src="../_images/math/289e5197cc8ee00c597346ab8f5d0883f1e36aa1.svg" alt="\varphi_\alpha (i)"/> は，構造iのクラスター <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.svg" alt="\alpha"/> の相関関数を表す．</p>
+</div></blockquote>
+</li>
+<li><p>プログラム <strong>variance_stpop</strong> により生成される．</p></li>
+<li><p>プログラム <strong>mkposcar</strong> によりランダム構造を作り， <strong>correlation</strong> で相関関数を計算することにより作成することもできる．その場合，cluster.outのクラスターの番号順に，構造母集団の相関関数の平均を並べる．</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>           <span class="o">//</span> <span class="n">No</span><span class="o">.</span> <span class="mi">0</span>
+<span class="mf">0.002075</span>    <span class="o">//</span> <span class="n">No</span><span class="o">.</span> <span class="mi">1</span>
+<span class="mf">0.013292</span>    <span class="o">//</span> <span class="n">No</span><span class="o">.</span> <span class="mi">2</span>
+<span class="mf">0.006850</span>    <span class="o">//</span> <span class="n">No</span><span class="o">.</span> <span class="mi">3</span>
+<span class="o">-</span><span class="mf">0.007910</span>   <span class="o">//</span> <span class="n">No</span><span class="o">.</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="path-data">
+<span id="label-path-data"></span><h2><span class="section-number">3.11. </span>path_data<a class="headerlink" href="#path-data" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>熱力学積分を行う経路およびその経路に沿ったエネルギー，組成を指定する．</p></li>
+<li><p>左から順に，化学ポテンシャル，温度，組成， <strong>1原子あたりのエネルギー</strong> を指定する．</p></li>
+<li><p>経路ごとに一行コメントを入れる．</p></li>
+<li><p>Sample</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="mi">1</span>
+<span class="mf">0.000</span> <span class="mi">10</span> <span class="mf">0.500000</span> <span class="o">-</span><span class="mf">0.0163385</span>
+<span class="mf">0.000</span> <span class="mi">15</span> <span class="mf">0.500000</span> <span class="o">-</span><span class="mf">0.0163385</span>
+<span class="mf">0.000</span> <span class="mi">20</span> <span class="mf">0.499997</span> <span class="o">-</span><span class="mf">0.0161024</span>
+<span class="mf">0.000</span> <span class="mi">25</span> <span class="mf">0.499976</span> <span class="o">-</span><span class="mf">0.0161020</span>
+<span class="mf">0.000</span> <span class="mi">30</span> <span class="mf">0.499911</span> <span class="o">-</span><span class="mf">0.0163363</span>
+<span class="n">path</span> <span class="mi">2</span>
+<span class="mf">0.000</span> <span class="mi">30</span> <span class="mf">0.499911</span> <span class="o">-</span><span class="mf">0.0163363</span>
+<span class="mf">0.002</span> <span class="mi">30</span> <span class="mf">0.499648</span> <span class="o">-</span><span class="mf">0.0160955</span>
+<span class="mf">0.004</span> <span class="mi">30</span> <span class="mf">0.499227</span> <span class="o">-</span><span class="mf">0.0160875</span>
+<span class="mf">0.006</span> <span class="mi">30</span> <span class="mf">0.498583</span> <span class="o">-</span><span class="mf">0.0160735</span>
+<span class="mf">0.008</span> <span class="mi">30</span> <span class="mf">0.497998</span> <span class="o">-</span><span class="mf">0.0162939</span>
+<span class="mf">0.010</span> <span class="mi">30</span> <span class="mf">0.495421</span> <span class="o">-</span><span class="mf">0.0162372</span>
+<span class="mf">0.012</span> <span class="mi">30</span> <span class="mf">0.488967</span> <span class="o">-</span><span class="mf">0.0160975</span>
+<span class="mf">0.014</span> <span class="mi">30</span> <span class="mf">0.466447</span> <span class="o">-</span><span class="mf">0.0156363</span>
+<span class="mf">0.016</span> <span class="mi">30</span> <span class="mf">0.266050</span> <span class="o">-</span><span class="mf">0.0128446</span>
+<span class="mf">0.018</span> <span class="mi">30</span> <span class="mf">0.256566</span> <span class="o">-</span><span class="mf">0.0127752</span>
+<span class="mf">0.020</span> <span class="mi">30</span> <span class="mf">0.252923</span> <span class="o">-</span><span class="mf">0.0127505</span>
+<span class="mf">0.022</span> <span class="mi">30</span> <span class="mf">0.251300</span> <span class="o">-</span><span class="mf">0.0127397</span>
+<span class="mf">0.024</span> <span class="mi">30</span> <span class="mf">0.250589</span> <span class="o">-</span><span class="mf">0.0127351</span>
+<span class="mf">0.026</span> <span class="mi">30</span> <span class="mf">0.250278</span> <span class="o">-</span><span class="mf">0.0127330</span>
+<span class="mf">0.028</span> <span class="mi">30</span> <span class="mf">0.250123</span> <span class="o">-</span><span class="mf">0.0127320</span>
+<span class="mf">0.030</span> <span class="mi">30</span> <span class="mf">0.250053</span> <span class="o">-</span><span class="mf">0.0127314</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">3. 入力，出力ファイル</a><ul>
+<li><a class="reference internal" href="#uposcar">3.1. UPOSCAR</a></li>
+<li><a class="reference internal" href="#upotcar">3.2. UPOTCAR</a></li>
+<li><a class="reference internal" href="#position-out">3.3. position.out</a></li>
+<li><a class="reference internal" href="#of-out">3.4. of.out</a></li>
+<li><a class="reference internal" href="#energy">3.5. ENERGY</a></li>
+<li><a class="reference internal" href="#correlation">3.6. CORRELATION</a></li>
+<li><a class="reference internal" href="#weight">3.7. WEIGHT</a></li>
+<li><a class="reference internal" href="#eci">3.8. ECI</a></li>
+<li><a class="reference internal" href="#variance">3.9. VARIANCE</a></li>
+<li><a class="reference internal" href="#mean">3.10. MEAN</a></li>
+<li><a class="reference internal" href="#path-data">3.11. path_data</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install.html"
+                          title="previous chapter"><span class="section-number">2. </span>インストールと基本的な設定</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mkposcar.html"
+                          title="next chapter"><span class="section-number">4. </span>DFT計算のための初期構造</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="install.html" title="2. インストールと基本的な設定" >previous</a></li>
+        <li><a href="mkposcar.html" title="4. DFT計算のための初期構造" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index.html" >clupan (version 0.7) in Japanese</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

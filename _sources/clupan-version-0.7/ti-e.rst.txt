@@ -1,0 +1,132 @@
+Calculation of grand potential using thermodynamic integration
+===============================================================
+
+Theoretical backgrounds
+-----------------------
+
+**Thermodynamic integration**
+
+See [TI]_.
+
+.. [TI] A van de Walle and M Asta, Modell. Simul. Mater. Sci. Eng. 10, 521 (2002).
+
+.. math::
+
+    \beta_1\phi(\beta_1,\mu_1) = \beta_0\phi(\beta_0,\mu_0) + \int_{(\beta_0,\mu_0)}^{(\beta_1,\mu_1)} (E+\mu x, \beta x )d(\beta,\mu)
+
+**Low-temperature expansion for grand potential**
+
+See [LTE]_.
+
+.. [LTE] A F Kohan, P D Tepesch, G Ceder and C Wolverton, Comput. Mater. Sci. 9, 389 (1998).
+
+ti
+--------
+
+* Calculating grand potential using semi-grand canonical MC and thermodynamic integration.
+
+**Input files**
+
+* TI.in
+* :ref:`label-e-path-data`
+
+**Output**
+
+* Free energy
+* Grand potential
+
+lte
+--------
+
+* Estimating grand potential at a temperature and a chemical potential using the low temperature expansion.
+* Available only for binary systems.
+
+**Input files**
+
+* LTE.in
+* :ref:`label-e-uposcar`
+* :ref:`label-e-upotcar`
+* POSCAR
+* POTCAR
+* :ref:`label-e-eci`
+* :ref:`label-e-of-out`
+
+**Output**
+
+* Grand potential
+
+TI.in
+--------
+
+INITPOT tag
+""""""""""""""""""
+Value of grand-potential at the initial point of the path.
+When the temperature of the initial point of the path is 0 K, the grand potential at a finite temperature evaluated using the low-temperature expansion should be used. 
+The initial point of the path should be set to the finite temperature.
+
+* Default : 0
+* Example : INITPOT = -0.016338475
+
+LTE.in
+--------
+
+Calculating the grand potential at T=100K and mu=0.0 using the low temperature expansion around T=0.
+The size of the stable structure at T=0 and mu=0.0 is the same as the size of the 2x2x2 expansion of UPOSCAR. 
+The stable structure at T=0 and mu=0.0 is specified by POSCAR. ::
+
+    TEMP = 100
+    MU = 0.00
+    ISUB = 1
+    SPIN = 1 -1
+    NAMEPOT = Mg Zn
+    NUCELL = 4 4 4
+    NUCELLPOSCAR = 2 2 2
+
+TEMP tag
+""""""""""""""""""
+Temperature for the low temperature expansion.
+
+* Default : none
+* Example : TEMP = 10
+
+MU tag
+""""""""""""""""""
+Chemical potential for the low temperature expansion.
+
+* Default : none
+* Example : MU = 0.20
+
+NUCELL tag
+""""""""""""""""""""
+Low temperature expansion is performed using a supercell constructed by the NUCELL expansion of the unit cell.
+The grand potential calculated using the low temperature expansion converges as the supercell size increases.
+
+* Default : none
+* Example : NUCELL = 4 4 4
+
+ISUB tag
+""""""""""""""""
+Sublattice indexes for performing the CE.
+The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).
+
+* Default : 1
+* Example : ISUB = 1 3
+
+NUCELLPOSCAR tag
+""""""""""""""""""""
+Number of unit cells included in POSCAR (initial structure).
+
+* Default : none
+* Example : NUCELLPOSCAR = 2 1 1
+
+NAMEPOT tag, SPIN tag
+""""""""""""""""""""""""""""""
+Atom names and spin values for the atom names.
+Do not set spin values for atoms which are not used for the CE.
+
+* Default : none
+* Example : NAMEPOT = Mg Zn O
+* Example : SPIN = 1 -1
+
+In the above example, spin values for Mg and Zn are 1 and -1, respectively.
+

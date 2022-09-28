@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Classes and functions in pyml &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">Classes and functions in pyml</a><ul>
+<li><a class="reference internal" href="#pyml-common">pyml.common</a><ul>
+<li><a class="reference internal" href="#pyml-common-structure-structure">pyml.common.structure.Structure</a></li>
+<li><a class="reference internal" href="#pyml-common-readvasp-vasprun">pyml.common.readvasp.Vasprun</a></li>
+<li><a class="reference internal" href="#pyml-common-readvasp-poscar">pyml.common.readvasp.Poscar</a></li>
+<li><a class="reference internal" href="#pyml-common-fileio-inputparams">pyml.common.fileio.InputParams</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-model">pyml.linpot.model</a><ul>
+<li><a class="reference internal" href="#pyml-linpot-model-terms">pyml.linpot.model.Terms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-regression">pyml.linpot.regression</a><ul>
+<li><a class="reference internal" href="#pyml-linpot-regression-collectdescriptors">pyml.linpot.regression.CollectDescriptors</a></li>
+<li><a class="reference internal" href="#pyml-linpot-regression-linearregression">pyml.linpot.regression.LinearRegression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-prediction">pyml.linpot.prediction</a><ul>
+<li><a class="reference internal" href="#pyml-linpot-prediction-property">pyml.linpot.prediction.Property</a></li>
+<li><a class="reference internal" href="#pyml-linpot-prediction-propertyfromstructure">pyml.linpot.prediction.PropertyFromStructure</a></li>
+<li><a class="reference internal" href="#pyml-linpot-prediction-numericalforce">pyml.linpot.prediction.NumericalForce</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-analysis">pyml.linpot.analysis</a></li>
+<li><a class="reference internal" href="#pymlcpp">pymlcpp</a><ul>
+<li><a class="reference internal" href="#pymlcpp-potentialmodel">pymlcpp.PotentialModel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="classes-and-functions-in-pyml">
+<h1>Classes and functions in pyml<a class="headerlink" href="#classes-and-functions-in-pyml" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="pyml-common">
+<h2>pyml.common<a class="headerlink" href="#pyml-common" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="pyml-common-structure-structure">
+<h3>pyml.common.structure.Structure<a class="headerlink" href="#pyml-common-structure-structure" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">Structure</span>
+    <span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><dl>
+<dt>Parameters</dt><dd><div class="line-block">
+<div class="line">axis: (3x3)</div>
+<div class="line">positions: (3xN_atom)</div>
+<div class="line">n_atoms: (N_type)</div>
+<div class="line">elements: (N_atom)</div>
+<div class="line">type: (N_atom)</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_axis</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_positions</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_positions_cartesian</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_n_atoms</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_elements</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_types</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_volume</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_neighbors</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dis</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">atom_index</span>
+<span class="k">def</span> <span class="nf">calc_neighbors</span><span class="p">(</span><span class="n">cutoff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyml-common-readvasp-vasprun">
+<h3>pyml.common.readvasp.Vasprun<a class="headerlink" href="#pyml-common-readvasp-vasprun" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">readvasp</span><span class="o">.</span><span class="n">Vasprun</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_energy</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_forces</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_stress</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_structure</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">axis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">types</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyml-common-readvasp-poscar">
+<h3>pyml.common.readvasp.Poscar<a class="headerlink" href="#pyml-common-readvasp-poscar" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">readvasp</span><span class="o">.</span><span class="n">Poscar</span><span class="p">(</span><span class="n">poscar_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_structure</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">axis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">n_atoms</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">types</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyml-common-fileio-inputparams">
+<h3>pyml.common.fileio.InputParams<a class="headerlink" href="#pyml-common-fileio-inputparams" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">fileio</span><span class="o">.</span><span class="n">InputParams</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_param_array</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_descriptor_param</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-model">
+<h2>pyml.linpot.model<a class="headerlink" href="#pyml-linpot-model" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="pyml-linpot-model-terms">
+<h3>pyml.linpot.model.Terms<a class="headerlink" href="#pyml-linpot-model-terms" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">linpot</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Terms</span>
+    <span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">des_type</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span>
+    <span class="n">model_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxp</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">maxl</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><dl>
+<dt>Parameters</dt><dd><div class="line-block">
+<div class="line">st: a structure (class Structure)</div>
+<div class="line">cutoff: cutoff radius (ang)</div>
+<div class="line">des_type: “gaussian” or “gaussian_afs”</div>
+<div class="line">des_params: parameters in Gaussian functions [[a1,b1], [a2, b2], …]</div>
+<div class="line">model_type: 1 or 2</div>
+<div class="line">force: computing xf (1) or not (0)</div>
+<div class="line">maxp: maximum power of polynomials</div>
+<div class="line">maxl: maximum l value of afs</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_x</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">xe_sum</span><span class="p">,</span> <span class="n">xf_sum</span> <span class="c1"># n_coeff, 3*n_atom x n_coeff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-regression">
+<h2>pyml.linpot.regression<a class="headerlink" href="#pyml-linpot-regression" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="pyml-linpot-regression-collectdescriptors">
+<h3>pyml.linpot.regression.CollectDescriptors<a class="headerlink" href="#pyml-linpot-regression-collectdescriptors" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">linpot</span><span class="o">.</span><span class="n">regression</span><span class="o">.</span><span class="n">CollectDescriptors</span>
+    <span class="p">(</span><span class="n">st_set</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">des_type</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span> <span class="n">model_type</span><span class="p">,</span> <span class="n">wforce</span><span class="p">,</span> <span class="n">maxp</span><span class="p">,</span> <span class="n">maxl</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_x</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">xe</span><span class="p">,</span> <span class="n">xf</span> <span class="c1"># n_st x n_coeff, n_st*3*n_atom x n_coeff</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-regression-linearregression">
+<h3>pyml.linpot.regression.LinearRegression<a class="headerlink" href="#pyml-linpot-regression-linearregression" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">linpot</span><span class="o">.</span><span class="n">regression</span><span class="o">.</span><span class="n">LinearRegression</span>
+    <span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">readdata</span><span class="o">=</span><span class="s1">&#39;vasprun&#39;</span><span class="p">,</span> <span class="n">binary_filename</span><span class="o">=</span><span class="s1">&#39;pyml_train_data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><dl>
+<dt>Parameters</dt><dd><div class="line-block">
+<div class="line">params: an object of class InputParams (needed if readdata==”vasprun”)</div>
+<div class="line">readdata: “vasprun” or “binary”</div>
+<div class="line">binary_filename: binary filename (needed if readdata==”binary”)</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Attributes</dt><dd><div class="line-block">
+<div class="line">e_train, e_test</div>
+<div class="line">f_train, f_test</div>
+<div class="line">s_train, s_test</div>
+<div class="line">xe_train, xe_test</div>
+<div class="line">xf_train, xf_test</div>
+<div class="line">xs_train, xs_test</div>
+<div class="line">x_train, x_test</div>
+<div class="line">y_train, y_test</div>
+<div class="line">scaler</div>
+<div class="line">best_reg</div>
+<div class="line">best_rmse</div>
+<div class="line">best_alpha</div>
+<div class="line">cutoff, des_tyep, des_params, model_type, maxp, maxl</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ridge</span><span class="p">(</span><span class="n">alpha_min</span><span class="o">=-</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">alpha_max</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">n_alpha</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">iprint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_pot</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;pyml_pot&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_pot_for_lammps</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;lammps.mlip&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_data</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;pyml_train_data&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;pyml_train_data&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_best_rmse_energy</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="n">rmse_test</span>
+<span class="k">def</span> <span class="nf">get_best_rmse_force</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="n">rmse_test</span>
+
+<span class="k">def</span> <span class="nf">get_input_params</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_training_data</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">replace_training_energy_data</span><span class="p">(</span><span class="n">xe_train</span><span class="p">,</span> <span class="n">e_train</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">set_data</span>
+    <span class="p">(</span><span class="n">xe_train</span><span class="p">,</span> <span class="n">xe_test</span><span class="p">,</span> <span class="n">e_train</span><span class="p">,</span> <span class="n">e_test</span><span class="p">,</span>
+     <span class="n">xf_train</span><span class="p">,</span> <span class="n">xf_test</span><span class="p">,</span> <span class="n">f_train</span><span class="p">,</span> <span class="n">f_test</span><span class="p">,</span>
+     <span class="n">cutoff</span><span class="p">,</span> <span class="n">des_type</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span> <span class="n">model_type</span><span class="p">,</span> <span class="n">maxp</span><span class="p">,</span> <span class="n">maxl</span><span class="p">,</span> <span class="n">wforce</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-prediction">
+<h2>pyml.linpot.prediction<a class="headerlink" href="#pyml-linpot-prediction" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="pyml-linpot-prediction-property">
+<h3>pyml.linpot.prediction.Property<a class="headerlink" href="#pyml-linpot-prediction-property" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">linpot</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">Property</span>
+    <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">scaler</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">des_type</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span>
+     <span class="n">model_type</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">maxp</span><span class="p">,</span> <span class="n">maxl</span><span class="p">,</span> <span class="n">file_poscar</span><span class="o">=</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_energy</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_force</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-prediction-propertyfromstructure">
+<h3>pyml.linpot.prediction.PropertyFromStructure<a class="headerlink" href="#pyml-linpot-prediction-propertyfromstructure" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">linpot</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">PropertyFromStructure</span>
+    <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">scaler</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">des_type</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span>
+     <span class="n">model_type</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">maxp</span><span class="p">,</span> <span class="n">maxl</span><span class="p">,</span> <span class="n">st</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_energy</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_force</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-prediction-numericalforce">
+<h3>pyml.linpot.prediction.NumericalForce<a class="headerlink" href="#pyml-linpot-prediction-numericalforce" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">linpot</span><span class="o">.</span><span class="n">prediction</span><span class="o">.</span><span class="n">NumericalForce</span>
+    <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">scaler</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">des_type</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span>
+     <span class="n">model_type</span><span class="p">,</span> <span class="n">maxp</span><span class="p">,</span> <span class="n">maxl</span><span class="p">,</span> <span class="n">file_poscar</span><span class="o">=</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_numerical_force</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_diff</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pyml-linpot-analysis">
+<h2>pyml.linpot.analysis<a class="headerlink" href="#pyml-linpot-analysis" title="Permalink to this heading">¶</a></h2>
+<p>Coming soon.</p>
+</div>
+<div class="section" id="pymlcpp">
+<h2>pymlcpp<a class="headerlink" href="#pymlcpp" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="pymlcpp-potentialmodel">
+<h3>pymlcpp.PotentialModel<a class="headerlink" href="#pymlcpp-potentialmodel" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">pyml</span><span class="o">.</span><span class="n">PotentialModel</span>
+    <span class="p">(</span><span class="n">dis_array</span><span class="p">,</span> <span class="n">diff_array</span><span class="p">,</span> <span class="n">atom_index_array</span><span class="p">,</span> <span class="n">des_params</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># for lammps</span>
+<span class="k">def</span> <span class="nf">afs</span><span class="p">(</span><span class="n">maxl</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">afs</span><span class="p">(</span><span class="n">maxl</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>  <span class="c1"># for lammps</span>
+<span class="k">def</span> <span class="nf">model2</span><span class="p">(</span><span class="n">maxp</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_de</span><span class="p">()</span> <span class="c1"># n_atom x n_des</span>
+<span class="k">def</span> <span class="nf">get_df</span><span class="p">()</span> <span class="c1"># n_atom x 3*n_atom x n_des</span>
+<span class="k">def</span> <span class="nf">get_xe_sum</span><span class="p">()</span> <span class="c1"># n_coeff</span>
+<span class="k">def</span> <span class="nf">get_xf_sum</span><span class="p">()</span> <span class="c1"># 3*n_atom x n_coeff</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Classes and functions in pyml</a><ul>
+<li><a class="reference internal" href="#pyml-common">pyml.common</a><ul>
+<li><a class="reference internal" href="#pyml-common-structure-structure">pyml.common.structure.Structure</a></li>
+<li><a class="reference internal" href="#pyml-common-readvasp-vasprun">pyml.common.readvasp.Vasprun</a></li>
+<li><a class="reference internal" href="#pyml-common-readvasp-poscar">pyml.common.readvasp.Poscar</a></li>
+<li><a class="reference internal" href="#pyml-common-fileio-inputparams">pyml.common.fileio.InputParams</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-model">pyml.linpot.model</a><ul>
+<li><a class="reference internal" href="#pyml-linpot-model-terms">pyml.linpot.model.Terms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-regression">pyml.linpot.regression</a><ul>
+<li><a class="reference internal" href="#pyml-linpot-regression-collectdescriptors">pyml.linpot.regression.CollectDescriptors</a></li>
+<li><a class="reference internal" href="#pyml-linpot-regression-linearregression">pyml.linpot.regression.LinearRegression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-prediction">pyml.linpot.prediction</a><ul>
+<li><a class="reference internal" href="#pyml-linpot-prediction-property">pyml.linpot.prediction.Property</a></li>
+<li><a class="reference internal" href="#pyml-linpot-prediction-propertyfromstructure">pyml.linpot.prediction.PropertyFromStructure</a></li>
+<li><a class="reference internal" href="#pyml-linpot-prediction-numericalforce">pyml.linpot.prediction.NumericalForce</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyml-linpot-analysis">pyml.linpot.analysis</a></li>
+<li><a class="reference internal" href="#pymlcpp">pymlcpp</a><ul>
+<li><a class="reference internal" href="#pymlcpp-potentialmodel">pymlcpp.PotentialModel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

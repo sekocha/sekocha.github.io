@@ -1,0 +1,59 @@
+クラスターの探索
+=======================================================
+
+cluster
+--------
+
+* 結晶格子の対称操作を探索し，独立なクラスターを探索する．
+* 結晶格子はUPOSCAR, UPOTCARで指定する．
+* OPENMPによるマルチスレッド計算に対応．
+
+**Input files**
+
+* CE.in
+* :ref:`label-uposcar`
+* :ref:`label-upotcar`
+
+**Output files**
+
+* :ref:`label-position-out`
+* cluster.out
+
+CE.in
+----------------------------------------------------------------
+
+すべての原子間距離が6.0以下のクラスターを4体まで探索する例::
+
+    ISUB = 1
+    NMAX = 4
+    DTRUNC = 6.0 6.0 6.0 0.0
+
+ISUB tag
+""""""""""""""""
+結晶格子において，クラスター展開を行う格子点を指定する．
+UPOSCARの格子点数（6行目）のISUB番目に指定された格子点において，クラスター展開を行う．
+
+* Default : 1
+* Example : ISUB = 1 3
+
+NMAX tag
+""""""""""""""""
+クラスターに含まれる最大格子点数．
+
+* Default : 4
+* Example : NMAX = 6
+
+DTRUNC tag
+""""""""""""""""
+クラスターに含まれる原子間距離の最大値．左から順に2体，3体，4体，5体以上の値を指定する．
+
+* Default : 6.0 6.0 6.0 6.0
+* Example : DTRUNC = 6.0 6.0 6.0 5.0
+
+SYMPREC tag
+""""""""""""""""
+対称操作を探索するときの計算精度(単位：fractional coordinate)．
+
+* Default : 1e-5
+* Example : SYMPREC = 1e-5
+

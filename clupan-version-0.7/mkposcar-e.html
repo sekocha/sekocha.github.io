@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>4. Preparation of initial structures for DFT calculations &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="clupan (version 0.7) in English" href="index-e.html" />
+    <link rel="next" title="5. Search for independent clusters" href="cluster-e.html" />
+    <link rel="prev" title="3. Input files and output files" href="files-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">4. Preparation of initial structures for DFT calculations</a><ul>
+<li><a class="reference internal" href="#mkposcar">4.1. mkposcar</a></li>
+<li><a class="reference internal" href="#mkpos-in">4.2. MKPOS.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">4.2.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">4.2.2. NUCELL tag</a></li>
+<li><a class="reference internal" href="#nchange-tag">4.2.3. NCHANGE tag</a></li>
+<li><a class="reference internal" href="#nstruct-tag">4.2.4. NSTRUCT tag</a></li>
+<li><a class="reference internal" href="#select-tag">4.2.5. SELECT tag</a></li>
+<li><a class="reference internal" href="#iout-tag">4.2.6. IOUT tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="files-e.html" title="3. Input files and output files" accesskey="P">previous </a></li>
+              <li><a href="cluster-e.html" title="5. Search for independent clusters" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">clupan (version 0.7) in English</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="preparation-of-initial-structures-for-dft-calculations">
+<h1><span class="section-number">4. </span>Preparation of initial structures for DFT calculations<a class="headerlink" href="#preparation-of-initial-structures-for-dft-calculations" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="mkposcar">
+<h2><span class="section-number">4.1. </span>mkposcar<a class="headerlink" href="#mkposcar" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>This program searches for symmetric operations and generates independent DFT structures.</p></li>
+<li><p>Generating high symmetric structures or random structures.</p></li>
+<li><p>Crystal lattice is determined by UPOSCAR and UPOTCAR files.</p></li>
+<li><p>Available only for binary systems.</p></li>
+<li><p>Available for multi-thread calculations using OPENMP.</p></li>
+</ul>
+<p><strong>Input files</strong></p>
+<ul class="simple">
+<li><p>MKPOS.in</p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-uposcar"><span class="std std-ref">UPOSCAR</span></a></p></li>
+<li><p><a class="reference internal" href="files-e.html#label-e-upotcar"><span class="std std-ref">UPOTCAR</span></a></p></li>
+</ul>
+<p><strong>Output files</strong></p>
+<ul class="simple">
+<li><p>POSCAR_1 - POSCAR_nstruct</p></li>
+</ul>
+</div>
+<div class="section" id="mkpos-in">
+<h2><span class="section-number">4.2. </span>MKPOS.in<a class="headerlink" href="#mkpos-in" title="Permalink to this heading">¶</a></h2>
+<p><strong>Example</strong></p>
+<p>Generating 5 structures with a lattice constructed by the 2x2x1 expansion of a 4-atoms unit cell (16-atoms cell).
+The structures have 12 A-atoms and 4 B-atoms.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISUB</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NUCELL</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span>
+<span class="n">NCHANGE</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">NSTRUCT</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">SELECT</span> <span class="o">=</span> <span class="n">Highsym</span>
+</pre></div>
+</div>
+<div class="section" id="isub-tag">
+<h3><span class="section-number">4.2.1. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this heading">¶</a></h3>
+<p>Sublattice indexes for considering atomic configurations.
+Atomic configurations are considered on ISUBth lattice sites of UPOSCAR (line 6).</p>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>Example : ISUB = 1 3</p></li>
+</ul>
+</div>
+<div class="section" id="nucell-tag">
+<h3><span class="section-number">4.2.2. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this heading">¶</a></h3>
+<p>Independent atomic configurations are searched for on the lattice constructed by the NUCELL expansion of the unit cell.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NUCELL = 2 2 2</p></li>
+</ul>
+</div>
+<div class="section" id="nchange-tag">
+<h3><span class="section-number">4.2.3. </span>NCHANGE tag<a class="headerlink" href="#nchange-tag" title="Permalink to this heading">¶</a></h3>
+<p>Number of atoms.
+In N-nary systems, set N-1 kinds of atoms.
+The number of the other kind of atoms is automatically set to (number of lattice sites - NCHANGE).</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NCHANGE = 6 2</p></li>
+</ul>
+</div>
+<div class="section" id="nstruct-tag">
+<h3><span class="section-number">4.2.4. </span>NSTRUCT tag<a class="headerlink" href="#nstruct-tag" title="Permalink to this heading">¶</a></h3>
+<p>Number of structures.</p>
+<ul class="simple">
+<li><p>Default : none</p></li>
+<li><p>Example : NSTRUCT = 10</p></li>
+</ul>
+</div>
+<div class="section" id="select-tag">
+<h3><span class="section-number">4.2.5. </span>SELECT tag<a class="headerlink" href="#select-tag" title="Permalink to this heading">¶</a></h3>
+<p>SELECT tag detemines how to generate structures.</p>
+<ul class="simple">
+<li><p>Default : Highsym</p></li>
+<li><p>SELECT = Highsym : generating high symmetric structures</p></li>
+<li><p>SELECT = Random : generating random structures</p></li>
+</ul>
+</div>
+<div class="section" id="iout-tag">
+<h3><span class="section-number">4.2.6. </span>IOUT tag<a class="headerlink" href="#iout-tag" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Default : 1</p></li>
+<li><p>0 : POSCARs are not output.</p></li>
+<li><p>1 : POSCARs are output.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">4. Preparation of initial structures for DFT calculations</a><ul>
+<li><a class="reference internal" href="#mkposcar">4.1. mkposcar</a></li>
+<li><a class="reference internal" href="#mkpos-in">4.2. MKPOS.in</a><ul>
+<li><a class="reference internal" href="#isub-tag">4.2.1. ISUB tag</a></li>
+<li><a class="reference internal" href="#nucell-tag">4.2.2. NUCELL tag</a></li>
+<li><a class="reference internal" href="#nchange-tag">4.2.3. NCHANGE tag</a></li>
+<li><a class="reference internal" href="#nstruct-tag">4.2.4. NSTRUCT tag</a></li>
+<li><a class="reference internal" href="#select-tag">4.2.5. SELECT tag</a></li>
+<li><a class="reference internal" href="#iout-tag">4.2.6. IOUT tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="files-e.html"
+                          title="previous chapter"><span class="section-number">3. </span>Input files and output files</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="cluster-e.html"
+                          title="next chapter"><span class="section-number">5. </span>Search for independent clusters</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="files-e.html" title="3. Input files and output files" >previous</a></li>
+        <li><a href="cluster-e.html" title="5. Search for independent clusters" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >clupan (version 0.7) in English</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -1,0 +1,131 @@
+熱力学積分によるグランドポテンシャルの計算
+====================================================================================================
+
+Theoretical backgrounds
+-----------------------
+
+Under construction.
+
+**熱力学積分によるグランドポテンシャル**
+
+熱力学積分によるグランドポテンシャル計算は， [#ti1]_ を参照してください．
+
+.. math::
+
+    \beta_1\phi(\beta_1,\mu_1) = \beta_0\phi(\beta_0,\mu_0) + \int_{(\beta_0,\mu_0)}^{(\beta_1,\mu_1)} (E+\mu x, \beta x )d(\beta,\mu)
+
+**低温展開によるグランドポテンシャル**
+
+低温展開によるグランドポテンシャル計算は， [#lte1]_ を参照してください．
+
+.. rubric:: Bibliography
+.. [#ti1] A van de Walle and M Asta, Modell. Simul. Mater. Sci. Eng. 10, 521 (2002).
+.. [#lte1] A F Kohan, P D Tepesch, G Ceder and C Wolverton, Comput. Mater. Sci. 9, 389 (1998).
+
+ti
+--------
+
+* semi-grand canonical MC 計算の結果より，熱力学積分を用いて自由エネルギーの計算を行う．
+
+**Input files**
+
+* TI.in
+* :ref:`label-path-data`
+
+**Output**
+
+* 自由エネルギー
+* グランドポテンシャル
+
+lte
+--------
+
+* 低温展開によりグランドポテンシャルを評価する．
+* 2元系のみ対応．
+
+**Input files**
+
+* LTE.in
+* :ref:`label-uposcar`
+* :ref:`label-upotcar`
+* POSCAR
+* POTCAR
+* :ref:`label-eci`
+* :ref:`label-of-out`
+
+**Output**
+
+* グランドポテンシャル
+
+TI.in
+--------
+
+INITPOT tag
+""""""""""""""""""
+経路の始点におけるグランドポテンシャルの値．
+始点が０Kのときは，有限の温度におけるグランドポテンシャルを低温展開により計算し，有限の温度から積分を始める．
+
+* Default : 0
+* Example : INITPOT = -0.016338475
+
+LTE.in
+--------
+
+T=0, mu=0.0からの低温展開を用いて，T=100, mu=0.0でのグランドポテンシャルを計算する例．T=0, mu=0.0での安定な構造のセルの大きさが，UPOSCARのすべての軸を2倍したものと同じである場合.::
+
+    TEMP = 100
+    MU = 0.00
+    ISUB = 1
+    SPIN = 1 -1
+    NAMEPOT = Mg Zn
+    NUCELL = 4 4 4
+    NUCELLPOSCAR = 2 2 2
+
+TEMP tag
+""""""""""""""""""
+低温展開によりポテンシャルを計算する温度．
+
+* Default : none
+* Example : TEMP = 10
+
+MU tag
+""""""""""""""""""
+低温展開によりポテンシャルを計算する化学ポテンシャル．
+
+* Default : none
+* Example : MU = 0.20
+
+NUCELL tag
+""""""""""""""""""""
+低温展開を行うための，配置のエネルギーを計算する結晶格子のユニットセルの数．
+セルを大きくすると，低温展開によるグランドポテンシャルの値は収束する．
+
+* Default : none
+* Example : NUCELL = 4 4 4
+
+ISUB tag
+""""""""""""""""
+結晶格子において，原子を配置させる格子点と固定させる格子点を指定する．
+UPOSCARの格子点数（6行目）のISUB番目に指定された格子点に，原子を配置させる．
+
+* Default : 1
+* Example : ISUB = 1 3
+
+NUCELLPOSCAR tag
+""""""""""""""""""""
+始点の構造に含まれる結晶格子のユニットセルの数．
+
+* Default : none
+* Example : NUCELLPOSCAR = 2 1 1
+
+NAMEPOT tag, SPIN tag
+""""""""""""""""""""""""""""""
+原子種および原子種に対応したspinの値．
+NAMEPOTで指定された原子に対して，スピンを対応させる．
+クラスター展開で固定する原子は，スピンの値を指定しない．
+
+* Default : none
+* Example : NAMEPOT = Mg Zn O
+* Example : SPIN = 1 -1
+
+Exampleの場合，Mgがspin=1，Znがspin=-1となる．

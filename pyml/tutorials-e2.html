@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>2. Bayesian optimization &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="pyml" href="index-e.html" />
+    <link rel="next" title="3. Compound descriptors" href="tutorials-e3.html" />
+    <link rel="prev" title="1. Installation" href="install-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">Table Of Contents <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">2. Bayesian optimization</a><ul>
+<li><a class="reference internal" href="#efficiency-test-for-finding-minimun-maximum-using-labeled-data">2.1. Efficiency test for finding minimun/maximum using labeled data</a></li>
+<li><a class="reference internal" href="#efficiency-test-for-finding-formation-energy-convex-hull-using-labeled-data">2.2. Efficiency test for finding formation energy convex hull using labeled data</a></li>
+<li><a class="reference internal" href="#virtual-screening-for-minimization-maximization">2.3. Virtual screening for minimization/maximization</a></li>
+<li><a class="reference internal" href="#virtual-screening-for-finding-formation-energy-convex-hull">2.4. Virtual screening for finding formation energy convex hull</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="install-e.html" title="1. Installation" accesskey="P">previous </a></li>
+              <li><a href="tutorials-e3.html" title="3. Compound descriptors" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">pyml</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="bayesian-optimization">
+<h1><span class="section-number">2. </span>Bayesian optimization<a class="headerlink" href="#bayesian-optimization" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="efficiency-test-for-finding-minimun-maximum-using-labeled-data">
+<h2><span class="section-number">2.1. </span>Efficiency test for finding minimun/maximum using labeled data<a class="headerlink" href="#efficiency-test-for-finding-minimun-maximum-using-labeled-data" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Required files</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>x (dimension=2, (n_data x n_descriptors), numpy binary or text)</p></li>
+<li><p>y (dimension=1, (n_data), numpy binary or text)</p></li>
+<li><p>name (dimension=1, (n_data), numpy binary or text, optional)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Efficiency test</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t min --n_repeat 10
+$(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t max --n_repeat 10
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="efficiency-test-for-finding-formation-energy-convex-hull-using-labeled-data">
+<h2><span class="section-number">2.2. </span>Efficiency test for finding formation energy convex hull using labeled data<a class="headerlink" href="#efficiency-test-for-finding-formation-energy-convex-hull-using-labeled-data" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Required files</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>x (dimension=2, (n_data x n_descriptors), numpy binary or text)</p></li>
+<li><p>y (dimension=1, (n_data), numpy binary or text)</p></li>
+<li><p>composition (dimension=1, (n_data), numpy binary or text)</p></li>
+<li><p>name (dimension=1, (n_data), numpy binary or text, optional)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Efficiency test</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -c comp_train.npy -t convex
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="virtual-screening-for-minimization-maximization">
+<h2><span class="section-number">2.3. </span>Virtual screening for minimization/maximization<a class="headerlink" href="#virtual-screening-for-minimization-maximization" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Required files</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>x (training) (dimension=2, (n_data x n_descriptors), numpy binary or text)</p></li>
+<li><p>y (training) (dimension=1, (n_data), numpy binary or text)</p></li>
+<li><p>name (training) (dimension=1, (n_data), numpy binary or text)</p></li>
+<li><p>x (prediction) (dimension=2, (n_data x n_descriptors), numpy binary or text)</p></li>
+<li><p>y (prediction) (dimension=1, (n_data), numpy binary or text)</p></li>
+<li><p>name (prediction) (dimension=1, (n_data), numpy binary or text)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Virtual screening</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t min -m vs
+$(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t max -m vs
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="virtual-screening-for-finding-formation-energy-convex-hull">
+<h2><span class="section-number">2.4. </span>Virtual screening for finding formation energy convex hull<a class="headerlink" href="#virtual-screening-for-finding-formation-energy-convex-hull" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Required files</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>x (training) (dimension=2, (n_data_t x n_descriptors), numpy binary or text)</p></li>
+<li><p>y (training) (dimension=1, (n_data_t), numpy binary or text)</p></li>
+<li><p>composition (training) (dimension=1, (n_data_t), numpy binary or text)</p></li>
+<li><p>name (training) (dimension=1, (n_data_t), numpy binary or text)</p></li>
+<li><p>x (prediction) (dimension=2, (n_data_p x n_descriptors), numpy binary or text)</p></li>
+<li><p>y (prediction) (dimension=1, (n_data_p), numpy binary or text)</p></li>
+<li><p>composition (prediction) (dimension=1, (n_data_p), numpy binary or text)</p></li>
+<li><p>name (prediction) (dimension=1, (n_data_p), numpy binary or text)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Virtual screening</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/bo/bo.py -x x_train.npy -y y_train.npy -n name_train.npy -t convex -m vs
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">2. Bayesian optimization</a><ul>
+<li><a class="reference internal" href="#efficiency-test-for-finding-minimun-maximum-using-labeled-data">2.1. Efficiency test for finding minimun/maximum using labeled data</a></li>
+<li><a class="reference internal" href="#efficiency-test-for-finding-formation-energy-convex-hull-using-labeled-data">2.2. Efficiency test for finding formation energy convex hull using labeled data</a></li>
+<li><a class="reference internal" href="#virtual-screening-for-minimization-maximization">2.3. Virtual screening for minimization/maximization</a></li>
+<li><a class="reference internal" href="#virtual-screening-for-finding-formation-energy-convex-hull">2.4. Virtual screening for finding formation energy convex hull</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install-e.html"
+                          title="previous chapter"><span class="section-number">1. </span>Installation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tutorials-e3.html"
+                          title="next chapter"><span class="section-number">3. </span>Compound descriptors</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="install-e.html" title="1. Installation" >previous</a></li>
+        <li><a href="tutorials-e3.html" title="3. Compound descriptors" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >pyml</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2022, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.1.0.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

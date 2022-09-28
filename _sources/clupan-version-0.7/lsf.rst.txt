@@ -1,0 +1,130 @@
+クラスター有効相互作用エネルギー(ECI)の評価
+====================================================================================================
+
+Theoretical backgrounds
+------------------------
+
+**最小二乗法によるECIの評価** [#lsf1]_ [#lsf2]_
+
+N>mとなるようなN種類のDFT構造について第一原理計算を行い，最小二乗法によりm個のECIを決定する．
+
+.. math::
+
+    \sum_{n=1}^N \left( \hat E_{{\rm CE} (N)}^{(n)} - E_{\rm{DFT}}^{(n)}  \right)^2
+
+が最小になるようにECIを決定する．
+ここで， :math:`E_{\rm{DFT}}^{(n)}` は，n番目の構造のDFTによるエネルギーである．
+:math:`\hat E_{\rm{CE} (N)}^{(n)}` は，N個のDFT構造を元にクラスター展開して求めたn番目の構造のエネルギーである．
+
+**交差検定スコア(CV score)** [#cv1]_ [#cv2]_ [#cv3]_
+
+Leave-one-out CV score (LOO-CV) は以下の式で定義される．
+
+.. math::
+
+    \left(\rm LOO \mathchar`-CV \right)^2  = \frac{1}{N}\sum\limits_{n = 1}^N {\left( {\hat E_{{\rm CE} (N-1)}^{\left( {n} \right)}  - E_{{\rm{DFT}}}^{\left( n \right)} } \right)^2 }
+
+ここで， :math:`\hat E_{{\rm CE} (N-1)}^{\left( {n} \right)}` は，n番目の構造以外のN-1種類の第一原理計算を元にクラスター展開して求めたn番目の構造のエネルギー値である.
+
+.. rubric:: Bibliography
+.. [#lsf1] D de Fontaine, Solid State Physics 47, Academic Press, (1994).
+.. [#lsf2] Z W Lu, S H Wei, A Zunger, S Frota-Pessoa and L G Ferreira, Phys. Rev. B 44, 512 (1991).
+.. [#cv1] M Stone, J. R. Stat. Soc. Ser. B. Methodol. 36, 111 (1974).
+.. [#cv2] A van de Walle and G Ceder, J. Phase Equilib. 23, 348 (2002).
+.. [#cv3] N A Zarkevich and D D Johnson, Phys. Rev. Lett. 92, 255702 (2004).
+
+lsf
+--------
+
+* DFT計算したエネルギーと，DFT計算した構造の相関関数から，最小二乗法を用いてクラスター有効相互作用エネルギーを計算する．
+* ECIの計算と同時に，交差検定スコア(CV score)を計算する．
+
+**Input files**
+
+* LS.in
+* :ref:`label-energy`
+* :ref:`label-correlation`
+
+**Output**
+
+* :ref:`label-eci`
+* 残差の二乗和
+* CV score
+* diagonal terms of precision matrix
+
+wlsf
+--------
+
+* DFT計算したエネルギーと，DFT計算した構造の相関関数から，重み付き最小二乗法を用いてクラスター有効相互作用エネルギーを計算する．
+* ECIの計算と同時に，重み付き交差検定スコア(WCV score)を計算する．
+* 入力は，WEIGHTファイル以外 **lsf** と同じ．
+
+**Input files**
+
+* LS.in
+* :ref:`label-energy`
+* :ref:`label-correlation`
+* :ref:`label-weight`
+
+**Output**
+
+* :ref:`label-eci`
+* WCV score
+
+LS.in
+------
+
+LS.in で指定したクラスターのECIを計算する．
+
+* 1行目 : クラスターの総数
+* 2行目以降 : cluster.outでのクラスターの番号
+
+* Sample ::
+
+    53
+    1
+    2
+    3
+    4
+    5
+    6 7 8 11
+
+
+statistic
+------------
+
+* 相関関数の分散や異なるクラスターの相関関数間の相関を調べる．
+
+**Input files**
+
+* STAT.in
+* :ref:`label-correlation`
+
+**Output files**
+
+* statistic.out
+
+STAT.in
+--------
+
+NALLCLUSTER tag
+""""""""""""""""""""""
+クラスターの総数．
+
+* Default : none
+* Example : NALLCLUSTER = 53
+
+CUTCO tag
+"""""""""""""""""""""""""""""""
+クラスターの相関関数間の相関の打ち切り値．指定した値以上の相関を持つ2つのクラスターの一方を出力．
+
+* Default : 1.0
+* Example : CUTCO = 0.95
+
+CUTVAR tag
+"""""""""""""""""""""""""""""""
+クラスターの相関関数の分散の打ち切り値．指定した値以下の分散を持つクラスターを出力．
+
+* Default : 0.0
+* Example : CUTVAR = 0.05
+
