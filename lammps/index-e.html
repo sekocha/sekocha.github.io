@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Lammps simulations using polynomial machine learning potentials &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,9 +42,6 @@
   };
 </script>
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
@@ -129,14 +127,14 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="lammps-simulations-using-polynomial-machine-learning-potentials">
+  <section id="lammps-simulations-using-polynomial-machine-learning-potentials">
 <span id="mlp-lammps-section"></span><h1>Lammps simulations using polynomial machine learning potentials<a class="headerlink" href="#lammps-simulations-using-polynomial-machine-learning-potentials" title="Permalink to this heading">¶</a></h1>
 <p><strong>lammps-polymlp</strong> package is required to use polynomial machine learning potentials in lammps code.
 <strong>lammps-polymlp</strong> package for LAMMPS software is available on GitHub <a class="reference external" href="https://github.com/sekocha/lammps-polymlp-package">[lammps-polymlp-package]</a>.
 Machine learning potentials for a wide range of systems can be found in <a class="reference external" href="http://cms.mtl.kyoto-u.ac.jp/seko/mlp-repository/index.html">Machine Learning Potential Repository</a>.
 If you use <strong>lammps-polymlp</strong> package and machine learning potentials in the repository for academic purposes, please cite the following article [1].</p>
 <p>[1] A. Seko, “Systematic development of polynomial machine learning potentials for elemental and alloy systems”, J. Appl. Phys. 133, 011101 (2023).</p>
-<div class="section" id="building-lammps-with-lammps-polymlp-package">
+<section id="building-lammps-with-lammps-polymlp-package">
 <h2>Building lammps with lammps-polymlp package<a class="headerlink" href="#building-lammps-with-lammps-polymlp-package" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>Unzip <strong>lammps-polymlp.tar.gz</strong>, and then copy all the components in the <strong>lammps-polymlp</strong> package to the latest lammps source code directory as</p>
@@ -158,6 +156,7 @@ If you use <strong>lammps-polymlp</strong> package and machine learning potentia
     ml-iap \
     phonon
     ...
+&gt; ulimit -s unlimited
 &gt; cd $(lammps_src)/src
 &gt; make yes-user-polymlp
 </pre></div>
@@ -170,22 +169,22 @@ If you use <strong>lammps-polymlp</strong> package and machine learning potentia
 </li>
 </ol>
 <p>(lammps-polymlp-package is tested using LAMMPS_VERSION “lammps-23Jun2022”)</p>
-</div>
-<div class="section" id="lammps-input-commands-to-specify-a-machine-learning-potential">
+</section>
+<section id="lammps-input-commands-to-specify-a-machine-learning-potential">
 <h2>Lammps input commands to specify a machine learning potential<a class="headerlink" href="#lammps-input-commands-to-specify-a-machine-learning-potential" title="Permalink to this heading">¶</a></h2>
 <p>The following lammps input commands specify a machine learning potential.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pair_style</span>  <span class="n">polymlp</span>
 <span class="n">pair_coeff</span> <span class="o">*</span> <span class="o">*</span> <span class="n">mlp</span><span class="o">.</span><span class="n">lammps</span> <span class="n">Ti</span> <span class="n">Al</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="scaling-with-respect-to-number-of-atoms">
+</section>
+<section id="scaling-with-respect-to-number-of-atoms">
 <h2>Scaling with respect to number of atoms<a class="headerlink" href="#scaling-with-respect-to-number-of-atoms" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/mlp-scaling.png"><img alt="../_images/mlp-scaling.png" src="../_images/mlp-scaling.png" style="width: 432.45px; height: 313.65px;" /></a>
 <p>Linear scaling with respect to the number of atoms is achieved in MLPs with pairwise structural features and those with group theoretical invariants derived from spherical harnomics.
 So the required computational time can be estimated by t * n_atoms * n_steps, where t denotes the required computational time for single step and single atom.</p>
-</div>
-<div class="section" id="parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials">
+</section>
+<section id="parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials">
 <h2>Parameters controlling accuracy and computational cost of machine learning potentials<a class="headerlink" href="#parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials" title="Permalink to this heading">¶</a></h2>
 <p>Input parameters used to construct a machine learning potential can be found in the correponding potential file <strong>mlp.lammps</strong>. Input parameters that control the accuracy and the computational cost are listed as follows.</p>
 <p><strong>1. Structural features representing neighboring atomic distribution</strong></p>
@@ -207,8 +206,8 @@ So the required computational time can be estimated by t * n_atoms * n_steps, wh
 </ul>
 <p>A more detailed description can be found in the article [1].</p>
 <p>[1] A. Seko, A. Togo and I. Tanaka, “Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential”, Phys. Rev. B 99, 214108 (2019).</p>
-</div>
-</div>
+</section>
+</section>
 
 
                 </div>
@@ -285,7 +284,7 @@ So the required computational time can be estimated by t * n_atoms * n_steps, wh
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.3.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
       </footer>
       <!-- /footer -->
 

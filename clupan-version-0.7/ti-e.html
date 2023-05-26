@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>12. Calculation of grand potential using thermodynamic integration &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,9 +42,6 @@
   };
 </script>
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
@@ -143,28 +141,30 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="calculation-of-grand-potential-using-thermodynamic-integration">
+  <section id="calculation-of-grand-potential-using-thermodynamic-integration">
 <h1><span class="section-number">12. </span>Calculation of grand potential using thermodynamic integration<a class="headerlink" href="#calculation-of-grand-potential-using-thermodynamic-integration" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="theoretical-backgrounds">
+<section id="theoretical-backgrounds">
 <h2><span class="section-number">12.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this heading">¶</a></h2>
 <p><strong>Thermodynamic integration</strong></p>
 <p>See <a class="reference internal" href="#ti" id="id1"><span>[TI]</span></a>.</p>
-<dl class="citation">
-<dt class="label" id="ti"><span class="brackets"><a class="fn-backref" href="#id1">TI</a></span></dt>
-<dd><p>A van de Walle and M Asta, Modell. Simul. Mater. Sci. Eng. 10, 521 (2002).</p>
-</dd>
-</dl>
+<div role="list" class="citation-list">
+<div class="citation" id="ti" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TI</a><span class="fn-bracket">]</span></span>
+<p>A van de Walle and M Asta, Modell. Simul. Mater. Sci. Eng. 10, 521 (2002).</p>
+</div>
+</div>
 <div class="math">
-<p><img src="_images/math/a86e59e8ef5bb4f95158fec5ffa6ceb89c8714da.svg" alt="\beta_1\phi(\beta_1,\mu_1) = \beta_0\phi(\beta_0,\mu_0) + \int_{(\beta_0,\mu_0)}^{(\beta_1,\mu_1)} (E+\mu x, \beta x )d(\beta,\mu)"/></p>
+<p><img src="../_images/math/a86e59e8ef5bb4f95158fec5ffa6ceb89c8714da.svg" alt="\beta_1\phi(\beta_1,\mu_1) = \beta_0\phi(\beta_0,\mu_0) + \int_{(\beta_0,\mu_0)}^{(\beta_1,\mu_1)} (E+\mu x, \beta x )d(\beta,\mu)"/></p>
 </div><p><strong>Low-temperature expansion for grand potential</strong></p>
 <p>See <a class="reference internal" href="#lte" id="id2"><span>[LTE]</span></a>.</p>
-<dl class="citation">
-<dt class="label" id="lte"><span class="brackets"><a class="fn-backref" href="#id2">LTE</a></span></dt>
-<dd><p>A F Kohan, P D Tepesch, G Ceder and C Wolverton, Comput. Mater. Sci. 9, 389 (1998).</p>
-</dd>
-</dl>
+<div role="list" class="citation-list">
+<div class="citation" id="lte" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">LTE</a><span class="fn-bracket">]</span></span>
+<p>A F Kohan, P D Tepesch, G Ceder and C Wolverton, Comput. Mater. Sci. 9, 389 (1998).</p>
 </div>
-<div class="section" id="id3">
+</div>
+</section>
+<section id="id3">
 <h2><span class="section-number">12.2. </span>ti<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Calculating grand potential using semi-grand canonical MC and thermodynamic integration.</p></li>
@@ -179,8 +179,8 @@
 <li><p>Free energy</p></li>
 <li><p>Grand potential</p></li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2><span class="section-number">12.3. </span>lte<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Estimating grand potential at a temperature and a chemical potential using the low temperature expansion.</p></li>
@@ -200,10 +200,10 @@
 <ul class="simple">
 <li><p>Grand potential</p></li>
 </ul>
-</div>
-<div class="section" id="ti-in">
+</section>
+<section id="ti-in">
 <h2><span class="section-number">12.4. </span>TI.in<a class="headerlink" href="#ti-in" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="initpot-tag">
+<section id="initpot-tag">
 <h3><span class="section-number">12.4.1. </span>INITPOT tag<a class="headerlink" href="#initpot-tag" title="Permalink to this heading">¶</a></h3>
 <p>Value of grand-potential at the initial point of the path.
 When the temperature of the initial point of the path is 0 K, the grand potential at a finite temperature evaluated using the low-temperature expansion should be used.
@@ -212,9 +212,9 @@ The initial point of the path should be set to the finite temperature.</p>
 <li><p>Default : 0</p></li>
 <li><p>Example : INITPOT = -0.016338475</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="lte-in">
+</section>
+</section>
+<section id="lte-in">
 <h2><span class="section-number">12.5. </span>LTE.in<a class="headerlink" href="#lte-in" title="Permalink to this heading">¶</a></h2>
 <p>Calculating the grand potential at T=100K and mu=0.0 using the low temperature expansion around T=0.
 The size of the stable structure at T=0 and mu=0.0 is the same as the size of the 2x2x2 expansion of UPOSCAR.
@@ -228,23 +228,23 @@ The stable structure at T=0 and mu=0.0 is specified by POSCAR.</p>
 <span class="n">NUCELLPOSCAR</span> <span class="o">=</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="section" id="temp-tag">
+<section id="temp-tag">
 <h3><span class="section-number">12.5.1. </span>TEMP tag<a class="headerlink" href="#temp-tag" title="Permalink to this heading">¶</a></h3>
 <p>Temperature for the low temperature expansion.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : TEMP = 10</p></li>
 </ul>
-</div>
-<div class="section" id="mu-tag">
+</section>
+<section id="mu-tag">
 <h3><span class="section-number">12.5.2. </span>MU tag<a class="headerlink" href="#mu-tag" title="Permalink to this heading">¶</a></h3>
 <p>Chemical potential for the low temperature expansion.</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : MU = 0.20</p></li>
 </ul>
-</div>
-<div class="section" id="nucell-tag">
+</section>
+<section id="nucell-tag">
 <h3><span class="section-number">12.5.3. </span>NUCELL tag<a class="headerlink" href="#nucell-tag" title="Permalink to this heading">¶</a></h3>
 <p>Low temperature expansion is performed using a supercell constructed by the NUCELL expansion of the unit cell.
 The grand potential calculated using the low temperature expansion converges as the supercell size increases.</p>
@@ -252,8 +252,8 @@ The grand potential calculated using the low temperature expansion converges as 
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELL = 4 4 4</p></li>
 </ul>
-</div>
-<div class="section" id="isub-tag">
+</section>
+<section id="isub-tag">
 <h3><span class="section-number">12.5.4. </span>ISUB tag<a class="headerlink" href="#isub-tag" title="Permalink to this heading">¶</a></h3>
 <p>Sublattice indexes for performing the CE.
 The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
@@ -261,16 +261,16 @@ The CE is performed on ISUBth lattice sites of UPOSCAR (line 6).</p>
 <li><p>Default : 1</p></li>
 <li><p>Example : ISUB = 1 3</p></li>
 </ul>
-</div>
-<div class="section" id="nucellposcar-tag">
+</section>
+<section id="nucellposcar-tag">
 <h3><span class="section-number">12.5.5. </span>NUCELLPOSCAR tag<a class="headerlink" href="#nucellposcar-tag" title="Permalink to this heading">¶</a></h3>
 <p>Number of unit cells included in POSCAR (initial structure).</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NUCELLPOSCAR = 2 1 1</p></li>
 </ul>
-</div>
-<div class="section" id="namepot-tag-spin-tag">
+</section>
+<section id="namepot-tag-spin-tag">
 <h3><span class="section-number">12.5.6. </span>NAMEPOT tag, SPIN tag<a class="headerlink" href="#namepot-tag-spin-tag" title="Permalink to this heading">¶</a></h3>
 <p>Atom names and spin values for the atom names.
 Do not set spin values for atoms which are not used for the CE.</p>
@@ -280,9 +280,9 @@ Do not set spin values for atoms which are not used for the CE.</p>
 <li><p>Example : SPIN = 1 -1</p></li>
 </ul>
 <p>In the above example, spin values for Mg and Zn are 1 and -1, respectively.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
                 </div>
@@ -372,7 +372,7 @@ Do not set spin values for atoms which are not used for the CE.</p>
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.3.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
       </footer>
       <!-- /footer -->
 

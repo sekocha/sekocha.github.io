@@ -6,7 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>7. クラスター有効相互作用エネルギー(ECI)の評価 &mdash; Atsuto Seko web site (Kyoto University)</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,9 +42,6 @@
   };
 </script>
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
     <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
@@ -138,42 +136,47 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="eci">
+  <section id="eci">
 <h1><span class="section-number">7. </span>クラスター有効相互作用エネルギー(ECI)の評価<a class="headerlink" href="#eci" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="theoretical-backgrounds">
+<section id="theoretical-backgrounds">
 <h2><span class="section-number">7.1. </span>Theoretical backgrounds<a class="headerlink" href="#theoretical-backgrounds" title="Permalink to this heading">¶</a></h2>
-<p><strong>最小二乗法によるECIの評価</strong> <a class="footnote-reference brackets" href="#lsf1" id="id1">1</a> <a class="footnote-reference brackets" href="#lsf2" id="id2">2</a></p>
+<p><strong>最小二乗法によるECIの評価</strong> <a class="footnote-reference brackets" href="#lsf1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#lsf2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p>N&gt;mとなるようなN種類のDFT構造について第一原理計算を行い，最小二乗法によりm個のECIを決定する．</p>
 <div class="math">
-<p><img src="_images/math/312f7f8e7b16260a13090503828f73caa928c2d4.svg" alt="\sum_{n=1}^N \left( \hat E_{{\rm CE} (N)}^{(n)} - E_{\rm{DFT}}^{(n)}  \right)^2"/></p>
+<p><img src="../_images/math/312f7f8e7b16260a13090503828f73caa928c2d4.svg" alt="\sum_{n=1}^N \left( \hat E_{{\rm CE} (N)}^{(n)} - E_{\rm{DFT}}^{(n)}  \right)^2"/></p>
 </div><p>が最小になるようにECIを決定する．
-ここで， <img class="math" src="_images/math/d051983aa0b9d3c51328c277d9d725adf30ffcfb.svg" alt="E_{\rm{DFT}}^{(n)}"/> は，n番目の構造のDFTによるエネルギーである．
-<img class="math" src="_images/math/6598816260e94c48afc8b8e68ac54d6edee55076.svg" alt="\hat E_{\rm{CE} (N)}^{(n)}"/> は，N個のDFT構造を元にクラスター展開して求めたn番目の構造のエネルギーである．</p>
-<p><strong>交差検定スコア(CV score)</strong> <a class="footnote-reference brackets" href="#cv1" id="id3">3</a> <a class="footnote-reference brackets" href="#cv2" id="id4">4</a> <a class="footnote-reference brackets" href="#cv3" id="id5">5</a></p>
+ここで， <img class="math" src="../_images/math/d051983aa0b9d3c51328c277d9d725adf30ffcfb.svg" alt="E_{\rm{DFT}}^{(n)}"/> は，n番目の構造のDFTによるエネルギーである．
+<img class="math" src="../_images/math/6598816260e94c48afc8b8e68ac54d6edee55076.svg" alt="\hat E_{\rm{CE} (N)}^{(n)}"/> は，N個のDFT構造を元にクラスター展開して求めたn番目の構造のエネルギーである．</p>
+<p><strong>交差検定スコア(CV score)</strong> <a class="footnote-reference brackets" href="#cv1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#cv2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#cv3" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
 <p>Leave-one-out CV score (LOO-CV) は以下の式で定義される．</p>
 <div class="math">
-<p><img src="_images/math/2a6578099d7dd49d60c2df68ee30dbab46efe2b0.svg" alt="\left(\rm LOO \mathchar`-CV \right)^2  = \frac{1}{N}\sum\limits_{n = 1}^N {\left( {\hat E_{{\rm CE} (N-1)}^{\left( {n} \right)}  - E_{{\rm{DFT}}}^{\left( n \right)} } \right)^2 }"/></p>
-</div><p>ここで， <img class="math" src="_images/math/9f48bed9fb4a02dac976089d38e55fb011fae634.svg" alt="\hat E_{{\rm CE} (N-1)}^{\left( {n} \right)}"/> は，n番目の構造以外のN-1種類の第一原理計算を元にクラスター展開して求めたn番目の構造のエネルギー値である.</p>
+<p><img src="../_images/math/2a6578099d7dd49d60c2df68ee30dbab46efe2b0.svg" alt="\left(\rm LOO \mathchar`-CV \right)^2  = \frac{1}{N}\sum\limits_{n = 1}^N {\left( {\hat E_{{\rm CE} (N-1)}^{\left( {n} \right)}  - E_{{\rm{DFT}}}^{\left( n \right)} } \right)^2 }"/></p>
+</div><p>ここで， <img class="math" src="../_images/math/9f48bed9fb4a02dac976089d38e55fb011fae634.svg" alt="\hat E_{{\rm CE} (N-1)}^{\left( {n} \right)}"/> は，n番目の構造以外のN-1種類の第一原理計算を元にクラスター展開して求めたn番目の構造のエネルギー値である.</p>
 <p class="rubric">Bibliography</p>
-<dl class="footnote brackets">
-<dt class="label" id="lsf1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>D de Fontaine, Solid State Physics 47, Academic Press, (1994).</p>
-</dd>
-<dt class="label" id="lsf2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Z W Lu, S H Wei, A Zunger, S Frota-Pessoa and L G Ferreira, Phys. Rev. B 44, 512 (1991).</p>
-</dd>
-<dt class="label" id="cv1"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>M Stone, J. R. Stat. Soc. Ser. B. Methodol. 36, 111 (1974).</p>
-</dd>
-<dt class="label" id="cv2"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>A van de Walle and G Ceder, J. Phase Equilib. 23, 348 (2002).</p>
-</dd>
-<dt class="label" id="cv3"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
-<dd><p>N A Zarkevich and D D Johnson, Phys. Rev. Lett. 92, 255702 (2004).</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="lsf">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="lsf1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>D de Fontaine, Solid State Physics 47, Academic Press, (1994).</p>
+</aside>
+<aside class="footnote brackets" id="lsf2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Z W Lu, S H Wei, A Zunger, S Frota-Pessoa and L G Ferreira, Phys. Rev. B 44, 512 (1991).</p>
+</aside>
+<aside class="footnote brackets" id="cv1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>M Stone, J. R. Stat. Soc. Ser. B. Methodol. 36, 111 (1974).</p>
+</aside>
+<aside class="footnote brackets" id="cv2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>A van de Walle and G Ceder, J. Phase Equilib. 23, 348 (2002).</p>
+</aside>
+<aside class="footnote brackets" id="cv3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>N A Zarkevich and D D Johnson, Phys. Rev. Lett. 92, 255702 (2004).</p>
+</aside>
+</aside>
+</section>
+<section id="lsf">
 <h2><span class="section-number">7.2. </span>lsf<a class="headerlink" href="#lsf" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>DFT計算したエネルギーと，DFT計算した構造の相関関数から，最小二乗法を用いてクラスター有効相互作用エネルギーを計算する．</p></li>
@@ -192,8 +195,8 @@
 <li><p>CV score</p></li>
 <li><p>diagonal terms of precision matrix</p></li>
 </ul>
-</div>
-<div class="section" id="wlsf">
+</section>
+<section id="wlsf">
 <h2><span class="section-number">7.3. </span>wlsf<a class="headerlink" href="#wlsf" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>DFT計算したエネルギーと，DFT計算した構造の相関関数から，重み付き最小二乗法を用いてクラスター有効相互作用エネルギーを計算する．</p></li>
@@ -212,8 +215,8 @@
 <li><p><a class="reference internal" href="files.html#label-eci"><span class="std std-ref">ECI</span></a></p></li>
 <li><p>WCV score</p></li>
 </ul>
-</div>
-<div class="section" id="ls-in">
+</section>
+<section id="ls-in">
 <h2><span class="section-number">7.4. </span>LS.in<a class="headerlink" href="#ls-in" title="Permalink to this heading">¶</a></h2>
 <p>LS.in で指定したクラスターのECIを計算する．</p>
 <ul>
@@ -231,8 +234,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="statistic">
+</section>
+<section id="statistic">
 <h2><span class="section-number">7.5. </span>statistic<a class="headerlink" href="#statistic" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>相関関数の分散や異なるクラスターの相関関数間の相関を調べる．</p></li>
@@ -246,35 +249,35 @@
 <ul class="simple">
 <li><p>statistic.out</p></li>
 </ul>
-</div>
-<div class="section" id="stat-in">
+</section>
+<section id="stat-in">
 <h2><span class="section-number">7.6. </span>STAT.in<a class="headerlink" href="#stat-in" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="nallcluster-tag">
+<section id="nallcluster-tag">
 <h3><span class="section-number">7.6.1. </span>NALLCLUSTER tag<a class="headerlink" href="#nallcluster-tag" title="Permalink to this heading">¶</a></h3>
 <p>クラスターの総数．</p>
 <ul class="simple">
 <li><p>Default : none</p></li>
 <li><p>Example : NALLCLUSTER = 53</p></li>
 </ul>
-</div>
-<div class="section" id="cutco-tag">
+</section>
+<section id="cutco-tag">
 <h3><span class="section-number">7.6.2. </span>CUTCO tag<a class="headerlink" href="#cutco-tag" title="Permalink to this heading">¶</a></h3>
 <p>クラスターの相関関数間の相関の打ち切り値．指定した値以上の相関を持つ2つのクラスターの一方を出力．</p>
 <ul class="simple">
 <li><p>Default : 1.0</p></li>
 <li><p>Example : CUTCO = 0.95</p></li>
 </ul>
-</div>
-<div class="section" id="cutvar-tag">
+</section>
+<section id="cutvar-tag">
 <h3><span class="section-number">7.6.3. </span>CUTVAR tag<a class="headerlink" href="#cutvar-tag" title="Permalink to this heading">¶</a></h3>
 <p>クラスターの相関関数の分散の打ち切り値．指定した値以下の分散を持つクラスターを出力．</p>
 <ul class="simple">
 <li><p>Default : 0.0</p></li>
 <li><p>Example : CUTVAR = 0.05</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
                 </div>
@@ -359,7 +362,7 @@
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.3.0.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
       </footer>
       <!-- /footer -->
 
