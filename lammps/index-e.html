@@ -80,7 +80,6 @@
 <li><a class="reference internal" href="#lammps-input-commands-to-specify-a-machine-learning-potential">Lammps input commands to specify a machine learning potential</a></li>
 <li><a class="reference internal" href="#scaling-with-respect-to-number-of-atoms">Scaling with respect to number of atoms</a></li>
 <li><a class="reference internal" href="#parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials">Parameters controlling accuracy and computational cost of machine learning potentials</a></li>
-<li><a class="reference internal" href="#a-tutorial-for-lammps-simulation">A tutorial for lammps simulation</a></li>
 </ul>
 </li>
 </ul>
@@ -209,76 +208,6 @@ So the required computational time can be estimated by <img class="math" src="_i
 <p>A more detailed description can be found in the article [1].</p>
 <p>[1] A. Seko, A. Togo and I. Tanaka, “Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential”, Phys. Rev. B 99, 214108 (2019).</p>
 </div>
-<div class="section" id="a-tutorial-for-lammps-simulation">
-<h2>A tutorial for lammps simulation<a class="headerlink" href="#a-tutorial-for-lammps-simulation" title="Permalink to this heading">¶</a></h2>
-<ol class="arabic">
-<li><p>Generating Lammps structure file from poscar</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; $(pyml)/tools/lammps/poscar2lammps.py -p poscar &gt; structure.lammps
-&gt; cat poscar
-
-L12
-1.00000000000000
-4.0000000000000000    0.0000000000000000    0.0000000000000000
-0.0000000000000000    4.0000000000000000    0.0000000000000000
-0.0000000000000000    0.0000000000000000    4.0000000000000000
-Ti   Al
-1    3
-Direct
-0.0000000000000000 0.0000000000000000 0.0000000000000000
-0.0000000000000000 0.5000000000000000 0.5000000000000000
-0.5000000000000000 0.0000000000000000 0.5000000000000000
-0.5000000000000000 0.5000000000000000 0.0000000000000000
-
-&gt; cat structure.lammps
-
-# converted from poscar to lammps
-
-4 atoms
-2 atom types
-
-0.0 4.000000000000000 xlo xhi
-0.0 4.000000000000000 ylo yhi
-0.0 4.000000000000000 zlo zhi
-
-0.000000000000000 0.000000000000000 0.000000000000000 xy xz yz
-
-Atoms
-
-1 1 0.000000000000000 0.000000000000000 0.000000000000000
-2 2 0.000000000000000 2.000000000000000 2.000000000000000
-3 2 2.000000000000000 0.000000000000000 2.000000000000000
-4 2 2.000000000000000 2.000000000000000 0.000000000000000
-</pre></div>
-</div>
-</li>
-<li><p>Structure optimization</p>
-<p>lammps input file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dimension 3
-units metal
-read_data structure.lammps
-
-pair_style  polymlp
-pair_coeff * * mlp.lammps Ti Al
-
-# Define minimization parameters
-variable etol equal 0.0
-variable ftol equal 1.0e-10
-variable maxiter equal 10000
-variable maxeval equal 10000
-
-fix 3 all box/relax  aniso 0.0
-minimize ${etol} ${ftol} ${maxiter} ${maxeval}
-
-write_dump all custom dump.atom id type x y z modify format line &quot;%d %d %10.15g %10.15g %10.15g&quot;
-</pre></div>
-</div>
-<p>Conversion from dump.atom to poscar</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyml)/tools/lammps/lammps2poscar.py dump.atom
-</pre></div>
-</div>
-</li>
-</ol>
-</div>
 </div>
 
 
@@ -298,7 +227,6 @@ write_dump all custom dump.atom id type x y z modify format line &quot;%d %d %10
 <li><a class="reference internal" href="#lammps-input-commands-to-specify-a-machine-learning-potential">Lammps input commands to specify a machine learning potential</a></li>
 <li><a class="reference internal" href="#scaling-with-respect-to-number-of-atoms">Scaling with respect to number of atoms</a></li>
 <li><a class="reference internal" href="#parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials">Parameters controlling accuracy and computational cost of machine learning potentials</a></li>
-<li><a class="reference internal" href="#a-tutorial-for-lammps-simulation">A tutorial for lammps simulation</a></li>
 </ul>
 </li>
 </ul>
