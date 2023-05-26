@@ -4,12 +4,12 @@
 Lammps simulations using polynomial machine learning potentials
 =================================================================
 
-**lammps-polymlp** package and **boost** library are required to use polynomial machine learning potentials in lammps code. 
+**lammps-polymlp** package is required to use polynomial machine learning potentials in lammps code. 
 **lammps-polymlp** package for LAMMPS software is available on GitHub `[lammps-polymlp-package] <https://github.com/sekocha/lammps-polymlp-package>`_.
 Machine learning potentials for a wide range of systems can be found in `Machine Learning Potential Repository <http://cms.mtl.kyoto-u.ac.jp/seko/mlp-repository/index.html>`_. 
 If you use **lammps-polymlp** package and machine learning potentials in the repository for academic purposes, please cite the following article [1].
 
-[1] A. Seko, A. Togo and I. Tanaka, "Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential", Phys. Rev. B 99, 214108 (2019).
+[1] A. Seko, "Systematic development of polynomial machine learning potentials for elemental and alloy systems", J. Appl. Phys. 133, 011101 (2023).
 
 
 Building lammps with lammps-polymlp package
@@ -17,27 +17,30 @@ Building lammps with lammps-polymlp package
 #. Unzip **lammps-polymlp.tar.gz**, and then copy all the components in the **lammps-polymlp** package to the latest lammps source code directory as ::
 
     > cp -r lammps-polymlp-package/lib/polymlp $(lammps_src)/lib
-    > cp -r lammps-polymlp-package/src/USER-POLYMLP $(lammps_src)/src
+    > cp -r lammps-polymlp-package/src/POLYMLP $(lammps_src)/src
 
-#. Modify $(lammps_src)/lib/polymlp/Makefile.lammps to specify an installed directory of the boost library.
+#. Add "polymlp" to variable PACKAGE defined in $(lammps_src)/src/Makefile and activate polymlp package as ::
 
-#. Add "user-polymlp" to variable PACKUSER defined in $(lammps_src)/src/Makefile and activate user-polymlp package as ::
-
-    > vi $(lammps_src)/src/Makefile
-        PACKUSER = user-atc user-awpmd user-cgdna user-cgsdk user-colvars \
-            user-diffraction user-dpd user-drude user-eff user-fep user-h5md \
-            user-intel user-lb user-manifold user-meamc user-mgpt user-misc user-molfile \
-            user-netcdf user-omp user-phonon user-qmmm user-qtb \
-            user-quip user-reaxc user-smd user-smtbq user-sph user-tally \
-            user-vtk user-polymlp
-
+    > cat $(lammps_src)/src/Makefile
+        PACKAGE = \
+        adios \
+        amoeba \
+        ...
+        poems \
+        polymlp \
+        ptm \
+        ...
+        ml-iap \
+        phonon
+        ...
+    > cd $(lammps_src)/src
     > make yes-user-polymlp
 
-#. Build lammps binary files (It requires approximately ten minutes for compiling polymlp_gtinv_data.cpp.) ::
+#. Build lammps binary files (It requires approximately ten minutes to one hour for compiling polymlp_gtinv_data.cpp.) ::
 
     > make serial -j 36
 
-(lammps-polymlp-package is tested using LAMMPS_VERSION "3 Mar 2020”)
+(lammps-polymlp-package is tested using LAMMPS_VERSION "lammps-23Jun2022”)
 
 
 Lammps input commands to specify a machine learning potential

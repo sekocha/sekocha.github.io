@@ -132,41 +132,45 @@
                   
   <div class="section" id="lammps-simulations-using-polynomial-machine-learning-potentials">
 <span id="mlp-lammps-section"></span><h1>Lammps simulations using polynomial machine learning potentials<a class="headerlink" href="#lammps-simulations-using-polynomial-machine-learning-potentials" title="Permalink to this heading">¶</a></h1>
-<p><strong>lammps-polymlp</strong> package and <strong>boost</strong> library are required to use polynomial machine learning potentials in lammps code.
+<p><strong>lammps-polymlp</strong> package is required to use polynomial machine learning potentials in lammps code.
 <strong>lammps-polymlp</strong> package for LAMMPS software is available on GitHub <a class="reference external" href="https://github.com/sekocha/lammps-polymlp-package">[lammps-polymlp-package]</a>.
 Machine learning potentials for a wide range of systems can be found in <a class="reference external" href="http://cms.mtl.kyoto-u.ac.jp/seko/mlp-repository/index.html">Machine Learning Potential Repository</a>.
 If you use <strong>lammps-polymlp</strong> package and machine learning potentials in the repository for academic purposes, please cite the following article [1].</p>
-<p>[1] A. Seko, A. Togo and I. Tanaka, “Group-theoretical high-order rotational invariants for structural representations: Application to linearized machine learning interatomic potential”, Phys. Rev. B 99, 214108 (2019).</p>
+<p>[1] A. Seko, “Systematic development of polynomial machine learning potentials for elemental and alloy systems”, J. Appl. Phys. 133, 011101 (2023).</p>
 <div class="section" id="building-lammps-with-lammps-polymlp-package">
 <h2>Building lammps with lammps-polymlp package<a class="headerlink" href="#building-lammps-with-lammps-polymlp-package" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>Unzip <strong>lammps-polymlp.tar.gz</strong>, and then copy all the components in the <strong>lammps-polymlp</strong> package to the latest lammps source code directory as</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cp -r lammps-polymlp-package/lib/polymlp $(lammps_src)/lib
-&gt; cp -r lammps-polymlp-package/src/USER-POLYMLP $(lammps_src)/src
+&gt; cp -r lammps-polymlp-package/src/POLYMLP $(lammps_src)/src
 </pre></div>
 </div>
 </li>
-<li><p>Modify $(lammps_src)/lib/polymlp/Makefile.lammps to specify an installed directory of the boost library.</p></li>
-<li><p>Add “user-polymlp” to variable PACKUSER defined in $(lammps_src)/src/Makefile and activate user-polymlp package as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; vi $(lammps_src)/src/Makefile
-    PACKUSER = user-atc user-awpmd user-cgdna user-cgsdk user-colvars \
-        user-diffraction user-dpd user-drude user-eff user-fep user-h5md \
-        user-intel user-lb user-manifold user-meamc user-mgpt user-misc user-molfile \
-        user-netcdf user-omp user-phonon user-qmmm user-qtb \
-        user-quip user-reaxc user-smd user-smtbq user-sph user-tally \
-        user-vtk user-polymlp
-
+<li><p>Add “polymlp” to variable PACKAGE defined in $(lammps_src)/src/Makefile and activate polymlp package as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cat $(lammps_src)/src/Makefile
+    PACKAGE = \
+    adios \
+    amoeba \
+    ...
+    poems \
+    polymlp \
+    ptm \
+    ...
+    ml-iap \
+    phonon
+    ...
+&gt; cd $(lammps_src)/src
 &gt; make yes-user-polymlp
 </pre></div>
 </div>
 </li>
-<li><p>Build lammps binary files (It requires approximately ten minutes for compiling polymlp_gtinv_data.cpp.)</p>
+<li><p>Build lammps binary files (It requires approximately ten minutes to one hour for compiling polymlp_gtinv_data.cpp.)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">make</span> <span class="n">serial</span> <span class="o">-</span><span class="n">j</span> <span class="mi">36</span>
 </pre></div>
 </div>
 </li>
 </ol>
-<p>(lammps-polymlp-package is tested using LAMMPS_VERSION “3 Mar 2020”)</p>
+<p>(lammps-polymlp-package is tested using LAMMPS_VERSION “lammps-23Jun2022”)</p>
 </div>
 <div class="section" id="lammps-input-commands-to-specify-a-machine-learning-potential">
 <h2>Lammps input commands to specify a machine learning potential<a class="headerlink" href="#lammps-input-commands-to-specify-a-machine-learning-potential" title="Permalink to this heading">¶</a></h2>
@@ -180,7 +184,7 @@ If you use <strong>lammps-polymlp</strong> package and machine learning potentia
 <h2>Scaling with respect to number of atoms<a class="headerlink" href="#scaling-with-respect-to-number-of-atoms" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/mlp-scaling.png"><img alt="../_images/mlp-scaling.png" src="../_images/mlp-scaling.png" style="width: 432.45px; height: 313.65px;" /></a>
 <p>Linear scaling with respect to the number of atoms is achieved in MLPs with pairwise structural features and those with group theoretical invariants derived from spherical harnomics.
-So the required computational time can be estimated by <img class="math" src="../_images/math/74844ab7ebd3c56215ce9af110f34ef7f96dbdfd.svg" alt="t * n_{\rm atoms} * n_{\rm steps}"/>, where <img class="math" src="../_images/math/907a4add6d5db5b7f197f7924f1371b8ac404fe6.svg" alt="t"/> denotes the required computational time for single step and single atom.</p>
+So the required computational time can be estimated by <img class="math" src="_images/math/74844ab7ebd3c56215ce9af110f34ef7f96dbdfd.svg" alt="t * n_{\rm atoms} * n_{\rm steps}"/>, where <img class="math" src="_images/math/907a4add6d5db5b7f197f7924f1371b8ac404fe6.svg" alt="t"/> denotes the required computational time for single step and single atom.</p>
 </div>
 <div class="section" id="parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials">
 <h2>Parameters controlling accuracy and computational cost of machine learning potentials<a class="headerlink" href="#parameters-controlling-accuracy-and-computational-cost-of-machine-learning-potentials" title="Permalink to this heading">¶</a></h2>
@@ -353,7 +357,7 @@ write_dump all custom dump.atom id type x y z modify format line &quot;%d %d %10
       <!-- footer -->
       <footer role="contentinfo">
           &copy; Copyright 2022, Atsuto Seko.
-        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.2.2.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 5.3.0.
       </footer>
       <!-- /footer -->
 
