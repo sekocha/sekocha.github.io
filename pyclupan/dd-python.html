@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6. pyclupan modules on ZDD construction &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="pyclupan" href="index-e.html" />
+    <link rel="next" title="7. Examples of ZDD construction using pyclupan modules" href="dd-python-examples.html" />
+    <link rel="prev" title="5. Development of cluster expansion model" href="regression.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="regression.html" title="5. Development of cluster expansion model" accesskey="P">previous </a></li>
+              <li><a href="dd-python-examples.html" title="7. Examples of ZDD construction using pyclupan modules" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">pyclupan</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <section id="pyclupan-modules-on-zdd-construction">
+<h1><span class="section-number">6. </span>pyclupan modules on ZDD construction<a class="headerlink" href="#pyclupan-modules-on-zdd-construction" title="Permalink to this heading">¶</a></h1>
+<ol class="arabic">
+<li><p>Initialization</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclupan.dd.dd_node</span> <span class="kn">import</span> <span class="n">DDNodeHandler</span>
+<span class="kn">from</span> <span class="nn">pyclupan.dd.dd_constructor</span> <span class="kn">import</span> <span class="n">DDConstructor</span>
+
+<span class="c1"># Number of sites in supercell and element occupation</span>
+<span class="n">n_expand</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_sites</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="o">*</span> <span class="n">n_expand</span>
+<span class="n">elements_lattice</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">dd_handler</span> <span class="o">=</span> <span class="n">DDNodeHandler</span><span class="p">(</span><span class="n">n_sites</span><span class="o">=</span><span class="n">n_sites</span><span class="p">,</span>
+                           <span class="n">elements_lattice</span><span class="o">=</span><span class="n">elements_lattice</span><span class="p">)</span>
+<span class="n">dd_const</span> <span class="o">=</span> <span class="n">DDConstructor</span><span class="p">(</span><span class="n">dd_handler</span><span class="p">)</span>
+
+<span class="c1">#. identifying lattice (primitive cell)</span>
+
+<span class="kn">from</span> <span class="nn">mlptools.common.readvasp</span> <span class="kn">import</span> <span class="n">Poscar</span>
+<span class="kn">from</span> <span class="nn">mlptools.common.structure</span> <span class="kn">import</span> <span class="n">Structure</span>
+
+<span class="n">lattice_prim</span> <span class="o">=</span> <span class="n">Poscar</span><span class="p">(</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_structure_class</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Entire set of structures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gs</span> <span class="o">=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">one_of_k</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Restricting ZDD to structures a composition</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">comp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># or comp = [1/2, None, 2/3, None]</span>
+<span class="n">gs</span> <span class="o">&amp;=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">composition</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Nonequivalent derivative structures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclupan.common.supercell</span> <span class="kn">import</span> <span class="n">Supercell</span>
+<span class="kn">from</span> <span class="nn">pyclupan.common.symmetry</span> <span class="kn">import</span> <span class="n">get_permutation</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="n">sup</span> <span class="o">=</span> <span class="n">Supercell</span><span class="p">(</span><span class="n">st_prim</span><span class="o">=</span><span class="n">lattice_prim</span><span class="p">,</span> <span class="n">hnf</span><span class="o">=</span><span class="n">H</span><span class="p">)</span>
+<span class="n">lattice_sup</span> <span class="o">=</span> <span class="n">sup</span><span class="o">.</span><span class="n">get_supercell</span><span class="p">()</span>
+
+<span class="n">site_perm</span><span class="p">,</span> <span class="n">site_perm_lt</span> <span class="o">=</span> <span class="n">get_permutation</span><span class="p">(</span><span class="n">lattice_sup</span><span class="p">,</span>
+                                          <span class="n">superperiodic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">hnf</span><span class="o">=</span><span class="n">H</span><span class="p">)</span>
+
+<span class="n">gs</span> <span class="o">=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">one_of_k</span><span class="p">()</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">nonequivalent_permutations</span><span class="p">(</span><span class="n">site_perm</span><span class="p">,</span> <span class="n">gs</span><span class="o">=</span><span class="n">gs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Eliminating end members (imcomplete structures)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gs</span> <span class="o">&amp;=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">no_endmembers</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Electroneutrality (Charge balance) in ionic structures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charge</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">charge_balance</span><span class="p">(</span><span class="n">charge</span><span class="p">,</span> <span class="n">gs</span><span class="o">=</span><span class="n">gs</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Excluding stuctures including a cluster</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># orb is the orbit of a cluster</span>
+<span class="n">orbit_dd</span> <span class="o">=</span> <span class="n">dd_handler</span><span class="o">.</span><span class="n">convert_to_orbit_dd</span><span class="p">(</span><span class="n">orb</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">excluding_clusters</span><span class="p">(</span><span class="n">orbit_dd</span><span class="p">,</span> <span class="n">gs</span><span class="o">=</span><span class="n">gs</span><span class="p">)</span>
+
+<span class="c1"># Example</span>
+<span class="c1"># orb can be obtained by find_orbits_supercell in Cluster class</span>
+
+<span class="kn">from</span> <span class="nn">pyclupan.derivative.preamble</span> <span class="kn">import</span> <span class="n">preamble_ds_enum_from_cluster_yaml</span>
+
+<span class="n">pre_data</span> <span class="o">=</span> <span class="n">preamble_ds_enum_from_cluster_yaml</span><span class="p">(</span><span class="s1">&#39;clusters.yaml&#39;</span><span class="p">,</span> <span class="n">n_expand</span><span class="p">)</span>
+<span class="n">dd_handler</span><span class="p">,</span> <span class="n">lattice_prim</span><span class="p">,</span> <span class="n">hnf_all</span><span class="p">,</span> <span class="n">clusters_ele</span> <span class="o">=</span> <span class="n">pre_data</span>
+
+<span class="n">cluster_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">136</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">H</span> <span class="ow">in</span> <span class="n">hnf_all</span><span class="p">:</span>
+    <span class="n">orbits</span> <span class="o">=</span> <span class="n">clusters_ele</span><span class="o">.</span><span class="n">find_orbits_supercell</span><span class="p">(</span><span class="n">lattice_sup</span><span class="p">,</span>
+                                                <span class="n">H</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">cluster_ids</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">orb</span> <span class="ow">in</span> <span class="n">orbits</span><span class="p">:</span>
+        <span class="n">orbit_dd</span> <span class="o">=</span> <span class="n">dd_handler</span><span class="o">.</span><span class="n">convert_to_orbit_dd</span><span class="p">(</span><span class="n">orb</span><span class="p">)</span>
+        <span class="n">gs</span> <span class="o">=</span> <span class="n">dd_const</span><span class="o">.</span><span class="n">excluding_clusters</span><span class="p">(</span><span class="n">orbit_dd</span><span class="p">,</span> <span class="n">gs</span><span class="o">=</span><span class="n">gs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Generating structure lists</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclupan.common.io.yaml</span> <span class="kn">import</span> <span class="n">Yaml</span>
+<span class="kn">from</span> <span class="nn">pyclupan.derivative.derivative</span> <span class="kn">import</span> <span class="n">DSSet</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">dd_handler</span><span class="o">.</span><span class="n">convert_graphs_to_labelings</span><span class="p">(</span><span class="n">gs</span><span class="p">)</span>
+<span class="n">active_labelings</span><span class="p">,</span> <span class="n">inactive_labeling</span><span class="p">,</span> <span class="n">active_sites</span><span class="p">,</span> <span class="n">inactive_sites</span> <span class="o">=</span> <span class="n">res</span>
+<span class="n">ds_set</span> <span class="o">=</span> <span class="n">DSSet</span><span class="p">(</span><span class="n">active_labelings</span><span class="o">=</span><span class="n">active_labelings</span><span class="p">,</span>
+               <span class="n">inactive_labeling</span><span class="o">=</span><span class="n">inactive_labeling</span><span class="p">,</span>
+               <span class="n">active_sites</span><span class="o">=</span><span class="n">active_sites</span><span class="p">,</span>
+               <span class="n">inactive_sites</span><span class="o">=</span><span class="n">inactive_sites</span><span class="p">,</span>
+               <span class="n">primitive_cell</span><span class="o">=</span><span class="n">lattice_prim</span><span class="p">,</span>
+               <span class="n">n_expand</span><span class="o">=</span><span class="n">n_expand</span><span class="p">,</span>
+               <span class="n">elements</span><span class="o">=</span><span class="n">dd_handler</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span>
+               <span class="n">comp</span><span class="o">=</span><span class="n">comp</span><span class="p">,</span>
+               <span class="n">hnf</span><span class="o">=</span><span class="n">H</span><span class="p">,</span>
+               <span class="n">supercell</span><span class="o">=</span><span class="n">lattice_sup</span><span class="p">,</span>
+               <span class="n">supercell_id</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="c1"># or</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">dd_handler</span><span class="o">.</span><span class="n">convert_graphs_to_labelings</span><span class="p">(</span><span class="n">gs</span><span class="p">)</span>
+<span class="n">ds_set</span> <span class="o">=</span> <span class="n">DSSet</span><span class="p">(</span><span class="n">labelings_info</span><span class="o">=</span><span class="n">res</span><span class="p">,</span>
+               <span class="n">primitive_cell</span><span class="o">=</span><span class="n">st_prim</span><span class="p">,</span>
+               <span class="n">n_expand</span><span class="o">=</span><span class="n">n_expand</span><span class="p">,</span>
+               <span class="n">elements</span><span class="o">=</span><span class="n">dd_handler</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span>
+               <span class="n">comp</span><span class="o">=</span><span class="n">comp</span><span class="p">,</span>
+               <span class="n">hnf</span><span class="o">=</span><span class="n">hnf</span><span class="p">,</span>
+               <span class="n">supercell</span><span class="o">=</span><span class="n">st_sup</span><span class="p">,</span>
+               <span class="n">supercell_id</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="n">ds_set_all</span> <span class="o">=</span> <span class="p">[</span><span class="n">ds_set</span><span class="p">]</span>
+
+<span class="c1"># ds_set_all including multiple ds_set is possible to use</span>
+<span class="n">yaml</span> <span class="o">=</span> <span class="n">Yaml</span><span class="p">()</span>
+<span class="n">yaml</span><span class="o">.</span><span class="n">write_derivative_yaml</span><span class="p">(</span><span class="n">st_prim</span><span class="p">,</span> <span class="n">ds_set_all</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;derivative.yaml&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">ds_set_all</span><span class="p">,</span> <span class="s1">&#39;derivative.pkl&#39;</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="regression.html"
+                          title="previous chapter"><span class="section-number">5. </span>Development of cluster expansion model</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="dd-python-examples.html"
+                          title="next chapter"><span class="section-number">7. </span>Examples of ZDD construction using pyclupan modules</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="regression.html" title="5. Development of cluster expansion model" >previous</a></li>
+        <li><a href="dd-python-examples.html" title="7. Examples of ZDD construction using pyclupan modules" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >pyclupan</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2024, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>2. Nonequivalent cluster search &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="pyclupan" href="index-e.html" />
+    <link rel="next" title="3. Counting numbers of colored clusters in derivative structures" href="count.html" />
+    <link rel="prev" title="1. Derivative structure enumeration using decision diagram" href="derivative.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="derivative.html" title="1. Derivative structure enumeration using decision diagram" accesskey="P">previous </a></li>
+              <li><a href="count.html" title="3. Counting numbers of colored clusters in derivative structures" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">pyclupan</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <section id="nonequivalent-cluster-search">
+<h1><span class="section-number">2. </span>Nonequivalent cluster search<a class="headerlink" href="#nonequivalent-cluster-search" title="Permalink to this heading">¶</a></h1>
+<p><strong>Nonequivalent cluster search</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/enumeration.py
+
+usage: cluster_nonequiv.py [-h] [-p POSCAR] [-l [LATTICE [LATTICE ...]]]
+                       [-e [ELEMENTS [ELEMENTS ...]]]
+                       [-c [CUTOFF [CUTOFF ...]]] [-n N_BODY]
+
+optional arguments:
+  -p POSCAR, --poscar POSCAR
+                        poscar file for primitive cell
+  -l [LATTICE [LATTICE ...]], --lattice [LATTICE [LATTICE ...]]
+                        lattice indices
+  -e [ELEMENTS [ELEMENTS ...]], --elements [ELEMENTS [ELEMENTS ...]]
+                        elements on a lattice
+  -c [CUTOFF [CUTOFF ...]], --cutoff [CUTOFF [CUTOFF ...]]
+                        cutoff [2-body, 3-body, ...]
+  -n N_BODY, --n_body N_BODY
+                        Maximum number of sites
+</pre></div>
+</div>
+<p>(Examples)</p>
+<ol class="arabic">
+<li><p>Enumerating nonequivalent sets of lattice sites</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: fcc lattice sites
+($pyclupan)/cluster/cluster_nonequiv.py -p fcc-primitive --lattice 0 --n_body 3 --cutoff 2.0 2.0
+
+# Lattice ID 2: perovskite anion sites
+($pyclupan)/cluster/cluster_nonequiv.py -p perovskite-unitcell --lattice 2 --n_body 3 --cutoff 6.0 6.0
+
+# Lattice ID 0: rocksalt cation sites, Lattice ID 1: rocksalt anion sites
+($pyclupan)/cluster/cluster/cluster_nonequiv.py -p rocksalt-primitive --lattice 0 1 --n_body 3 --cutoff 2.0 2.0
+</pre></div>
+</div>
+</li>
+<li><p>Enumerating nonequivalent sets of lattice sites and element configurations (Ternary configurations on nonequivalent clusters for fcc lattice)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: fcc lattice sites
+($pyclupan)/cluster/cluster/cluster_nonequiv.py -p fcc-primitive --lattice 0 --n_body 3 --cutoff 2.0 2.0 -e 0 1 2
+</pre></div>
+</div>
+</li>
+<li><p>Enumerating nonequivalent sets of lattice sites and element configurations (Binary configurations (ele = 0, 1) on cation sites and binary configurations (ele = 2, 3) on anion sites)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: rocksalt cation sites, Lattice ID 1: rocksalt anion sites
+($pyclupan)/cluster/cluster/cluster_nonequiv.py -p rocksalt-primitive --lattice 0 1 --n_body 3 --cutoff 1.0 1.0 -e 0 1 -e 2 3
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="derivative.html"
+                          title="previous chapter"><span class="section-number">1. </span>Derivative structure enumeration using decision diagram</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="count.html"
+                          title="next chapter"><span class="section-number">3. </span>Counting numbers of colored clusters in derivative structures</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="derivative.html" title="1. Derivative structure enumeration using decision diagram" >previous</a></li>
+        <li><a href="count.html" title="3. Counting numbers of colored clusters in derivative structures" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >pyclupan</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2024, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

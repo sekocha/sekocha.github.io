@@ -1,0 +1,47 @@
+.. clupan_document documentation master file, created by
+   sphinx-quickstart on Tue Feb 16 22:33:03 2010.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Counting numbers of colored clusters in derivative structures
+=================================================================
+
+**Counting numbers of colored clusters** ::
+
+    $(pyclupan)/features/count_clusters.py
+
+    usage: count_clusters.py [-h] [--derivative [DERIVATIVE [DERIVATIVE ...]]]
+                         [--clusters_yaml CLUSTERS_YAML]
+                         [--poscars [POSCARS [POSCARS ...]]]
+                         [--n_cell_ub N_CELL_UB] [--yaml]
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      --derivative [DERIVATIVE [DERIVATIVE ...]]
+                            Location of DSSet pkl files
+      --clusters_yaml CLUSTERS_YAML
+                            Location of clusters.yaml
+      --poscars [POSCARS [POSCARS ...]]
+                            POSCARs
+      --n_cell_ub N_CELL_UB
+                            Maximum number of cells
+      --yaml                generating yaml file
+
+
+(Examples)
+
+#. Counting number of colored clusters in derivative structures ::
+
+    # Lattice ID 0: fcc lattice sites
+    $(pyclupan)/features/count_clusters.py --derivative ../1-derivative/derivative-all.pkl --clusters_yaml ../2-cluster/clusters.yaml
+
+#. Examples for parsing results of count_clusters ::
+    
+    yaml = Yaml()
+    cluster_set, orbit_sizes, target_ids, n_counts \
+            = yaml.parse_count_clusters_yaml('count_clusters.yaml')
+
+    cluster_set, orbit_sizes, target_ids, n_counts \
+            = joblib.load('count_clusters.pkl')
+
+

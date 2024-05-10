@@ -1,0 +1,55 @@
+.. clupan_document documentation master file, created by
+   sphinx-quickstart on Tue Feb 16 22:33:03 2010.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Nonequivalent cluster search
+===========================================================
+
+**Nonequivalent cluster search** ::
+
+    $(pyclupan)/derivative/enumeration.py 
+
+    usage: cluster_nonequiv.py [-h] [-p POSCAR] [-l [LATTICE [LATTICE ...]]]
+                           [-e [ELEMENTS [ELEMENTS ...]]]
+                           [-c [CUTOFF [CUTOFF ...]]] [-n N_BODY]
+
+    optional arguments:
+      -p POSCAR, --poscar POSCAR
+                            poscar file for primitive cell
+      -l [LATTICE [LATTICE ...]], --lattice [LATTICE [LATTICE ...]]
+                            lattice indices
+      -e [ELEMENTS [ELEMENTS ...]], --elements [ELEMENTS [ELEMENTS ...]]
+                            elements on a lattice
+      -c [CUTOFF [CUTOFF ...]], --cutoff [CUTOFF [CUTOFF ...]]
+                            cutoff [2-body, 3-body, ...]
+      -n N_BODY, --n_body N_BODY
+                            Maximum number of sites
+    
+
+(Examples)
+
+#. Enumerating nonequivalent sets of lattice sites ::
+
+    # Lattice ID 0: fcc lattice sites
+    ($pyclupan)/cluster/cluster_nonequiv.py -p fcc-primitive --lattice 0 --n_body 3 --cutoff 2.0 2.0
+
+    # Lattice ID 2: perovskite anion sites
+    ($pyclupan)/cluster/cluster_nonequiv.py -p perovskite-unitcell --lattice 2 --n_body 3 --cutoff 6.0 6.0
+
+    # Lattice ID 0: rocksalt cation sites, Lattice ID 1: rocksalt anion sites
+    ($pyclupan)/cluster/cluster/cluster_nonequiv.py -p rocksalt-primitive --lattice 0 1 --n_body 3 --cutoff 2.0 2.0
+
+
+#. Enumerating nonequivalent sets of lattice sites and element configurations (Ternary configurations on nonequivalent clusters for fcc lattice) ::
+
+    # Lattice ID 0: fcc lattice sites
+    ($pyclupan)/cluster/cluster/cluster_nonequiv.py -p fcc-primitive --lattice 0 --n_body 3 --cutoff 2.0 2.0 -e 0 1 2
+
+
+#. Enumerating nonequivalent sets of lattice sites and element configurations (Binary configurations (ele = 0, 1) on cation sites and binary configurations (ele = 2, 3) on anion sites) ::
+
+    # Lattice ID 0: rocksalt cation sites, Lattice ID 1: rocksalt anion sites
+    ($pyclupan)/cluster/cluster/cluster_nonequiv.py -p rocksalt-primitive --lattice 0 1 --n_body 3 --cutoff 1.0 1.0 -e 0 1 -e 2 3
+
+

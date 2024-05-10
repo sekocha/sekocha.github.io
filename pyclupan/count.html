@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>3. Counting numbers of colored clusters in derivative structures &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="pyclupan" href="index-e.html" />
+    <link rel="next" title="4. Calculation of correlation functions for derivative structures" href="correlations.html" />
+    <link rel="prev" title="2. Nonequivalent cluster search" href="cluster.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="cluster.html" title="2. Nonequivalent cluster search" accesskey="P">previous </a></li>
+              <li><a href="correlations.html" title="4. Calculation of correlation functions for derivative structures" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">pyclupan</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <section id="counting-numbers-of-colored-clusters-in-derivative-structures">
+<h1><span class="section-number">3. </span>Counting numbers of colored clusters in derivative structures<a class="headerlink" href="#counting-numbers-of-colored-clusters-in-derivative-structures" title="Permalink to this heading">¶</a></h1>
+<p><strong>Counting numbers of colored clusters</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/features/count_clusters.py
+
+usage: count_clusters.py [-h] [--derivative [DERIVATIVE [DERIVATIVE ...]]]
+                     [--clusters_yaml CLUSTERS_YAML]
+                     [--poscars [POSCARS [POSCARS ...]]]
+                     [--n_cell_ub N_CELL_UB] [--yaml]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --derivative [DERIVATIVE [DERIVATIVE ...]]
+                        Location of DSSet pkl files
+  --clusters_yaml CLUSTERS_YAML
+                        Location of clusters.yaml
+  --poscars [POSCARS [POSCARS ...]]
+                        POSCARs
+  --n_cell_ub N_CELL_UB
+                        Maximum number of cells
+  --yaml                generating yaml file
+</pre></div>
+</div>
+<p>(Examples)</p>
+<ol class="arabic">
+<li><p>Counting number of colored clusters in derivative structures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: fcc lattice sites
+$(pyclupan)/features/count_clusters.py --derivative ../1-derivative/derivative-all.pkl --clusters_yaml ../2-cluster/clusters.yaml
+</pre></div>
+</div>
+</li>
+<li><p>Examples for parsing results of count_clusters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yaml</span> <span class="o">=</span> <span class="n">Yaml</span><span class="p">()</span>
+<span class="n">cluster_set</span><span class="p">,</span> <span class="n">orbit_sizes</span><span class="p">,</span> <span class="n">target_ids</span><span class="p">,</span> <span class="n">n_counts</span> \
+        <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">parse_count_clusters_yaml</span><span class="p">(</span><span class="s1">&#39;count_clusters.yaml&#39;</span><span class="p">)</span>
+
+<span class="n">cluster_set</span><span class="p">,</span> <span class="n">orbit_sizes</span><span class="p">,</span> <span class="n">target_ids</span><span class="p">,</span> <span class="n">n_counts</span> \
+        <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;count_clusters.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="cluster.html"
+                          title="previous chapter"><span class="section-number">2. </span>Nonequivalent cluster search</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="correlations.html"
+                          title="next chapter"><span class="section-number">4. </span>Calculation of correlation functions for derivative structures</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="cluster.html" title="2. Nonequivalent cluster search" >previous</a></li>
+        <li><a href="correlations.html" title="4. Calculation of correlation functions for derivative structures" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >pyclupan</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2024, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

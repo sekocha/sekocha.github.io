@@ -1,0 +1,121 @@
+pyclupan modules on ZDD construction
+================================================================
+
+#. Initialization ::
+    
+    from pyclupan.dd.dd_node import DDNodeHandler
+    from pyclupan.dd.dd_constructor import DDConstructor
+
+    # Number of sites in supercell and element occupation
+    n_expand = 4
+    n_sites = np.array([1,1,3]) * n_expand
+    elements_lattice = [[0,1],[0,1],[2,3]]
+
+    dd_handler = DDNodeHandler(n_sites=n_sites,
+                               elements_lattice=elements_lattice)
+    dd_const = DDConstructor(dd_handler)
+
+    #. identifying lattice (primitive cell)
+
+    from mlptools.common.readvasp import Poscar
+    from mlptools.common.structure import Structure
+
+    lattice_prim = Poscar('POSCAR').get_structure_class()
+
+#. Entire set of structures ::
+
+    gs = dd_const.one_of_k()
+    
+#. Restricting ZDD to structures a composition ::
+
+    comp = [1/2, 1/2, 2/3, 1/3] # or comp = [1/2, None, 2/3, None]
+    gs &= dd_const.composition(comp)
+
+#. Nonequivalent derivative structures ::
+
+    from pyclupan.common.supercell import Supercell
+    from pyclupan.common.symmetry import get_permutation
+
+    H = np.array([[1,0,0],[0,2,0],[0,0,2]])
+
+    sup = Supercell(st_prim=lattice_prim, hnf=H)
+    lattice_sup = sup.get_supercell()
+
+    site_perm, site_perm_lt = get_permutation(lattice_sup,
+                                              superperiodic=True,
+                                              hnf=H)
+
+    gs = dd_const.one_of_k()
+    gs = dd_const.nonequivalent_permutations(site_perm, gs=gs)
+
+#. Eliminating end members (imcomplete structures) ::
+    
+    gs &= dd_const.no_endmembers()
+    
+#. Electroneutrality (Charge balance) in ionic structures ::
+
+    charge = [4,3,-4,-3]
+    gs = dd_const.charge_balance(charge, gs=gs, eps=1e-5)
+
+#. Excluding stuctures including a cluster ::
+
+    # orb is the orbit of a cluster
+    orbit_dd = dd_handler.convert_to_orbit_dd(orb)
+    gs = dd_const.excluding_clusters(orbit_dd, gs=gs)
+
+    # Example
+    # orb can be obtained by find_orbits_supercell in Cluster class
+
+    from pyclupan.derivative.preamble import preamble_ds_enum_from_cluster_yaml
+
+    pre_data = preamble_ds_enum_from_cluster_yaml('clusters.yaml', n_expand)
+    dd_handler, lattice_prim, hnf_all, clusters_ele = pre_data
+    
+    cluster_ids = [136]
+    for H in hnf_all:
+        orbits = clusters_ele.find_orbits_supercell(lattice_sup, 
+                                                    H, ids=cluster_ids)
+        for orb in orbits:
+            orbit_dd = dd_handler.convert_to_orbit_dd(orb)
+            gs = dd_const.excluding_clusters(orbit_dd, gs=gs)
+
+
+#. Generating structure lists ::
+    
+    from pyclupan.common.io.yaml import Yaml
+    from pyclupan.derivative.derivative import DSSet
+
+    res = dd_handler.convert_graphs_to_labelings(gs)
+    active_labelings, inactive_labeling, active_sites, inactive_sites = res
+    ds_set = DSSet(active_labelings=active_labelings,
+                   inactive_labeling=inactive_labeling,
+                   active_sites=active_sites,
+                   inactive_sites=inactive_sites,
+                   primitive_cell=lattice_prim,
+                   n_expand=n_expand,
+                   elements=dd_handler.elements,
+                   comp=comp,
+                   hnf=H,
+                   supercell=lattice_sup,
+                   supercell_id=idx)
+
+    # or
+
+    res = dd_handler.convert_graphs_to_labelings(gs)
+    ds_set = DSSet(labelings_info=res,
+                   primitive_cell=st_prim,
+                   n_expand=n_expand,
+                   elements=dd_handler.elements,
+                   comp=comp,
+                   hnf=hnf,
+                   supercell=st_sup,
+                   supercell_id=idx)
+
+    ds_set_all = [ds_set] 
+
+    # ds_set_all including multiple ds_set is possible to use
+    yaml = Yaml()
+    yaml.write_derivative_yaml(st_prim, ds_set_all, filename='derivative.yaml')
+    joblib.dump(ds_set_all, 'derivative.pkl', compress=3)
+
+

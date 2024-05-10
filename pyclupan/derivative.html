@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>1. Derivative structure enumeration using decision diagram &mdash; Atsuto Seko web site (Kyoto University)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-superhero.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-superhero.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Atsuto Seko web site (Kyoto University)" href="../index.html" />
+    <link rel="up" title="pyclupan" href="index-e.html" />
+    <link rel="next" title="2. Nonequivalent cluster search" href="cluster.html" />
+    <link rel="prev" title="pyclupan" href="index-e.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Atsuto Seko (Kyoto University)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="index-e.html" title="pyclupan" accesskey="P">previous </a></li>
+              <li><a href="cluster.html" title="2. Nonequivalent cluster search" accesskey="N">next </a></li>
+              <li><a href="../genindex.html" title="General Index" accesskey="I">index </a></li>
+              <li><a href="index-e.html" accesskey="U">pyclupan</a></li>
+            
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="Go" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- row -->
+      <div class="row">
+        
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <section id="derivative-structure-enumeration-using-decision-diagram">
+<h1><span class="section-number">1. </span>Derivative structure enumeration using decision diagram<a class="headerlink" href="#derivative-structure-enumeration-using-decision-diagram" title="Permalink to this heading">¶</a></h1>
+<p><strong>Derivative structure enumeration</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/enumeration.py -p PoscarFile -n NExpand \
+        -o LatticeID -o LatticeID -o LatticeID
+
+Options
+
+-p POSCAR, --poscar POSCAR
+                    POSCAR file for primitive cell
+-e [ELEMENTS [ELEMENTS ...]], --elements [ELEMENTS [ELEMENTS ...]]
+                      Elements on a lattice
+-o [OCCUPATION [OCCUPATION ...]], --occupation [OCCUPATION [OCCUPATION ...]]
+                      Lattice IDs that are occupied by an element
+-c [COMP [COMP ...]], --comp [COMP [COMP ...]]
+                      Composition (n_elements / n_sites)
+--comp_lb [COMP_LB [COMP_LB ...]]
+                      Lower bound of composition (n_elements / n_sites)
+--comp_ub [COMP_UB [COMP_UB ...]]
+                      Upper bound of composition (n_elements / n_sites)
+--charge [CHARGE [CHARGE ...]]
+                      Charges for elements
+--hnf HNF HNF HNF HNF HNF HNF HNF HNF HNF
+                      Hermite normal form
+-n N_EXPAND, --n_expand N_EXPAND
+                      Determinant of Hermite normal form
+--superperiodic       Including superperiodic structures
+--endmember           Including endmembers (incomplete structures)
+--nodump              No dump file of DSSet object
+</pre></div>
+</div>
+<p>(Examples)</p>
+<ol class="arabic">
+<li><p>Binary alloy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: fcc lattice sites
+$(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 8 -o 0 -o 0
+$(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 8 -e 0 1
+</pre></div>
+</div>
+</li>
+<li><p>Ternary alloy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 6 -o 0 -o 0 -o 0
+</pre></div>
+</div>
+</li>
+<li><p>Quaternary alloy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 8 -o 0 -o 0 -o 0 -o 0
+</pre></div>
+</div>
+</li>
+<li><p>Binary configurations on anion sites in the perovskite structure</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: A sites, Lattice ID 1: B sites, Lattice ID 2: Anion sites
+$(pyclupan)/derivative/enumeration.py -p perovskite-unitcell -n 3 -o 0 -o 1 -o 2 -o 2
+</pre></div>
+</div>
+</li>
+<li><p>Ternary configurations on cation (perovskite A and B) sites and binary configurations on anion sites in the perovskite structure</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: A sites, Lattice ID 1: B sites, Lattice ID 2: Anion sites
+$(pyclupan)/derivative/enumeration.py -p perovskite-unitcell -n 3 -o 0 1 -o 0 1 -o 0 1 -o 2 -o 2
+</pre></div>
+</div>
+</li>
+<li><p>Ternary configurations on cation sites and binary configurations on anion sites at A2BCX5 in the perovskite structure. Cations A and B occupy two cation sites, and Cation C occupies perovskite B sites.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: A sites, Lattice ID 1: B sites, Lattice ID 2: Anion sites
+#  - Comp.(ele=0) = 1/2 of perovskite A and B sites
+#  - Comp.(ele=1) = 1/4 of perovskite A and B sites
+#  - Comp.(ele=2) = 1/2 of perovskite B sites
+#  - Comp.(ele=3) = 5/6 of perovskite anion sites
+#  - Comp.(ele=4) = 1/6 of perovskite anion sites
+
+$(pyclupan)/derivative/enumeration.py -p perovskite-unitcell -n 4 -o 0 1 -o 0 1 -o 1 -o 2 -o 2 -c 0 1/2 -c 1 1/4 -c 3 5/6
+</pre></div>
+</div>
+</li>
+<li><p>Binary configurations on cation sites and binary configurations on anion sites in wurtzite lattice. Only derivative structures satisfying charge neutrality are enumerated.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Lattice ID 0: cation sites, Lattice ID 1: anion sites
+# ele 0 = Si, ele 1 = Al, ele 2 = C, ele 3 = N
+# charge(Si) = 4, charge(Al) = 3, charge(C) = -4, charge(N) = -3
+
+$(pyclupan)/derivative/enumeration.py -p wurtzite-primitive -n 4 -e 0 1 -e 2 3 --charge 4 3 -4 -3
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Generation of structure files</strong></p>
+<p>POSCAR files are generated from derivative structure lists (derivative*.dump or derivative*.yaml). If no dump and yaml files are given, all derivative*.pkl files in the current directory will be parsed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/io.py -e Ag Au
+
+usage: io.py [-h] [--dump [DUMP [DUMP ...]]] [--yaml [YAML [YAML ...]]]
+         [-r RANDOM] [--n_cell_ub N_CELL_UB]
+         [-e [ELEMENTS [ELEMENTS ...]]]
+
+optional arguments:
+--dump [DUMP [DUMP ...]]
+                      parse derivative*.pkl file
+--yaml [YAML [YAML ...]]
+                      parse derivative*.yaml file
+-r RANDOM, --random RANDOM
+                      number of random samples
+--n_cell_ub N_CELL_UB
+                      Maximum number of cells
+-e [ELEMENTS [ELEMENTS ...]], --elements [ELEMENTS [ELEMENTS ...]]
+                      elements
+--no_poscars          Only derivative-all.pkl is generated. No poscar files
+                      are generated.
+</pre></div>
+</div>
+<p>POSCAR files are identified with n_cell, supercell_id, and labeling_id.</p>
+<p>If you generate only derivative-all.pkl used for computing structural features, use the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/io.py --no_poscars
+</pre></div>
+</div>
+<p>If you generate complete derivative-all.pkl and sample a part of structures randomly, use the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(pyclupan)/derivative/io.py --random 100
+</pre></div>
+</div>
+</section>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index-e.html"
+                          title="previous chapter">pyclupan</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="cluster.html"
+                          title="next chapter"><span class="section-number">2. </span>Nonequivalent cluster search</a></p>
+  </div>
+<div id="searchbox" role="search">
+  <h3>Quick search</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="Go" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Atsuto Seko (Kyoto University)</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="index-e.html" title="pyclupan" >previous</a></li>
+        <li><a href="cluster.html" title="2. Nonequivalent cluster search" >next</a></li>
+        <li><a href="../genindex.html" title="General Index" >index</a></li>
+        <li><a href="index-e.html" >pyclupan</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2024, Atsuto Seko.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 6.2.1.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

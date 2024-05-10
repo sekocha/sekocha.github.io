@@ -1,0 +1,118 @@
+.. clupan_document documentation master file, created by
+   sphinx-quickstart on Tue Feb 16 22:33:03 2010.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Derivative structure enumeration using decision diagram
+===========================================================
+
+**Derivative structure enumeration** ::
+
+    $(pyclupan)/derivative/enumeration.py -p PoscarFile -n NExpand \
+            -o LatticeID -o LatticeID -o LatticeID
+
+    Options
+
+    -p POSCAR, --poscar POSCAR
+                        POSCAR file for primitive cell
+    -e [ELEMENTS [ELEMENTS ...]], --elements [ELEMENTS [ELEMENTS ...]]
+                          Elements on a lattice
+    -o [OCCUPATION [OCCUPATION ...]], --occupation [OCCUPATION [OCCUPATION ...]]
+                          Lattice IDs that are occupied by an element
+    -c [COMP [COMP ...]], --comp [COMP [COMP ...]]
+                          Composition (n_elements / n_sites)
+    --comp_lb [COMP_LB [COMP_LB ...]]
+                          Lower bound of composition (n_elements / n_sites)
+    --comp_ub [COMP_UB [COMP_UB ...]]
+                          Upper bound of composition (n_elements / n_sites)
+    --charge [CHARGE [CHARGE ...]]
+                          Charges for elements
+    --hnf HNF HNF HNF HNF HNF HNF HNF HNF HNF
+                          Hermite normal form
+    -n N_EXPAND, --n_expand N_EXPAND
+                          Determinant of Hermite normal form
+    --superperiodic       Including superperiodic structures
+    --endmember           Including endmembers (incomplete structures)
+    --nodump              No dump file of DSSet object
+
+(Examples)
+
+#. Binary alloy ::
+
+    # Lattice ID 0: fcc lattice sites
+    $(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 8 -o 0 -o 0
+    $(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 8 -e 0 1
+
+#. Ternary alloy ::
+
+    $(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 6 -o 0 -o 0 -o 0
+
+#. Quaternary alloy ::
+
+    $(pyclupan)/derivative/enumeration.py -p fcc-primitive -n 8 -o 0 -o 0 -o 0 -o 0
+
+#. Binary configurations on anion sites in the perovskite structure ::
+
+    # Lattice ID 0: A sites, Lattice ID 1: B sites, Lattice ID 2: Anion sites
+    $(pyclupan)/derivative/enumeration.py -p perovskite-unitcell -n 3 -o 0 -o 1 -o 2 -o 2
+
+#. Ternary configurations on cation (perovskite A and B) sites and binary configurations on anion sites in the perovskite structure ::
+
+    # Lattice ID 0: A sites, Lattice ID 1: B sites, Lattice ID 2: Anion sites
+    $(pyclupan)/derivative/enumeration.py -p perovskite-unitcell -n 3 -o 0 1 -o 0 1 -o 0 1 -o 2 -o 2
+
+#. Ternary configurations on cation sites and binary configurations on anion sites at A2BCX5 in the perovskite structure. Cations A and B occupy two cation sites, and Cation C occupies perovskite B sites. ::
+
+    # Lattice ID 0: A sites, Lattice ID 1: B sites, Lattice ID 2: Anion sites
+    #  - Comp.(ele=0) = 1/2 of perovskite A and B sites 
+    #  - Comp.(ele=1) = 1/4 of perovskite A and B sites 
+    #  - Comp.(ele=2) = 1/2 of perovskite B sites
+    #  - Comp.(ele=3) = 5/6 of perovskite anion sites
+    #  - Comp.(ele=4) = 1/6 of perovskite anion sites
+
+    $(pyclupan)/derivative/enumeration.py -p perovskite-unitcell -n 4 -o 0 1 -o 0 1 -o 1 -o 2 -o 2 -c 0 1/2 -c 1 1/4 -c 3 5/6
+
+
+#. Binary configurations on cation sites and binary configurations on anion sites in wurtzite lattice. Only derivative structures satisfying charge neutrality are enumerated. ::
+
+    # Lattice ID 0: cation sites, Lattice ID 1: anion sites
+    # ele 0 = Si, ele 1 = Al, ele 2 = C, ele 3 = N
+    # charge(Si) = 4, charge(Al) = 3, charge(C) = -4, charge(N) = -3
+
+    $(pyclupan)/derivative/enumeration.py -p wurtzite-primitive -n 4 -e 0 1 -e 2 3 --charge 4 3 -4 -3
+
+**Generation of structure files**
+
+POSCAR files are generated from derivative structure lists (derivative*.dump or derivative*.yaml). If no dump and yaml files are given, all derivative*.pkl files in the current directory will be parsed. ::
+
+    $(pyclupan)/derivative/io.py -e Ag Au
+
+    usage: io.py [-h] [--dump [DUMP [DUMP ...]]] [--yaml [YAML [YAML ...]]]
+             [-r RANDOM] [--n_cell_ub N_CELL_UB]
+             [-e [ELEMENTS [ELEMENTS ...]]]
+
+    optional arguments:
+    --dump [DUMP [DUMP ...]]
+                          parse derivative*.pkl file
+    --yaml [YAML [YAML ...]]
+                          parse derivative*.yaml file
+    -r RANDOM, --random RANDOM
+                          number of random samples
+    --n_cell_ub N_CELL_UB
+                          Maximum number of cells
+    -e [ELEMENTS [ELEMENTS ...]], --elements [ELEMENTS [ELEMENTS ...]]
+                          elements
+    --no_poscars          Only derivative-all.pkl is generated. No poscar files
+                          are generated.
+
+POSCAR files are identified with n_cell, supercell_id, and labeling_id.
+
+If you generate only derivative-all.pkl used for computing structural features, use the following command. ::
+
+    $(pyclupan)/derivative/io.py --no_poscars
+
+If you generate complete derivative-all.pkl and sample a part of structures randomly, use the following command. ::
+
+    $(pyclupan)/derivative/io.py --random 100
+
+
